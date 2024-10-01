@@ -1,0 +1,23 @@
+.logOutMobile {
+    color: white;
+    font-size: 10px;
+    text-decoration: underline;
+    //background-color: black;
+}
+
+.logOut {
+    position: absolute;
+    top: 14.5vh; 
+    right: 3vh;
+    color: white;
+    text-decoration: underline;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 480px) {
+.logOut {
+    display: none;
+}
+}

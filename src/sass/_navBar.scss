@@ -1,0 +1,156 @@
+.navBarMobileContainer {
+    display: none;
+}
+//d2b569
+.navBarContainer {
+    background-color: black;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1vh;
+    border-bottom: 0.5vh solid #d2b569;
+    &__hMenuLogo {
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        //@include disFC();
+        &__hMenu {
+            width: 100%;
+            height: auto;
+            @include disFC();
+        }
+        &__logo {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            &__prop {
+                width: 55%;
+                height: auto;
+            }
+        }
+        /* &__title {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            &__prop {
+                text-decoration: none;
+                color: white;
+                font-size: 40px;
+                color: white;
+            }
+        } */
+    }
+    &__phrase-btns {
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        &__phrase-user {
+            width: 100%;
+            height: auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            &__phrase {
+                grid-column: 2/3;
+                width: 100%;
+                height: auto;
+                @include disFC();
+                &__prop {
+                    color: white;
+                    font-size: 18px;
+                }
+            }
+            &__user {
+                grid-column: 3/-1;
+                width: 100%;
+                height: auto;
+                @include disFC();
+                &__prop {
+                    color: white;
+                    font-size: 12px;
+                }
+            }
+        }
+        &__btns {
+            width: 100%;
+            height: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            font-size: 17px;
+            color: #d2b569;
+            &__prop {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                text-decoration: none;
+                color: white;
+                &:hover {
+                    background-color: #d2b569;
+                    color: black;
+                    border-radius: 2vh;
+                }
+                &__line {
+                    border-top: 0.3vh solid #d2b569;
+                    @include disFC();
+                    text-decoration: none;
+                    color: white;
+                    &:hover {
+                        background-color: #d2b569;
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+.navBarContainer {
+    display: none;
+}
+.navBarMobileContainer {
+    background-color: black;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    border-bottom: 0.5vh solid #d2b569;
+    position: fixed;
+    padding: 2vh 0vh;
+    &__hMenuMobileContainer {
+        width: 100%;
+        height: auto;
+        @include disFC();
+    }
+    &__logoContainer {
+        //background-color: rgb(143, 177, 221);
+        width: 100%;
+        height: auto;
+        @include disFC();
+        &__logo {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            &__prop {
+                width: 90%;
+                height: auto;
+            }
+        }
+    }
+    &__logOutMobileContainer {
+        width: 100%;
+        height: auto;
+        @include disFC();
+        text-align: center;
+    }
+}
+}
+
+@media (min-width: 1080px) {
+.navBarMobileContainer {
+    display: none;
+}
+}

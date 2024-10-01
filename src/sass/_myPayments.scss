@@ -1,0 +1,273 @@
+.myPaymentsContainerIsLoggedIn {
+    background-color: black;
+    width: 100%;
+    height: auto;
+    @include disFC();
+    flex-direction: column;
+    padding: 4vh 0vh;
+    gap: 1vh;
+    &__blackDiv {
+        display: block;
+        background-color: black;
+    }
+    &__blackDivMobile {
+        display: none;
+    }
+    &__title {
+        width: 100%;
+        height: auto;
+        @include disFC();
+        font-size: 50px;
+        color: white;
+        animation: fadeIn 2s ease-in;
+    }
+    &__myPaymentsList {
+        width: 100%;
+        height: auto;
+        @include disFC();
+        flex-direction: column;
+        border-top: 0.3vh solid white;
+        &__lengthShifts {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            padding-bottom: 1vh;
+            &__prop {
+                color: white;
+                font-size: 20px;
+            }
+        }
+        &__header {
+            width: 95%;
+            height: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            text-align: center;
+            padding: 1vh 0vh;
+            &__label {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                font-size: 20px;
+                color: white;
+            }
+        }
+        &__headerMobile {
+            display: none;
+        }
+        &__itemMyPayment {
+            width: 95%;
+            height: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            color: white;
+            border-top: 0.3vh solid white;
+            padding: 1vh;
+            gap: 2vh;
+            &__input {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                overflow: auto;
+                white-space: nowrap;
+                &__prop {
+                    width: 100%;
+                    height: auto;
+                    font-size: 20px;
+                    text-align: center;
+                }
+            }
+            &__btnLabels {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                &__prop {
+                    width: 80%;
+                    height: auto;
+                    padding: 0.5vh 0vh;
+                    @include btnsYellow;
+                }
+            }
+        }
+    }
+}
+
+.itemMyPaymentMobile {
+    display: none;
+}
+
+@media (max-width: 480px) {
+.myPaymentsContainerIsLoggedIn {
+    background-color: black;
+    width: 100%;
+    height: auto;
+    @include disFC();
+    flex-direction: column;
+    padding: 14vh 0vh 1vh 0vh;
+    gap: 1vh;
+    &__blackDiv {
+        display: none;
+        background-color: black;
+    }
+    &__blackDivMobile {
+        display: block;
+        background-color: black;
+    }
+    &__title {
+        width: 100%;
+        height: auto;
+        @include disFC();
+        font-size: 40px;
+        color: white;
+        animation: fadeIn 2s ease-in;
+    }
+    &__myPaymentsList {
+        width: 100%;
+        height: auto;
+        @include disFC();
+        flex-direction: column;
+        padding: 0vh;
+        border-radius: 0vh;
+        border: none;
+        border-top: 0.3vh solid white;
+        &__lengthShifts {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            &__prop {
+                color: white;
+                font-size: 15px;
+            }
+        }
+        &__headerMobile {
+            width: 100%;
+            height: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            text-align: center;
+            color: white;
+            padding: 1vh 0vh 1vh 0vh;
+            gap: 1vh;
+            &__label {
+                width: 100%;
+                @include disFC();
+                font-size: 15px;
+            }
+        }
+        &__header {
+            width: 100%;
+            height: auto;
+            display: none;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            padding: 1vh 0vh;
+            gap: 0vh;
+            &__label {
+                width: 30vh;
+                @include disFC();
+                &__prop {
+                    width: 100%;
+                    height: auto;
+                    font-size: 20px;
+                    color: white;
+                    text-align: center;
+                }
+            }
+        }
+        &__itemMyPayment {
+            width: 100%;
+            height: auto;
+            display: none;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            color: white;
+            text-align: center;
+            padding: 0vh 0vh;
+            border-top:  none;
+            gap: 0vh;
+            //border-top: 0.3vh solid white;
+            &__input {
+                width: 30vh;
+                height: auto;
+                @include disFC();
+                overflow: auto;
+                white-space: nowrap;
+                padding: 1vh 0vh;
+                border-top: 0.3vh solid white;
+                border-bottom: 0.3vh solid white;
+                &__prop {
+                    width: 100%;
+                    height: auto;
+                    text-align: center;
+                    font-size: 1.2em;
+                    background: none;
+                    border: none;
+                    color: white;
+                    padding: 0vh 0vh;
+                    overflow: auto;
+                }
+            }
+            &__btnLabels {
+                width: 30vh;
+                height: auto;
+                @include disFC();
+                border-top: 0.3vh solid white;
+                border-bottom: 0.3vh solid white;
+                padding: 0vh 0vh;
+                &__prop {
+                    width: 90%;
+                    height: auto;
+                    font-size: 15px;
+                    padding: 0vh 0vh;
+                    @include btns;
+                }
+            }
+        }
+        }
+    }
+.itemMyPaymentMobile {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    text-align: center;
+    color: #04064e;
+    //border-top: none;
+    border-top: 0.3vh solid white;
+    padding: 1vh 0vh;
+    gap: 1vh;
+    &__input {
+        width: 100%;
+        height: auto;
+        @include disFC();
+        overflow: auto;
+        white-space: nowrap;
+        ::placeholder {
+            color: white;
+        }
+        &__prop {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            font-size: 15px;
+            background: none;
+            border: none;
+            color: white;
+            //border-top: 0.3vh solid white;
+            //padding-top: 1.5vh;
+            overflow: auto;
+        }
+        &__propDate {
+            font-size: 12px;
+        }
+    }
+    &__btns {
+        width: 100%;
+        height: auto;
+        @include disFC();
+        &__btn {
+            width: 100%;
+            height: auto;
+            @include btnsYellow;
+        }
+    }
+}
+}

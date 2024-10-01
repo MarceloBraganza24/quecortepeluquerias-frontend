@@ -1,0 +1,112 @@
+.hMenuMobile {
+    display: none;
+}
+
+.menuOptionsMobile {
+    background-color: black;
+    width: 35vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    position: absolute;
+    top: 90%; 
+    left: 2%;
+    padding: 2vh 1vh 1vh 1vh;
+    border-radius: 2vh;
+    border: 0.5vh solid #d2b569;
+    z-index: 2;
+    animation: fadeIn 0.3s ease-in;
+    &__item {
+        color: white;
+        text-decoration: none;
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}
+
+.hMenu {
+    width: 7vh;
+    height: 7vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    &:hover {
+        cursor: pointer;
+    }
+    &__line {
+        background-color: #d2b569;
+        width: 100%;
+        height: 1vh;
+        border-radius: 1vh;
+    }
+}
+
+.menuOptions {
+    background-color: black;
+    width: 30vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    position: absolute;
+    top: 15%; 
+    left: 2%;
+    z-index: 1;
+    padding: 2vh 1vh 1vh 1vh;
+    border-radius: 2vh;
+    border: 0.5vh solid #d2b569;
+    animation: fadeIn 0.3s ease-in;
+    &__item {
+        color: white;
+        text-decoration: none;
+        z-index: 2;
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+    &__closeW {
+        //background-color: aqua;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: end;
+        &__btn {
+            color: white;
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+.hMenu {
+    display: none;
+}
+.hMenuMobile {
+    width: 6vh;
+    height: 6vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    &:hover {
+        cursor: pointer;
+    }
+    &__line {
+        background-color: #d2b569;
+        width: 100%;
+        height: 1vh;
+        border-radius: 1vh;
+    }
+}
+.menuOptions {
+    display: none;
+}
+}

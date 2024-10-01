@@ -1,0 +1,180 @@
+.partnersListContainer {
+    background-color: black;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 2vh 0vh 2vh 0vh;
+    &__blackDiv {
+        display: block;
+        background-color: black;
+    }
+    &__blackDivMobile {
+        display: none;
+    }
+    &__title {
+        text-align: center;
+        font-size: 50px;
+        color: white;
+        animation: fadeIn 2s ease-in;
+    }
+    &__inputFilteredPartners {
+        width: 100%;
+        height: auto;
+        @include disFC();
+        padding: 1vh 0vh 3vh 0vh;
+        ::placeholder {
+            color: black;
+        }
+        &__prop {
+            width: 70%;
+            height: 40px;
+            text-align: center;
+            font-size: 30px;
+            border-radius: 2vh;
+        }
+    }
+    &__createPartnerMobile {
+        display: none;
+    }
+    &__partnersList {
+        background-color: black;
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border-top: 0.3vh solid white;
+        padding: 2vh 0vh;
+        &__lengthShifts {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            padding-bottom: 1vh;
+            &__prop {
+                color: white;
+                font-size: 20px;
+            }
+        }
+        &__headerMobile {
+            display: none;
+        }
+        &__header {
+            width: 95%;
+            height: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            text-align: center;
+            color: white;
+            font-size: 30px;
+            padding: 1vh 0vh;
+            gap: 1vh;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+.partnersListContainer {
+    background-color: black;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 14vh 0vh 0vh 0vh;
+    &__blackDiv {
+        display: none;
+        background-color: black;
+    }
+    &__blackDivMobile {
+        display: block;
+        background-color: black;
+    }
+    &__title {
+        text-align: center;
+        font-size: 40px;
+        color: white;
+        animation: fadeIn 2s ease-in;
+    }
+    &__inputFilteredPartners {
+        width: 100%;
+        height: auto;
+        @include disFC();
+        padding: 1vh 0vh 3vh 0vh;
+        ::placeholder {
+            color: black;
+        }
+        &__prop {
+            width: 85%;
+            height: 35px;
+            text-align: center;
+            font-size: 25px;
+            border-radius: 2vh;
+        }
+    }
+    &__createPartnerMobile {
+        width: 100%;
+        height: auto;
+        @include disFC();
+        padding: 2vh 0vh 2vh 0vh;
+        border-top: 0.3vh solid white;
+        border-bottom: 0.3vh solid white;
+        &__btnCreatePartner {
+            width: 50%;
+            height: auto;
+            font-size: 18px;
+            @include btnsYellow;
+        }
+    }
+    &__partnersList {
+        background-color: black;
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        border-top: none;
+        padding: 1vh 0vh;
+        overflow: auto;
+        white-space: nowrap;
+        &__lengthShifts {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            padding-top: 1vh;
+            &__prop {
+                color: white;
+                font-size: 15px;
+            }
+        }
+        &__headerMobile {
+            width: 100%;
+            height: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            text-align: center;
+            color: white;
+            padding: 0vh 0vh 1vh 0vh;
+            gap: 1vh;
+            &__label {
+                width: 100%;
+                @include disFC();
+                font-size: 18px;
+            }
+        }
+        &__header {
+            width: 100%;
+            height: auto;
+            display: none;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            text-align: center;
+            color: white;
+            padding: 0vh 0vh 1vh 0vh;
+            &__label {
+                width: 25vh;
+                @include disFC();
+                font-size: 20px;
+            }
+        }
+    }
+}
+}

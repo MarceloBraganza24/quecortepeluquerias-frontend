@@ -1,0 +1,180 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+h2 {
+    margin-bottom: 0;
+}
+.no-scroll {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+.spinner {
+    border: 5px solid #d2b569;
+    border-top: 5px solid black; 
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.no-scroll::-webkit-scrollbar {
+display: none; 
+}
+
+@mixin disFC {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin btns {
+    background-color: black;
+    color: #d2b569;
+    border-color: black;
+    border-radius: 5vh;
+    box-shadow: 4px 4px 10px black, -4px -4px 10px black;
+    transition: transform 0.2s;
+    &:active {
+        transform: translateY(2px); /* Baja el botón al hacer clic */
+        box-shadow: 2px 2px 5px black, -2px -2px 5px black; /* Sombra más ligera al hacer clic */
+    }
+}
+
+@mixin btnsYellow {
+    background-color: #d2b569;
+    color: black;
+    border-color: black;
+    border-radius: 5vh;
+    box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
+    transition: transform 0.2s;
+    &:active {
+        transform: translateY(2px); /* Baja el botón al hacer clic */
+        box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
+    }
+}
+
+@mixin selects {
+    background-color: #d2b569;
+    color: black;
+    border-color: black;
+    border-radius: 5vh;
+    box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
+    transition: transform 0.2s;
+    text-align: center;
+    &:active {
+        transform: translateY(2px); /* Baja el botón al hacer clic */
+        box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
+    }
+}
+
+@mixin selectsBlack {
+    background-color: black;
+    color: #d2b569;
+    border-color: black;
+    border-radius: 5vh;
+    box-shadow: 4px 4px 10px black, -4px -4px 10px black;
+    transition: transform 0.2s;
+    text-align: center;
+    &:active {
+        transform: translateY(2px); /* Baja el botón al hacer clic */
+        box-shadow: 2px 2px 5px #d2b569, -2px -2px 5px #d2b569; /* Sombra más ligera al hacer clic */
+    }
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+}
+
+.warningLogin {
+    background-color: black;
+    width: 100%;
+    height: auto;
+    @include disFC();
+    padding: 1vh;
+    &__prop {
+        color: white;
+    }
+    &__link {
+        text-decoration: none;
+        color: white;
+        &:hover {
+            background-color: #d2b569;
+            color: white;
+        }
+    }
+}
+
+@import "singUp";
+@import "logIn";
+@import "navBar";
+@import "footer";
+@import "home";
+@import "shifts";
+@import "itemShift";
+@import "shiftsList";
+@import "logOut";
+@import "about";
+@import "cuts";
+@import "partners";
+@import "partnersList";
+@import "itemPartner";
+@import "providersList";
+@import "itemProvider";
+@import "productsList";
+@import "itemProduct";
+@import "itemUser";
+@import "usersList";
+@import "hMenu";
+@import "modal";
+@import "prices";
+@import "myPayments";
+@import "myShifts";
+@import "itemMyShift";
+@import "resetPass";
+@import "sendMail";
+@import "myData";
+@import "config";
+
+@media (max-width: 480px) {
+.warningLogin {
+    padding-top: 1vh;
+    font-size: 15px;
+}
+}
+
+@media (min-width: 1540px) {
+.aboutContainer {
+    &__descriptionContainer {
+        font-size: 30px;
+        padding: 10vh 4vh;
+    }
+}
+.partnersContainer {
+    &__form {
+        padding: 11vh 0vh;
+    }
+}    
+.shiftsContainer {
+    &__form {
+        padding: 15vh 0vh;
+    }
+}    
+}

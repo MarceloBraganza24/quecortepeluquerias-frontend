@@ -1,0 +1,353 @@
+.shiftsContainer {
+    background-color: black;
+    width: 100%;
+    height: auto;
+    @include disFC();
+    &__form {
+        width: 100%;
+        height: auto;
+        @include disFC();
+        flex-direction: column;
+        padding: 0vh 0vh 4vh 0vh;
+        &__phrase {
+            color: white;
+            padding-bottom: 2vh;
+            animation: fadeIn 0.3s ease-in;
+        }
+        &__credentials {
+            width: 50%;
+            height: auto;
+            @include disFC();
+            flex-direction: column;
+            &__label-input {
+                width: 100%;
+                height: auto;
+                display: grid;
+                grid-template-columns: 1fr 3fr;
+                padding: 2vh 0vh;
+                &__label {
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    justify-content: start;
+                    &__prop {
+                        width: 100%;
+                        height: auto;
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        font-size: 25px;
+                        color: white;
+                    }
+                }
+                &__input {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        width: 100%;
+                        height: auto;
+                        padding: 1vh 0vh;
+                        border-radius: 1vh;
+                    }
+                    &__price {
+                        width: 100%;
+                        height: auto;
+                        color: #04064e;
+                        font-size: 20px;
+                    }
+                }
+            }
+            &__btn {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                padding-top: 2vh;
+                &__prop {
+                    width: 70%;
+                    height: 40px;
+                    font-size: 20px;
+                    @include btns;
+                }
+            }
+        }
+    }
+}
+.shiftsContainerIsLoggedIn {
+    background-color: black;
+    width: 100%;
+    height: auto;
+    @include disFC();
+    &__form {
+        width: 100%;
+        height: auto;
+        @include disFC();
+        flex-direction: column;
+        padding: 2vh 0vh 2vh 0vh;
+        &__phrase {
+            color: white;
+            padding-bottom: 2vh;
+            animation: fadeIn 2s ease-in;
+        }
+        &__credentials {
+            width: 50%;
+            height: auto;
+            @include disFC();
+            flex-direction: column;
+            &__label-input {
+                width: 100%;
+                height: auto;
+                display: grid;
+                grid-template-columns: 1fr 3fr;
+                padding: 2vh 0vh;
+                &__label {
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    justify-content: start;
+                    &__prop {
+                        width: 100%;
+                        height: auto;
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        font-size: 25px;
+                        color: white;
+                    }
+                }
+                &__input {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        width: 100%;
+                        height: 40px;
+                        padding: 1vh 0vh;
+                        border-radius: 1vh;
+                        border: 0.3vh solid black;
+                        &::placeholder {
+                            color: black;
+                        }
+                    }
+                    &__price {
+                        width: 100%;
+                        height: auto;
+                        color: white;
+                        font-size: 20px;
+                    }
+                }
+            }
+            &__btn {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                flex-direction: column;
+                padding-top: 2vh;
+                gap: 2vh;
+                &__prop {
+                    width: 70%;
+                    height: 40px;
+                    font-size: 20px;
+                    @include btnsYellow;
+                }
+                &__propNonRegister {
+                    width: 70%;
+                    height: 40px;
+                    font-size: 16px;
+                    @include btnsYellow;
+                }
+                &__propWantBuy {
+                    width: 70%;
+                    height: 40px;
+                    font-size: 20px;
+                    @include btnsYellow;
+                }
+            }
+        }
+    }
+}
+.react-datepicker-wrapper {
+    width: 100%;
+    height: 40px;
+    @include disFC();
+    border-radius: 1vh;
+    z-index: 0;
+    border: 0.21vh solid black;
+}
+
+.react-datepicker-wrapper-disabled {
+    background-color: grey;
+    width: 100%;
+    height: 40px;
+    @include disFC();
+    border: 0.21vh solid black;
+    border-radius: 1vh;
+    z-index: 0;
+}
+
+@media (max-width: 480px) {
+.shiftsContainer {
+    background-color: black;
+    width: 100%;
+    height: auto;
+    @include disFC();
+    &__form {
+        width: 85%;
+        height: auto;
+        @include disFC();
+        flex-direction: column;
+        padding: 0vh 0vh 4vh 0vh;
+        &__phrase {
+            color: white;
+        }
+        &__credentials {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            gap: 2vh;
+            &__label-input {
+                width: 100%;
+                height: auto;
+                display: grid;
+                grid-template-columns: 2fr 3fr;
+                gap: 0vh;
+                padding: 0vh 0vh;
+                &__label {
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    justify-content: start;
+                    &__prop {
+                        font-size: 25px;
+                        color: white;
+                    }
+                }
+                &__input {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        width: 100%;
+                        height: auto;
+                        padding: 1vh 0vh;
+                        border-radius: 1vh;
+                    }
+                    &__price {
+                        width: 100%;
+                        height: auto;
+                        color: #04064e;
+                        font-size: 20px;
+                    }
+                }
+            }
+            &__btn {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                padding-top: 2vh;
+                &__prop {
+                    width: 85%;
+                    height: 40px;
+                    font-size: 20px;
+                    @include btns;
+                }
+            }
+        }
+    }
+}
+.shiftsContainerIsLoggedIn {
+    background-color: black;
+    width: 100%;
+    height: auto;
+    @include disFC();
+    padding: 15vh 0vh 4vh 0vh;
+    &__blackDiv {
+        background-color: black;
+    }
+    &__form {
+        width: 85%;
+        height: auto;
+        @include disFC();
+        flex-direction: column;
+        &__phrase {
+            color: white;
+            animation: fadeIn 2s ease-in;
+        }
+        &__credentials {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            gap: 2vh;
+            &__label-input {
+                width: 100%;
+                height: auto;
+                display: grid;
+                grid-template-columns: 2fr 3fr;
+                gap: 0vh;
+                padding: 0vh 0vh;
+                &__label {
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    justify-content: start;
+                    &__prop {
+                        font-size: 22px;
+                        color: white;
+                    }
+                }
+                &__input {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        width: 100%;
+                        height: 40px;
+                        padding: 1vh 0vh;
+                        border-radius: 1vh;
+                        color: black;
+                    }
+                    &__price {
+                        width: 100%;
+                        height: auto;
+                        color: white;
+                        font-size: 20px;
+                    }
+                }
+            }
+            &__btn {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                padding-top: 2vh;
+                &__prop {
+                    width: 85%;
+                    height: 40px;
+                    font-size: 20px;
+                    @include btnsYellow;
+                }
+                &__propNonRegister {
+                    width: 100%;
+                    height: 40px;
+                    font-size: 16px;
+                    @include btnsYellow;
+                }
+                &__propWantBuy {
+                    width: 100%;
+                    height: 40px;
+                    font-size: 15px;
+                    @include btnsYellow;
+                }
+            }
+        }
+    }
+}
+.react-datepicker-wrapper {
+    width: 100%;
+    height: 40px;
+    @include disFC();
+    border-radius: 1vh;
+    z-index: 0;
+    border: none;
+    //border: 0.2vh solid #04064e;
+}
+}

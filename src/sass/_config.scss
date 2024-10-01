@@ -1,0 +1,1282 @@
+.configContainer {
+    background-color: black;
+    width: 100%;
+    height: auto;
+    @include disFC();
+    flex-direction: column;
+    padding: 8vh 0vh;
+    &__config {
+        background-color: #d2b569;
+        width: 70%;
+        height: auto;
+        @include disFC();
+        flex-direction: column;
+        border-radius: 2vh;
+        border: 0.5vh solid black;
+        padding: 2vh 0vh;
+        &__title {
+            text-align: center;
+            font-size: 45px;
+            color: black;
+            animation: fadeIn 2s ease-in;
+        }
+        &__company {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: start;
+            padding-left: 2vh;
+            border-top: 0.3vh solid black;
+            &__prop {
+                font-size: 25px;
+                color: black;
+            }
+        }
+        &__addCompany {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            padding: 1vh 0vh;
+            &__addCompanyContainer {
+                width: 50%;
+                height: auto;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                padding: 1vh 0vh;
+                &__input {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        width: 80%;
+                        height: 35px;
+                        border-radius: 1vh;
+                        border: 0.3vh solid black;
+                        color: black;
+                        &::placeholder {
+                            text-align: center;
+                        }
+                    }
+                }
+                &__btn {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        width: 90%;
+                        height: 35px;
+                        @include btns;
+                    }
+                }
+            }
+        }
+        &__companiesList {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            flex-direction: column;
+            gap: 2vh;
+            padding-bottom: 2vh;
+            &__titleList {
+                font-size: 25px;
+                color: black;
+            }
+            &__item {
+                width: 40%;
+                height: auto;
+                @include disFC();
+                &__label {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        font-size: 22px;
+                        color: black;
+                    }
+                }
+                &__btn {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        width: 50%;
+                        @include btns;
+                    }
+                }
+            }
+        }
+        &__hairdresser {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: start;
+            padding-left: 2vh;
+            border-top: 0.3vh solid black;
+            &__prop {
+                font-size: 25px;
+                color: black;
+            }
+        }
+        &__addHairdresser {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            padding: 1vh 0vh;
+            &__addHairdresserContainer {
+                width: 50%;
+                height: auto;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                padding: 1vh 0vh;
+                &__input {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        width: 80%;
+                        height: 35px;
+                        border-radius: 1vh;
+                        border: 0.3vh solid black;
+                        color: black;
+                        &::placeholder {
+                            text-align: center;
+                        }
+                    }
+                }
+                &__btn {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        width: 90%;
+                        height: 35px;
+                        @include btns;
+                    }
+                }
+            }
+        }
+        &__hairdressersList {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            flex-direction: column;
+            gap: 2vh;
+            padding-bottom: 2vh;
+            &__titleList {
+                font-size: 25px;
+                color: black;
+            }
+            &__item {
+                width: 80%;
+                height: auto;
+                @include disFC();
+                &__label {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        font-size: 22px;
+                        color: black;
+                    }
+                }
+                &__btn {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        width: 50%;
+                        @include btns;
+                    }
+                }
+            }
+        }
+        &__services {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: start;
+            padding-left: 2vh;
+            border-top: 0.3vh solid black;
+            &__prop {
+                font-size: 25px;
+                color: black;
+            }
+        }
+        &__addService {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            padding: 1vh 0vh;
+            &__addServiceContainer {
+                width: 80%;
+                height: auto;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                padding: 1vh 0vh;
+                &__inputMobile {
+                    display: none;
+                }
+                &__input {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        width: 90%;
+                        height: 35px;
+                        border-radius: 1vh;
+                        border: 0.3vh solid black;
+                        color: black;
+                        &::placeholder {
+                            text-align: center;
+                        }
+                    }
+                }
+                &__select {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        width: 60%;
+                        height: 35px;
+                        @include selectsBlack;
+                        text-align: center;
+                    }
+                }
+                &__btn {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        width: 90%;
+                        height: 35px;
+                        @include btns;
+                    }
+                }
+            }
+        }
+        &__servicesList {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            flex-direction: column;
+            gap: 2vh;
+            padding-bottom: 2vh;
+            &__titleList {
+                font-size: 25px;
+                color: black;
+            }
+            &__category {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                &__prop {
+                    background-color: black;
+                    width: 85%;
+                    text-align: center;
+                    font-size: 20px;
+                    color: white;
+                    border-radius: 2vh;
+                }
+            }
+            &__item {
+                width: 80%;
+                height: auto;
+                @include disFC();
+                &__label {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        font-size: 22px;
+                        color: black;
+                    }
+                }
+                &__btn {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    gap: 2vh;
+                    &__prop {
+                        width: 50%;
+                        @include btns;
+                    }
+                }
+            }
+        }
+        &__membershipFee {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: start;
+            padding-left: 2vh;
+            border-top: 0.3vh solid black;
+            &__prop {
+                font-size: 25px;
+                color: black;
+            }
+        }
+        &__membershipFeeList {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            flex-direction: column;
+            gap: 2vh;
+            padding-bottom: 2vh;
+            &__titleList {
+                font-size: 25px;
+                color: black;
+            }
+            &__item {
+                width: 80%;
+                height: auto;
+                @include disFC();
+                padding-bottom: 1vh;
+                &__label {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    gap: 2vh;
+                    &__prop {
+                        font-size: 22px;
+                        color: black;
+                    }
+                    &__inputMobile {
+                        display: none;
+                    }
+                    &__input {
+                        width: 70%;
+                        height: 35px;
+                        border-radius: 1vh;
+                        border: 0.3vh solid black;
+                        text-align: center;
+                    }
+                }
+                &__btn {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    gap: 1vh;
+                    &__prop {
+                        width: 50%;
+                        @include btns;
+                    }
+                }
+            }
+        }
+        &__various {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: start;
+            padding-left: 2vh;
+            border-top: 0.3vh solid black;
+            &__prop {
+                font-size: 25px;
+                color: black;
+            }
+        }
+        &__addVarious {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            padding: 1vh 0vh;
+            &__addVariousContainer {
+                width: 80%;
+                height: auto;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                padding: 1vh 0vh;
+                &__input {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        width: 90%;
+                        height: 35px;
+                        border-radius: 1vh;
+                        border: 0.3vh solid black;
+                        color: black;
+                        &::placeholder {
+                            text-align: center;
+                        }
+                    }
+                }
+                &__select {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        width: 90%;
+                        height: 35px;
+                        @include selects;
+                        text-align: center;
+                    }
+                }
+                &__btn {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        width: 80%;
+                        height: 35px;
+                        @include btns;
+                    }
+                }
+            }
+        }
+        &__variousList {
+            width: 100%;
+            height: auto;
+            @include disFC();
+            flex-direction: column;
+            gap: 2vh;
+            padding-bottom: 2vh;
+            &__titleList {
+                font-size: 25px;
+                color: black;
+            }
+            &__item {
+                width: 90%;
+                height: auto;
+                @include disFC();
+                &__label {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        font-size: 20px;
+                        color: black;
+                    }
+                }
+                &__btn {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    gap: 2vh;
+                    &__prop {
+                        width: 40%;
+                        @include btns;
+                    }
+                }
+            }
+        }
+        &__weekDays {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: start;
+            padding-left: 2vh;
+            border-top: 0.3vh solid black;
+            &__prop {
+                font-size: 25px;
+                color: black;
+            }
+        }
+        &__createWeekDayMobile{
+            display: none;
+            &__inputsCreateWorkDayBtns {
+                display: none;
+            }
+        }
+        &__createWeekDay {
+            width: 100%;
+            height: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding-top: 1vh;
+            &__hairdresser {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                &__select {
+                    width: 50%;
+                    height: 35px;
+                    @include selectsBlack;
+                }
+            }
+            &__day {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                &__select {
+                    width: 50%;
+                    height: 35px;
+                    @include selectsBlack;
+                }
+            }
+            &__scheduleBtn {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                gap: 1vh;
+                &__schedule {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__select {
+                        width: 60%;
+                        height: 35px;
+                        @include selectsBlack;
+                    }
+                    &__inputSchedules {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        gap: 1vh;
+                        &__input {
+                            width: 40%;
+                            height: 35px;
+                            border-radius: 1vh;
+                            text-align: center;
+                        }
+                    }
+                }
+                &__btn {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    gap: 0.5vh;
+                    &__addSchedule {
+                        width: 90%;
+                        height: 35px;
+                        @include btns;
+                    }
+                    &__goBack {
+                        width: 60%;
+                        height: 35px;
+                        @include btns;
+                    }
+                }
+            }
+        }
+        &__btnShowWorkDaysListContainer {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: end;
+            padding: 2vh 1vh;
+            &__btn {
+                width: 15%;
+                height: 35px;
+                @include btns;
+            }
+        }
+        &__workDaysList {
+            width: 100%;
+            height: auto;
+            //padding: 2vh 0vh;
+            &__itemSchedule {
+                width: 100%;
+                height: auto;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                border-top: 0.3vh solid black;
+                padding: 1vh 0vh;
+                &__scheduleBtn {
+                    width: 100%;
+                    height: auto;
+                    @include disFC;
+                    grid-column: 3/4;
+                    &__label {
+                        width: 100%;
+                        height: auto;
+                        @include disFC;
+                        &__prop {
+                            width: 100%;
+                            text-align: center;
+                            font-size: 20px;
+                            color: black;
+                        }
+                    }
+                    &__btn {
+                        width: 100%;
+                        height: auto;
+                        @include disFC;
+                        &__prop {
+                            width: 50%;
+                            height: 35px;
+                            @include btns;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .configContainer {
+        background-color: black;
+        width: 100%;
+        height: auto;
+        @include disFC();
+        flex-direction: column;
+        padding: 15vh 0vh 3vh 0vh;
+        &__config {
+            background-color: #d2b569;
+            width: 90%;
+            height: auto;
+            @include disFC();
+            flex-direction: column;
+            border-radius: 2vh;
+            border: 0.5vh solid black;
+            padding: 2vh 0vh;
+            &__title {
+                text-align: center;
+                font-size: 35px;
+                color: black;
+                animation: fadeIn 2s ease-in;
+            }
+            &__company {
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: start;
+                padding-left: 2vh;
+                border-top: 0.3vh solid black;
+                &__prop {
+                    font-size: 25px;
+                    color: black;
+                }
+            }
+            &__addCompany {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                padding: 1vh 0vh;
+                &__addCompanyContainer {
+                    width: 90%;
+                    height: auto;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    padding: 1vh 0vh;
+                    &__input {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            width: 100%;
+                            height: 35px;
+                            border-radius: 1vh;
+                            border: 0.3vh solid black;
+                            color: black;
+                            &::placeholder {
+                                font-size: 14px;
+                                text-align: center;
+                            }
+                        }
+                    }
+                    &__btn {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            width: 60%;
+                            height: 35px;
+                            @include btns;
+                        }
+                    }
+                }
+            }
+            &__companiesList {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                flex-direction: column;
+                gap: 2vh;
+                padding-bottom: 2vh;
+                &__titleList {
+                    font-size: 25px;
+                    color: black;
+                }
+                &__item {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__label {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            font-size: 18px;
+                            color: black;
+                        }
+                    }
+                    &__btn {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            width: 50%;
+                            @include btns;
+                        }
+                    }
+                }
+            }
+            &__hairdresser {
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: start;
+                padding-left: 2vh;
+                border-top: 0.3vh solid black;
+                &__prop {
+                    font-size: 25px;
+                    color: black;
+                }
+            }
+            &__addHairdresser {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                padding: 1vh 0vh;
+                &__addHairdresserContainer {
+                    width: 90%;
+                    height: auto;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    padding: 1vh 0vh;
+                    &__input {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            width: 100%;
+                            height: 35px;
+                            border-radius: 1vh;
+                            border: 0.3vh solid black;
+                            color: black;
+                            &::placeholder {
+                                font-size: 14px;
+                                text-align: center;
+                            }
+                        }
+                    }
+                    &__btn {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            width: 60%;
+                            height: 30px;
+                            @include btns;
+                        }
+                    }
+                }
+            }
+            &__hairdressersList {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                flex-direction: column;
+                gap: 2vh;
+                padding-bottom: 2vh;
+                &__titleList {
+                    font-size: 20px;
+                    color: black;
+                }
+                &__item {
+                    width: 90%;
+                    height: auto;
+                    @include disFC();
+                    &__label {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            font-size: 15px;
+                            color: black;
+                        }
+                    }
+                    &__btn {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            width: 50%;
+                            @include btns;
+                        }
+                    }
+                }
+            }
+            &__services {
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: start;
+                padding-left: 2vh;
+                border-top: 0.3vh solid black;
+                &__prop {
+                    font-size: 25px;
+                    color: black;
+                }
+            }
+            &__addService {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                padding: 1vh 0vh;
+                &__addServiceContainer {
+                    width: 100%;
+                    height: auto;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr 1fr;
+                    padding: 1vh 1vh;
+                    gap: 0.5vh;
+                    &__input {
+                        display: none;
+                    }
+                    &__inputMobile {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            width: 100%;
+                            height: 35px;
+                            border-radius: 1vh;
+                            border: 0.3vh solid black;
+                            color: black;
+                            &::placeholder {
+                                font-size: 14px;
+                                text-align: center;
+                            }
+                        }
+                    }
+                    &__select {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            width: 100%;
+                            height: 35px;
+                            font-size: 12px;
+                            @include selectsBlack;
+                            text-align: center;
+                        }
+                    }
+                    &__btn {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            width: 90%;
+                            height: 30px;
+                            font-size: 15px;
+                            @include btns;
+                        }
+                    }
+                }
+            }
+            &__servicesList {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                flex-direction: column;
+                gap: 2vh;
+                padding-bottom: 2vh;
+                &__titleList {
+                    font-size: 20px;
+                    color: black;
+                }
+                &__category {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__prop {
+                        background-color: black;
+                        width: 85%;
+                        text-align: center;
+                        font-size: 20px;
+                        color: white;
+                        border-radius: 2vh;
+                    }
+                }
+                &__item {
+                    width: 90%;
+                    height: auto;
+                    @include disFC();
+                    &__label {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            font-size: 10px;
+                            color: black;
+                        }
+                    }
+                    &__btn {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        gap: 2vh;
+                        &__prop {
+                            width: 100%;
+                            font-size: 10px;
+                            @include btns;
+                            padding: 0.5vh 1vh;
+                        }
+                    }
+                }
+            }
+            &__membershipFee {
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: start;
+                padding-left: 2vh;
+                border-top: 0.3vh solid black;
+                &__prop {
+                    font-size: 25px;
+                    color: black;
+                }
+            }
+            &__membershipFeeList {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                flex-direction: column;
+                gap: 2vh;
+                padding-bottom: 2vh;
+                &__titleList {
+                    font-size: 25px;
+                    color: black;
+                }
+                &__item {
+                    width: 95%;
+                    height: auto;
+                    @include disFC();
+                    padding-bottom: 1vh;
+                    gap: 1vh;
+                    &__label {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        gap: 2vh;
+                        &__prop {
+                            font-size: 12px;
+                            color: black;
+                        }
+                        &__input {
+                            display: none;
+                        }
+                        &__inputMobile {
+                            width: 100%;
+                            height: 35px;
+                            display: block;
+                            border-radius: 1vh;
+                            border: 0.3vh solid black;
+                            text-align: center;
+                            &::placeholder {
+                                font-size: 14px;
+                                text-align: center;
+                            }
+                        }
+                    }
+                    &__btn {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        gap: 1vh;
+                        &__prop {
+                            width: 90%;
+                            @include btns;
+                            font-size: 15px;
+                            padding: 0.5vh 1vh;
+                        }
+                    }
+                }
+            }
+            &__various {
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: start;
+                padding-left: 2vh;
+                border-top: 0.3vh solid black;
+                &__prop {
+                    font-size: 25px;
+                    color: black;
+                }
+            }
+            &__addVarious {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                padding: 1vh 0vh;
+                &__addVariousContainer {
+                    width: 90%;
+                    height: auto;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    padding: 1vh 0vh;
+                    gap: 1vh;
+                    &__input {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            width: 100%;
+                            height: 35px;
+                            border-radius: 1vh;
+                            border: 0.3vh solid black;
+                            color: black;
+                            &::placeholder {
+                                font-size: 12px;
+                                text-align: center;
+                            }
+                        }
+                    }
+                    /* &__select {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            width: 90%;
+                            height: 35px;
+                            @include selects;
+                            text-align: center;
+                        }
+                    } */
+                    &__btn {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            width: 90%;
+                            height: 30px;
+                            @include btns;
+                        }
+                    }
+                }
+            }
+            &__variousList {
+                width: 100%;
+                height: auto;
+                @include disFC();
+                flex-direction: column;
+                gap: 2vh;
+                padding-bottom: 2vh;
+                &__titleList {
+                    font-size: 20px;
+                    color: black;
+                }
+                &__item {
+                    width: 95%;
+                    height: auto;
+                    @include disFC();
+                    &__label {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            font-size: 15px;
+                            color: black;
+                        }
+                    }
+                    &__btn {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        gap: 1vh;
+                        &__prop {
+                            width: 80%;
+                            @include btns;
+                            font-size: 12px;
+                            padding: 0.5vh 1vh;
+                        }
+                    }
+                }
+            }
+            &__weekDays {
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: start;
+                padding-left: 2vh;
+                border-top: 0.3vh solid black;
+                &__prop {
+                    font-size: 25px;
+                    color: black;
+                }
+            }
+            &__createWeekDayMobile {
+                width: 100%;
+                height: auto;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                padding-top: 2vh;
+                &__hairdresser {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__select {
+                        width: 90%;
+                        height: 30px;
+                        @include selectsBlack;
+                        font-size: 12px;
+                    }
+                }
+                &__day {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__select {
+                        width: 90%;
+                        height: 30px;
+                        @include selectsBlack;
+                        font-size: 12px;
+                    }
+                }
+                &__schedule {
+                    width: 100%;
+                    height: auto;
+                    @include disFC();
+                    &__select {
+                        width: 90%;
+                        height: 30px;
+                        @include selectsBlack;
+                        font-size: 12px;
+                    }
+                    /* &__schedule {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        
+                        &__inputSchedules {
+                            width: 100%;
+                            height: auto;
+                            @include disFC();
+                            gap: 1vh;
+                            &__input {
+                                width: 40%;
+                                height: 35px;
+                                border-radius: 1vh;
+                                text-align: center;
+                            }
+                        }
+                    } */
+                    &__btn {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        gap: 0.5vh;
+                        &__addSchedule {
+                            width: 90%;
+                            height: 30px;
+                            @include btns;
+                            font-size: 10px;
+                        }
+                        &__goBack {
+                            width: 60%;
+                            height: 35px;
+                            @include btns;
+                        }
+                    }
+                }
+                &__inputsCreateWorkDayBtns {
+                    width: 95%;
+                    height: auto;
+                    @include disFC();
+                    padding-top: 2vh;
+                    &__inputs {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        &__prop {
+                            width: 35%;
+                            height: 35px;
+                            border-radius: 1vh;
+                            border: 0.3vh solid black;
+                            color: black;
+                            text-align: center;
+                        }
+                    }
+                    &__btns {
+                        width: 100%;
+                        height: auto;
+                        @include disFC();
+                        gap: 1vh;
+                        &__add {
+                            width: 50%;
+                            height: 30px;
+                            @include btns;
+                            font-size: 12px;
+                        }
+                        &__create {
+                            width: 50%;
+                            height: 30px;
+                            @include btns;
+                            font-size: 12px;
+                        }
+                        &__goBack {
+                            width: 50%;
+                            height: 30px;
+                            @include btns;
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+            &__createWeekDay {
+                display: none;
+            }
+            &__btnShowWorkDaysListContainer {
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: end;
+                padding: 2vh 1vh;
+                &__btn {
+                    width: 40%;
+                    height: 30px;
+                    @include btns;
+                    font-size: 12px;
+                }
+            }
+            &__workDaysList {
+                width: 100%;
+                height: auto;
+                //padding: 2vh 0vh;
+                &__itemSchedule {
+                    width: 100%;
+                    height: auto;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    border-top: 0.3vh solid black;
+                    padding: 1vh 0vh;
+                    &__scheduleBtn {
+                        width: 100%;
+                        height: auto;
+                        @include disFC;
+                        grid-column: 3/4;
+                        gap: 2vh;
+                        padding-right: 1vh;
+                        &__label {
+                            width: 100%;
+                            height: auto;
+                            @include disFC;
+                            &__prop {
+                                width: 100%;
+                                text-align: center;
+                                font-size: 15px;
+                                color: black;
+                            }
+                        }
+                        &__btn {
+                            width: 100%;
+                            height: auto;
+                            @include disFC;
+                            &__prop {
+                                width: 100%;
+                                height: 35px;
+                                @include btns;
+                                padding: 0.5vh 2vh;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
