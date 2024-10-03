@@ -12,6 +12,7 @@ const CreatePartnerModalMobile = ({setIsOpenCreatePartnerModalLocalMobile,result
     const [inputLastNamePaL, setInputLastNamePaL] = useState('');
     const [selectOptionMembershipNumber, setSelectOptionMembershipNumberShL] = useState('');
     const [inputEmailPaL, setInputEmailPaL] = useState('');
+    const [inputPointsPaL, setInputPointsPaL] = useState('');
     const [showSpinner, setShowSpinner] = useState(false);
     const optionsMembershipNumber = [];
     resultCompleteMembershipNumber.forEach((element) => {
@@ -58,9 +59,16 @@ const CreatePartnerModalMobile = ({setIsOpenCreatePartnerModalLocalMobile,result
 
     const handleInputEmailPaL = (e) => {
         const texto = e.target.value;
-        const textCleaned = cleanString(texto);
-        const textToSaved = cleanText(textCleaned);
+        //const textCleaned = cleanString(texto);
+        const textToSaved = cleanText(texto);
         setInputEmailPaL(textToSaved)
+    };
+
+    const handleInputPointsPaL = (e) => {
+        const inputValue = e.target.value;
+        if (/^\d*$/.test(inputValue)) {
+            setInputPointsPaL(inputValue);
+        } 
     };
 
     const closeM = () => {
@@ -77,6 +85,7 @@ const CreatePartnerModalMobile = ({setIsOpenCreatePartnerModalLocalMobile,result
         setInputFirstNamePaL('')
         setInputLastNamePaL('')
         setInputEmailPaL('')
+        setInputPointsPaL('')
         setSelectOptionMembershipNumberShL(optionsMembershipNumber[0])
     };
 
@@ -161,6 +170,7 @@ const CreatePartnerModalMobile = ({setIsOpenCreatePartnerModalLocalMobile,result
                 last_name: cleanString(inputLastNamePaL),
                 partner_number: selectOptionMembershipNumber?selectOptionMembershipNumber:optionsMembershipNumber[0],
                 email: cleanString(inputEmailPaL),
+                points: inputPointsPaL,
                 partner_datetime: partner_datetime
             }
             const response = await fetch(`${apiUrl}/api/partners/register`, {
@@ -223,6 +233,14 @@ const CreatePartnerModalMobile = ({setIsOpenCreatePartnerModalLocalMobile,result
                             <option key={index} value={option}>{option}</option>
                             ))}
                         </select>
+                    </div>
+                </div>
+                <div style={{paddingTop:'1vh',paddingBottom:'1vh'}} className='createPartnerModalContainerMobile__labelInput'>
+                    <div className='createPartnerModalContainerMobile__labelInput__label'>
+                        <div className='createPartnerModalContainerMobile__labelInput__label__prop'>Puntos:</div>
+                    </div>
+                    <div className='createPartnerModalContainerMobile__labelInput__input'>
+                        <input type='text' className='createPartnerModalContainerMobile__labelInput__input__prop' value={inputPointsPaL} onChange={handleInputPointsPaL}/>
                     </div>
                 </div>
                 <div style={{paddingTop:'1vh',paddingBottom:'1vh'}} className='createPartnerModalContainerMobile__labelInput'>

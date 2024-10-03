@@ -853,6 +853,20 @@ const Config = () => {
           progress: undefined,
           theme: "dark",
         });
+      } else if(inputMembershipFee == membershipFee.value) {
+        toast('No tienes cambios para actualizar!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        setTimeout(() => {
+            setUpdateInputMembershipFeeIsOpen(false)
+        }, 2500);
       } else {
         const obj = {
           title: 'Cuota socio',

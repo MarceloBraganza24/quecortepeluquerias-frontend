@@ -115,9 +115,9 @@ const MenuOptions = ({isLoggedIn,role}) => {
             <Link to={"/about"} className='menuOptionsMobile__item'>
                 - Sobre Nosotros
             </Link>
-            <Link onClick={goShiftList} className='menuOptionsMobile__item'>
+            {/* <Link onClick={goShiftList} className='menuOptionsMobile__item'>
                 - Socios
-            </Link>
+            </Link> */}
             <Link to={"/shiftsList"} className='menuOptionsMobile__item'>
                 - Lista de turnos
             </Link>
@@ -135,13 +135,13 @@ const MenuOptions = ({isLoggedIn,role}) => {
             </Link>
             {/* <Link to={"/prices"} className='menuOptionsMobile__item'>
               - Lista de precios
-            </Link> */}
-            <Link to={"/myShifts"} className='menuOptionsMobile__item'>
+              </Link> */}
+              <Link to={"/myShifts"} className='menuOptionsMobile__item'>
                 - Mis turnos
             </Link>
-            <Link to={"/myPayments"} className='menuOptionsMobile__item'>
+            {/*<Link to={"/myPayments"} className='menuOptionsMobile__item'>
                 - Mis pagos
-            </Link>
+            </Link> */}
             <Link to={"/myData"} className='menuOptionsMobile__item'>
               - Mis datos
             </Link>
@@ -161,15 +161,15 @@ const MenuOptions = ({isLoggedIn,role}) => {
             <Link to={"/about"} className='menuOptionsMobile__item'>
                 - Sobre Nosotros
             </Link>
-            <Link to={"/partners"} className='menuOptionsMobile__item'>
+            {/* <Link to={"/partners"} className='menuOptionsMobile__item'>
                 - Socios
-            </Link>
+            </Link> */}
             <Link to={"/myShifts"} className='menuOptionsMobile__item'>
                 - Mis turnos
             </Link>
-            <Link to={"/myPayments"} className='menuOptionsMobile__item'>
+            {/* <Link to={"/myPayments"} className='menuOptionsMobile__item'>
                 - Mis pagos
-            </Link>
+            </Link> */}
             <Link to={"/myData"} className='menuOptionsMobile__item'>
               - Mis datos
             </Link>

@@ -114,9 +114,9 @@ const MenuOptions = ({isLoggedIn,role}) => {
             <Link to={"/myShifts"} className='menuOptions__item'>
             - Mis turnos
             </Link>
-            <Link to={"/myPayments"} className='menuOptions__item'>
+            {/* <Link to={"/myPayments"} className='menuOptions__item'>
               - Mis pagos
-            </Link>
+            </Link> */}
             <Link to={"/myData"} className='menuOptions__item'>
               - Mis datos
             </Link>
@@ -130,18 +130,18 @@ const MenuOptions = ({isLoggedIn,role}) => {
             <Link to={"/myShifts"} className='menuOptions__item'>
             - Mis turnos
             </Link>
-            <Link to={"/myPayments"} className='menuOptions__item'>
+            {/* <Link to={"/myPayments"} className='menuOptions__item'>
               - Mis pagos
-            </Link>
+            </Link> */}
             <Link to={"/myData"} className='menuOptions__item'>
               - Mis datos
             </Link>
           </>
           :
           <>
-            <Link to={"/myPayments"} className='menuOptions__item'>
+            {/* <Link to={"/myPayments"} className='menuOptions__item'>
               - Mis pagos
-            </Link>
+            </Link> */}
             <Link to={"/myData"} className='menuOptions__item'>
               - Mis datos
             </Link>
