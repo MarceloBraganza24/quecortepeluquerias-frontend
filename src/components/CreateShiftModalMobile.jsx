@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import moment from 'moment-timezone'
 import {OpenModalContext} from '../context/OpenModalContext'; 
 
-const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile}) => {
+const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user}) => {
     const {handleCreateShiftModalMobile,cancelShiftModal,handleCancelShiftModal} = useContext(OpenModalContext);
     const apiUrl = import.meta.env.VITE_API_URL;
     const [inputFirstNameShL, setInputFirstNameShL] = useState('');
@@ -507,6 +507,7 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile}) => {
                 date: formattedDate,
                 schedule: !isAddSchedule?(selectScheduleOptionShL?selectScheduleOptionShL:optionsScheduleSh[0]):concatAddSchedules,
                 shift_datetime: shift_datetime,
+                currentUser: user
             }
             const response = await fetch(`${apiUrl}/api/shifts/register`, {
                 method: 'POST',         

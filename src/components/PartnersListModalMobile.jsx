@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import { toast } from "react-toastify";
 import Spinner from './Spinner';
 
-const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,handleUpdatePartnerModalMobileLocal,resultCompleteMembershipNumber}) => {
+const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,handleUpdatePartnerModalMobileLocal,resultCompleteMembershipNumber,points}) => {
     const [inputFirstNameIPa, setInputFirstNameIPa] = useState('');
     const [inputLastNameIPa, setInputLastNameIPa] = useState('');
     //const [inputPartnerNumberIPa, setInputPartnerNumberIPa] = useState('');
     const [selectOptionMembershipNumber, setSelectOptionMembershipNumberShL] = useState('');
     const [inputEmailIPa, setInputEmailIPa] = useState('');
+    const [inputPointsIPa, setInputPointsIPa] = useState('');
     const [confirmationDelPartnersModalMobile, handleConfirmationDelPartnersModalMobile] = useState(false);
     const {handleUpdatePartnerModalMobile,payMembershipFeeModal,handlePayMembershipFeeModal} = useContext(OpenModalContext);
     const [payMembershipFeeModalLocal, handlePayMembershipFeeModalLocal] = useState(false);
@@ -58,8 +59,8 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
         texto===first_name?setInputChanges(false):setInputChanges(true);
         texto===''&&setInputChanges(false);
         if(inputLastNameIPa!==last_name && inputLastNameIPa!=='')setInputChanges(true);
-        if(inputPartnerNumberIPa!=partner_number && inputPartnerNumberIPa!='')setInputChanges(true);
         if(inputEmailIPa!==email && inputEmailIPa!=='')setInputChanges(true);
+        if(inputPointsIPa!==points && inputPointsIPa!=='')setInputChanges(true);
     };
 
     const handleInputLastNameIPa = (e) => {
@@ -72,8 +73,8 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
         texto===last_name?setInputChanges(false):setInputChanges(true);
         texto===''&&setInputChanges(false);
         if(inputFirstNameIPa!==first_name && inputFirstNameIPa!=='')setInputChanges(true);
-        if(inputPartnerNumberIPa!=partner_number && inputPartnerNumberIPa!='')setInputChanges(true);
         if(inputEmailIPa!==email && inputEmailIPa!=='')setInputChanges(true);
+        if(inputPointsIPa!==points && inputPointsIPa!=='')setInputChanges(true);
     };
 
     const handleSelectOptionMembershipNumberShL = (e) => {
@@ -83,6 +84,7 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
         if(inputFirstNameIPa!==first_name && inputFirstNameIPa!=='')setInputChanges(true);
         if(inputLastNameIPa!==last_name && inputLastNameIPa!=='')setInputChanges(true);
         if(inputEmailIPa!==email && inputEmailIPa!=='')setInputChanges(true);
+        if(inputPointsIPa!==points && inputPointsIPa!=='')setInputChanges(true);
     };
 
     const handleInputEmailIPa = (e) => {
@@ -94,7 +96,19 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
         texto===''&&setInputChanges(false);
         if(inputFirstNameIPa!==first_name && inputFirstNameIPa!=='')setInputChanges(true);
         if(inputLastNameIPa!==last_name && inputLastNameIPa!=='')setInputChanges(true);
-        if(inputPartnerNumberIPa!=partner_number && inputPartnerNumberIPa!='')setInputChanges(true);
+        if(inputPointsIPa!==points && inputPointsIPa!=='')setInputChanges(true);
+    };
+
+    const handleInputPointsIPa = (e) => {
+        const texto = e.target.value;
+        if (/^\d*$/.test(texto)) {
+            setInputPointsIPa(texto);
+        } 
+        texto===points?setInputChanges(false):setInputChanges(true);
+        texto===''&&setInputChanges(false);
+        if(inputFirstNameIPa!==first_name && inputFirstNameIPa!=='')setInputChanges(true);
+        if(inputLastNameIPa!==last_name && inputLastNameIPa!=='')setInputChanges(true);
+        if(inputEmailIPa!==email && inputEmailIPa!=='')setInputChanges(true);
     };
     
     const handleBtnDelPartner = async() => {
@@ -236,7 +250,7 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
                 progress: undefined,
                 theme: "dark",
             });
-        } else if ((inputFirstNameIPa == first_name || inputFirstNameIPa == '') && (inputLastNameIPa == last_name || inputLastNameIPa == '') && (inputEmailIPa == email || inputEmailIPa == '') && (selectOptionMembershipNumber?selectOptionMembershipNumber:optionsMembershipNumber[0]) == partner_number) {
+        } else if ((inputPointsIPa == points || inputPointsIPa == '') && (inputFirstNameIPa == first_name || inputFirstNameIPa == '') && (inputLastNameIPa == last_name || inputLastNameIPa == '') && (inputEmailIPa == email || inputEmailIPa == '') && (selectOptionMembershipNumber?selectOptionMembershipNumber:optionsMembershipNumber[0]) == partner_number) {
             toast('No tienes cambios para actualizar!', {
                 position: "top-right",
                 autoClose: 3000,
@@ -254,6 +268,7 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
                 first_name: inputFirstNameIPa?cleanString(inputFirstNameIPa):first_name,
                 last_name: inputLastNameIPa?cleanString(inputLastNameIPa):last_name,
                 partner_number: selectOptionMembershipNumber?selectOptionMembershipNumber:partner_number,
+                points: inputPointsIPa,
                 email: inputEmailIPa?cleanString(inputEmailIPa):email
             }
             const response = await fetch(`${apiUrl}/api/partners/${id}`, {
@@ -265,7 +280,7 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
             })
             const data = await response.json();
             if(response.ok) {
-                toast('Has actualizado el turno correctamente!', {
+                toast('Has actualizado el socio correctamente!', {
                     position: "top-right",
                     autoClose: 1000,
                     hideProgressBar: false,
@@ -500,6 +515,12 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updatePartnerModalContainerMobile__labelInput'>
+                        <div className='updatePartnerModalContainerMobile__labelInput__label'>Puntos:</div>
+                        <div className='updatePartnerModalContainerMobile__labelInput__input'>
+                            <input className='updatePartnerModalContainerMobile__labelInput__input__prop' value={!inputPointsIPa?points:inputPointsIPa}onChange={handleInputPointsIPa}/>
+                        </div>
+                    </div>
+                    <div style={{paddingTop:'2vh'}} className='updatePartnerModalContainerMobile__labelInput'>
                         <div className='updatePartnerModalContainerMobile__labelInput__label'>Nombre:</div>
                         <div className='updatePartnerModalContainerMobile__labelInput__input'>
                             <input className='updatePartnerModalContainerMobile__labelInput__input__prop' value={!inputFirstNameIPa?first_name:inputFirstNameIPa}onChange={handleInputFirstNameIPa}/>
@@ -545,6 +566,12 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
                                 <option key={index} value={option}>{option}</option>
                                 ))}
                             </select>
+                        </div>
+                    </div>
+                    <div style={{paddingTop:'2vh'}} className='updatePartnerModalContainerMobile__labelInput'>
+                        <div className='updatePartnerModalContainerMobile__labelInput__label'>Puntos:</div>
+                        <div className='updatePartnerModalContainerMobile__labelInput__input'>
+                            <input disabled className='updatePartnerModalContainerMobile__labelInput__input__prop' value={!inputPointsIPa?points:inputPointsIPa}onChange={handleInputPointsIPa}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updatePartnerModalContainerMobile__labelInput'>

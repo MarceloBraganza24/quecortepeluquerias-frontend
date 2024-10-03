@@ -1059,7 +1059,7 @@ const ShiftsList = () => {
                     </div>
                     <div className='shiftsListContainer__createShiftMobile'>
                         <button onClick={handleBtnCreateShiftModalMobile} className='shiftsListContainer__createShiftMobile__btnCreateShift'>Crear turno</button>
-                        {isOpenCreateShiftModalLocalMobile&&<CreateShiftModalMobile setIsOpenCreateShiftModalLocalMobile={setIsOpenCreateShiftModalLocalMobile}/>}
+                        {isOpenCreateShiftModalLocalMobile&&<CreateShiftModalMobile setIsOpenCreateShiftModalLocalMobile={setIsOpenCreateShiftModalLocalMobile} user={user}/>}
                     </div>
 
                     <div className='shiftsListContainer__shiftsList__lengthShiftsMobile'>

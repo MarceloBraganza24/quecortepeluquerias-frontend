@@ -76,7 +76,8 @@
         height: auto;
         @include disFC();
         font-size: 18px;
-        padding: 2vh 2vh 2vh 2vh;
+        //padding: 2vh 2vh 2vh 2vh;
+        padding: 1vh 0vh;
         color: white;
         text-align: justify;
     }

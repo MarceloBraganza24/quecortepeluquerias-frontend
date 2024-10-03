@@ -7,6 +7,7 @@ export const ParentPaLComponent = ({children}) => {
   const [inputFirstNamePaL, setInputFirstNamePaL] = useState('');
   const [inputLastNamePaL, setInputLastNamePaL] = useState('');
   const [inputEmailPaL, setInputEmailPaL] = useState('');
+  const [inputPointsPaL, setInputPointsPaL] = useState('');
   const [inputParnerNumberDosPaL, setInputParnerNumberDosPaL] = useState('');
   const [selectOptionMembershipNumber, setSelectOptionMembershipNumber] = useState('');
   
@@ -29,6 +30,13 @@ export const ParentPaLComponent = ({children}) => {
     const inputValue = e.target.value;
     if (/^\d*$/.test(inputValue)) {
       setInputParnerNumberDosPaL(inputValue);
+    } 
+  };
+
+  const handleInputPointsPaL = (e) => {
+    const inputValue = e.target.value;
+    if (/^\d*$/.test(inputValue)) {
+      setInputPointsPaL(inputValue);
     } 
   };
 
@@ -65,6 +73,10 @@ export const ParentPaLComponent = ({children}) => {
     setInputFirstNamePaL('')
   };
 
+  const handleEmptyInputPointsPaL = () => {
+    setInputPointsPaL('')
+  };
+
   const handleEmptyInputLastNamePaL = () => {
     setInputLastNamePaL('')
   };
@@ -78,7 +90,7 @@ export const ParentPaLComponent = ({children}) => {
   };
   
   return (
-    <InputDataPaLContext.Provider value={{ selectOptionMembershipNumber,inputParnerNumberDosPaL,inputFirstNamePaL, inputLastNamePaL, inputEmailPaL, handleSelectOptionMembershipNumberShL,handleInputFirstNamePaL, handleInputLastNamePaL, handleInputEmailPaL,handleEmptyInputFirstNamePaL,handleEmptyInputLastNamePaL,handleEmptyInputPartnerNumberPaL,handleEmptyInputEmailPaL,handleInputPartnerNumberDosPaL }}>
+    <InputDataPaLContext.Provider value={{ inputPointsPaL,selectOptionMembershipNumber,inputParnerNumberDosPaL,inputFirstNamePaL, inputLastNamePaL, inputEmailPaL, handleSelectOptionMembershipNumberShL,handleInputFirstNamePaL, handleInputLastNamePaL, handleInputEmailPaL,handleEmptyInputFirstNamePaL,handleEmptyInputLastNamePaL,handleEmptyInputPartnerNumberPaL,handleEmptyInputEmailPaL,handleInputPartnerNumberDosPaL,handleInputPointsPaL,handleEmptyInputPointsPaL }}>
       {children}
     </InputDataPaLContext.Provider>
   );

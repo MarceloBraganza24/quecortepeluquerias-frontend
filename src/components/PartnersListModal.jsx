@@ -4,7 +4,8 @@ import { toast } from "react-toastify";
 import Spinner from './Spinner';
 import {OpenModalContext} from '../context/OpenModalContext';
 
-const PartnersListModal = ({id,first_name,last_name,partner_number,email,handleUpdatePartnerModalLocal,resultCompleteMembershipNumber}) => {
+const PartnersListModal = ({id,first_name,last_name,points,partner_number,email,handleUpdatePartnerModalLocal,resultCompleteMembershipNumber}) => {
+    const [inputPointsIPa, setInputPointsIPa] = useState('');
     const [inputFirstNameIPa, setInputFirstNameIPa] = useState('');
     const [inputLastNameIPa, setInputLastNameIPa] = useState('');
     const [inputPartnerNumberIPa, setInputPartnerNumberIPa] = useState('');
@@ -37,6 +38,18 @@ const PartnersListModal = ({id,first_name,last_name,partner_number,email,handleU
         return cleaned;
     }
 
+    const handleInputPointsIPa = (e) => {
+        const texto = e.target.value;
+        const textToSaved = cleanText(texto);
+        setInputPointsIPa(textToSaved)
+        texto==points?setInputChanges(false):setInputChanges(true);
+        texto==''&&setInputChanges(false);
+        if(inputFirstNameIPa!==first_name && inputFirstNameIPa!=='')setInputChanges(true);
+        if(inputLastNameIPa!==last_name && inputLastNameIPa!=='')setInputChanges(true);
+        if(inputPartnerNumberIPa!=partner_number && inputPartnerNumberIPa!='')setInputChanges(true);
+        if(inputEmailIPa!==email && inputEmailIPa!=='')setInputChanges(true);
+    };
+
     const handleInputFirstNameIPa = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
@@ -46,6 +59,7 @@ const PartnersListModal = ({id,first_name,last_name,partner_number,email,handleU
         }
         texto===first_name?setInputChanges(false):setInputChanges(true);
         texto===''&&setInputChanges(false);
+        if(inputPointsIPa!=points && inputPointsIPa!='')setInputChanges(true);
         if(inputLastNameIPa!==last_name && inputLastNameIPa!=='')setInputChanges(true);
         if(inputPartnerNumberIPa!=partner_number && inputPartnerNumberIPa!='')setInputChanges(true);
         if(inputEmailIPa!==email && inputEmailIPa!=='')setInputChanges(true);
@@ -60,6 +74,7 @@ const PartnersListModal = ({id,first_name,last_name,partner_number,email,handleU
         }
         texto===last_name?setInputChanges(false):setInputChanges(true);
         texto===''&&setInputChanges(false);
+        if(inputPointsIPa!=points && inputPointsIPa!='')setInputChanges(true);
         if(inputFirstNameIPa!==first_name && inputFirstNameIPa!=='')setInputChanges(true);
         if(inputPartnerNumberIPa!=partner_number && inputPartnerNumberIPa!='')setInputChanges(true);
         if(inputEmailIPa!==email && inputEmailIPa!=='')setInputChanges(true);
@@ -72,6 +87,7 @@ const PartnersListModal = ({id,first_name,last_name,partner_number,email,handleU
         setInputEmailIPa(textToSaved)
         texto===email?setInputChanges(false):setInputChanges(true);
         texto===''&&setInputChanges(false);
+        if(inputPointsIPa!=points && inputPointsIPa!='')setInputChanges(true);
         if(inputFirstNameIPa!==first_name && inputFirstNameIPa!=='')setInputChanges(true);
         if(inputLastNameIPa!==last_name && inputLastNameIPa!=='')setInputChanges(true);
         if(inputPartnerNumberIPa!=partner_number && inputPartnerNumberIPa!='')setInputChanges(true);
@@ -108,7 +124,7 @@ const PartnersListModal = ({id,first_name,last_name,partner_number,email,handleU
                 progress: undefined,
                 theme: "dark",
             });
-        } else if ((inputFirstNameIPa == first_name || inputFirstNameIPa == '') && (inputLastNameIPa == last_name || inputLastNameIPa == '') && (inputEmailIPa == email || inputEmailIPa == '') && (selectOptionMembershipNumber?selectOptionMembershipNumber:optionsMembershipNumber[0]) == partner_number) {
+        } else if ((inputPointsIPa == points || inputPointsIPa == '') && (inputFirstNameIPa == first_name || inputFirstNameIPa == '') && (inputLastNameIPa == last_name || inputLastNameIPa == '') && (inputEmailIPa == email || inputEmailIPa == '') && (selectOptionMembershipNumber?selectOptionMembershipNumber:optionsMembershipNumber[0]) == partner_number) {
             toast('No tienes cambios para actualizar!', {
                 position: "top-right",
                 autoClose: 3000,
@@ -159,7 +175,8 @@ const PartnersListModal = ({id,first_name,last_name,partner_number,email,handleU
                 first_name: inputFirstNameIPa?cleanString(inputFirstNameIPa):first_name,
                 last_name: inputLastNameIPa?cleanString(inputLastNameIPa):last_name,
                 partner_number: selectOptionMembershipNumber?selectOptionMembershipNumber:partner_number,
-                email: inputEmailIPa?cleanString(inputEmailIPa):email
+                email: inputEmailIPa?cleanString(inputEmailIPa):email,
+                points: inputPointsIPa?cleanString(inputPointsIPa):points,
             }
             const response = await fetch(`${apiUrl}/api/partners/${id}`, {
                 method: 'PUT',         
@@ -170,7 +187,7 @@ const PartnersListModal = ({id,first_name,last_name,partner_number,email,handleU
             })
             const data = await response.json();
             if(response.ok) {
-                toast('Has actualizado el turno correctamente!', {
+                toast('Has actualizado el socio correctamente!', {
                     position: "top-right",
                     autoClose: 1000,
                     hideProgressBar: false,
@@ -324,6 +341,7 @@ const PartnersListModal = ({id,first_name,last_name,partner_number,email,handleU
             </div>
             <div className='partnersModalContainer__header'>
                 <div className='partnersModalContainer__header__label'>N° socio</div>
+                <div className='partnersModalContainer__header__label'>Puntos</div>
                 <div className='partnersModalContainer__header__label'>Nombre</div>
                 <div className='partnersModalContainer__header__label'>Apellido</div>
                 <div className='partnersModalContainer__header__label'>Email</div>
@@ -339,6 +357,9 @@ const PartnersListModal = ({id,first_name,last_name,partner_number,email,handleU
                                 <option key={index} value={option}>{option}</option>
                                 ))}
                             </select>
+                        </div>
+                        <div className='partnersModalContainer__itemPartner__input'>
+                            <input className='partnersModalContainer__itemPartner__input__prop' value={!inputPointsIPa?points:inputPointsIPa} onChange={handleInputPointsIPa}/>
                         </div>
                         <div className='partnersModalContainer__itemPartner__input'>
                             <input className='partnersModalContainer__itemPartner__input__prop' value={!inputFirstNameIPa?first_name:inputFirstNameIPa} onChange={handleInputFirstNameIPa}/>
@@ -363,6 +384,9 @@ const PartnersListModal = ({id,first_name,last_name,partner_number,email,handleU
                                 <option key={index} value={option}>{option}</option>
                                 ))}
                             </select>
+                        </div>
+                        <div className='partnersModalContainer__itemPartner__input'>
+                            <input disabled className='partnersModalContainer__itemPartner__input__prop' value={!inputPointsIPa?points:inputPointsIPa} onChange={handleInputPointsIPa}/>
                         </div>
                         <div className='partnersModalContainer__itemPartner__input'>
                             <input disabled className='partnersModalContainer__itemPartner__input__prop' value={!inputFirstNameIPa?first_name:inputFirstNameIPa} onChange={handleInputFirstNameIPa}/>

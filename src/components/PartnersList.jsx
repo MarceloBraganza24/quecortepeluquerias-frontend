@@ -13,7 +13,7 @@ import Spinner from './Spinner';
 import CreatePartnerModalMobile from './CreatePartnerModalMobile';
 
 const PartnersList = () => {
-    const { inputFirstNamePaL, handleInputFirstNamePaL, inputLastNamePaL, handleInputLastNamePaL, inputParnerNumberPaL, handleInputPartnerNumberPaL,handleInputPartnerNumberDosPaL,inputParnerNumberDosPaL, inputEmailPaL, handleInputEmailPaL,handleEmptyInputFirstNamePaL,handleEmptyInputLastNamePaL,handleEmptyInputPartnerNumberPaL,handleEmptyInputEmailPaL,selectOptionMembershipNumber,handleSelectOptionMembershipNumberShL } = useContext(InputDataPaLContext);
+    const { inputFirstNamePaL, handleInputFirstNamePaL, inputLastNamePaL, handleInputLastNamePaL, inputParnerNumberPaL, handleInputPartnerNumberPaL,handleInputPartnerNumberDosPaL,inputParnerNumberDosPaL, inputEmailPaL, handleInputEmailPaL,handleEmptyInputFirstNamePaL,handleEmptyInputLastNamePaL,handleEmptyInputPartnerNumberPaL,handleEmptyInputEmailPaL,selectOptionMembershipNumber,handleSelectOptionMembershipNumberShL,inputPointsPaL,handleInputPointsPaL,handleEmptyInputPointsPaL } = useContext(InputDataPaLContext);
     const {isLoggedIn, login, logout} = useContext(IsLoggedContext);
     const [user, setUser] = useState('');
     const [showSpinner, setShowSpinner] = useState(false);
@@ -208,8 +208,9 @@ const PartnersList = () => {
     const cleanPropsCreatePartner = () => {
         handleEmptyInputFirstNamePaL('');
         handleEmptyInputLastNamePaL('');
-        handleEmptyInputPartnerNumberPaL('');
+        handleEmptyInputPointsPaL('');
         handleEmptyInputEmailPaL('');
+        handleSelectOptionMembershipNumberShL(optionsMembershipNumber[0]);
     };
 
     const handleBtnCreatePartner = async() => {
@@ -294,6 +295,7 @@ const PartnersList = () => {
                 last_name: cleanString(inputLastNamePaL),
                 partner_number: selectOptionMembershipNumber?selectOptionMembershipNumber:optionsMembershipNumber[0],
                 email: cleanString(inputEmailPaL),
+                points: inputPointsPaL,
                 partner_datetime: partner_datetime
             }
             const response = await fetch(`${apiUrl}/api/partners/register`, {
@@ -396,12 +398,14 @@ const PartnersList = () => {
                             objetosFiltrados.length!=0&&
                             <div className='partnersListContainer__partnersList__headerMobile'>
                                 <div className='partnersListContainer__partnersList__headerMobile__label'>N° socio</div>
+                                <div className='partnersListContainer__partnersList__headerMobile__label'>Puntos</div>
                                 <div className='partnersListContainer__partnersList__headerMobile__label'>Nombre</div>
                                 <div className='partnersListContainer__partnersList__headerMobile__label'>Apellido</div>
                             </div>
                         }
                         <div className='partnersListContainer__partnersList__header'>
                             <div className='partnersListContainer__partnersList__header__label'>N° socio</div>
+                            <div className='partnersListContainer__partnersList__header__label'>Puntos</div>
                             <div className='partnersListContainer__partnersList__header__label'>Nombre</div>
                             <div className='partnersListContainer__partnersList__header__label'>Apellido</div>
                             <div className='partnersListContainer__partnersList__header__label'>Email</div>
@@ -418,6 +422,9 @@ const PartnersList = () => {
                                             <option key={index} value={option}>{option}</option>
                                             ))}
                                         </select>
+                                    </div>
+                                    <div className='itemCreatePartner__input'>
+                                        <input type='text' className='itemCreatePartner__input__prop' placeholder='-' value={inputPointsPaL} onChange={handleInputPointsPaL}/>
                                     </div>
                                     <div className='itemCreatePartner__input'>
                                         <input type='text' className='itemCreatePartner__input__prop' placeholder='-' value={inputFirstNamePaL} onChange={handleInputFirstNamePaL}/>
@@ -468,6 +475,7 @@ const PartnersList = () => {
                                         last_name={partner.last_name}
                                         partner_number={partner.partner_number}
                                         email={partner.email} 
+                                        points={partner.points} 
                                         resultCompleteMembershipNumber={resultCompleteMembershipNumber} 
                                         />
                                     )
@@ -480,6 +488,7 @@ const PartnersList = () => {
                                         first_name={partner.first_name}
                                         last_name={partner.last_name}
                                         partner_number={partner.partner_number}
+                                        points={partner.points} 
                                         email={partner.email}   
                                         resultCompleteMembershipNumber={resultCompleteMembershipNumber} 
                                         />

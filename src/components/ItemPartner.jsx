@@ -5,7 +5,7 @@ import Spinner from './Spinner';
 import { toast } from 'react-toastify';
 import PartnersListModalMobile from './PartnersListModalMobile';
 
-const ItemPartner = ({id,first_name,last_name,partner_number,email,resultCompleteMembershipNumber}) => {
+const ItemPartner = ({id,first_name,last_name,points,partner_number,email,resultCompleteMembershipNumber}) => {
 
     const {updatePartnerModal,payMembershipFeeModal,handleUpdatePartnerModal,handlePayMembershipFeeModal,createPartnerModalMobile,updatePartnerModalMobile,handleUpdatePartnerModalMobile} = useContext(OpenModalContext);
     const [updatePartnerModalLocal, handleUpdatePartnerModalLocal] = useState(false);
@@ -197,6 +197,9 @@ const ItemPartner = ({id,first_name,last_name,partner_number,email,resultComplet
                 <div className='itemPartnerMobile__input__prop'>{partner_number}</div>
             </div>
             <div className='itemPartnerMobile__input no-scroll'>
+                <div className='itemPartnerMobile__input__prop'>{points}</div>
+            </div>
+            <div className='itemPartnerMobile__input no-scroll'>
                 <div className='itemPartnerMobile__input__prop'>{first_name}</div>
             </div>
             <div className='itemPartnerMobile__input no-scroll'>
@@ -230,6 +233,7 @@ const ItemPartner = ({id,first_name,last_name,partner_number,email,resultComplet
                     first_name={first_name}
                     last_name={last_name}
                     partner_number={partner_number}
+                    points={points} 
                     email={email}
                     />
             }
@@ -237,6 +241,9 @@ const ItemPartner = ({id,first_name,last_name,partner_number,email,resultComplet
         <div className='itemPartner'>
             <div className='itemPartner__input'>
                 <div className='itemPartner__input__prop'>{partner_number}</div>
+            </div>
+            <div className='itemPartner__input no-scroll'>
+                <div className='itemPartner__input__prop'>{points}</div>
             </div>
             <div className='itemPartner__input'>
                 <div className='itemPartner__input__prop'>{first_name}</div>
@@ -286,6 +293,7 @@ const ItemPartner = ({id,first_name,last_name,partner_number,email,resultComplet
             first_name={first_name}
             last_name={last_name}
             partner_number={partner_number}
+            points={points} 
             email={email}
             />
         }

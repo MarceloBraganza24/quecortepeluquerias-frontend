@@ -154,7 +154,7 @@ const NavBar = () => {
                         :
                         <div className='navBarContainer__phrase-btns__btns__prop'>Sobre nosotros</div>
                     }
-                    {
+                    {/* {
                         !updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&(user.role != 'admin')&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
                         <Link to={"/partners"} className='navBarContainer__phrase-btns__btns__prop'>
                             Socios
@@ -164,7 +164,7 @@ const NavBar = () => {
                         <div className='navBarContainer__phrase-btns__btns__prop' onClick={goPartnersList}>Socios</div>
                         :
                         <div className='navBarContainer__phrase-btns__btns__prop'>Socios</div>
-                    }
+                    } */}
                 </div>
             </div>
         </div>

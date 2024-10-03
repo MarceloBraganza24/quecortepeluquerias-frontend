@@ -63,7 +63,7 @@
             width: 95%;
             height: auto;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
             text-align: center;
             color: white;
             font-size: 30px;
@@ -150,7 +150,7 @@
             width: 100%;
             height: auto;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
             text-align: center;
             color: white;
             padding: 0vh 0vh 1vh 0vh;
@@ -158,7 +158,7 @@
             &__label {
                 width: 100%;
                 @include disFC();
-                font-size: 18px;
+                font-size: 15px;
             }
         }
         &__header {
