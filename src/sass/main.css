@@ -11059,7 +11059,7 @@ h2 {
   animation: fadeIn 2s ease-in;
 }
 .myDataContainer__data {
-  background-color: #d2b569;
+  background-color: black;
   width: 60%;
   height: auto;
   display: flex;
@@ -11068,7 +11068,7 @@ h2 {
   flex-direction: column;
   gap: 2vh;
   padding: 4vh;
-  border: 0.5vh solid black;
+  border: 0.5vh solid #d2b569;
   border-radius: 5vh;
 }
 .myDataContainer__data__label-input {
@@ -11085,7 +11085,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: white;
 }
 .myDataContainer__data__label-input__label__prop {
   text-align: center;
@@ -11097,7 +11097,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: white;
 }
 .myDataContainer__data__label-input__labelData__prop {
   text-align: center;
@@ -11109,7 +11109,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: white;
 }
 .myDataContainer__data__label-input__labelNPartner__prop {
   text-align: center;
@@ -11180,7 +11180,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: white;
   }
   .myDataContainer__data__label-input__label__prop {
     text-align: center;
@@ -11192,7 +11192,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: white;
   }
   .myDataContainer__data__label-input__labelData__prop {
     text-align: center;
@@ -11204,7 +11204,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: white;
   }
   .myDataContainer__data__label-input__labelNPartner__prop {
     text-align: center;
@@ -12429,6 +12429,7 @@ h2 {
     border-radius: 1vh;
     border: 0.3vh solid black;
     color: black;
+    text-align: center;
   }
   .configContainer__config__addService__addServiceContainer__inputMobile__prop::-moz-placeholder {
     font-size: 14px;

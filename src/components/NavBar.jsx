@@ -146,22 +146,45 @@ const NavBar = () => {
                         :
                         <div className='navBarContainer__phrase-btns__btns__prop'>Cortes</div>
                     }
-                    {
-                        !updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
-                        <Link to={"/about"} className='navBarContainer__phrase-btns__btns__prop'>
-                            Sobre nosotros
-                        </Link>
-                        :
-                        <div className='navBarContainer__phrase-btns__btns__prop'>Sobre nosotros</div>
-                    }
+
+
+
                     {/* {
-                        !updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&(user.role != 'admin')&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
+
+                        !updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
+                        
                         <Link to={"/partners"} className='navBarContainer__phrase-btns__btns__prop'>
                             Socios
                         </Link>
                         :
-                        (user.role == 'admin')?
-                        <div className='navBarContainer__phrase-btns__btns__prop' onClick={goPartnersList}>Socios</div>
+                        <div className='navBarContainer__phrase-btns__btns__prop'>Socios</div>
+
+                    } */}
+
+                        {
+                            (user.role == 'admin')&&!updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
+                            <Link to={"/about"} className='navBarContainer__phrase-btns__btns__prop'>
+                                Sobre nosotros
+                            </Link>
+                            : user &&
+                            <Link to={"/partners"} className='navBarContainer__phrase-btns__btns__prop'>
+                                Socios
+                            </Link>
+                        }
+
+                    {/* {
+                        (user.role == 'admin')&&!updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
+                        <Link to={"/about"} className='navBarContainer__phrase-btns__btns__prop'>
+                            Sobre nosotros
+                        </Link>
+                        :
+                        (user.role != 'admin')&&!updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
+                        <>
+                        <Link to={"/partners"} className='navBarContainer__phrase-btns__btns__prop'>
+                            Socios
+                        </Link>
+                        
+                        </>
                         :
                         <div className='navBarContainer__phrase-btns__btns__prop'>Socios</div>
                     } */}

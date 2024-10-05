@@ -27,6 +27,18 @@ const MyData = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             menuOptionsModal&&handleMenuOptionsModal(false);
+            async function fetchMyData() {
+                const response = await fetch(`${apiUrl}/api/my-data`)
+                const myDataAll = await response.json();
+                setMyData(myDataAll.data)
+            }
+            fetchMyData();
+            async function fetchPartners() {
+                const response = await fetch(`${apiUrl}/api/partners`)
+                const partnersAll = await response.json();
+                setPartners(partnersAll.data)
+            }
+            fetchPartners();
             const getCookie = (name) => {
                 const cookieName = name + "=";
                 const decodedCookie = decodeURIComponent(document.cookie);
@@ -185,17 +197,17 @@ const MyData = () => {
                                     <div className='myDataContainer__data__label-input__labelNPartner__prop'>N° socio:</div>
                                 </div>
                                 <div className='myDataContainer__data__label-input__labelData'>
-                                    <div className='myDataContainer__data__label-input__labelData__prop'>{partnerByEmailUser?partnerByEmailUser.partner_number:'-'}</div>
+                                    <div className='myDataContainer__data__label-input__labelData__prop'>{(user&&partnerByEmailUser)?partnerByEmailUser.partner_number:'-'}</div>
                                 </div>
                             </div>
-                            {/* <div className='myDataContainer__data__label-input'>
+                            <div className='myDataContainer__data__label-input'>
                                 <div className='myDataContainer__data__label-input__labelNPartner'>
                                     <div className='myDataContainer__data__label-input__labelNPartner__prop'>Puntos:</div>
                                 </div>
                                 <div className='myDataContainer__data__label-input__labelData'>
-                                    <div className='myDataContainer__data__label-input__labelData__prop'>{partnerByEmailUser?partnerByEmailUser.points:'-'}</div>
+                                    <div className='myDataContainer__data__label-input__labelData__prop'>{(user&&partnerByEmailUser)?partnerByEmailUser.points:'-'}</div>
                                 </div>
-                            </div> */}
+                            </div>
                             <div className='myDataContainer__data__label-input'>
                                 <div className='myDataContainer__data__label-input__label'>
                                     <div className='myDataContainer__data__label-input__label__prop'>Rol:</div>

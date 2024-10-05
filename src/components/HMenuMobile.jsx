@@ -112,9 +112,6 @@ const MenuOptions = ({isLoggedIn,role}) => {
             <Link to={"/cuts"} className='menuOptionsMobile__item'>
                 - Cortes
             </Link>
-            <Link to={"/about"} className='menuOptionsMobile__item'>
-                - Sobre Nosotros
-            </Link>
             {/* <Link onClick={goShiftList} className='menuOptionsMobile__item'>
                 - Socios
             </Link> */}
@@ -141,12 +138,15 @@ const MenuOptions = ({isLoggedIn,role}) => {
             </Link>
             {/*<Link to={"/myPayments"} className='menuOptionsMobile__item'>
                 - Mis pagos
-            </Link> */}
+                </Link> */}
             <Link to={"/myData"} className='menuOptionsMobile__item'>
               - Mis datos
             </Link>
             <Link to={"/config"} className='menuOptionsMobile__item'>
               - Configuración
+            </Link>
+            <Link to={"/about"} className='menuOptionsMobile__item'>
+                - Sobre Nosotros
             </Link>
           </>
           :
@@ -158,20 +158,20 @@ const MenuOptions = ({isLoggedIn,role}) => {
             <Link to={"/cuts"} className='menuOptionsMobile__item'>
                 - Cortes
             </Link>
-            <Link to={"/about"} className='menuOptionsMobile__item'>
-                - Sobre Nosotros
-            </Link>
-            {/* <Link to={"/partners"} className='menuOptionsMobile__item'>
+            <Link to={"/partners"} className='menuOptionsMobile__item'>
                 - Socios
-            </Link> */}
+            </Link>
             <Link to={"/myShifts"} className='menuOptionsMobile__item'>
                 - Mis turnos
             </Link>
             {/* <Link to={"/myPayments"} className='menuOptionsMobile__item'>
                 - Mis pagos
-            </Link> */}
+                </Link> */}
             <Link to={"/myData"} className='menuOptionsMobile__item'>
               - Mis datos
+            </Link>
+            <Link to={"/about"} className='menuOptionsMobile__item'>
+                - Sobre Nosotros
             </Link>
           </>
         }  

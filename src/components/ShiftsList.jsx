@@ -1063,14 +1063,15 @@ const ShiftsList = () => {
                     </div>
 
                     <div className='shiftsListContainer__shiftsList__lengthShiftsMobile'>
-                        {
+                        <div className='shiftsListContainer__shiftsList__lengthShiftsMobile__prop'>Cantidad de turnos: -</div>
+                        {/* {
                             selectOptionHeaderHairdresserShL=='Ayrton'?
                                 <div className='shiftsListContainer__shiftsList__lengthShiftsMobile__prop'>Cantidad de turnos: {ayrtonObjetosFiltradosByNotCancel.length}</div>
                             : selectOptionHeaderHairdresserShL=='Mirko'?
                                 <div className='shiftsListContainer__shiftsList__lengthShiftsMobile__prop'>Cantidad de turnos: {mirkoObjetosFiltradosByNotCancel.length}</div>
                             : selectOptionHeaderHairdresserShL=='Ale'&&
                                 <div className='shiftsListContainer__shiftsList__lengthShiftsMobile__prop'>Cantidad de turnos: {aleObjetosFiltradosByNotCancel.length}</div>
-                        }
+                        } */}
                     </div>
 
                     {cancelDaysModalLocal&&<CancelDaysModal handleCancelDaysListModalLocal={handleCancelDaysListModalLocal} holidaysData={holidays} hairdressers={hairdressers}/>}

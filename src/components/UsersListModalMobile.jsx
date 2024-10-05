@@ -324,7 +324,7 @@ const UsersListModalMobile = ({id,first_name,last_name,email,role,handleUpdateUs
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateUserModalContainerMobile__labelInput'>
                         <div className='updateUserModalContainerMobile__labelInput__label'>
-                            <div className='updateUserModalContainerMobile__labelInput__label__prop'>Role:</div>
+                            <div className='updateUserModalContainerMobile__labelInput__label__prop'>Rol:</div>
                         </div>
                         <div className='updateUserModalContainerMobile__labelInput__selectSchedule'>
                             <select className='updateUserModalContainerMobile__labelInput__selectSchedule__select' value={selectRoleOptionIU} onChange={handleSelectRoleOptionIU}>
@@ -372,7 +372,7 @@ const UsersListModalMobile = ({id,first_name,last_name,email,role,handleUpdateUs
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateUserModalContainerMobile__labelInput'>
                         <div className='updateUserModalContainerMobile__labelInput__label'>
-                            <div className='updateUserModalContainerMobile__labelInput__label__prop'>Role:</div>
+                            <div className='updateUserModalContainerMobile__labelInput__label__prop'>Rol:</div>
                         </div>
                         <div className='updateUserModalContainerMobile__labelInput__input'>
                             <select disabled className='updateShiftModalContainerMobile__labelInput__selectSchedule__select' value={selectRoleOptionIU} onChange={handleSelectRoleOptionIU}>
