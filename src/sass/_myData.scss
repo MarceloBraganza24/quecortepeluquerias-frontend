@@ -12,14 +12,14 @@
         animation: fadeIn 2s ease-in;
     }
     &__data {
-        background-color: #d2b569;
+        background-color: black;
         width: 60%;
         height: auto;
         @include disFC();
         flex-direction: column;
         gap: 2vh;
         padding: 4vh;
-        border: 0.5vh solid black;
+        border: 0.5vh solid #d2b569;
         border-radius: 5vh;
         &__label-input {
             width: 100%;
@@ -30,7 +30,7 @@
                 width: 100%;
                 height: auto;
                 @include disFC();
-                color: black;
+                color: white;
                 &__prop {
                     text-align: center;
                     font-size: 30px;
@@ -40,7 +40,7 @@
                 width: 100%;
                 height: auto;
                 @include disFC();
-                color: black;
+                color: white;
                 &__prop {
                     text-align: center;
                     font-size: 25px;
@@ -50,7 +50,7 @@
                 width: 100%;
                 height: auto;
                 @include disFC();
-                color: black;
+                color: white;
                 &__prop {
                     text-align: center;
                     font-size: 30px;
@@ -105,7 +105,7 @@
                     width: 100%;
                     height: auto;
                     @include disFC();
-                    color: black;
+                    color: white;
                     &__prop {
                         text-align: center;
                         font-size: 20px;
@@ -115,7 +115,7 @@
                     width: 100%;
                     height: auto;
                     @include disFC();
-                    color: black;
+                    color: white;
                     &__prop {
                         text-align: center;
                         font-size: 18px;
@@ -125,7 +125,7 @@
                     width: 100%;
                     height: auto;
                     @include disFC();
-                    color: black;
+                    color: white;
                     &__prop {
                         text-align: center;
                         font-size: 18px;

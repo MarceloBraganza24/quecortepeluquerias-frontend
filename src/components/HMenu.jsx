@@ -132,10 +132,13 @@ const MenuOptions = ({isLoggedIn,role}) => {
             </Link>
             {/* <Link to={"/myPayments"} className='menuOptions__item'>
               - Mis pagos
-            </Link> */}
+              </Link> */}
             <Link to={"/myData"} className='menuOptions__item'>
               - Mis datos
             </Link>
+            {/* <Link to={"/about"} className='menuOptions__item'>
+              - Sobre nosotros
+            </Link> */}
           </>
           :
           <>

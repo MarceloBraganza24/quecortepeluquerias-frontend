@@ -268,7 +268,7 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
                 first_name: inputFirstNameIPa?cleanString(inputFirstNameIPa):first_name,
                 last_name: inputLastNameIPa?cleanString(inputLastNameIPa):last_name,
                 partner_number: selectOptionMembershipNumber?selectOptionMembershipNumber:partner_number,
-                points: inputPointsIPa,
+                points: inputPointsIPa?inputPointsIPa:points,
                 email: inputEmailIPa?cleanString(inputEmailIPa):email
             }
             const response = await fetch(`${apiUrl}/api/partners/${id}`, {

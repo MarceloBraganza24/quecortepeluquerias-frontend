@@ -1886,11 +1886,16 @@ h2 {
   height: auto;
   display: flex;
   flex-direction: column;
-  padding: 3vh 0vh 3vh 0vh;
+  padding: 3vh 0vh 0vh 0vh;
 }
 .shiftsListContainer__blackDiv {
   display: block;
   background-color: black;
+}
+.shiftsListContainer__shiftsNotExistsMobile {
+  background-color: black;
+  color: white;
+  text-align: center;
 }
 .shiftsListContainer__blackDivMobile {
   display: none;
@@ -2097,6 +2102,11 @@ h2 {
   }
   .shiftsListContainer__blackDiv {
     display: none;
+  }
+  .shiftsListContainer__shiftsNotExistsMobile {
+    background-color: black;
+    color: white;
+    text-align: center;
   }
   .shiftsListContainer__blackDivMobile {
     display: block;
@@ -2746,7 +2756,7 @@ h2 {
   width: 100%;
   height: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   padding: 0vh 0vh;
 }
 .partnersContainerIsLoggedIn__payMembershipFeeContainer__labels-btn__labels {
@@ -2760,9 +2770,8 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 18px;
+  font-size: 22px;
   color: white;
-  font-weight: bold;
 }
 .partnersContainerIsLoggedIn__payMembershipFeeContainer__labels-btn__btn {
   width: 100%;
@@ -2844,6 +2853,12 @@ h2 {
 .partnersContainerIsLoggedIn__payMembershipFeeContainerMobile__labels-btn__btn__prop:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
   box-shadow: 2px 2px 5px black, -2px -2px 5px black; /* Sombra más ligera al hacer clic */
+}
+.partnersContainerIsLoggedIn__points {
+  color: white;
+  text-align: center;
+  font-size: 25px;
+  padding: 1vh 0vh;
 }
 .partnersContainerIsLoggedIn__lastMembershipFee {
   background-color: #d2b569;
@@ -3243,6 +3258,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1vh 0vh;
   }
   .partnersContainerIsLoggedIn__payMembershipFeeContainerMobile__labels-btn__labels__prop {
     width: 100%;
@@ -11059,7 +11075,7 @@ h2 {
   animation: fadeIn 2s ease-in;
 }
 .myDataContainer__data {
-  background-color: #d2b569;
+  background-color: black;
   width: 60%;
   height: auto;
   display: flex;
@@ -11068,7 +11084,7 @@ h2 {
   flex-direction: column;
   gap: 2vh;
   padding: 4vh;
-  border: 0.5vh solid black;
+  border: 0.5vh solid #d2b569;
   border-radius: 5vh;
 }
 .myDataContainer__data__label-input {
@@ -11085,7 +11101,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: white;
 }
 .myDataContainer__data__label-input__label__prop {
   text-align: center;
@@ -11097,7 +11113,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: white;
 }
 .myDataContainer__data__label-input__labelData__prop {
   text-align: center;
@@ -11109,7 +11125,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: white;
 }
 .myDataContainer__data__label-input__labelNPartner__prop {
   text-align: center;
@@ -11180,7 +11196,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: white;
   }
   .myDataContainer__data__label-input__label__prop {
     text-align: center;
@@ -11192,7 +11208,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: white;
   }
   .myDataContainer__data__label-input__labelData__prop {
     text-align: center;
@@ -11204,7 +11220,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: white;
   }
   .myDataContainer__data__label-input__labelNPartner__prop {
     text-align: center;
@@ -12429,6 +12445,7 @@ h2 {
     border-radius: 1vh;
     border: 0.3vh solid black;
     color: black;
+    text-align: center;
   }
   .configContainer__config__addService__addServiceContainer__inputMobile__prop::-moz-placeholder {
     font-size: 14px;
