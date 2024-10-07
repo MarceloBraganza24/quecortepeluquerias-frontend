@@ -167,8 +167,8 @@ const NavBar = () => {
                                 Sobre nosotros
                             </Link>
                             : user &&
-                            <Link to={"/partners"} className='navBarContainer__phrase-btns__btns__prop'>
-                                Socios
+                            <Link to={"/about"} className='navBarContainer__phrase-btns__btns__prop'>
+                                Sobre nosotros
                             </Link>
                         }
 

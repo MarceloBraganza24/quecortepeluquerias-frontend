@@ -32,10 +32,15 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    padding: 3vh 0vh 3vh 0vh;
+    padding: 3vh 0vh 0vh 0vh;
     &__blackDiv {
         display: block;
         background-color: black;
+    }
+    &__shiftsNotExistsMobile {
+        background-color: black;
+        color:  white;
+        text-align: center;
     }
     &__blackDivMobile {
         display: none;
@@ -188,6 +193,11 @@
     padding: 14vh 0vh 2vh 0vh;
     &__blackDiv {
         display: none;
+    }
+    &__shiftsNotExistsMobile {
+        background-color: black;
+        color:  white;
+        text-align: center;
     }
     &__blackDivMobile {
         display: block;

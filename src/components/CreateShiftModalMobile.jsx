@@ -367,7 +367,7 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user}) => 
     };
 
     const cleanPropsCreateShift = () => {
-        handleSelectOptionHairdresserShL(optionsHairdresser[0]);
+        //handleSelectOptionHairdresserShL(optionsHairdresser[0]);
         setInputFirstNameShL('')
         setInputLastNameShL('')
         setInputEmailShL('')
@@ -375,7 +375,7 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user}) => 
         setInputAddScheduleMShLM('')
         setIsAddSchedule(false)
         handleInputOptionServiceShL(optionsService[0]);
-        setInputDateShL(new Date())
+        //setInputDateShL(new Date())
     };
 
     const concatAddSchedules = inputAddScheduleHShLM + ':' + inputAddScheduleMShLM

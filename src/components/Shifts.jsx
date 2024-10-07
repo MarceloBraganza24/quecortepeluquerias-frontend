@@ -77,10 +77,18 @@ const Shifts = () => {
         holiday.date == dateToCompareHoliday.date &&
         holiday.hairdresser == dateToCompareHoliday.hairdresser
     );
+
+
     
     const formatedNewDate = moment.tz(formatedDate, 'UTC');
     const dayFormatedNewDate = formatedNewDate.day();
     
+
+    
+
+
+
+
     const workDaysByHairdresserWorkDayFiltered = workDays.filter(item => (item.hairdresser == selectOptionHairdresserSh && (item.work_day == (dayFormatedNewDate==6&&'Sabado')))
         || (item.hairdresser == selectOptionHairdresserSh && (item.work_day == (dayFormatedNewDate==1&&'Lunes'))) 
         || (item.hairdresser == selectOptionHairdresserSh && (item.work_day == (dayFormatedNewDate==2&&'Martes'))) 
@@ -107,7 +115,9 @@ const Shifts = () => {
 
     let filteredArray = schedulesByHairdresserDate.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
 
-    if(filteredArray.length == 0) {
+    if(existsHoliday) {
+        optionsScheduleSh.push('Peluquero de vacaciones')
+    } else if(filteredArray.length == 0) {
         optionsScheduleSh.push('No hay horarios')
     } else {
         filteredArray.forEach(res => {
@@ -492,6 +502,36 @@ const Shifts = () => {
 
     const handleBtnSaveShift = () => {
 
+        /* const date = new Date();
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const noww = `${year}-${month}-${day} ${hours}:${minutes}`; */
+        
+        
+        //console.log(selectScheduleSh?selectScheduleSh:optionsScheduleSh[0])
+        const schedule = selectScheduleSh?selectScheduleSh:optionsScheduleSh[0]
+        const [hours, minutes] = schedule.split(":").map(String);
+
+        const now = new Date();
+
+        const noww = new Date(formatedDate + 'T00:00:00');
+        const date = new Date(noww);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        // const hours = String(date.getHours()).padStart(2, '0');
+        // const minutes = String(date.getMinutes()).padStart(2, '0');
+        const selected = `${year}-${month}-${day} ${hours}:${minutes}`;
+
+        const diffInMinutes = (selected - now) / 1000 / 60;
+
+        console.log(now)
+        console.log(selected)
+        console.log(diffInMinutes)
+
         if(!inputFirstNameSh || !inputLastNameSh || !inputEmailSh) {
             toast('Debes completar todos los campos', {
                 position: "top-right",
@@ -525,7 +565,7 @@ const Shifts = () => {
                 progress: undefined,
                 theme: "dark",
             });
-        } else if (inputDateSh.getDay() == 0 || inputDateSh.getDay() == 1) {
+        }/*  else if (inputDateSh.getDay() == 0 || inputDateSh.getDay() == 1) {
             toast('Elige un dia entre martes y sabado!', {
                 position: "top-right",
                 autoClose: 3000,
@@ -536,8 +576,19 @@ const Shifts = () => {
                 progress: undefined,
                 theme: "dark",
             });
-        } else if(existsHoliday) {
+        }  */else if(existsHoliday) {
             toast('En la fecha ingresada el peluquero se encuenta de vacaciones', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        } else if(diffInMinutes < 60) {
+            toast('Debes registrar un turno con una hora de anticipación como mínimo', {
                 position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: false,

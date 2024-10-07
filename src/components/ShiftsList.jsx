@@ -341,7 +341,7 @@ const ShiftsList = () => {
     };
 
     const cleanPropsCreateShift = () => {
-        handleSelectOptionHairdresserShL(optionsHairdresser[0]);
+        //handleSelectOptionHairdresserShL(optionsHairdresser[0]);
         handleEmptyInputFirstNameShL('')
         handleEmptyInputLastNameShL('')
         handleEmptyInputEmailShL('')
@@ -349,7 +349,7 @@ const ShiftsList = () => {
         handleEmptyInputAddScheduleMShL('')
         setIsAddSchedule(false)
         handleInputOptionServiceShL(optionsService[0]);
-        handleInputDateShL(new Date())
+        //handleInputDateShL(new Date())
     };
     
     const concatAddSchedules = inputAddScheduleHShL + ':' + inputAddScheduleMShL
@@ -1062,17 +1062,12 @@ const ShiftsList = () => {
                         {isOpenCreateShiftModalLocalMobile&&<CreateShiftModalMobile setIsOpenCreateShiftModalLocalMobile={setIsOpenCreateShiftModalLocalMobile} user={user}/>}
                     </div>
 
-                    <div className='shiftsListContainer__shiftsList__lengthShiftsMobile'>
-                        <div className='shiftsListContainer__shiftsList__lengthShiftsMobile__prop'>Cantidad de turnos: -</div>
-                        {/* {
-                            selectOptionHeaderHairdresserShL=='Ayrton'?
-                                <div className='shiftsListContainer__shiftsList__lengthShiftsMobile__prop'>Cantidad de turnos: {ayrtonObjetosFiltradosByNotCancel.length}</div>
-                            : selectOptionHeaderHairdresserShL=='Mirko'?
-                                <div className='shiftsListContainer__shiftsList__lengthShiftsMobile__prop'>Cantidad de turnos: {mirkoObjetosFiltradosByNotCancel.length}</div>
-                            : selectOptionHeaderHairdresserShL=='Ale'&&
-                                <div className='shiftsListContainer__shiftsList__lengthShiftsMobile__prop'>Cantidad de turnos: {aleObjetosFiltradosByNotCancel.length}</div>
-                        } */}
-                    </div>
+                    {
+                        hairdressersFilteredByNotCancel.length != 0 &&
+                        <div className='shiftsListContainer__shiftsList__lengthShiftsMobile'>
+                            <div className='shiftsListContainer__shiftsList__lengthShiftsMobile__prop'>Cantidad de turnos: {hairdressersFilteredByNotCancel.length}</div>
+                        </div>
+                    }
 
                     {cancelDaysModalLocal&&<CancelDaysModal handleCancelDaysListModalLocal={handleCancelDaysListModalLocal} holidaysData={holidays} hairdressers={hairdressers}/>}
                     <div className='shiftsListContainer__shiftsList__lengthShifts'>
@@ -1157,7 +1152,7 @@ const ShiftsList = () => {
                     </div>
                     <div className='shiftsListContainer__shiftsList'>
                         {
-                            (selectOptionHeaderHairdresserShL!='Peluquero' && selectOptionHeaderHairdresserShL!='')&&
+                            hairdressersFilteredByNotCancel.length != 0 &&
                             <div className='shiftsListContainer__shiftsList__headerMobile'>
                                 <div className='shiftsListContainer__shiftsList__headerMobile__label'>Fecha</div>
                                 <div className='shiftsListContainer__shiftsList__headerMobile__label'>Horario</div>
@@ -1318,8 +1313,8 @@ const ShiftsList = () => {
                             })
                         }
                         {/* {
-                            selectOptionHeaderHairdresserShL=='Ayrton'&&ayrtonObjetosFiltrados.length!=0?
-                                ayrtonObjetosFiltrados.map((shift) => {
+                            selectOptionHeaderHairdresserShL=='Ayrton'&&hairdressersFiltered.length!=0?
+                                hairdressersFiltered.map((shift) => {
                                     return(
                                         <ItemShift
                                         id={shift._id}
@@ -1375,36 +1370,37 @@ const ShiftsList = () => {
                 </div>
                 {cancelShiftModalLocal&&<CancelShiftModal hairdresser={selectOptionHairdresserShL} date={formattedDate} schedule={!isAddSchedule?(selectScheduleOptionShL?selectScheduleOptionShL:optionsScheduleSh[0]):concatAddSchedules}/>}
                 {cancelDayModalLocal&&<CancelDayModal hairdresser={selectOptionHairdresserShL} handleCancelDayModalLocal={handleCancelDayModalLocal} date={formattedDate}/>}
-                {/* {
-                    (ayrtonObjetosFiltrados.length==0||mirkoObjetosFiltrados.length==0||aleObjetosFiltrados.length==0||selectOptionHeaderHairdresserShL=='Peluquero') ?
+                {
+                    (hairdressersFiltered.length == 0) ?
                     <>
+                        <div className='shiftsListContainer__shiftsNotExistsMobile'>- Aún no existen turnos -</div>
                         <div className='shiftsListContainer__blackDiv' style={{padding:'10vh 0vh'}}></div>
                         <div className='shiftsListContainer__blackDivMobile' style={{padding:'15vh 0vh'}}></div>
                     </>
-                    : (ayrtonObjetosFiltrados.length==1||mirkoObjetosFiltrados.length==1||aleObjetosFiltrados.length==1||selectOptionHeaderHairdresserShL=='Peluquero') ?
+                    : (hairdressersFiltered.length==1) ?
                     <>
                         <div className='shiftsListContainer__blackDiv' style={{padding:'8vh 0vh'}}></div>
                         <div className='shiftsListContainer__blackDivMobile' style={{padding:'15vh 0vh'}}></div>
                     </>
-                    : (ayrtonObjetosFiltrados.length==2||mirkoObjetosFiltrados.length==2||aleObjetosFiltrados.length==2||selectOptionHeaderHairdresserShL=='Peluquero') ?
+                    : (hairdressersFiltered.length==2) ?
                     <>
                         <div className='shiftsListContainer__blackDiv' style={{padding:'5vh 0vh'}}></div>
                         <div className='shiftsListContainer__blackDivMobile' style={{padding:'10vh 0vh'}}></div>
                     </>
-                    : (ayrtonObjetosFiltrados.length==3||mirkoObjetosFiltrados.length==3||aleObjetosFiltrados.length==3||selectOptionHeaderHairdresserShL=='Peluquero') ?
+                    : (hairdressersFiltered.length==3) ?
                     <>
                         <div className='shiftsListContainer__blackDiv' style={{padding:'2vh 0vh'}}></div>
                         <div className='shiftsListContainer__blackDivMobile' style={{padding:'5vh 0vh'}}></div>
                     </>
-                    : (ayrtonObjetosFiltrados.length==4||mirkoObjetosFiltrados.length==4||aleObjetosFiltrados.length==4||selectOptionHeaderHairdresserShL=='Peluquero') ?
+                    : (hairdressersFiltered.length==4) ?
                     <>
                         <div className='shiftsListContainer__blackDivMobile' style={{padding:'1vh 0vh'}}></div>
                     </>
-                    : (ayrtonObjetosFiltrados.length==5||mirkoObjetosFiltrados.length==5||aleObjetosFiltrados.length==5||selectOptionHeaderHairdresserShL=='Peluquero') &&
+                    : (hairdressersFiltered.length==5) &&
                     <>
                         <div className='shiftsListContainer__blackDivMobile' style={{padding:'0vh 0vh'}}></div>
                     </>
-            } */}
+            }
                 <LogOut/>
             </>
             :

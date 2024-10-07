@@ -29,6 +29,8 @@ const Partners = () => {
     const currentDay = fechaActual.getDate();
     const [user, setUser] = useState('');
     const [prices, setPrices] = useState([]);
+    const [partners, setPartners] = useState([]);
+    const partnerByEmailUser = partners.find(partner => partner.email == user.email)
 
     //console.log(user)
 
@@ -389,6 +391,12 @@ const Partners = () => {
                 setCompanies(companiesAll.data)
             }
             fetchCompaniesData();
+            async function fetchPartners() {
+                const response = await fetch(`${apiUrl}/api/partners`)
+                const partnersAll = await response.json();
+                setPartners(partnersAll.data)
+            }
+            fetchPartners();
             const getCookie = (name) => {
                 const cookieName = name + "=";
                 const decodedCookie = decodeURIComponent(document.cookie);
@@ -459,6 +467,12 @@ const Partners = () => {
             setCompanies(companiesAll.data)
         }
         fetchCompaniesData();
+        async function fetchPartners() {
+            const response = await fetch(`${apiUrl}/api/partners`)
+            const partnersAll = await response.json();
+            setPartners(partnersAll.data)
+        }
+        fetchPartners();
         const getCookie = (name) => {
             const cookieName = name + "=";
             const decodedCookie = decodeURIComponent(document.cookie);
@@ -980,6 +994,9 @@ const Partners = () => {
                                 <div className='partnersContainerIsLoggedIn__payMembershipFeeContainerMobile__labels-btn__labels'>
                                     <div className='partnersContainerIsLoggedIn__payMembershipFeeContainerMobile__labels-btn__labels__prop'>Cuota socio: $ {membershipFees?membershipFees.value:'-'}</div>
                                 </div>
+                                {/* <div className='partnersContainerIsLoggedIn__payMembershipFeeContainerMobile__labels-btn__labels'>
+                                    <div className='partnersContainerIsLoggedIn__payMembershipFeeContainerMobile__labels-btn__labels__prop'>Puntos obtenidos: {(user&&partnerByEmailUser)?partnerByEmailUser.points:'-'}</div>
+                                </div> */}
 
                                 <div className='partnersContainerIsLoggedIn__payMembershipFeeContainerMobile__labels-btn__btn'>
                                     {
@@ -1015,7 +1032,7 @@ const Partners = () => {
                                     <div className='partnersContainerIsLoggedIn__payMembershipFeeContainer__labels-btn__labels__prop'>Cuota socio: $ {membershipFees?membershipFees.value:'-'}</div>
                                 </div>
 
-                                <div className='partnersContainerIsLoggedIn__payMembershipFeeContainer__labels-btn__btn'>
+                                {/* <div className='partnersContainerIsLoggedIn__payMembershipFeeContainer__labels-btn__btn'>
                                     {
 
                                             !deleteTicketModal?
@@ -1027,11 +1044,11 @@ const Partners = () => {
                                         
                                     }
                                     {membershipFeePreferenceId && <Wallet initialization={{ preferenceId: membershipFeePreferenceId }} />} 
-                                </div>
+                                </div> */}
                             </div>
 
                         </div>
-
+                        {/* <div className='partnersContainerIsLoggedIn__points'>Puntos obtenidos: {(user&&partnerByEmailUser)?partnerByEmailUser.points:'-'}</div> */}
                         {
                             ticketsByTypeByEmail.length==0?
                             <h2 className='partnersContainerIsLoggedIn__lastMembershipFee'>Última cuota paga: -</h2>

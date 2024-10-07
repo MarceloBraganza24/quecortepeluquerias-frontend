@@ -125,7 +125,7 @@
             width: 100%;
             height: auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             padding: 0vh 0vh;
             &__labels {
                 width: 100%;
@@ -135,9 +135,9 @@
                     width: 100%;
                     height: auto;
                     text-align: center;
-                    font-size: 18px;
+                    font-size: 22px;
                     color: white;
-                    font-weight: bold;
+                    //font-weight: bold;
                 }
             }
             &__btn {
@@ -198,6 +198,12 @@
                 }
             }
         }
+    }
+    &__points {
+        color: white;
+        text-align: center;
+        font-size: 25px;
+        padding: 1vh 0vh;
     }
     &__lastMembershipFee {
         background-color: #d2b569;
@@ -465,7 +471,7 @@
             display: grid;
             grid-template-columns: 1fr;
             grid-template-rows: 1fr 1fr;
-            padding: 0vh 0vh;
+            padding: 0vh 0vh;;
             &__labels {
                 width: 100%;
                 height: auto;
@@ -517,6 +523,7 @@
                 width: 100%;
                 height: auto;
                 @include disFC();
+                padding: 1vh 0vh;
                 &__prop {
                     width: 100%;
                     height: auto;

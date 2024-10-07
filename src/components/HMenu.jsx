@@ -136,9 +136,9 @@ const MenuOptions = ({isLoggedIn,role}) => {
             <Link to={"/myData"} className='menuOptions__item'>
               - Mis datos
             </Link>
-            <Link to={"/about"} className='menuOptions__item'>
+            {/* <Link to={"/about"} className='menuOptions__item'>
               - Sobre nosotros
-            </Link>
+            </Link> */}
           </>
           :
           <>

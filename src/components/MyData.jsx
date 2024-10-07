@@ -184,30 +184,33 @@ const MyData = () => {
                                     <div className='myDataContainer__data__label-input__labelData__prop no-scroll'>{user.email}</div>
                                 </div>
                             </div>
-                            <div className='myDataContainer__data__label-input'>
+                            {/* <div className='myDataContainer__data__label-input'>
                                 <div className='myDataContainer__data__label-input__label'>
                                     <div className='myDataContainer__data__label-input__label__prop'>Socio:</div>
                                 </div>
                                 <div className='myDataContainer__data__label-input__labelData'>
                                     <div className='myDataContainer__data__label-input__labelData__prop'>{user.isMembershipFeePaid?'Si':'No'}</div>
                                 </div>
-                            </div>
-                            <div className='myDataContainer__data__label-input'>
-                                <div className='myDataContainer__data__label-input__labelNPartner'>
-                                    <div className='myDataContainer__data__label-input__labelNPartner__prop'>N° socio:</div>
+                            </div> */}
+                            {/* {
+                                user.isMembershipFeePaid&&
+                                <div className='myDataContainer__data__label-input'>
+                                    <div className='myDataContainer__data__label-input__labelNPartner'>
+                                        <div className='myDataContainer__data__label-input__labelNPartner__prop'>N° socio:</div>
+                                    </div>
+                                    <div className='myDataContainer__data__label-input__labelData'>
+                                        <div className='myDataContainer__data__label-input__labelData__prop'>{(user&&partnerByEmailUser)?partnerByEmailUser.partner_number:'-'}</div>
+                                    </div>
                                 </div>
-                                <div className='myDataContainer__data__label-input__labelData'>
-                                    <div className='myDataContainer__data__label-input__labelData__prop'>{(user&&partnerByEmailUser)?partnerByEmailUser.partner_number:'-'}</div>
-                                </div>
-                            </div>
-                            <div className='myDataContainer__data__label-input'>
+                            } */}
+                            {/* <div className='myDataContainer__data__label-input'>
                                 <div className='myDataContainer__data__label-input__labelNPartner'>
                                     <div className='myDataContainer__data__label-input__labelNPartner__prop'>Puntos:</div>
                                 </div>
                                 <div className='myDataContainer__data__label-input__labelData'>
                                     <div className='myDataContainer__data__label-input__labelData__prop'>{(user&&partnerByEmailUser)?partnerByEmailUser.points:'-'}</div>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className='myDataContainer__data__label-input'>
                                 <div className='myDataContainer__data__label-input__label'>
                                     <div className='myDataContainer__data__label-input__label__prop'>Rol:</div>

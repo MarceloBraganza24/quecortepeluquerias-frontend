@@ -588,7 +588,7 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
                             </select>
                         </div>
                         <div className='shiftModalContainer__itemShift__input'>
-                            <input disabled className='shiftModalContainer__itemShift__input__prop' type='email' value={!inputEmailISh?(email?email:'-'):inputEmailISh}onChange={handleInputEmailISh}/>
+                            <input className='shiftModalContainer__itemShift__input__prop' type='email' value={!inputEmailISh?(email?email:'-'):inputEmailISh}onChange={handleInputEmailISh}/>
                         </div>
                         <div className='shiftModalContainer__itemShift__btns'>
                             <button className='shiftModalContainer__itemShift__btns__btn' onClick={handleBtnDelShift}>Borrar</button>

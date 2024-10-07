@@ -32,7 +32,7 @@ const ItemProduct = ({id,title,description,price,stock,category}) => {
                 <div className='itemProductMobile__input__prop'>{title}</div>
             </div>
             <div className='itemProductMobile__input no-scroll'>
-                <div className='itemProductMobile__input__prop'>{price}</div>
+                <div className='itemProductMobile__input__prop'>$ {price}</div>
             </div>
             <div className='itemProductMobile__input no-scroll'>
                 <div className='itemProductMobile__input__prop'>{stock}</div>
@@ -70,7 +70,7 @@ const ItemProduct = ({id,title,description,price,stock,category}) => {
                 <div className='itemProduct__input__prop'>{description}</div>
             </div>
             <div className='itemProduct__input no-scroll'>
-                <div className='itemProduct__input__prop'>{price}</div>
+                <div className='itemProduct__input__prop'>$ {price}</div>
             </div>
             <div className='itemProduct__input no-scroll'>
                 <div className='itemProduct__input__prop'>{stock}</div>
