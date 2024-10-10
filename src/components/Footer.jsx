@@ -27,7 +27,7 @@ const Footer = () => {
             <div className='footerContainer__title-copyrigth__copyrigth'>
             {
                     !updateShiftModal&&!cancelDayModal&&!myDataModal&&!cancelDaysListModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModalMobile&&!updateUserModalMobile&&!createPartnerModalMobile&&!createUserModalMobile&&!createProductModalMobile&&!createProviderModalMobile&&!updateProductModalMobile&&!updatePartnerModalMobile&&!updateProviderModalMobile&&!createShiftModalMobile&&!updateShiftModalMobile&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
-                    <a href="/home" className='footerContainer__title-copyrigth__copyrigth__prop'>© 2024 - MB Soluciones Informáticas</a>
+                    <a href="https://mbsolucionesinformaticas.com/" className='footerContainer__title-copyrigth__copyrigth__prop'>© 2024 - MB Soluciones Informáticas</a>
                     :
                     <a className='footerContainer__title-copyrigth__copyrigth__prop'>© 2024 - MB Soluciones Informáticas</a>
             }
