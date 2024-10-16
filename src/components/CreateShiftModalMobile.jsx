@@ -457,7 +457,7 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user}) => 
                 progress: undefined,
                 theme: "dark",
             });
-        } else if (selectScheduleOptionShL == '' || selectScheduleOptionShL == 'Horario') {
+        } else if (!isAddSchedule && (selectScheduleOptionShL == '' || selectScheduleOptionShL == 'Horario')) {
             toast('Debes seleccionar un horario!', {
                 position: "top-right",
                 autoClose: 3000,
