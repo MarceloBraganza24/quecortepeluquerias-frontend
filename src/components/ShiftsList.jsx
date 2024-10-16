@@ -52,6 +52,7 @@ const ShiftsList = () => {
     })
     
     const optionsScheduleSh = [];
+    optionsScheduleSh.push('Horario')
     
     const [showSpinner, setShowSpinner] = useState(false);
     
@@ -350,6 +351,7 @@ const ShiftsList = () => {
         setIsAddSchedule(false)
         handleInputOptionServiceShL(optionsService[0]);
         //handleInputDateShL(new Date())
+        handleSelectScheduleOptionShL(optionsScheduleSh[0])
     };
     
     const concatAddSchedules = inputAddScheduleHShL + ':' + inputAddScheduleMShL
@@ -400,6 +402,17 @@ const ShiftsList = () => {
             toast('El campo email contiene caracteres no válidos', {
                 position: "top-right",
                 autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        } else if (selectScheduleOptionShL == '' || selectScheduleOptionShL == 'Horario') {
+            toast('Debes seleccionar un horario!', {
+                position: "top-right",
+                autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
