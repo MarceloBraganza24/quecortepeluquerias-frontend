@@ -70,6 +70,7 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user}) => 
     let filteredArray = schedulesByHairdresserDate.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
 
     const optionsScheduleSh = [];
+    optionsScheduleSh.push('Horario')
 
     filteredArray.forEach(res => {
         optionsScheduleSh.push(res)
@@ -375,7 +376,8 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user}) => 
         setInputAddScheduleMShLM('')
         setIsAddSchedule(false)
         handleInputOptionServiceShL(optionsService[0]);
-        //setInputDateShL(new Date())
+        //setInputDateShL(new Date());
+        handleSelectScheduleOptionShL(optionsScheduleSh[0]);
     };
 
     const concatAddSchedules = inputAddScheduleHShLM + ':' + inputAddScheduleMShLM
@@ -446,6 +448,17 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user}) => 
             });
         } else if (inputEmailShL && !validateEmail(inputEmailShL)) {
             toast('El email no es válido!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        } else if (!isAddSchedule && (selectScheduleOptionShL == '' || selectScheduleOptionShL == 'Horario')) {
+            toast('Debes seleccionar un horario!', {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
