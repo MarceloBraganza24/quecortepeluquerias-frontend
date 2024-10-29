@@ -55,7 +55,10 @@ const Shifts = () => {
         return cleaned;
     }
     
-    if(!user.isMembershipFeePaid) {
+    services.forEach(res => {
+        optionsService.push(res.title)
+    })
+    /* if(!user.isMembershipFeePaid) {
         const noPartnersServices = services.filter(service => service.category == 'No socio')
         noPartnersServices.forEach(res => {
             optionsService.push(res.title)
@@ -65,7 +68,7 @@ const Shifts = () => {
         partnersServices.forEach(res => {
             optionsService.push(res.title)
         })
-    }
+    } */
 
     const formatedDate = format(inputDateSh, 'yyyy-MM-dd');
 

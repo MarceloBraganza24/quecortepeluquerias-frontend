@@ -24,14 +24,14 @@ const Config = () => {
   const workDaysByHairdresserWorkDay = []
   const {menuOptionsModal,handleMenuOptionsModal} = useContext(OpenModalContext);
   const apiUrl = import.meta.env.VITE_API_URL;
-  const selectPartnerNonPartner = ['No socio','Socio'];
+  //const selectPartnerNonPartner = ['No socio','Socio'];
   
   const [inputSaveCompany, setInputSaveCompany] = useState('');
 
   const [inputAddHairdresser, setInputAddHairdresser] = useState('');
   const [inputTitleService, setInputTitleService] = useState('');
   const [inputValueService, setInputValueService] = useState('');
-  const [selectCategoryService, setSelectCategoryService] = useState('');
+  //const [selectCategoryService, setSelectCategoryService] = useState('');
   const [inputMembershipFee, setInputMembershipFee] = useState('');
 
   const [inputAddTitlePartnersBen, setInputAddTitlePartnersBen] = useState('');
@@ -65,9 +65,6 @@ const Config = () => {
     
         return totalMinutesA - totalMinutesB;
     });
-  
-  const nonPartnersService = services.filter(service => service.category == 'No socio')
-  const partnersService = services.filter(service => service.category == 'Socio')
   
   const hairdressersOptionsSelect = ['Peluquero'];
   const hairdressersName = hairdressers.map(hairdresser => hairdresser.name)
@@ -325,9 +322,9 @@ const Config = () => {
         }
     }
 
-    const handleSelectCategoryService = (e) => {
+    /* const handleSelectCategoryService = (e) => {
         setSelectCategoryService(e)
-    }
+    } */
 
     const handleInputMembershipFee = (e) => {
       const texto = e.target.value;
@@ -335,8 +332,9 @@ const Config = () => {
     }
 
     const handleInputAddTitlePartnersBen = (e) => {
-      const texto = e.target.value;
-      setInputAddTitlePartnersBen(texto)
+        const texto = e.target.value;
+        const textToSaved = cleanText(texto);
+        setInputAddTitlePartnersBen(textToSaved)
     }
 
     const handleInputAddValuePartnersBen = (e) => {
@@ -600,7 +598,6 @@ const Config = () => {
         const obj = {
           title: cleanString(inputTitleService),
           value: inputValueService,
-          category: selectCategoryService?selectCategoryService:selectPartnerNonPartner[0],
           service_datetime: service_datetime
         }
         const response = await fetch(`${apiUrl}/api/services/register`, {
@@ -625,10 +622,9 @@ const Config = () => {
             setTimeout(() => {
                 setInputTitleService('');
                 setInputValueService('');
-                setSelectCategoryService(selectPartnerNonPartner[0]);
             }, 2500);
         } else if(data.error === 'There is already a service with that title') {
-            toast('Ya existe un servicio con ese nombre y categoría!', {
+            toast('Ya existe un servicio con ese nombre!', {
                 position: "top-right",
                 autoClose: 1500,
                 hideProgressBar: false,
@@ -1323,6 +1319,16 @@ const Config = () => {
     
     const UpdateServiceModal = ({setUpdateServiceBtnIsOpen,id,title,value}) => {
 
+        const cleanText = (text) => {
+            const replacements = {
+              'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u',
+              'Á': 'A', 'É': 'E', 'Í': 'I', 'Ó': 'O', 'Ú': 'U',
+              'ñ': 'n', 'Ñ': 'N'
+            };
+          
+            return text.split('').map(char => replacements[char] || char).join('');
+        };
+
         const [inputTitleUpdateService,setInputTitleUpdateService] = useState('')
         const [inputValueUpdateService,setInputValueUpdateService] = useState('')
 
@@ -1390,12 +1396,15 @@ const Config = () => {
 
       const handleInputTitleUpdateService = (e) => {
         const texto = e.target.value;
-        setInputTitleUpdateService(texto)
+        const textToSaved = cleanText(texto);
+        setInputTitleUpdateService(textToSaved)
       }
 
       const handleInputValueUpdateService = (e) => {
         const texto = e.target.value;
-        setInputValueUpdateService(texto)
+        if (/^\d*$/.test(texto)) {
+            setInputValueUpdateService(texto)
+        } 
       }
 
 
@@ -1486,12 +1495,15 @@ const Config = () => {
 
       const handleInputTitleUpdateService = (e) => {
         const texto = e.target.value;
-        setInputUpdateTitleVariousPrice(texto)
+        const textToSaved = cleanText(texto);
+        setInputUpdateTitleVariousPrice(textToSaved)
       }
 
       const handleInputValueUpdateService = (e) => {
         const texto = e.target.value;
-        setInputUpdateValueVariousPrice(texto)
+        if (/^\d*$/.test(texto)) {
+            setInputUpdateValueVariousPrice(texto)
+        } 
       }
 
       return (
@@ -1581,12 +1593,15 @@ const Config = () => {
 
       const handleInputTitleUpdatePartnersBen = (e) => {
         const texto = e.target.value;
-        setInputUpdateTitlePartnersBen(texto)
+        const textToSaved = cleanText(texto);
+        setInputUpdateTitlePartnersBen(textToSaved)
       }
 
       const handleInputValueUpdatePartnersBen = (e) => {
         const texto = e.target.value;
-        setInputUpdateValuePartnersBen(texto)
+        if (/^\d*$/.test(texto)) {
+            setInputUpdateValuePartnersBen(texto)
+        } 
       }
 
       return (
@@ -1723,28 +1738,31 @@ const Config = () => {
                             <div className='configContainer__config__addService__addServiceContainer__inputMobile'>
                                 <input value={inputValueService} onChange={handleInputValueService} placeholder='valor' type="text" className='configContainer__config__addService__addServiceContainer__inputMobile__prop' />
                             </div>
-                            <div className='configContainer__config__addService__addServiceContainer__select'>
+
+                            {/* <div className='configContainer__config__addService__addServiceContainer__select'>
                                 <select className='configContainer__config__addService__addServiceContainer__select__prop'  value={selectCategoryService} onChange={(e) => {handleSelectCategoryService(e.target.value)}}>
                                     {selectPartnerNonPartner.map((option, index) => (
                                     <option key={index} value={option}>{option}</option>
                                     ))}
                                 </select>
-                            </div>
+                            </div> */}
+
                             <div className='configContainer__config__addService__addServiceContainer__btn'>
                                 <button onClick={hanldeBtnAddService} className='configContainer__config__addService__addServiceContainer__btn__prop'>Añadir</button>
                             </div>
                         </div>
                     </div>
+
+
                     <div className='configContainer__config__servicesList'>
+
+
                         <div className='configContainer__config__servicesList__titleList'>- Lista de servicios -</div>
-                        <div className='configContainer__config__servicesList__category'>
-                          <div className='configContainer__config__servicesList__category__prop'>No socios</div>
-                        </div>
                         {
-                            nonPartnersService.length == 0 ?
+                            services.length == 0 ?
                             <div style={{color:'black'}}>Aún no existen servicios</div>
                             :
-                            nonPartnersService.map((service) => {
+                            services.map((service) => {
                                 return(
                                     <>
                                         <div className='configContainer__config__servicesList__item'>
@@ -1763,33 +1781,10 @@ const Config = () => {
                                 )
                             })
                         }
-                        <div className='configContainer__config__servicesList__category'>
-                          <div className='configContainer__config__servicesList__category__prop'>Socios</div>
-                        </div>
-                        {
-                          partnersService.length == 0 ?
-                            <div style={{color:'black'}}>Aún no existen servicios</div>
-                          :
-                            partnersService.map((service) => {
-                                return(
-                                    <>
-                                        <div className='configContainer__config__servicesList__item'>
-                                            <div className='configContainer__config__servicesList__item__label'>
-                                                <div className='configContainer__config__servicesList__item__label__prop'>{service.title}</div>
-                                            </div>
-                                            <div className='configContainer__config__servicesList__item__label'>
-                                                <div className='configContainer__config__servicesList__item__label__prop'>$ {service.value}</div>
-                                            </div>
-                                            <div className='configContainer__config__servicesList__item__btn'>
-                                                <button onClick={()=>{handleBtnOpenUpdateService(service._id,service.title,service.value)}} className='configContainer__config__servicesList__item__btn__prop'>Editar</button>
-                                                <button onClick={()=>{handleOpenModalBtnDeleteService(service._id,service.title)}} className='configContainer__config__servicesList__item__btn__prop'>Borrar</button>
-                                            </div>
-                                        </div>
-                                    </>
-                                )
-                            })
-                        }
+                        
                     </div>
+
+
 
                     <div className='configContainer__config__membershipFee'>
                         <div className='configContainer__config__membershipFee__prop'>Cuota socio:</div>
@@ -1867,7 +1862,7 @@ const Config = () => {
                                             <div className='configContainer__config__partnersBenList__item__label__prop'>{item.title}</div>
                                         </div>
                                         <div className='configContainer__config__partnersBenList__item__label'>
-                                            <div className='configContainer__config__partnersBenList__item__label__prop'>{item.value}pts</div>
+                                            <div className='configContainer__config__partnersBenList__item__label__prop'>{item.value} pts.</div>
                                         </div>
                                         <div className='configContainer__config__partnersBenList__item__btn'>
                                             <button onClick={()=>{handleBtnOpenUpdatePartnersBen(item._id,item.title,item.value)}} className='configContainer__config__partnersBenList__item__btn__prop'>Editar</button>

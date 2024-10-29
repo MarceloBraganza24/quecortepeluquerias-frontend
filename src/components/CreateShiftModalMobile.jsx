@@ -36,10 +36,10 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user}) => 
     const dayFormatedNewDate = formatedNewDate.day();
 
     const optionsService = ['Servicio'];
-    const servicesNonPartners = services.filter(item => item.category == 'No socio')
-    servicesNonPartners.forEach(item => {
+    services.forEach(item => {
         optionsService.push(`${item.title}`)
     })
+
     const optionsHairdresser = ['Peluquero'];
     hairdressers.forEach(item => {
         optionsHairdresser.push(`${item.name}`)

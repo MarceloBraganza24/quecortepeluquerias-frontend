@@ -16,6 +16,7 @@ const Partners = () => {
     const {menuOptionsModal,handleMenuOptionsModal} = useContext(OpenModalContext);
     const {handleBtnBuyVisible} = useContext(BtnMPContext);
     const [isMonted, setIsMonted] = useState(false);
+    const [prices, setPrices] = useState([]);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -32,6 +33,12 @@ const Partners = () => {
                 setPartnersBen(partnersBenAll.data)
             }
             fetchPartnersBenData();
+            async function fetchPricesData() {
+                const response = await fetch(`${apiUrl}/api/prices`)
+                const pricesAll = await response.json();
+                setPrices(pricesAll.data)
+            }
+            fetchPricesData();
             const getCookie = (name) => {
                 const cookieName = name + "=";
                 const decodedCookie = decodeURIComponent(document.cookie);
@@ -96,6 +103,12 @@ const Partners = () => {
             setPartnersBen(partnersBenAll.data)
         }
         fetchPartnersBenData();
+        async function fetchPricesData() {
+            const response = await fetch(`${apiUrl}/api/prices`)
+            const pricesAll = await response.json();
+            setPrices(pricesAll.data)
+        }
+        fetchPricesData();
         const getCookie = (name) => {
             const cookieName = name + "=";
             const decodedCookie = decodeURIComponent(document.cookie);
@@ -148,6 +161,13 @@ const Partners = () => {
         };
     }, []);
 
+    const palabrasABuscar = ["cuota", "socio"];
+    const membershipFee = prices.find(objeto => 
+        palabrasABuscar.every(palabra => 
+        objeto.title.toLowerCase().includes(palabra.toLowerCase())
+        )
+    );
+
   return (
       <>
             <NavBar/>
@@ -170,6 +190,7 @@ const Partners = () => {
                             }
                         </div>
                         <div className='partnersContainer__contactPhrase'>Contáctate con la peluquería para hacerte socio!</div>
+                        <div className='partnersContainer__contactPhrase'>Cuota socio: ${membershipFee?membershipFee.value:'-'}</div>
                     </div>
                     <LogOut/>
                 </>
@@ -192,6 +213,7 @@ const Partners = () => {
                                 })
                             }
                         </div>
+                        <div className='partnersContainer__contactPhrase'>Cuota socio: ${membershipFee?membershipFee.value:'-'}</div>
                     </div>
                     <LogOut/> 
                     </>
@@ -213,6 +235,7 @@ const Partners = () => {
                             }
                         </div>
                         <div className='partnersContainer__contactPhrase'>Contáctate con la peluquería para hacerte socio!</div>
+                        <div className='partnersContainer__contactPhrase'>Cuota socio: ${membershipFee?membershipFee.value:'-'}</div>
                     </div>
                     <LogOut/> 
                 </>

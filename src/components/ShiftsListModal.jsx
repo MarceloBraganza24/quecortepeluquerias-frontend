@@ -33,10 +33,7 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
     const concatDateSchedule = (formatInputDate) + ' ' + (!isAddScheduleISh?(selectScheduleOptionISh?selectScheduleOptionISh:schedule):concatAddSchedules)
     let concatNewDateSchedule = new Date(concatDateSchedule);
     
-    let fechaActual = new Date();
-    
-    const servicesByCaegory = services.filter(item => item.category == 'No socio')
-    const servicesWithOutService = servicesByCaegory.filter(item => item.title != service)
+    const servicesWithOutService = services.filter(item => item.title != service)
     const optionsService = [];
     optionsService.push(service)
     servicesWithOutService.forEach(item => {

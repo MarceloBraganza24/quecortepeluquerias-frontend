@@ -11568,7 +11568,7 @@ h2 {
   width: 80%;
   height: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   padding: 1vh 0vh;
 }
 .configContainer__config__addService__addServiceContainer__inputMobile {
@@ -12573,7 +12573,7 @@ h2 {
     width: 100%;
     height: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     padding: 1vh 1vh;
     gap: 0.5vh;
   }

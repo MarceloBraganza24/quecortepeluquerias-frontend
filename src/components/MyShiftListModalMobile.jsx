@@ -49,8 +49,7 @@ const MyShiftListModalMobile = ({id,hairdresser,first_name,last_name,service,ema
 
     let fechaActual = new Date();
 
-    const servicesByCaegory = services.filter(item => item.category == 'No socio')
-    const servicesWithOutService = servicesByCaegory.filter(item => item.title != service)
+    const servicesWithOutService = services.filter(item => item.title != service)
     const optionsService = [];
     optionsService.push(service)
     servicesWithOutService.forEach(item => {
