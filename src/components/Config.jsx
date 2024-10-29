@@ -16,6 +16,7 @@ const Config = () => {
   const [hairdressers, setHairdressers] = useState([]);
   const [services, setServices] = useState([]);
   const [prices, setPrices] = useState([]);
+  const [partnersBen, setPartnersBen] = useState([]);
   const [workDays, setWorkDays] = useState([]);
 
   const [companies, setCompanies] = useState([]);
@@ -31,7 +32,10 @@ const Config = () => {
   const [inputTitleService, setInputTitleService] = useState('');
   const [inputValueService, setInputValueService] = useState('');
   const [selectCategoryService, setSelectCategoryService] = useState('');
-  const [inputMembershipFee, serInputMembershipFee] = useState('');
+  const [inputMembershipFee, setInputMembershipFee] = useState('');
+
+  const [inputAddTitlePartnersBen, setInputAddTitlePartnersBen] = useState('');
+  const [inputAddValuePartnersBen, setInputAddValuePartnersBen] = useState('');
 
   const [selectHairdressersWeekDays, setSelectHairdressersWeekDays] = useState('');
   const [selectDaysWeekDays, setSelectDaysWeekDays] = useState('');
@@ -47,6 +51,8 @@ const Config = () => {
   const [updateInputMembershipFeeIsOpen, setUpdateInputMembershipFeeIsOpen] = useState(false);
 
   const [updateVariousPriceModal, setUpdateVariousPriceModal] = useState(false);
+
+  const [updatePartnersBenModal, setUpdatePartnersBenModal] = useState(false);
 
   const [showWorkDaysList, setShowWorkDaysList] = useState(false);
 
@@ -79,6 +85,21 @@ const Config = () => {
   );
 
   const pricesWithoutMembershipFee = prices.filter(price => price.title.toLowerCase() != 'cuota socio')
+  
+  /* const bens = [
+    {
+        title: 'Productos/Birra',
+        value: '50'
+    },
+    {
+        title: 'Barba',
+        value: '80'
+    },
+    {
+        title: 'Corte',
+        value: '100'
+    }
+  ] */
 
   workDaysByHairdresserWorkDayFiltered.forEach(item => {
     workDaysByHairdresserWorkDay.push(`${item.schedule}`)
@@ -109,6 +130,12 @@ const Config = () => {
                 setPrices(pricesAll.data)
             }
             fetchPricesData();
+            async function fetchPartnersBenData() {
+                const response = await fetch(`${apiUrl}/api/partnersBen`)
+                const partnersBenAll = await response.json();
+                setPartnersBen(partnersBenAll.data)
+            }
+            fetchPartnersBenData();
             async function fetchWorkDaysData() {
                 const response = await fetch(`${apiUrl}/api/workDays`)
                 const workDaysAll = await response.json();
@@ -192,6 +219,12 @@ const Config = () => {
             setWorkDays(workDaysAll.data)
         }
         fetchWorkDaysData();
+        async function fetchPartnersBenData() {
+            const response = await fetch(`${apiUrl}/api/partnersBen`)
+            const partnersBenAll = await response.json();
+            setPartnersBen(partnersBenAll.data)
+        }
+        fetchPartnersBenData();
         async function fetchCompaniesData() {
             const response = await fetch(`${apiUrl}/api/companies`)
             const companiesAll = await response.json();
@@ -298,7 +331,20 @@ const Config = () => {
 
     const handleInputMembershipFee = (e) => {
       const texto = e.target.value;
-      serInputMembershipFee(texto)
+      setInputMembershipFee(texto)
+    }
+
+    const handleInputAddTitlePartnersBen = (e) => {
+      const texto = e.target.value;
+      setInputAddTitlePartnersBen(texto)
+    }
+
+    const handleInputAddValuePartnersBen = (e) => {
+        const texto = e.target.value;
+        const regex = /^\d+$/;
+        if (texto == '' || regex.test(texto)) {
+            setInputAddValuePartnersBen(texto)
+        }
     }
 
     const handleInputAddTitleVariouPrice = (e) => {
@@ -493,6 +539,10 @@ const Config = () => {
     const [titleVariou, setTitleVariou] = useState('');
     const [deleteVariouModal, setDeleteVariouModal] = useState(false);
 
+    const [idPartnerBen, setIdPartnerBen] = useState('');
+    const [titlePartnerBen, setTitlePartnerBen] = useState('');
+    const [deletePartnerBenModal, setDeletePartnerBenModal] = useState(false);
+
     const [deleteServiceModal, setDeleteServiceModal] = useState(false);
 
     const handleOpenModalBtnDeleteHairdresser = (id,hairdresser) => {
@@ -517,6 +567,12 @@ const Config = () => {
         setIdVariou(id)
         setTitleVariou(titleVariou)
         setDeleteVariouModal(true)
+    }
+
+    const handleOpenModalBtnDeletePartnersBen = (id,titlePartnerBen) => {
+        setIdPartnerBen(id)
+        setTitlePartnerBen(titlePartnerBen)
+        setDeletePartnerBenModal(true)
     }
 
     const hanldeBtnAddService = async() => {
@@ -661,12 +717,16 @@ const Config = () => {
 
     const handleEditMembershipFee = () => {
       setUpdateInputMembershipFeeIsOpen(true);
-      serInputMembershipFee(membershipFee.value)
+      setInputMembershipFee(membershipFee.value)
     }
 
     const [idVariousPrice,setIdVariousPrice] = useState('')
     const [titleVariousPrice,setTitleVariousPrice] = useState('')
     const [valueVariousPrice,setValueVariousPrice] = useState('')
+
+    const [idPartnersBen,setIdPartnersBen] = useState('')
+    const [titlePartnersBen,setTitlePartnersBen] = useState('')
+    const [valuePartnersBen,setValuePartnersBen] = useState('')
 
     const handleBtnOpenUpdateVariousPrice = (id,title,value) => {
       setIdVariousPrice(id)
@@ -675,26 +735,98 @@ const Config = () => {
       setUpdateVariousPriceModal(true)
     }
 
-    const handleBtnAddVariouPrice = async() => {
-      const date = new Date();
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const day = String(date.getDate()).padStart(2, '0');
-      const hours = String(date.getHours()).padStart(2, '0');
-      const minutes = String(date.getMinutes()).padStart(2, '0');
-      const currentDate = `${year}-${month}-${day} ${hours}:${minutes}`;
-      const price_datetime = currentDate;
+    const handleBtnOpenUpdatePartnersBen = (id,title,value) => {
+        setIdPartnersBen(id)
+        setTitlePartnersBen(title)
+        setValuePartnersBen(value)
+        setUpdatePartnersBenModal(true)
+    }
 
-      if(inputAddTitleVariouPrice == '' || inputAddValueVariouPrice == '') {
+    const handleBtnAddPartnersBen = async() => {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const currentDate = `${year}-${month}-${day} ${hours}:${minutes}`;
+        const partnersBen_datetime = currentDate;
+
+        if(inputAddTitlePartnersBen == '' || inputAddValuePartnersBen == '') {
         toast('Debes completar todos los campos!', {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+        } else {
+            const obj = {
+                title: inputAddTitlePartnersBen,
+                value: inputAddValuePartnersBen,
+                partnersBen_datetime: partnersBen_datetime
+            }
+            const response = await fetch(`${apiUrl}/api/partnersBen/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                },
+                body: JSON.stringify(obj)
+            })
+            const data = await response.json();
+            if (response.ok) {
+                toast(`Has guardado correctamente`, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+                setTimeout(() => {
+                    setInputAddTitlePartnersBen('');
+                    setInputAddValuePartnersBen('');
+                }, 2500);
+            } else if(data.error === 'There is already a partnersBen with that title') {
+                toast('Ya existe un documento guardado con ese título!', {
+                    position: "top-right",
+                    autoClose: 1500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+            }
+        }
+    }
+
+    const handleBtnAddVariouPrice = async() => {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const currentDate = `${year}-${month}-${day} ${hours}:${minutes}`;
+        const price_datetime = currentDate;
+
+        if(inputAddTitleVariouPrice == '' || inputAddValueVariouPrice == '') {
+        toast('Debes completar todos los campos!', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
         });
         } else {
             const obj = {
@@ -739,7 +871,7 @@ const Config = () => {
             }
 
 
-          
+            
         }
     }
 
@@ -1132,6 +1264,60 @@ const Config = () => {
         </>
       )
     }
+
+    const DeletePartnerBenModal = ({id,partnerBen,setDeletePartnerBenModal}) => {
+
+        const handleBtnDeletePartnerBen = async() => {
+            setShowSpinner(true)
+            const response = await fetch(`${apiUrl}/api/partnersBen/${id}`, {
+                method: 'DELETE'
+            })
+            if (response.ok) {
+                toast('Has eliminado el item correctamente', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+                setTimeout(() => {
+                    setShowSpinner(false)
+                    setDeletePartnerBenModal(false)
+                }, 2500);
+            } 
+        }
+
+        const handleBtnNonDeletePartnerBen = () => {
+            setDeletePartnerBenModal(false)
+        }
+
+      return (
+        <>
+            <div className='confirmationDeleteBtnVariouModalContainer'>
+                <div className='confirmationDeleteBtnVariouModalContainer__ask'>¿Estás seguro que deseas borrar el item "{partnerBen}"?</div>
+                <div className='confirmationDeleteBtnVariouModalContainer__askMobile'>
+                    <div className='confirmationDeleteBtnVariouModalContainer__askMobile__ask'>¿Estás seguro que deseas borrar el item "{partnerBen}"?</div>
+                </div>
+                <div className='confirmationDeleteBtnVariouModalContainer__btnsContainer'>
+                    <div className='confirmationDeleteBtnVariouModalContainer__btnsContainer__btns'>
+                        {
+                            !showSpinner?                            
+                            <button onClick={handleBtnDeletePartnerBen} className='confirmationDeleteBtnVariouModalContainer__btnsContainer__btns__prop'>Si</button>
+                            :
+                            <Spinner/>
+                        }
+                    </div>
+                    <div className='confirmationDeleteBtnVariouModalContainer__btnsContainer__btns'>
+                        <button onClick={handleBtnNonDeletePartnerBen} className='confirmationDeleteBtnVariouModalContainer__btnsContainer__btns__prop'>No</button>
+                    </div>
+                </div>
+            </div>
+        </>
+      )
+    }
     
 
     
@@ -1325,6 +1511,101 @@ const Config = () => {
             </div>
             <div className='updateServiceModal__btn'>
                 <button onClick={handleBtnUpdateServiceValue} className='updateServiceModal__btn__prop'>Guardar</button>
+            </div>
+        </div>
+        
+      )
+    }
+
+    const UpdatePartnersBenModal = ({setUpdatePartnersBenModal,id,title,value}) => {
+
+        const [inputUpdateTitlePartnersBen,setInputUpdateTitlePartnersBen] = useState('')
+        const [inputUpdateValuePartnersBen,setInputUpdateValuePartnersBen] = useState('')
+
+        const handleBtnCloseModal = () => {
+            setUpdatePartnersBenModal(false)
+        }
+
+        const handleBtnUpdatePartnersBen = async() => {
+            if((inputUpdateTitlePartnersBen == '' || inputUpdateTitlePartnersBen == title) && (inputUpdateValuePartnersBen == '' || inputUpdateValuePartnersBen == value)) {
+            toast('No tienes cambios para actualizar!', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+            } else {
+            const obj = {
+                title: inputUpdateTitlePartnersBen?inputUpdateTitlePartnersBen:title,
+                value: inputUpdateValuePartnersBen?inputUpdateValuePartnersBen:value,
+            }
+            const response = await fetch(`${apiUrl}/api/partnersBen/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                },
+                body: JSON.stringify(obj)
+            })
+            if (response.ok) {
+                toast(`Has actualizado el precio de ${title} correctamente`, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+                setUpdatePartnersBenModal(false)
+            } 
+            const data = await response.json();
+            if(data.error === 'There is already a partnersBen with that title') {
+                toast('Ya existe un item con ese nombre!', {
+                    position: "top-right",
+                    autoClose: 1500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+            }
+        }
+    }
+
+      const handleInputTitleUpdatePartnersBen = (e) => {
+        const texto = e.target.value;
+        setInputUpdateTitlePartnersBen(texto)
+      }
+
+      const handleInputValueUpdatePartnersBen = (e) => {
+        const texto = e.target.value;
+        setInputUpdateValuePartnersBen(texto)
+      }
+
+      return (
+        <div className='updateServiceModal'>
+            <div className='updateServiceModal__btnCloseModal'>
+                <div onClick={handleBtnCloseModal} className='updateServiceModal__btnCloseModal__prop'>X</div>
+            </div>
+            <div className='updateServiceModal__data'>
+                <div className='updateServiceModal__data__label-input'>
+                    <div className='updateServiceModal__data__label-input__input'>
+                        <input value={inputUpdateTitlePartnersBen?inputUpdateTitlePartnersBen:title} onChange={handleInputTitleUpdatePartnersBen} className='updateServiceModal__data__label-input__input__prop' type="text" />
+                    </div>
+                    <div className='updateServiceModal__data__label-input__input'>
+                        <input value={inputUpdateValuePartnersBen?inputUpdateValuePartnersBen:value} onChange={handleInputValueUpdatePartnersBen} className='updateServiceModal__data__label-input__input__prop' type="text" />
+                    </div>
+                </div>
+            </div>
+            <div className='updateServiceModal__btn'>
+                <button onClick={handleBtnUpdatePartnersBen} className='updateServiceModal__btn__prop'>Guardar</button>
             </div>
         </div>
         
@@ -1552,6 +1833,52 @@ const Config = () => {
                       </div>
 
                     </div>
+                    <div className='configContainer__config__partners'>
+                        <div className='configContainer__config__partners__prop'>Socios:</div>
+                    </div>
+                    <div className='configContainer__config__addPartnersBen'>
+                        <div className='configContainer__config__addPartnersBen__addPartnersBenContainer'>
+                            <div className='configContainer__config__addPartnersBen__addPartnersBenContainer__input'>
+                                <input value={inputAddTitlePartnersBen} onChange={handleInputAddTitlePartnersBen} placeholder='ingrese algo' type="text" className='configContainer__config__addPartnersBen__addPartnersBenContainer__input__prop' />
+                            </div>
+                            <div className='configContainer__config__addPartnersBen__addPartnersBenContainer__input'>
+                                <input value={inputAddValuePartnersBen} onChange={handleInputAddValuePartnersBen} placeholder='ingrese puntos' type="text" className='configContainer__config__addPartnersBen__addPartnersBenContainer__input__prop' />
+                            </div>
+                            <div className='configContainer__config__addPartnersBen__addPartnersBenContainer__btn'>
+                                <button onClick={handleBtnAddPartnersBen} className='configContainer__config__addPartnersBen__addPartnersBenContainer__btn__prop'>Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='configContainer__config__partnersBenList'>
+                        {
+                          partnersBen.length != 0 &&
+                          <div className='configContainer__config__partnersBenList__titleList'>- Socios -</div>
+                        }
+                        {
+                            partnersBen.length == 0 ?
+                            <div style={{color:'black'}}>Aún no has guardado nada</div>
+                            :
+                            partnersBen.map((item) => {
+                            return(
+                                <>
+                                    <div className='configContainer__config__partnersBenList__item'>
+                                        <div className='configContainer__config__partnersBenList__item__label'>
+                                            <div className='configContainer__config__partnersBenList__item__label__prop'>{item.title}</div>
+                                        </div>
+                                        <div className='configContainer__config__partnersBenList__item__label'>
+                                            <div className='configContainer__config__partnersBenList__item__label__prop'>{item.value}pts</div>
+                                        </div>
+                                        <div className='configContainer__config__partnersBenList__item__btn'>
+                                            <button onClick={()=>{handleBtnOpenUpdatePartnersBen(item._id,item.title,item.value)}} className='configContainer__config__partnersBenList__item__btn__prop'>Editar</button>
+                                            <button onClick={()=>{handleOpenModalBtnDeletePartnersBen(item._id,item.title)}} className='configContainer__config__partnersBenList__item__btn__prop'>Borrar</button>
+                                        </div>
+                                    </div>
+                                </>
+                                )
+                              })
+                        }
+                    </div>
 
                     <div className='configContainer__config__various'>
                         <div className='configContainer__config__various__prop'>Varios:</div>
@@ -1599,6 +1926,8 @@ const Config = () => {
                               })
                         }
                     </div>
+
+
                     <div className='configContainer__config__weekDays'>
                         <div className='configContainer__config__weekDays__prop'>Días laborales:</div>
                     </div>
@@ -1733,6 +2062,9 @@ const Config = () => {
                             }
                             </div>
                     }
+                    {/* <div className='configContainer__config__partners'>
+                        <div className='configContainer__config__partners__prop'>Socios:</div>
+                    </div> */}
                         {
                           deleteCompanyModal&&<DeleteCompanyModal setDeleteCompanyModal={setDeleteCompanyModal} id={idCompany} company={nameCompany} />
                         }
@@ -1746,10 +2078,16 @@ const Config = () => {
                             deleteVariouModal&&<DeleteVariouModal setDeleteVariouModal={setDeleteVariouModal} id={idVariou} variou={titleVariou} />
                         }
                         {
+                            deletePartnerBenModal&&<DeletePartnerBenModal setDeletePartnerBenModal={setDeletePartnerBenModal} id={idPartnerBen} partnerBen={titlePartnerBen} />
+                        }
+                        {
                             updateServiceBtnIsOpen&&<UpdateServiceModal setUpdateServiceBtnIsOpen={setUpdateServiceBtnIsOpen} id={idService} title={titleService} value={valueService} />
                         }
                         {
                           updateVariousPriceModal&&<UpdateVariousPriceModal setUpdateVariousPriceModal={setUpdateVariousPriceModal} id={idVariousPrice} title={titleVariousPrice} value={valueVariousPrice} />
+                        }
+                        {
+                          updatePartnersBenModal&&<UpdatePartnersBenModal setUpdatePartnersBenModal={setUpdatePartnersBenModal} id={idPartnersBen} title={titlePartnersBen} value={valuePartnersBen} />
                         }
                 </div>
             </div>

@@ -93,6 +93,9 @@ const MenuOptions = ({isLoggedIn,role}) => {
         {
           isLoggedIn && role==='admin'?
           <>
+            <Link to={"/partners"} className='menuOptions__item'>
+              - Socios
+            </Link>
             <Link to={"/shiftsList"} className='menuOptions__item'>
               - Lista de turnos
             </Link>
@@ -108,9 +111,6 @@ const MenuOptions = ({isLoggedIn,role}) => {
             <Link to={"/usersList"} className='menuOptions__item'>
               - Lista de usuarios
             </Link>
-            {/* <Link to={"/prices"} className='menuOptions__item'>
-              - Lista de precios
-            </Link> */}
             <Link to={"/myShifts"} className='menuOptions__item'>
             - Mis turnos
             </Link>
@@ -127,6 +127,9 @@ const MenuOptions = ({isLoggedIn,role}) => {
           :
           isLoggedIn && (role==='premium' || role==='user')?
           <>
+            <Link to={"/partners"} className='menuOptions__item'>
+              - Socios
+            </Link>
             <Link to={"/myShifts"} className='menuOptions__item'>
             - Mis turnos
             </Link>

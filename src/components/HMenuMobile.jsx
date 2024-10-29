@@ -112,9 +112,9 @@ const MenuOptions = ({isLoggedIn,role}) => {
             <Link to={"/cuts"} className='menuOptionsMobile__item'>
                 - Cortes
             </Link>
-            {/* <Link onClick={goShiftList} className='menuOptionsMobile__item'>
+            <Link to={"/partners"} className='menuOptionsMobile__item'>
                 - Socios
-            </Link> */}
+            </Link>
             <Link to={"/shiftsList"} className='menuOptionsMobile__item'>
                 - Lista de turnos
             </Link>
@@ -158,9 +158,9 @@ const MenuOptions = ({isLoggedIn,role}) => {
             <Link to={"/cuts"} className='menuOptionsMobile__item'>
                 - Cortes
             </Link>
-            {/* <Link to={"/partners"} className='menuOptionsMobile__item'>
+            <Link to={"/partners"} className='menuOptionsMobile__item'>
                 - Socios
-            </Link> */}
+            </Link>
             <Link to={"/myShifts"} className='menuOptionsMobile__item'>
                 - Mis turnos
             </Link>
