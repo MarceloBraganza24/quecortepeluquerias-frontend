@@ -26,6 +26,7 @@ const PartnersList = () => {
     const optionsMembershipNumber = [];
     const optionsCompleteMembershipNumber = [];
     const [prices, setPrices] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     for (let i = 1; i <= 300; i++) {
         optionsCompleteMembershipNumber.push(i)
@@ -131,9 +132,33 @@ const PartnersList = () => {
     useEffect(() => {
         menuOptionsModal&&handleMenuOptionsModal(false);
         async function fetchData() {
-            const response = await fetch(`${apiUrl}/api/partners`)
+
+            try {
+                const response = await fetch(`${apiUrl}/api/partners`)
+                const partnersAll = await response.json();
+                if(!response.ok) {
+                    toast('No se pudieron obtener los socios, contacte al administrador', {
+                        position: "top-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                } else {
+                    setPartners(partnersAll.data)
+                }
+            } catch (error) {
+                console.error('Error al obtener datos:', error);
+            } finally {
+                setIsLoading(false);
+            }
+
+            /* const response = await fetch(`${apiUrl}/api/partners`)
             const partnersAll = await response.json();
-            setPartners(partnersAll.data)
+            setPartners(partnersAll.data) */
         }
         fetchData();
         async function fetchPricesData() {
@@ -465,7 +490,13 @@ const PartnersList = () => {
                                 </>
                             }
                         </div>
+
+
                         {
+                            isLoading ?
+                            <div className='myShiftsListContainer__withoutItems'>Cargando socios ...</div>
+                            :
+                            (partners.length != 0) ?
                             inputFilteredPartners===''?
                                 partners.map((partner) => {
                                     return(
@@ -494,12 +525,46 @@ const PartnersList = () => {
                                         />
                                     )
                                 })
+                            :
+                            <div className='myShiftsListContainer__withoutItems'>Aún no existen socios</div>
                         }
+
+
+                        {/* {
+                            inputFilteredPartners===''?
+                                partners.map((partner) => {
+                                    return(
+                                        <ItemPartner
+                                        id={partner._id}
+                                        first_name={partner.first_name}
+                                        last_name={partner.last_name}
+                                        partner_number={partner.partner_number}
+                                        email={partner.email} 
+                                        points={partner.points} 
+                                        resultCompleteMembershipNumber={resultCompleteMembershipNumber} 
+                                        />
+                                    )
+                                })
+                            :
+                                objetosFiltrados.map((partner) => {
+                                    return(
+                                        <ItemPartner
+                                        id={partner._id}
+                                        first_name={partner.first_name}
+                                        last_name={partner.last_name}
+                                        partner_number={partner.partner_number}
+                                        points={partner.points} 
+                                        email={partner.email}   
+                                        resultCompleteMembershipNumber={resultCompleteMembershipNumber} 
+                                        />
+                                    )
+                                })
+                        } */}
                     </div>
-                    {
+                    {/* {
                         (objetosFiltrados.length == 0) && 
                         <div className='myShiftsListContainer__withoutItems'>Aún no existen socios</div>
-                    }
+                    } */}
                 </div>
                 {
                     (objetosFiltrados.length == 0) ?

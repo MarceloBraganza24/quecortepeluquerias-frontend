@@ -18,7 +18,8 @@ const MyShifts = () => {
     const apiUrl = import.meta.env.VITE_API_URL;
     const [holidays, setHolidays] = useState([]);
     //const [showSpinner, setShowSpinner] = useState(false);
-
+    const [isLoading, setIsLoading] = useState(true);
+    
     let shiftsByEmail = [];
     if(shifts && (shifts.length!=0)) {
         shiftsByEmail = shifts.filter(shift => shift.email == user.email)
@@ -106,7 +107,32 @@ const MyShifts = () => {
     useEffect(() => {
         menuOptionsModal&&handleMenuOptionsModal(false);
         async function fetchShiftsData() {
-            const response = await fetch(`${apiUrl}/api/shifts`)
+
+
+            try {
+                const response = await fetch(`${apiUrl}/api/shifts`)
+                const shiftsAll = await response.json();
+                if(!response.ok) {
+                    toast('No se pudieron obtener los turnos, contacte al administrador', {
+                        position: "top-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                } else {
+                    setShifts(shiftsAll.data)
+                }
+            } catch (error) {
+                console.error('Error al obtener datos:', error);
+            } finally {
+                setIsLoading(false);
+            }
+
+            /* const response = await fetch(`${apiUrl}/api/shifts`)
             const shiftsAll = await response.json();
             if(!response.ok) {
                 toast('No se pudieron obtener los turnos disponibles, contacte a la peluquería', {
@@ -121,7 +147,7 @@ const MyShifts = () => {
                 });
             } else {
                 setShifts(shiftsAll.data)
-            }
+            } */
         }
         fetchShiftsData();
         async function fetchHolidaysData() {
@@ -183,7 +209,7 @@ const MyShifts = () => {
                     <div className='myShiftsListContainer'>
                         <div className='myShiftsListContainer__title'>- Mis turnos -</div>
                         {
-                            shiftsByEmail.length != 0?
+                            shiftsByEmail.length != 0&&
                                 <>
                                     <div className='myShiftsListContainer__myShiftsList__lengthShifts'>
                                         <div className='myShiftsListContainer__myShiftsList__lengthShifts__prop'>Cantidad de turnos: {shiftsByEmail.length}</div>
@@ -205,6 +231,10 @@ const MyShifts = () => {
                                             <div className='myShiftsListContainer__myShiftsList__header__label'>Horario</div>
                                         </div>
                                         {
+                                            isLoading ?
+                                            <div className='myShiftsListContainer__withoutItems'>Cargando turnos ...</div>
+                                            :
+                                            (shiftsByEmail.length != 0) ?
                                             shiftsByEmail.map((shift) => {
                                                 return(
                                                     <ItemMyShift
@@ -221,11 +251,31 @@ const MyShifts = () => {
                                                     />
                                                 )
                                             })
+                                            :
+                                            <div className='myShiftsListContainer__withoutItems'>Aún no existen turnos</div>
                                         }
+                                        {/* {
+                                            shiftsByEmail.map((shift) => {
+                                                return(
+                                                    <ItemMyShift
+                                                    id={shift._id}
+                                                    hairdresser={shift.hairdresser}
+                                                    first_name={shift.first_name}
+                                                    last_name={shift.last_name}
+                                                    service={shift.service}
+                                                    email={shift.email}   
+                                                    date={shift.date}
+                                                    schedule={shift.schedule}
+                                                    shifts={shifts}
+                                                    holidaysData={holidays}
+                                                    />
+                                                )
+                                            })
+                                        } */}
                                     </div>
                                 </>
-                            :
-                                <div className='myShiftsListContainer__withoutItems'>Aún no posees turnos</div>
+                            /* :
+                                <div className='myShiftsListContainer__withoutItems'>Aún no posees turnos</div> */
                         }
                     </div>
                     {

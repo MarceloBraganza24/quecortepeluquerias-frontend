@@ -23,6 +23,7 @@ const UsersList = () => {
     const {menuOptionsModal,handleMenuOptionsModal,updateUsersModal,updateUserModalMobile,createUserModalMobile,handleCreateUserModalMobile} = useContext(OpenModalContext);
     const optionsRoleUL = ["user","admin", "premium"];
     const [isMonted, setIsMonted] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const apiUrl = import.meta.env.VITE_API_URL;
     const [isOpenCreateUserModalLocalMobile, setIsOpenCreateUserModalLocalMobile] = useState(false);
 
@@ -108,7 +109,41 @@ const UsersList = () => {
     useEffect(() => {
         menuOptionsModal&&handleMenuOptionsModal(false);
         async function fetchUsersData() {
-            const response = await fetch(`${apiUrl}/api/users`)
+
+
+            try {
+                const response = await fetch(`${apiUrl}/api/users`)
+                const usersAll = await response.json();
+                if(!response.ok) {
+                    toast('No se pudieron obtener los usuarios, contacte al administrador', {
+                        position: "top-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                } else { 
+                    setUsers(usersAll.data)
+                }
+            } catch (error) {
+                console.error('Error al obtener datos:', error);
+            } finally {
+                setIsLoading(false);
+            }
+
+
+
+
+
+
+
+
+
+
+            /* const response = await fetch(`${apiUrl}/api/users`)
             const usersAll = await response.json();
             if(!response.ok) {
                 toast('No se pudieron obtener los usuarios, contacte al administrador', {
@@ -123,7 +158,7 @@ const UsersList = () => {
                 });
             } else {
                 setUsers(usersAll.data)
-            }
+            } */
         }
         fetchUsersData();
         const getCookie = (name) => {
@@ -444,6 +479,10 @@ const UsersList = () => {
                             }
                         </div>
                         {
+                            isLoading ?
+                            <div className='myShiftsListContainer__withoutItems'>Cargando usuarios ...</div>
+                            :
+                            (usersSinRoot.length != 0) ?
                             usersSinRoot.map((user) => {
                                 return(
                                     <ItemUser
@@ -455,12 +494,10 @@ const UsersList = () => {
                                     />
                                 )
                             })
+                            :
+                            <div className='myShiftsListContainer__withoutItems'>Aún no existen usuarios</div>
                         }
                     </div>
-                    {
-                        (usersSinRoot.length == 0) && 
-                        <div className='myShiftsListContainer__withoutItems'>Aún no existen usuarios</div>
-                    }
                 </div>
                 {
                     (usersSinRoot.length == 0) ?

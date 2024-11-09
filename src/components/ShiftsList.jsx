@@ -20,7 +20,7 @@ import CancelDaysModal from './CancelDaysModal';
 
 const ShiftsList = () => {
     const currentDate = new Date()
-    const { inputAddScheduleHShL,handleInputAddScheduleHShL,handleOnBlurInputAddScheduleMShLM,handleOnBlurInputAddScheduleHShLM,inputAddScheduleMShL,handleInputAddScheduleMShL,inputFirstNameShL, handleInputFirstNameShL,handleEmptyInputFirstNameShL,handleEmptyInputLastNameShL, inputLastNameShL, handleInputLastNameShL, inputEmailShL, handleInputEmailShL,handleEmptyInputAddScheduleHShL,handleEmptyInputAddScheduleMShL,handleEmptyInputEmailShL, inputDateShL, handleInputDateShL, selectScheduleOptionShL, handleSelectScheduleOptionShL,inputOptionServiceShL,handleInputOptionServiceShL,selectOptionHairdresserShL,handleSelectOptionHairdresserShL,selectOptionHeaderHairdresserShL,handleSelectOptionHeaderHairdresserShL } = useContext(InputDataShLContext);
+    const { inputAddScheduleHShL,handleInputAddScheduleHShL,handleOnBlurInputAddScheduleMShLM,handleOnBlurInputAddScheduleHShLM,inputAddScheduleMShL,handleInputAddScheduleMShL,inputFirstNameShL, handleInputFirstNameShL,handleEmptyInputFirstNameShL,handleEmptyInputLastNameShL, inputLastNameShL, handleInputLastNameShL, inputEmailShL, handleInputEmailShL,handleEmptyInputAddScheduleHShL,handleEmptyInputAddScheduleMShL,handleEmptyInputEmailShL, inputDateShL, handleInputDateShL, selectScheduleOptionShL, handleSelectScheduleOptionShL,inputOptionServiceShL,handleInputOptionServiceShL,selectOptionHairdresserShL,handleSelectOptionHairdresserShL,selectOptionHeaderHairdresserShL,handleSelectOptionHeaderHairdresserShL,selectYearShL,selectMonthShL,selectDayShL,handleSelectYearShL,handleSelectMonthShL,handleSelectDayShL } = useContext(InputDataShLContext);
     const {isLoggedIn, login, logout} = useContext(IsLoggedContext);
     const [user, setUser] = useState('');
     const [isAddSchedule, setIsAddSchedule] = useState(false);
@@ -35,6 +35,7 @@ const ShiftsList = () => {
     const [workDays, setWorkDays] = useState([]);
     const [hairdressers, setHairdressers] = useState([]);
     const [services, setServices] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     let formattedDate;
     inputDateShL&&(formattedDate = format(inputDateShL, 'yyyy-MM-dd'));
 
@@ -55,14 +56,14 @@ const ShiftsList = () => {
     
     const [showSpinner, setShowSpinner] = useState(false);
     
-    const [selectedYearValue, setSelectedYearsValue] = useState(`${new Date().getFullYear()}`);
+    //const [selectedYearValue, setSelectedYearsValue] = useState(`${new Date().getFullYear()}`);
     
     let currentMonth = currentDate.getMonth();
     currentMonth += 1;
-    const [selectedMonthValue, setSelectedMonthsValue] = useState(`${currentMonth}`);
+    //const [selectedMonthValue, setSelectedMonthsValue] = useState(`${currentMonth}`);
     
     const currentDay = currentDate.getDate();
-    const [selectedDayValue, setSelectedDayValue] = useState(`${currentDay}`);
+    //const [selectedDayValue, setSelectedDayValue] = useState(`${currentDay}`);
     
     function compararFechas(objeto1, objeto2) {
         var fechaHora1 = new Date(objeto1.date + " " + objeto1.schedule);
@@ -75,7 +76,8 @@ const ShiftsList = () => {
         return shiftsOrganized.filter(objeto => objeto.date == fecha);
     }
     
-    const dateDesired = selectedYearValue + '-' + (selectedMonthValue=='1'?'01':selectedMonthValue=='2'?'02':selectedMonthValue=='3'?'03':selectedMonthValue=='4'?'04':selectedMonthValue=='5'?'05':selectedMonthValue=='6'?'06':selectedMonthValue=='7'?'07':selectedMonthValue=='8'?'08':selectedMonthValue=='9'?'09':selectedMonthValue=='10'?'10':selectedMonthValue=='11'?'11':selectedMonthValue=='12'?'12':selectedMonthValue=='') + '-' + (selectedDayValue=='1'?'01':selectedDayValue=='2'?'02':selectedDayValue=='3'?'03':selectedDayValue=='4'?'04':selectedDayValue=='5'?'05':selectedDayValue=='6'?'06':selectedDayValue=='7'?'07':selectedDayValue=='8'?'08':selectedDayValue=='9'?'09':selectedDayValue)
+    //const dateDesired = selectedYearValue + '-' + (selectedMonthValue=='1'?'01':selectedMonthValue=='2'?'02':selectedMonthValue=='3'?'03':selectedMonthValue=='4'?'04':selectedMonthValue=='5'?'05':selectedMonthValue=='6'?'06':selectedMonthValue=='7'?'07':selectedMonthValue=='8'?'08':selectedMonthValue=='9'?'09':selectedMonthValue=='10'?'10':selectedMonthValue=='11'?'11':selectedMonthValue=='12'?'12':selectedMonthValue=='') + '-' + (selectedDayValue=='1'?'01':selectedDayValue=='2'?'02':selectedDayValue=='3'?'03':selectedDayValue=='4'?'04':selectedDayValue=='5'?'05':selectedDayValue=='6'?'06':selectedDayValue=='7'?'07':selectedDayValue=='8'?'08':selectedDayValue=='9'?'09':selectedDayValue)
+    const dateDesired = selectYearShL + '-' + (selectMonthShL=='1'?'01':selectMonthShL=='2'?'02':selectMonthShL=='3'?'03':selectMonthShL=='4'?'04':selectMonthShL=='5'?'05':selectMonthShL=='6'?'06':selectMonthShL=='7'?'07':selectMonthShL=='8'?'08':selectMonthShL=='9'?'09':selectMonthShL=='10'?'10':selectMonthShL=='11'?'11':selectMonthShL=='12'?'12':selectMonthShL=='') + '-' + (selectDayShL=='1'?'01':selectDayShL=='2'?'02':selectDayShL=='3'?'03':selectDayShL=='4'?'04':selectDayShL=='5'?'05':selectDayShL=='6'?'06':selectDayShL=='7'?'07':selectDayShL=='8'?'08':selectDayShL=='9'?'09':selectDayShL)
     const objetosFiltrados = filtrarPorFecha(shiftsOrganized, dateDesired);
 
     const dateDesiredMasUno = new Date(dateDesired)
@@ -91,15 +93,17 @@ const ShiftsList = () => {
     const yearDateDesiredMenosUno = dateDesiredMenosUno.getFullYear();
 
     const goFormerDay = () => {
-        setSelectedDayValue(`${dayDateDesiredMenosUno}`)
-        setSelectedMonthsValue(`${monthDateDesiredMenosUno}`)
-        setSelectedYearsValue(`${yearDateDesiredMenosUno}`)
+        //handleSelectYearShL,handleSelectMonthShL,handleSelectDayShL
+        handleSelectDayShL(`${dayDateDesiredMenosUno}`)
+        handleSelectMonthShL(`${monthDateDesiredMenosUno}`)
+        handleSelectYearShL(`${yearDateDesiredMenosUno}`)
     }
     
     const goNextDay = () => {
-        setSelectedDayValue(`${dayDateDesiredMasUno}`)
-        setSelectedMonthsValue(`${monthDateDesiredMasUno}`)
-        setSelectedYearsValue(`${yearDateDesiredMasUno}`)
+        //handleSelectYearShL,handleSelectMonthShL,handleSelectDayShL
+        handleSelectDayShL(`${dayDateDesiredMasUno}`)
+        handleSelectMonthShL(`${monthDateDesiredMasUno}`)
+        handleSelectYearShL(`${yearDateDesiredMasUno}`)
     }
 
     const hairdressersFiltered = objetosFiltrados.filter(shift => shift.hairdresser == selectOptionHeaderHairdresserShL);
@@ -231,8 +235,38 @@ const ShiftsList = () => {
 
     useEffect(() => {
         menuOptionsModal&&handleMenuOptionsModal(false);
+
         async function fetchData() {
-            const response = await fetch(`${apiUrl}/api/shifts`)
+
+            try {
+                const response = await fetch(`${apiUrl}/api/shifts`)
+                const shiftsAll = await response.json();
+                if(!response.ok) {
+                    toast('No se pudieron obtener los turnos, contacte al administrador', {
+                        position: "top-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                } else {
+                    setShifts(shiftsAll.data)
+                }
+            } catch (error) {
+                console.error('Error al obtener datos:', error);
+            } finally {
+                setIsLoading(false);
+            }
+
+
+
+
+
+
+            /* const response = await fetch(`${apiUrl}/api/shifts`)
             const shiftsAll = await response.json();
             if(!response.ok) {
                 toast('No se pudieron obtener los turnos, contacte al administrador', {
@@ -247,9 +281,10 @@ const ShiftsList = () => {
                 });
             } else {
                 setShifts(shiftsAll.data)
-            }
+            } */
         }
         fetchData();
+
         async function fetchHolidaysData() {
             const response = await fetch(`${apiUrl}/api/holidays`)
             const holidaysAll = await response.json();
@@ -319,7 +354,7 @@ const ShiftsList = () => {
         }, 10000)
     }, []);
 
-    const handleSelectYears = (event) => {
+    /* const handleSelectYears = (event) => {
         setSelectedYearsValue(event.target.value);
     };
 
@@ -329,7 +364,7 @@ const ShiftsList = () => {
 
     const handleSelectDay = (event) => {
         setSelectedDayValue(event.target.value);
-    };
+    }; */
 
     const handleDateChange = date => {
         handleInputDateShL(date);
@@ -921,7 +956,7 @@ const ShiftsList = () => {
                             <div className='shiftsListContainer__selects__labelSelect__label'>Año:</div>
                             {       
                                 !updateShiftModal&&!recoverShiftModal&&!cancelShiftModal&&!cancelDayModal&&!cancelDaysListModal?
-                                <select value={selectedYearValue} className='shiftsListContainer__selects__labelSelect__select' onChange={handleSelectYears}>
+                                <select value={selectYearShL} className='shiftsListContainer__selects__labelSelect__select' onChange={handleSelectYearShL}>
                                     <option value="2024">2024</option>
                                     <option value="2025">2025</option>
                                     <option value="2026">2026</option>
@@ -931,7 +966,7 @@ const ShiftsList = () => {
                                     <option value="2030">2030</option>
                                 </select>
                                 :
-                                <select disabled style={buttonDisabledStyle} value={selectedYearValue} className='shiftsListContainer__selects__labelSelect__select' onChange={handleSelectYears}>
+                                <select disabled style={buttonDisabledStyle} value={selectYearShL} className='shiftsListContainer__selects__labelSelect__select' onChange={handleSelectYearShL}>
                                     <option value="2024">2024</option>
                                     <option value="2025">2025</option>
                                     <option value="2026">2026</option>
@@ -946,7 +981,7 @@ const ShiftsList = () => {
                             <div className='shiftsListContainer__selects__labelSelect__label'>Mes:</div>
                             {       
                                 !updateShiftModal&&!recoverShiftModal&&!cancelShiftModal&&!cancelDayModal&&!cancelDaysListModal?
-                                <select value={selectedMonthValue} className='shiftsListContainer__selects__labelSelect__selectDays' onChange={handleSelectMonths}>
+                                <select value={selectMonthShL} className='shiftsListContainer__selects__labelSelect__selectDays' onChange={handleSelectMonthShL}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -961,7 +996,7 @@ const ShiftsList = () => {
                                     <option value="12">12</option>
                                 </select>
                                 :
-                                <select disabled style={buttonDisabledStyle} value={selectedMonthValue} className='shiftsListContainer__selects__labelSelect__selectDays' onChange={handleSelectMonths}>
+                                <select disabled style={buttonDisabledStyle} value={selectMonthShL} className='shiftsListContainer__selects__labelSelect__selectDays' onChange={handleSelectMonthShL}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -981,7 +1016,7 @@ const ShiftsList = () => {
                             <div className='shiftsListContainer__selects__labelSelect__label'>Día:</div>
                             {       
                                 !updateShiftModal&&!recoverShiftModal&&!cancelShiftModal&&!cancelDayModal&&!cancelDaysListModal?
-                                <select className='shiftsListContainer__selects__labelSelect__selectDays' onChange={handleSelectDay} value={selectedDayValue}>
+                                <select className='shiftsListContainer__selects__labelSelect__selectDays' onChange={handleSelectDayShL} value={selectDayShL}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -1015,7 +1050,7 @@ const ShiftsList = () => {
                                     <option id='day31' value="31">31</option>
                                 </select>
                                 :
-                                <select disabled style={buttonDisabledStyle} className='shiftsListContainer__selects__labelSelect__selectDays' onChange={handleSelectDay} value={selectedDayValue}>
+                                <select disabled style={buttonDisabledStyle} className='shiftsListContainer__selects__labelSelect__selectDays' onChange={handleSelectDayShL} value={selectDayShL}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -1303,6 +1338,32 @@ const ShiftsList = () => {
                             }
                         </div>
                         {
+                            isLoading ?
+                            <div className='myShiftsListContainer__withoutItems'>Cargando turnos ...</div>
+                            :
+                            (hairdressersFiltered.length != 0) ?
+                            hairdressersFiltered.map((shift) => {
+                                return(
+                                    <ItemShift
+                                    id={shift._id}
+                                    hairdresser={shift.hairdresser}
+                                    first_name={shift.first_name}
+                                    last_name={shift.last_name}
+                                    service={shift.service}
+                                    email={shift.email}
+                                    date={shift.date}
+                                    schedule={shift.schedule}
+                                    shifts={shifts}
+                                    hairdressers={hairdressers}
+                                    workDays={workDays}
+                                    services={services}
+                                    />
+                                )
+                            })
+                            :
+                            <div className='myShiftsListContainer__withoutItems'>Aún no existen turnos</div>
+                        }
+                        {/* {
                             hairdressersFiltered.length!=0&&
 
                             hairdressersFiltered.map((shift) => {
@@ -1323,7 +1384,7 @@ const ShiftsList = () => {
                                     />
                                 )
                             })
-                        }
+                        } */}
                         {/* {
                             selectOptionHeaderHairdresserShL=='Ayrton'&&hairdressersFiltered.length!=0?
                                 hairdressersFiltered.map((shift) => {
@@ -1385,7 +1446,7 @@ const ShiftsList = () => {
                 {
                     (hairdressersFiltered.length == 0) ?
                     <>
-                        <div className='shiftsListContainer__shiftsNotExistsMobile'>- Aún no existen turnos -</div>
+                        {/* <div className='shiftsListContainer__shiftsNotExistsMobile'>- Aún no existen turnos -</div> */}
                         <div className='shiftsListContainer__blackDiv' style={{padding:'10vh 0vh'}}></div>
                         <div className='shiftsListContainer__blackDivMobile' style={{padding:'15vh 0vh'}}></div>
                     </>

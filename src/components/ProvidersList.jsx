@@ -23,6 +23,7 @@ const ProvidersList = () => {
     const apiUrl = import.meta.env.VITE_API_URL;
     const [isMonted, setIsMonted] = useState(false);
     const [isOpenCreateProviderModalLocalMobile, setIsOpenCreateProviderModalLocalMobile] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     function cleanString(input) {
         let trimmed = input.trim();
@@ -86,9 +87,35 @@ const ProvidersList = () => {
     useEffect(() => {
         menuOptionsModal&&handleMenuOptionsModal(false);
         async function fetchData() {
-            const response = await fetch(`${apiUrl}/api/providers`)
+
+            
+            try {
+                const response = await fetch(`${apiUrl}/api/providers`)
+                const providersAll = await response.json();
+                if(!response.ok) {
+                    toast('No se pudieron obtener los proveedores, contacte al administrador', {
+                        position: "top-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                } else {
+                    setProviders(providersAll.data)
+                }
+            } catch (error) {
+                console.error('Error al obtener datos:', error);
+            } finally {
+                setIsLoading(false);
+            }
+
+            /* const response = await fetch(`${apiUrl}/api/providers`)
             const providersAll = await response.json();
-            setProviders(providersAll.data)
+            setProviders(providersAll.data) */
+
         }
         fetchData();
         const getCookie = (name) => {
@@ -412,7 +439,28 @@ const ProvidersList = () => {
                                 </>
                             }
                         </div>
+
                         {
+                            isLoading ?
+                            <div className='myShiftsListContainer__withoutItems'>Cargando proveedores ...</div>
+                            :
+                            (objetosFiltrados.length != 0) ?
+                            objetosFiltrados.map((provider) => {
+                                return(
+                                    <ItemProvider
+                                    id={provider._id}
+                                    businessName={provider.business_name}
+                                    cuitCuil={provider.cuit_cuil}
+                                    phone={provider.phone}
+                                    email={provider.email}
+                                    />
+                                )
+                            })
+                            :
+                            <div className='myShiftsListContainer__withoutItems'>Aún no existen proveedores</div>
+                        }
+
+                        {/* {
                                 objetosFiltrados.map((provider) => {
                                     return(
                                         <ItemProvider
@@ -424,12 +472,12 @@ const ProvidersList = () => {
                                         />
                                     )
                                 })
-                        }
+                        } */}
                     </div>
-                    {
+                    {/* {
                         (objetosFiltrados.length == 0) && 
                         <div className='myShiftsListContainer__withoutItems'>Aún no existen proveedores</div>
-                    }
+                    } */}
                 </div>
                 {
                     (objetosFiltrados.length == 0) ?

@@ -23,6 +23,7 @@ const ProductsList = () => {
     const apiUrl = import.meta.env.VITE_API_URL;
     const [isMonted, setIsMonted] = useState(false);
     const [isOpenCreateProductModalLocalMobile, setIsOpenCreateProductModalLocalMobile] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     
     function cleanString(input) {
         let trimmed = input.trim();
@@ -87,9 +88,33 @@ const ProductsList = () => {
     useEffect(() => {
         menuOptionsModal&&handleMenuOptionsModal(false);
         async function fetchData() {
-            const response = await fetch(`${apiUrl}/api/products`)
+
+            try {
+                const response = await fetch(`${apiUrl}/api/products`)
+                const productsAll = await response.json();
+                if(!response.ok) {
+                    toast('No se pudieron obtener los productos, contacte al administrador', {
+                        position: "top-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                } else {
+                    setProducts(productsAll.data)
+                }
+            } catch (error) {
+                console.error('Error al obtener datos:', error);
+            } finally {
+                setIsLoading(false);
+            }
+
+            /* const response = await fetch(`${apiUrl}/api/products`)
             const productsAll = await response.json();
-            setProducts(productsAll.data)
+            setProducts(productsAll.data) */
         }
         fetchData();
 
@@ -395,6 +420,10 @@ const ProductsList = () => {
                             }
                         </div>
                         {
+                            isLoading ?
+                            <div className='myShiftsListContainer__withoutItems'>Cargando productos ...</div>
+                            :
+                            (objetosFiltrados.length != 0) ?
                             objetosFiltrados.map((product) => {
                                 return(
                                     <ItemProduct
@@ -407,12 +436,28 @@ const ProductsList = () => {
                                     />
                                 )
                             })
-                        }
-                    </div>
-                        {
-                            (objetosFiltrados.length == 0) &&
+                            :
                             <div className='myShiftsListContainer__withoutItems'>Aún no existen productos</div>
                         }
+                        {/* {
+                            objetosFiltrados.map((product) => {
+                                return(
+                                    <ItemProduct
+                                    id={product._id}
+                                    title={product.title}
+                                    description={product.description}
+                                    price={product.price}
+                                    stock={product.stock}
+                                    category={product.category}
+                                    />
+                                )
+                            })
+                        } */}
+                    </div>
+                        {/* {
+                            (objetosFiltrados.length == 0) &&
+                            <div className='myShiftsListContainer__withoutItems'>Aún no existen productos</div>
+                        } */}
                 </div>
                 {
                     (objetosFiltrados.length == 0) ?
