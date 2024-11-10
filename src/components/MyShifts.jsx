@@ -209,7 +209,10 @@ const MyShifts = () => {
                     <div className='myShiftsListContainer'>
                         <div className='myShiftsListContainer__title'>- Mis turnos -</div>
                         {
-                            shiftsByEmail.length != 0&&
+                            isLoading ?
+                            <div className='myShiftsListContainer__withoutItems'>Cargando turnos ...</div>
+                            :
+                            (shiftsByEmail.length != 0) ?
                                 <>
                                     <div className='myShiftsListContainer__myShiftsList__lengthShifts'>
                                         <div className='myShiftsListContainer__myShiftsList__lengthShifts__prop'>Cantidad de turnos: {shiftsByEmail.length}</div>
@@ -231,51 +234,28 @@ const MyShifts = () => {
                                             <div className='myShiftsListContainer__myShiftsList__header__label'>Horario</div>
                                         </div>
                                         {
-                                            isLoading ?
-                                            <div className='myShiftsListContainer__withoutItems'>Cargando turnos ...</div>
-                                            :
-                                            (shiftsByEmail.length != 0) ?
+
                                             shiftsByEmail.map((shift) => {
-                                                return(
-                                                    <ItemMyShift
-                                                    id={shift._id}
-                                                    hairdresser={shift.hairdresser}
-                                                    first_name={shift.first_name}
-                                                    last_name={shift.last_name}
-                                                    service={shift.service}
-                                                    email={shift.email}   
-                                                    date={shift.date}
-                                                    schedule={shift.schedule}
+                                                    return(
+                                                        <ItemMyShift
+                                                        id={shift._id}
+                                                        hairdresser={shift.hairdresser}
+                                                        first_name={shift.first_name}
+                                                        last_name={shift.last_name}
+                                                        service={shift.service}
+                                                        email={shift.email}   
+                                                        date={shift.date}
+                                                        schedule={shift.schedule}
                                                     shifts={shifts}
                                                     holidaysData={holidays}
                                                     />
                                                 )
                                             })
-                                            :
-                                            <div className='myShiftsListContainer__withoutItems'>Aún no existen turnos</div>
                                         }
-                                        {/* {
-                                            shiftsByEmail.map((shift) => {
-                                                return(
-                                                    <ItemMyShift
-                                                    id={shift._id}
-                                                    hairdresser={shift.hairdresser}
-                                                    first_name={shift.first_name}
-                                                    last_name={shift.last_name}
-                                                    service={shift.service}
-                                                    email={shift.email}   
-                                                    date={shift.date}
-                                                    schedule={shift.schedule}
-                                                    shifts={shifts}
-                                                    holidaysData={holidays}
-                                                    />
-                                                )
-                                            })
-                                        } */}
                                     </div>
                                 </>
-                            /* :
-                                <div className='myShiftsListContainer__withoutItems'>Aún no posees turnos</div> */
+                            :
+                            <div className='myShiftsListContainer__withoutItems'>Aún no existen turnos</div>
                         }
                     </div>
                     {
