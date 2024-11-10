@@ -442,7 +442,7 @@ const ProvidersList = () => {
 
                         {
                             isLoading ?
-                            <div className='myShiftsListContainer__withoutItems'>Cargando proveedores ...</div>
+                            <div className='myShiftsListContainer__withoutItems'>Cargando proveedores&nbsp;&nbsp;<Spinner/></div>
                             :
                             (objetosFiltrados.length != 0) ?
                             objetosFiltrados.map((provider) => {
@@ -459,25 +459,7 @@ const ProvidersList = () => {
                             :
                             <div className='myShiftsListContainer__withoutItems'>Aún no existen proveedores</div>
                         }
-
-                        {/* {
-                                objetosFiltrados.map((provider) => {
-                                    return(
-                                        <ItemProvider
-                                        id={provider._id}
-                                        businessName={provider.business_name}
-                                        cuitCuil={provider.cuit_cuil}
-                                        phone={provider.phone}
-                                        email={provider.email}
-                                        />
-                                    )
-                                })
-                        } */}
                     </div>
-                    {/* {
-                        (objetosFiltrados.length == 0) && 
-                        <div className='myShiftsListContainer__withoutItems'>Aún no existen proveedores</div>
-                    } */}
                 </div>
                 {
                     (objetosFiltrados.length == 0) ?

@@ -1339,7 +1339,9 @@ const ShiftsList = () => {
                         </div>
                         {
                             isLoading ?
-                            <div className='myShiftsListContainer__withoutItems'>Cargando turnos ...</div>
+                            <>
+                            <div className='myShiftsListContainer__withoutItems'>Cargando turnos&nbsp;&nbsp;<Spinner/></div>
+                            </>
                             :
                             (hairdressersFiltered.length != 0) ?
                             hairdressersFiltered.map((shift) => {

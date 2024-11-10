@@ -480,7 +480,7 @@ const UsersList = () => {
                         </div>
                         {
                             isLoading ?
-                            <div className='myShiftsListContainer__withoutItems'>Cargando usuarios ...</div>
+                            <div className='myShiftsListContainer__withoutItems'>Cargando usuarios&nbsp;&nbsp;<Spinner/></div>
                             :
                             (usersSinRoot.length != 0) ?
                             usersSinRoot.map((user) => {

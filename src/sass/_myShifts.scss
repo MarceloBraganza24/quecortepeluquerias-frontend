@@ -59,7 +59,9 @@
     }
     &__withoutItems {
         width: 100%;
-        text-align: center;
+        height: auto;
+        display: flex;
+        @include disFC;
         color: white;
         font-size: 20px;
     }

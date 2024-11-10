@@ -210,7 +210,7 @@ const MyShifts = () => {
                         <div className='myShiftsListContainer__title'>- Mis turnos -</div>
                         {
                             isLoading ?
-                            <div className='myShiftsListContainer__withoutItems'>Cargando turnos ...</div>
+                            <div className='myShiftsListContainer__withoutItems'>Cargando turnos&nbsp;&nbsp;<Spinner/></div>
                             :
                             (shiftsByEmail.length != 0) ?
                                 <>

@@ -494,7 +494,7 @@ const PartnersList = () => {
 
                         {
                             isLoading ?
-                            <div className='myShiftsListContainer__withoutItems'>Cargando socios ...</div>
+                            <div className='myShiftsListContainer__withoutItems'>Cargando socios&nbsp;&nbsp;<Spinner/></div>
                             :
                             (partners.length != 0) ?
                             inputFilteredPartners===''?

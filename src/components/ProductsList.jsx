@@ -421,7 +421,7 @@ const ProductsList = () => {
                         </div>
                         {
                             isLoading ?
-                            <div className='myShiftsListContainer__withoutItems'>Cargando productos ...</div>
+                            <div className='myShiftsListContainer__withoutItems'>Cargando productos&nbsp;&nbsp;<Spinner/></div>
                             :
                             (objetosFiltrados.length != 0) ?
                             objetosFiltrados.map((product) => {
@@ -439,25 +439,7 @@ const ProductsList = () => {
                             :
                             <div className='myShiftsListContainer__withoutItems'>Aún no existen productos</div>
                         }
-                        {/* {
-                            objetosFiltrados.map((product) => {
-                                return(
-                                    <ItemProduct
-                                    id={product._id}
-                                    title={product.title}
-                                    description={product.description}
-                                    price={product.price}
-                                    stock={product.stock}
-                                    category={product.category}
-                                    />
-                                )
-                            })
-                        } */}
                     </div>
-                        {/* {
-                            (objetosFiltrados.length == 0) &&
-                            <div className='myShiftsListContainer__withoutItems'>Aún no existen productos</div>
-                        } */}
                 </div>
                 {
                     (objetosFiltrados.length == 0) ?

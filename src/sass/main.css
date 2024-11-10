@@ -10533,7 +10533,11 @@ h2 {
 }
 .myShiftsListContainer__withoutItems {
   width: 100%;
-  text-align: center;
+  height: auto;
+  display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
   font-size: 20px;
 }
