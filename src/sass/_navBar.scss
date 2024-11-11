@@ -1,7 +1,6 @@
 .navBarMobileContainer {
     display: none;
 }
-//d2b569
 .navBarContainer {
     background-color: black;
     width: 100%;
@@ -15,7 +14,6 @@
         height: auto;
         display: grid;
         grid-template-columns: 1fr 4fr;
-        //@include disFC();
         &__hMenu {
             width: 100%;
             height: auto;
@@ -30,17 +28,6 @@
                 height: auto;
             }
         }
-        /* &__title {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                text-decoration: none;
-                color: white;
-                font-size: 40px;
-                color: white;
-            }
-        } */
     }
     &__phrase-btns {
         width: 100%;
@@ -60,7 +47,7 @@
                 @include disFC();
                 &__prop {
                     color: white;
-                    font-size: 18px;
+                    font-size: 16px;
                 }
             }
             &__user {
@@ -70,7 +57,7 @@
                 @include disFC();
                 &__prop {
                     color: white;
-                    font-size: 12px;
+                    font-size: 10px;
                 }
             }
         }
@@ -87,6 +74,7 @@
                 @include disFC();
                 text-decoration: none;
                 color: white;
+                font-size: 16px;
                 &:hover {
                     background-color: #d2b569;
                     color: black;

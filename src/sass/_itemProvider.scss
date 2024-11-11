@@ -6,7 +6,7 @@
     text-align: center;
     color: white;
     border-top: 0.3vh solid white;
-    padding: 1vh 0vh;
+    padding: 2vh 0vh;
     &__input {
         width: 100%;
         height: auto;
@@ -15,7 +15,7 @@
             width: 100%;
             height: auto;
             text-align: center;
-            font-size: 20px;
+            font-size: 18px;
             background: none;
             border: none;
             color: white;
@@ -27,9 +27,9 @@
         @include disFC();
         gap: 1vh;
         &__btn {
-            width: 90%;
+            width: 80%;
             height: auto;
-            padding: 0.5vh;
+            padding: 0vh 0.3vh;
             @include btnsYellow;
         }
     }
@@ -57,7 +57,7 @@
             width: 100%;
             height: auto;
             text-align: center;
-            font-size: 20px;
+            font-size: 18px;
             background: none;
             border: none;
             color: white;
@@ -72,6 +72,7 @@
             width: 45%;
             height: auto;
             @include btnsYellow;
+            font-size: 14px;
         }
     }
 }

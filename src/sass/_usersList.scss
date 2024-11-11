@@ -1,12 +1,3 @@
-/* @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-} */
-
 .usersListContainer {
     background-color: black;
     width: 100%;
@@ -23,7 +14,7 @@
     }
     &__title {
         text-align: center;
-        font-size: 50px;
+        font-size: 40px;
         color: white;
         animation: fadeIn 2s ease-in;
     }
@@ -36,10 +27,10 @@
             color: black;
         }
         &__prop {
-            width: 70%;
-            height: 40px;
+            width: 50%;
+            height: 35px;
             text-align: center;
-            font-size: 30px;
+            font-size: 25px;
             border-radius: 2vh;
         }
     }
@@ -62,7 +53,7 @@
             padding-bottom: 1vh;
             &__prop {
                 color: white;
-                font-size: 20px;
+                font-size: 18px;
             }
         }
         &__headerMobile {
@@ -75,7 +66,7 @@
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
             text-align: center;
             color: white;
-            font-size: 25px;
+            font-size: 18px;
             padding: 1vh 0vh;
             gap: 1vh;
         }

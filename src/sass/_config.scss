@@ -16,7 +16,7 @@
         padding: 2vh 0vh;
         &__title {
             text-align: center;
-            font-size: 45px;
+            font-size: 40px;
             color: black;
             animation: fadeIn 2s ease-in;
         }
@@ -100,7 +100,7 @@
                     height: auto;
                     @include disFC();
                     &__prop {
-                        width: 50%;
+                        width: 60%;
                         @include btns;
                     }
                 }
@@ -150,7 +150,7 @@
                     height: auto;
                     @include disFC();
                     &__prop {
-                        width: 90%;
+                        width: 70%;
                         height: 35px;
                         @include btns;
                     }
@@ -186,7 +186,7 @@
                     height: auto;
                     @include disFC();
                     &__prop {
-                        width: 50%;
+                        width: 30%;
                         @include btns;
                     }
                 }
@@ -250,7 +250,7 @@
                     height: auto;
                     @include disFC();
                     &__prop {
-                        width: 90%;
+                        width: 65%;
                         height: 35px;
                         @include btns;
                     }
@@ -300,7 +300,7 @@
                     @include disFC();
                     gap: 2vh;
                     &__prop {
-                        width: 50%;
+                        width: 45%;
                         @include btns;
                     }
                 }
@@ -360,7 +360,7 @@
                     @include disFC();
                     gap: 1vh;
                     &__prop {
-                        width: 50%;
+                        width: 55%;
                         @include btns;
                     }
                 }
@@ -421,7 +421,7 @@
                     height: auto;
                     @include disFC();
                     &__prop {
-                        width: 80%;
+                        width: 70%;
                         height: 35px;
                         @include btns;
                     }
@@ -458,7 +458,7 @@
                     @include disFC();
                     gap: 2vh;
                     &__prop {
-                        width: 40%;
+                        width: 45%;
                         @include btns;
                     }
                 }
@@ -508,7 +508,7 @@
                     height: auto;
                     @include disFC();
                     &__prop {
-                        width: 80%;
+                        width: 70%;
                         height: 35px;
                         @include btns;
                     }

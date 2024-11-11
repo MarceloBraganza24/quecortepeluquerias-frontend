@@ -86,14 +86,16 @@
         padding: 2vh 0vh 2vh 0vh;
         &__phrase {
             color: white;
-            padding-bottom: 2vh;
+            padding: 2vh 0vh;
             animation: fadeIn 2s ease-in;
+            font-size: 40px;
         }
         &__credentials {
             width: 50%;
             height: auto;
             @include disFC();
             flex-direction: column;
+            padding-bottom: 2vh;
             &__label-input {
                 width: 100%;
                 height: auto;

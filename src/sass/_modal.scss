@@ -51,7 +51,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             padding: 1vh 0vh;
-            border-bottom: 0.3vh solid white;
+            //border-bottom: 0.3vh solid white;
             &__prop {
                 color: white;
                 font-size: 18px;
@@ -59,14 +59,16 @@
             }
         }
         &__hairdresser {
-            background-color: white;
+            background-color: #d2b569;
             width: 100%;
             color: black;
-            font-size: 25px;
+            font-size: 20px;
             font-weight: bold;
             text-align: center;
-            border-bottom: 0.3vh solid white;
-            padding: 0.5vh 0vh;
+            //border-bottom: 0.3vh solid white;
+            padding: 0.3vh 0vh;
+            border-radius: 2vh;
+            margin: 1vh 0vh;
         }
         &__nonDates {
             color: white;
@@ -79,11 +81,11 @@
             height: auto;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            padding: 1vh 0vh;
-            border-bottom: 0.3vh solid white;
+            padding-bottom: 1vh;
+            //border-bottom: 0.3vh solid white;
             &__prop {
                 color: white;
-                font-size: 18px;
+                font-size: 15px;
                 text-align: center;
             }
             &__btn {
@@ -91,8 +93,8 @@
                 height: auto;
                 @include disFC();
                 &__prop {
-                    width: 70%;
-                    font-size: 15px;
+                    width: 60%;
+                    font-size: 14px;
                     @include btnsYellow;
                 }
             }
@@ -142,7 +144,7 @@
                 color: white;
                 &__prop {
                     text-align: center;
-                    font-size: 30px;
+                    font-size: 20px;
                 }
             }
             &__input {
@@ -169,7 +171,6 @@
         &__prop {
             width: 50%;
             height: auto;
-            padding: 0.3vh 0vh;
             font-size: 18px;
             font-weight: bold;
             @include btnsYellow;            
@@ -253,90 +254,6 @@
         }
     }
 }
-/* .priceModalContainer {
-    background-color: black;
-    width: 60%;
-    height: auto;
-    @include disFC();
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 2vh 3vh 2vh;
-    z-index: 1;
-    &__btnCloseModal {
-        width: 100%;
-        height: auto;
-        display: flex;
-        justify-content: end;
-        &__prop {
-            color: #04064e;
-        }
-    }
-    &__header {
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        text-align: center;
-        color: #04064e;
-        font-size: 20px;
-        padding: 1vh;
-    }
-    &__itemPrice {
-        background-color: whitesmoke;
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        text-align: center;
-        color: black;
-        border-top: 0.3vh solid white;
-        padding: 1vh;
-        border-radius: 2vh;
-        &__input {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                width: 100%;
-                height: auto;
-                text-align: center;
-                font-size: 20px;
-                background: none;
-                border: none;
-                color: black;
-                font-weight: bold;
-            }
-        }
-        &__select {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                width: 90%;
-                height: auto;
-                text-align: center;
-                font-size: 20px;
-                color: black;
-            }
-        }
-        &__btns {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            gap: 1vh;
-            &__btn {
-                width: 60%;
-                height: auto;
-                @include btns;
-            }
-        }
-    }
-} */
 .shiftModalContainer {
     background-color: black;
     width: 95%;
@@ -367,7 +284,7 @@
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
         text-align: center;
         color: white;
-        font-size: 20px;
+        font-size: 18px;
         padding: 1vh;
         gap: 1vh;
     }
@@ -379,7 +296,6 @@
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
         text-align: center;
         color: black;
-        //border-top: 0.3vh solid white;
         padding: 1vh;
         border-radius: 2vh;
         gap: 1vh;
@@ -391,7 +307,7 @@
                 width: 100%;
                 height: auto;
                 text-align: center;
-                font-size: 20px;
+                font-size: 18px;
                 background: none;
                 border: none;
                 color: black;
@@ -427,7 +343,7 @@
                 width: 100%;
                 height: auto;
                 text-align: center;
-                font-size: 20px;
+                font-size: 18px;
                 color: black;
                 font-weight: bold;
             }
@@ -451,6 +367,8 @@
                 width: 60%;
                 height: auto;
                 @include btns;
+                font-size: 15px;
+                padding: 0vh 1vh;
             }
         }
     }
@@ -527,7 +445,7 @@
                 width: 100%;
                 height: 35px;
                 text-align: center;
-                font-size: 15px;
+                font-size: 18px;
                 color: black;
                 font-weight: bold;
                 padding: 0.3vh 0vh;
@@ -558,6 +476,8 @@
                 width: 60%;
                 height: auto;
                 @include btns;
+                font-size: 14px;
+                padding: 0.5vh 0.3vh;
             }
         }
     }
@@ -596,7 +516,7 @@
         &__label {
             text-align: center;
             color: white;
-            font-size: 20px;
+            font-size: 18px;
         }
     }
     &__itemUser {
@@ -619,7 +539,7 @@
                 width: 100%;
                 height: auto;
                 text-align: center;
-                font-size: 20px;
+                font-size: 18px;
                 background: none;
                 border: none;
                 color: black;
@@ -635,7 +555,7 @@
                 width: 90%;
                 height: auto;
                 text-align: center;
-                font-size: 20px;
+                font-size: 18px;
                 color: black;
                 font-weight: bold;
             }
@@ -735,50 +655,9 @@
         }
     }
 }
-/* .confirmationDeleteItemPriceOfModalContainer {
-    background-color: rgb(143, 177, 221);
-    width: 60%;
-    height: auto;
-    @include disFC();
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 2vh 3vh 2vh;
-    z-index: 2;
-    gap: 1vh;
-    &__ask {
-        text-align: center;
-        display: block;
-        font-size: 25px;
-        color: #04064e;
-    }
-    &__askMobile {
-        display: none;
-    }
-    &__btnsContainer {
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 1vh;
-        &__btns {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                width: 85%;
-                @include btns;
-            }
-        }
-    }
-} */
 .confirmationDeleteBtnUsersListModalContainer {
     background-color: black;
-    width: 50%;
+    width: 45%;
     height: auto;
     @include disFC();
     flex-direction: column;
@@ -793,7 +672,7 @@
     gap: 1vh;
     &__ask {
         display: block;
-        font-size: 25px;
+        font-size: 20px;
         color: white;
     }
     &__askMobile {
@@ -810,7 +689,7 @@
             height: auto;
             @include disFC();
             &__prop {
-                width: 85%;
+                width: 75%;
                 @include btnsYellow;
             }
         }
@@ -818,7 +697,7 @@
 }
 .confirmationDeleteBtnShiftListModalContainer {
     background-color: black;
-    width: 50%;
+    width: 40%;
     height: auto;
     @include disFC();
     flex-direction: column;
@@ -833,7 +712,7 @@
     gap: 1vh;
     &__ask {
         display: block;
-        font-size: 25px;
+        font-size: 20px;
         color: white;
     }
     &__askMobile {
@@ -850,7 +729,7 @@
             height: auto;
             @include disFC();
             &__prop {
-                width: 85%;
+                width: 70%;
                 @include btnsYellow;
             }
         }
@@ -898,7 +777,7 @@
 }
 .confirmationDeleteBtnMyShiftListModalContainer {
     background-color: black;
-    width: 50%;
+    width: 40%;
     height: auto;
     @include disFC();
     flex-direction: column;
@@ -913,7 +792,7 @@
     gap: 1vh;
     &__ask {
         display: block;
-        font-size: 25px;
+        font-size: 20px;
         color: white;
     }
     &__askMobile {
@@ -930,7 +809,7 @@
             height: auto;
             @include disFC();
             &__prop {
-                width: 85%;
+                width: 75%;
                 @include btnsYellow;
             }
         }
@@ -953,7 +832,7 @@
     gap: 1vh;
     &__ask {
         display: block;
-        font-size: 25px;
+        font-size: 20px;
         color: white;
         text-align: center;
     }
@@ -1108,7 +987,7 @@
 }
 .confirmationPayMembershipFeeModalContainer {
     background-color: black;
-    width: 50%;
+    width: 40%;
     height: auto;
     @include disFC();
     flex-direction: column;
@@ -1123,7 +1002,7 @@
     gap: 1vh;
     &__ask {
         display: block;
-        font-size: 25px;
+        font-size: 20px;
         color: white;
         text-align: center;
     }
@@ -1145,7 +1024,7 @@
             height: auto;
             @include disFC();
             &__prop {
-                width: 85%;
+                width: 75%;
                 @include btnsYellow;
             }
         }
@@ -1168,7 +1047,7 @@
     gap: 1vh;
     &__ask {
         display: block;
-        font-size: 25px;
+        font-size: 20px;
         color: white;
     }
     &__askMobile {
@@ -1185,7 +1064,7 @@
             height: auto;
             @include disFC();
             &__prop {
-                width: 85%;
+                width: 75%;
                 @include btnsYellow;
             }
         }
@@ -1209,7 +1088,7 @@
     gap: 1vh;
     &__ask {
         display: block;
-        font-size: 25px;
+        font-size: 20px;
         color: white;
     }
     &__askMobile {
@@ -1226,7 +1105,7 @@
             height: auto;
             @include disFC();
             &__prop {
-                width: 85%;
+                width: 75%;
                 @include btnsYellow;
             }
         }
@@ -1235,7 +1114,7 @@
 
 .confirmationDeleteBtnProductsListModalContainer {
     background-color: black;
-    width: 60%;
+    width: 50%;
     height: auto;
     @include disFC();
     flex-direction: column;
@@ -1250,7 +1129,7 @@
     gap: 1vh;
     &__ask {
         display: block;
-        font-size: 25px;
+        font-size: 20px;
         color: white;
     }
     &__askMobile {
@@ -1267,53 +1146,12 @@
             height: auto;
             @include disFC();
             &__prop {
-                width: 85%;
+                width: 75%;
                 @include btnsYellow;
             }
         }
     }
 }
-/* .confirmationDeleteItemPriceOfModalContainer {
-    background-color: rgb(143, 177, 221);
-    width: 60%;
-    height: auto;
-    @include disFC();
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 2vh 3vh 2vh;
-    z-index: 2;
-    gap: 1vh;
-    &__ask {
-        display: block;
-        font-size: 25px;
-        color: #04064e;
-    }
-    &__askMobile {
-        display: none;
-    }
-    &__btnsContainer {
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 1vh;
-        &__btns {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                width: 85%;
-                @include btns;
-            }
-        }
-    }
-} */
-
 .partnersModalContainer {
     background-color: black;
     width: 80%;
@@ -1344,7 +1182,7 @@
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
         text-align: center;
         color: white;
-        font-size: 20px;
+        font-size: 18px;
         padding: 1vh;
         gap: 1vh
     }
@@ -1368,7 +1206,7 @@
                 width: 100%;
                 height: auto;
                 text-align: center;
-                font-size: 20px;
+                font-size: 18px;
                 background: none;
                 border: none;
                 color: black;
@@ -1384,6 +1222,7 @@
                 width: 60%;
                 height: auto;
                 @include btns;
+                font-size: 14px;
             }
         }
     }
@@ -1419,7 +1258,7 @@
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         text-align: center;
         color: white;
-        font-size: 20px;
+        font-size: 18px;
         padding: 1vh;
     }
     &__itemProvider {
@@ -1441,7 +1280,7 @@
                 width: 100%;
                 height: auto;
                 text-align: center;
-                font-size: 20px;
+                font-size: 18px;
                 background: none;
                 border: none;
                 color: black;
@@ -1454,9 +1293,10 @@
             @include disFC();
             gap: 1vh;
             &__btn {
-                width: 60%;
+                width: 50%;
                 height: auto;
                 @include btns;
+                font-size: 14px;
             }
         }
     }
@@ -1492,7 +1332,7 @@
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
         text-align: center;
         color: white;
-        font-size: 20px;
+        font-size: 18px;
         padding: 1vh;
         gap: 1vh;
     }
@@ -1516,7 +1356,7 @@
                 width: 100%;
                 height: auto;
                 text-align: center;
-                font-size: 20px;
+                font-size: 18px;
                 background: none;
                 border: none;
                 color: black;
@@ -1533,6 +1373,7 @@
                 width: 60%;
                 height: auto;
                 @include btns;
+                font-size: 16px;
             }
         }
     }
@@ -1540,36 +1381,6 @@
 .createShiftModalContainerMobile {
     display: none;
 }
-/* .btnMPModalContainer {
-    background-color: rgb(143, 177, 221);
-    width: 50%;
-    height: auto;
-    @include disFC();
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 1vh;
-    z-index: 3;
-    overflow: auto;
-    &__btnCloseModal {
-        width: 100%;
-        height: auto;
-        display: flex;
-        justify-content: end;
-        padding-right: 2vh;
-        color: #04064e;
-    }
-    &__phrase {
-        width: 100%;
-        height: auto;
-        text-align: center;
-        color: #04064e;
-    }
-} */
 .updateShiftModalContainerMobile {
     display: none;
 }
@@ -1577,35 +1388,6 @@
     display: none;
 }
 @media (max-width: 480px) {
-/* .btnMPModalContainer {
-    background-color: rgb(143, 177, 221);
-    width: 90%;
-    height: auto;
-    @include disFC();
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 0vh;
-    z-index: 1;
-    &__btnCloseModal {
-        width: 100%;
-        height: auto;
-        display: flex;
-        justify-content: end;
-        padding-right: 2vh;
-        color: #04064e;
-    }
-    &__phrase {
-        width: 100%;
-        height: auto;
-        text-align: center;
-        color: #04064e;
-    }
-} */
 .myDataModalContainer {
     background-color: black;
     width: 90%;

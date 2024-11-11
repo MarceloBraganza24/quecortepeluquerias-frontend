@@ -4,12 +4,13 @@
     height: auto;
     @include disFC();
     flex-direction: column;
-    padding: 8vh 0vh 20vh 0vh;
+    padding: 4vh 0vh 8vh 0vh;
     &__title {
         text-align: center;
-        font-size: 50px;
+        font-size: 40px;
         color: white;
         animation: fadeIn 2s ease-in;
+        padding-bottom: 4vh;
     }
     &__data {
         background-color: black;
@@ -33,7 +34,7 @@
                 color: white;
                 &__prop {
                     text-align: center;
-                    font-size: 30px;
+                    font-size: 25px;
                 }
             }
             &__labelData {
@@ -53,7 +54,7 @@
                 color: white;
                 &__prop {
                     text-align: center;
-                    font-size: 30px;
+                    font-size: 25px;
                 }
             }
         }
@@ -67,6 +68,7 @@
             width: 20%;
             height: auto;
             @include btnsYellow;
+            padding: 0.3vh 0vh;
         }
     }
 }

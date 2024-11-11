@@ -551,17 +551,6 @@ h2 {
   height: auto;
   display: grid;
   grid-template-columns: 1fr 4fr;
-  /* &__title {
-      width: 100%;
-      height: auto;
-      @include disFC();
-      &__prop {
-          text-decoration: none;
-          color: white;
-          font-size: 40px;
-          color: white;
-      }
-  } */
 }
 .navBarContainer__hMenuLogo__hMenu {
   width: 100%;
@@ -604,7 +593,7 @@ h2 {
 }
 .navBarContainer__phrase-btns__phrase-user__phrase__prop {
   color: white;
-  font-size: 18px;
+  font-size: 16px;
 }
 .navBarContainer__phrase-btns__phrase-user__user {
   grid-column: 3/-1;
@@ -616,7 +605,7 @@ h2 {
 }
 .navBarContainer__phrase-btns__phrase-user__user__prop {
   color: white;
-  font-size: 12px;
+  font-size: 10px;
 }
 .navBarContainer__phrase-btns__btns {
   width: 100%;
@@ -634,6 +623,7 @@ h2 {
   align-items: center;
   text-decoration: none;
   color: white;
+  font-size: 16px;
 }
 .navBarContainer__phrase-btns__btns__prop:hover {
   background-color: #d2b569;
@@ -732,11 +722,14 @@ h2 {
 .footerContainer__social-networks__logo-link__link {
   text-decoration: none;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 }
 .footerContainer__social-networks__logo-link__link:hover {
   color: #d2b569;
   cursor: pointer;
+}
+.footerContainer__social-networks__logo-link__logo {
+  width: 8%;
 }
 .footerContainer__title-copyrigth {
   width: 100%;
@@ -760,6 +753,7 @@ h2 {
   align-items: center;
   flex-direction: column;
   color: white;
+  font-size: 18px;
 }
 .footerContainer__title-copyrigth__title__prop__spacing {
   letter-spacing: 0.5vh;
@@ -772,7 +766,7 @@ h2 {
   align-items: center;
 }
 .footerContainer__title-copyrigth__copyrigth__prop {
-  font-size: 12px;
+  font-size: 10px;
   color: white;
   text-decoration: none;
 }
@@ -1044,8 +1038,9 @@ h2 {
 }
 .shiftsContainerIsLoggedIn__form__phrase {
   color: white;
-  padding-bottom: 2vh;
+  padding: 2vh 0vh;
   animation: fadeIn 2s ease-in;
+  font-size: 40px;
 }
 .shiftsContainerIsLoggedIn__form__credentials {
   width: 50%;
@@ -1054,6 +1049,7 @@ h2 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-bottom: 2vh;
 }
 .shiftsContainerIsLoggedIn__form__credentials__label-input {
   width: 100%;
@@ -1448,7 +1444,7 @@ h2 {
   width: 90%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -1502,7 +1498,7 @@ h2 {
   width: 100%;
   height: 40px;
   text-align: center;
-  font-size: 20px;
+  font-size: 16px;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -1647,7 +1643,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -1661,14 +1657,14 @@ h2 {
   gap: 0.5vh;
 }
 .itemShift__inputSchedule__prop {
-  font-size: 20px;
+  font-size: 18px;
   color: white;
 }
 .itemShift__label {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   color: white;
 }
 .itemShift__btns {
@@ -1873,7 +1869,7 @@ h2 {
   background-color: whitesmoke;
   width: 100%;
   height: auto;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
   color: black;
   border: none;
@@ -1908,6 +1904,7 @@ h2 {
   height: auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  padding: 1vh 0vh;
 }
 .shiftsListContainer__selectHairdresser-title__selectHairdresser {
   width: 100%;
@@ -1918,7 +1915,7 @@ h2 {
   gap: 2vh;
 }
 .shiftsListContainer__selectHairdresser-title__selectHairdresser__label {
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .shiftsListContainer__selectHairdresser-title__selectHairdresser__select {
@@ -1926,9 +1923,9 @@ h2 {
   height: auto;
 }
 .shiftsListContainer__selectHairdresser-title__selectHairdresser__select__prop {
-  width: 100%;
+  width: 120px;
   height: 35px;
-  font-size: 18px;
+  font-size: 15px;
   text-align: center;
   background-color: #d2b569;
   color: black;
@@ -1944,7 +1941,7 @@ h2 {
 }
 .shiftsListContainer__selectHairdresser-title__title {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   color: white;
   animation: fadeIn 2s ease-in;
 }
@@ -1954,7 +1951,7 @@ h2 {
   height: auto;
   display: flex;
   border-top: 0.3vh solid white;
-  padding: 2vh 0vh;
+  padding: 3vh 0vh;
 }
 .shiftsListContainer__selects__labelSelect {
   width: 100%;
@@ -1965,12 +1962,12 @@ h2 {
   gap: 2vh;
 }
 .shiftsListContainer__selects__labelSelect__label {
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .shiftsListContainer__selects__labelSelect__select {
   width: 30%;
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
   background-color: #d2b569;
   color: black;
@@ -1986,7 +1983,7 @@ h2 {
 }
 .shiftsListContainer__selects__labelSelect__selectDays {
   width: 35%;
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
   background-color: #d2b569;
   color: black;
@@ -2027,7 +2024,7 @@ h2 {
   height: auto;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  padding-bottom: 1vh;
+  padding: 2vh 0vh;
 }
 .shiftsListContainer__shiftsList__lengthShifts__cancelDaysList {
   width: 100%;
@@ -2038,7 +2035,7 @@ h2 {
 }
 .shiftsListContainer__shiftsList__lengthShifts__cancelDaysList__btn {
   width: 50%;
-  font-size: 20px;
+  font-size: 18px;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -2060,7 +2057,7 @@ h2 {
 }
 .shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn {
   width: 20%;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
   background-color: #d2b569;
   color: black;
@@ -2075,7 +2072,7 @@ h2 {
 }
 .shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__prop {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 }
 .shiftsListContainer__shiftsList__headerMobile {
   display: none;
@@ -2607,7 +2604,7 @@ h2 {
   height: auto;
   color: white;
   text-align: center;
-  font-size: 45px;
+  font-size: 40px;
 }
 .partnersContainer__phrase {
   width: 60%;
@@ -2668,7 +2665,7 @@ h2 {
   height: auto;
   color: white;
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
 }
 .partnersContainerMembershipFeeOk__phrase {
   width: 60%;
@@ -3503,7 +3500,7 @@ h2 {
 }
 .partnersListContainer__title {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   color: white;
   animation: fadeIn 2s ease-in;
 }
@@ -3522,10 +3519,10 @@ h2 {
   color: black;
 }
 .partnersListContainer__inputFilteredPartners__prop {
-  width: 70%;
-  height: 40px;
+  width: 50%;
+  height: 35px;
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
   border-radius: 2vh;
 }
 .partnersListContainer__createPartnerMobile {
@@ -3551,7 +3548,7 @@ h2 {
 }
 .partnersListContainer__partnersList__lengthShifts__prop {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 }
 .partnersListContainer__partnersList__headerMobile {
   display: none;
@@ -3563,7 +3560,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
   padding: 1vh 0vh;
   gap: 1vh;
 }
@@ -3703,7 +3700,7 @@ h2 {
   text-align: center;
   color: white;
   border-top: 0.3vh solid white;
-  padding: 1vh 0vh;
+  padding: 2vh 0vh;
 }
 .itemCreatePartner__input {
   width: 100%;
@@ -3716,7 +3713,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -3732,7 +3729,7 @@ h2 {
   width: 50%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -3754,9 +3751,9 @@ h2 {
   gap: 1vh;
 }
 .itemCreatePartner__btns__btn {
-  width: 90%;
+  width: 80%;
   height: auto;
-  padding: 0.5vh;
+  padding: 0vh 0.3vh;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -3798,7 +3795,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -3807,7 +3804,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
 }
 .itemPartner__btns {
   width: 100%;
@@ -3826,6 +3823,7 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
   transition: transform 0.2s;
+  font-size: 14px;
 }
 .itemPartner__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -3932,7 +3930,7 @@ h2 {
 }
 .providersListContainer__title {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   color: white;
   animation: fadeIn 2s ease-in;
 }
@@ -3951,10 +3949,10 @@ h2 {
   color: black;
 }
 .providersListContainer__inputFilteredProviders__prop {
-  width: 70%;
-  height: 40px;
+  width: 50%;
+  height: 35px;
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
   border-radius: 2vh;
 }
 .providersListContainer__createProviderMobile {
@@ -3980,7 +3978,7 @@ h2 {
 }
 .providersListContainer__providersList__lengthShifts__prop {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 }
 .providersListContainer__providersList__headerMobile {
   display: none;
@@ -3992,7 +3990,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 25px;
+  font-size: 20px;
   padding: 1vh 0vh;
 }
 
@@ -4117,7 +4115,7 @@ h2 {
   text-align: center;
   color: white;
   border-top: 0.3vh solid white;
-  padding: 1vh 0vh;
+  padding: 2vh 0vh;
 }
 .itemCreateProvider__input {
   width: 100%;
@@ -4130,7 +4128,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -4144,9 +4142,9 @@ h2 {
   gap: 1vh;
 }
 .itemCreateProvider__btns__btn {
-  width: 90%;
+  width: 80%;
   height: auto;
-  padding: 0.5vh;
+  padding: 0vh 0.3vh;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -4188,7 +4186,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -4210,6 +4208,7 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
   transition: transform 0.2s;
+  font-size: 14px;
 }
 .itemProvider__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -4315,7 +4314,7 @@ h2 {
 }
 .productsListContainer__title {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   color: white;
   animation: fadeIn 2s ease-in;
 }
@@ -4334,10 +4333,10 @@ h2 {
   color: black;
 }
 .productsListContainer__inputFilteredProducts__prop {
-  width: 70%;
-  height: 40px;
+  width: 50%;
+  height: 35px;
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
   border-radius: 2vh;
 }
 .productsListContainer__createProductMobile {
@@ -4363,7 +4362,7 @@ h2 {
 }
 .productsListContainer__productsList__lengthShifts__prop {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 }
 .productsListContainer__productsList__headerMobile {
   display: none;
@@ -4375,7 +4374,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 25px;
+  font-size: 20px;
   padding: 1vh 0vh;
 }
 
@@ -4497,7 +4496,7 @@ h2 {
   text-align: center;
   color: white;
   border-top: 0.3vh solid white;
-  padding: 1vh 0vh;
+  padding: 2vh 0vh;
 }
 .itemCreateProduct__input {
   width: 100%;
@@ -4510,7 +4509,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -4524,7 +4523,7 @@ h2 {
   gap: 1vh;
 }
 .itemCreateProduct__btns__btn {
-  width: 90%;
+  width: 80%;
   height: auto;
   background-color: #d2b569;
   color: black;
@@ -4532,6 +4531,7 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
   transition: transform 0.2s;
+  padding: 0vh 0.3vh;
 }
 .itemCreateProduct__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -4567,7 +4567,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -4576,7 +4576,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
 }
 .itemProduct__btns {
   width: 100%;
@@ -4595,6 +4595,8 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
   transition: transform 0.2s;
+  padding: 0vh 0.3vh;
+  font-size: 14px;
 }
 .itemProduct__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -4678,7 +4680,7 @@ h2 {
   text-align: center;
   color: white;
   border-top: 0.3vh solid white;
-  padding: 1vh 0vh;
+  padding: 2vh 0vh;
 }
 .itemCreateUser__input {
   width: 100%;
@@ -4707,7 +4709,7 @@ h2 {
   width: 80%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   background-color: #d2b569;
   color: black;
@@ -4732,6 +4734,7 @@ h2 {
 .itemCreateUser__btns__btn {
   width: 80%;
   height: auto;
+  padding: 0vh 0.3vh;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -4774,7 +4777,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -4796,6 +4799,7 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
   transition: transform 0.2s;
+  font-size: 14px;
 }
 .itemUser__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -4874,14 +4878,6 @@ h2 {
     display: none;
   }
 }
-/* @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-} */
 .usersListContainer {
   background-color: black;
   width: 100%;
@@ -4899,7 +4895,7 @@ h2 {
 }
 .usersListContainer__title {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   color: white;
   animation: fadeIn 2s ease-in;
 }
@@ -4918,10 +4914,10 @@ h2 {
   color: black;
 }
 .usersListContainer__inputFilteredUsers__prop {
-  width: 70%;
-  height: 40px;
+  width: 50%;
+  height: 35px;
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
   border-radius: 2vh;
 }
 .usersListContainer__createUserMobile {
@@ -4947,7 +4943,7 @@ h2 {
 }
 .usersListContainer__usersList__lengthShifts__prop {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 }
 .usersListContainer__usersList__headerMobile {
   display: none;
@@ -4959,7 +4955,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 25px;
+  font-size: 18px;
   padding: 1vh 0vh;
   gap: 1vh;
 }
@@ -5248,7 +5244,6 @@ h2 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 1vh 0vh;
-  border-bottom: 0.3vh solid white;
 }
 .cancelDaysModalContainer__cancelDaysList__header__prop {
   color: white;
@@ -5256,14 +5251,15 @@ h2 {
   text-align: center;
 }
 .cancelDaysModalContainer__cancelDaysList__hairdresser {
-  background-color: white;
+  background-color: #d2b569;
   width: 100%;
   color: black;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
-  border-bottom: 0.3vh solid white;
-  padding: 0.5vh 0vh;
+  padding: 0.3vh 0vh;
+  border-radius: 2vh;
+  margin: 1vh 0vh;
 }
 .cancelDaysModalContainer__cancelDaysList__nonDates {
   color: white;
@@ -5276,12 +5272,11 @@ h2 {
   height: auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 1vh 0vh;
-  border-bottom: 0.3vh solid white;
+  padding-bottom: 1vh;
 }
 .cancelDaysModalContainer__cancelDaysList__itemCancelDay__prop {
   color: white;
-  font-size: 18px;
+  font-size: 15px;
   text-align: center;
 }
 .cancelDaysModalContainer__cancelDaysList__itemCancelDay__btn {
@@ -5292,8 +5287,8 @@ h2 {
   align-items: center;
 }
 .cancelDaysModalContainer__cancelDaysList__itemCancelDay__btn__prop {
-  width: 70%;
-  font-size: 15px;
+  width: 60%;
+  font-size: 14px;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -5361,7 +5356,7 @@ h2 {
 }
 .myDataModalContainer__data__label-input__label__prop {
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
 }
 .myDataModalContainer__data__label-input__input {
   width: 100%;
@@ -5390,7 +5385,6 @@ h2 {
 .myDataModalContainer__btn__prop {
   width: 50%;
   height: auto;
-  padding: 0.3vh 0vh;
   font-size: 18px;
   font-weight: bold;
   background-color: #d2b569;
@@ -5504,90 +5498,6 @@ h2 {
   box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
 }
 
-/* .priceModalContainer {
-    background-color: black;
-    width: 60%;
-    height: auto;
-    @include disFC();
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 2vh 3vh 2vh;
-    z-index: 1;
-    &__btnCloseModal {
-        width: 100%;
-        height: auto;
-        display: flex;
-        justify-content: end;
-        &__prop {
-            color: #04064e;
-        }
-    }
-    &__header {
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        text-align: center;
-        color: #04064e;
-        font-size: 20px;
-        padding: 1vh;
-    }
-    &__itemPrice {
-        background-color: whitesmoke;
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        text-align: center;
-        color: black;
-        border-top: 0.3vh solid white;
-        padding: 1vh;
-        border-radius: 2vh;
-        &__input {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                width: 100%;
-                height: auto;
-                text-align: center;
-                font-size: 20px;
-                background: none;
-                border: none;
-                color: black;
-                font-weight: bold;
-            }
-        }
-        &__select {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                width: 90%;
-                height: auto;
-                text-align: center;
-                font-size: 20px;
-                color: black;
-            }
-        }
-        &__btns {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            gap: 1vh;
-            &__btn {
-                width: 60%;
-                height: auto;
-                @include btns;
-            }
-        }
-    }
-} */
 .shiftModalContainer {
   background-color: black;
   width: 95%;
@@ -5621,7 +5531,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   padding: 1vh;
   gap: 1vh;
 }
@@ -5648,7 +5558,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: black;
@@ -5694,7 +5604,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   color: black;
   font-weight: bold;
 }
@@ -5725,6 +5635,8 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px black, -4px -4px 10px black;
   transition: transform 0.2s;
+  font-size: 15px;
+  padding: 0vh 1vh;
 }
 .shiftModalContainer__itemShift__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -5815,7 +5727,7 @@ h2 {
   width: 100%;
   height: 35px;
   text-align: center;
-  font-size: 15px;
+  font-size: 18px;
   color: black;
   font-weight: bold;
   padding: 0.3vh 0vh;
@@ -5858,6 +5770,8 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px black, -4px -4px 10px black;
   transition: transform 0.2s;
+  font-size: 14px;
+  padding: 0.5vh 0.3vh;
 }
 .myShiftModalContainer__itemShift__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -5901,7 +5815,7 @@ h2 {
 .usersModalContainer__header__label {
   text-align: center;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 }
 .usersModalContainer__itemUser {
   background-color: whitesmoke;
@@ -5927,7 +5841,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: black;
@@ -5945,7 +5859,7 @@ h2 {
   width: 90%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   color: black;
   font-weight: bold;
 }
@@ -6082,50 +5996,9 @@ h2 {
   box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
 }
 
-/* .confirmationDeleteItemPriceOfModalContainer {
-    background-color: rgb(143, 177, 221);
-    width: 60%;
-    height: auto;
-    @include disFC();
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 2vh 3vh 2vh;
-    z-index: 2;
-    gap: 1vh;
-    &__ask {
-        text-align: center;
-        display: block;
-        font-size: 25px;
-        color: #04064e;
-    }
-    &__askMobile {
-        display: none;
-    }
-    &__btnsContainer {
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 1vh;
-        &__btns {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                width: 85%;
-                @include btns;
-            }
-        }
-    }
-} */
 .confirmationDeleteBtnUsersListModalContainer {
   background-color: black;
-  width: 50%;
+  width: 45%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -6143,7 +6016,7 @@ h2 {
 }
 .confirmationDeleteBtnUsersListModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .confirmationDeleteBtnUsersListModalContainer__askMobile {
@@ -6164,7 +6037,7 @@ h2 {
   align-items: center;
 }
 .confirmationDeleteBtnUsersListModalContainer__btnsContainer__btns__prop {
-  width: 85%;
+  width: 75%;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -6179,7 +6052,7 @@ h2 {
 
 .confirmationDeleteBtnShiftListModalContainer {
   background-color: black;
-  width: 50%;
+  width: 40%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -6197,7 +6070,7 @@ h2 {
 }
 .confirmationDeleteBtnShiftListModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .confirmationDeleteBtnShiftListModalContainer__askMobile {
@@ -6218,7 +6091,7 @@ h2 {
   align-items: center;
 }
 .confirmationDeleteBtnShiftListModalContainer__btnsContainer__btns__prop {
-  width: 85%;
+  width: 70%;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -6287,7 +6160,7 @@ h2 {
 
 .confirmationDeleteBtnMyShiftListModalContainer {
   background-color: black;
-  width: 50%;
+  width: 40%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -6305,7 +6178,7 @@ h2 {
 }
 .confirmationDeleteBtnMyShiftListModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .confirmationDeleteBtnMyShiftListModalContainer__askMobile {
@@ -6326,7 +6199,7 @@ h2 {
   align-items: center;
 }
 .confirmationDeleteBtnMyShiftListModalContainer__btnsContainer__btns__prop {
-  width: 85%;
+  width: 75%;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -6359,7 +6232,7 @@ h2 {
 }
 .confirmationDeleteBtnCancelDaysModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
   text-align: center;
 }
@@ -6558,7 +6431,7 @@ h2 {
 
 .confirmationPayMembershipFeeModalContainer {
   background-color: black;
-  width: 50%;
+  width: 40%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -6576,7 +6449,7 @@ h2 {
 }
 .confirmationPayMembershipFeeModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
   text-align: center;
 }
@@ -6601,7 +6474,7 @@ h2 {
   align-items: center;
 }
 .confirmationPayMembershipFeeModalContainer__btnsContainer__btns__prop {
-  width: 85%;
+  width: 75%;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -6634,7 +6507,7 @@ h2 {
 }
 .confirmationDeleteBtnPartnersListModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .confirmationDeleteBtnPartnersListModalContainer__askMobile {
@@ -6655,7 +6528,7 @@ h2 {
   align-items: center;
 }
 .confirmationDeleteBtnPartnersListModalContainer__btnsContainer__btns__prop {
-  width: 85%;
+  width: 75%;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -6688,7 +6561,7 @@ h2 {
 }
 .confirmationDeleteBtnProvidersListModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .confirmationDeleteBtnProvidersListModalContainer__askMobile {
@@ -6709,7 +6582,7 @@ h2 {
   align-items: center;
 }
 .confirmationDeleteBtnProvidersListModalContainer__btnsContainer__btns__prop {
-  width: 85%;
+  width: 75%;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -6724,7 +6597,7 @@ h2 {
 
 .confirmationDeleteBtnProductsListModalContainer {
   background-color: black;
-  width: 60%;
+  width: 50%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -6742,7 +6615,7 @@ h2 {
 }
 .confirmationDeleteBtnProductsListModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .confirmationDeleteBtnProductsListModalContainer__askMobile {
@@ -6763,7 +6636,7 @@ h2 {
   align-items: center;
 }
 .confirmationDeleteBtnProductsListModalContainer__btnsContainer__btns__prop {
-  width: 85%;
+  width: 75%;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -6776,46 +6649,6 @@ h2 {
   box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
 }
 
-/* .confirmationDeleteItemPriceOfModalContainer {
-    background-color: rgb(143, 177, 221);
-    width: 60%;
-    height: auto;
-    @include disFC();
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 2vh 3vh 2vh;
-    z-index: 2;
-    gap: 1vh;
-    &__ask {
-        display: block;
-        font-size: 25px;
-        color: #04064e;
-    }
-    &__askMobile {
-        display: none;
-    }
-    &__btnsContainer {
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 1vh;
-        &__btns {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                width: 85%;
-                @include btns;
-            }
-        }
-    }
-} */
 .partnersModalContainer {
   background-color: black;
   width: 80%;
@@ -6849,7 +6682,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   padding: 1vh;
   gap: 1vh;
 }
@@ -6877,7 +6710,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: black;
@@ -6900,6 +6733,7 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px black, -4px -4px 10px black;
   transition: transform 0.2s;
+  font-size: 14px;
 }
 .partnersModalContainer__itemPartner__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -6939,7 +6773,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   padding: 1vh;
 }
 .providersModalContainer__itemProvider {
@@ -6965,7 +6799,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: black;
@@ -6980,7 +6814,7 @@ h2 {
   gap: 1vh;
 }
 .providersModalContainer__itemProvider__btns__btn {
-  width: 60%;
+  width: 50%;
   height: auto;
   background-color: black;
   color: #d2b569;
@@ -6988,6 +6822,7 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px black, -4px -4px 10px black;
   transition: transform 0.2s;
+  font-size: 14px;
 }
 .providersModalContainer__itemProvider__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -7027,7 +6862,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   padding: 1vh;
   gap: 1vh;
 }
@@ -7055,7 +6890,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: black;
@@ -7079,6 +6914,7 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px black, -4px -4px 10px black;
   transition: transform 0.2s;
+  font-size: 16px;
 }
 .productsModalContainer__itemProduct__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -7089,36 +6925,6 @@ h2 {
   display: none;
 }
 
-/* .btnMPModalContainer {
-    background-color: rgb(143, 177, 221);
-    width: 50%;
-    height: auto;
-    @include disFC();
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 1vh;
-    z-index: 3;
-    overflow: auto;
-    &__btnCloseModal {
-        width: 100%;
-        height: auto;
-        display: flex;
-        justify-content: end;
-        padding-right: 2vh;
-        color: #04064e;
-    }
-    &__phrase {
-        width: 100%;
-        height: auto;
-        text-align: center;
-        color: #04064e;
-    }
-} */
 .updateShiftModalContainerMobile {
   display: none;
 }
@@ -7128,35 +6934,6 @@ h2 {
 }
 
 @media (max-width: 480px) {
-  /* .btnMPModalContainer {
-      background-color: rgb(143, 177, 221);
-      width: 90%;
-      height: auto;
-      @include disFC();
-      flex-direction: column;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border: 0.5vh solid #04064e;
-      border-radius: 2vh;
-      padding: 0vh;
-      z-index: 1;
-      &__btnCloseModal {
-          width: 100%;
-          height: auto;
-          display: flex;
-          justify-content: end;
-          padding-right: 2vh;
-          color: #04064e;
-      }
-      &__phrase {
-          width: 100%;
-          height: auto;
-          text-align: center;
-          color: #04064e;
-      }
-  } */
   .myDataModalContainer {
     background-color: black;
     width: 90%;
@@ -10484,7 +10261,7 @@ h2 {
 }
 .myShiftsListContainer__title {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   color: white;
   animation: fadeIn 2s ease-in;
 }
@@ -10508,7 +10285,7 @@ h2 {
 }
 .myShiftsListContainer__myShiftsList__lengthShifts__prop {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 }
 .myShiftsListContainer__myShiftsList__headerMobile {
   display: none;
@@ -10520,7 +10297,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 25px;
+  font-size: 18px;
   padding: 1vh 0vh;
   gap: 2vh;
 }
@@ -10539,7 +10316,7 @@ h2 {
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 @media (max-width: 480px) {
@@ -10660,7 +10437,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -10674,7 +10451,7 @@ h2 {
   gap: 0.5vh;
 }
 .itemMyShift__inputSchedule__prop {
-  font-size: 20px;
+  font-size: 18px;
   color: white;
 }
 .itemMyShift__btns {
@@ -11092,13 +10869,14 @@ h2 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 8vh 0vh 20vh 0vh;
+  padding: 4vh 0vh 8vh 0vh;
 }
 .myDataContainer__title {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   color: white;
   animation: fadeIn 2s ease-in;
+  padding-bottom: 4vh;
 }
 .myDataContainer__data {
   background-color: black;
@@ -11131,7 +10909,7 @@ h2 {
 }
 .myDataContainer__data__label-input__label__prop {
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
 }
 .myDataContainer__data__label-input__labelData {
   width: 100%;
@@ -11155,7 +10933,7 @@ h2 {
 }
 .myDataContainer__data__label-input__labelNPartner__prop {
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
 }
 .myDataContainer__btn {
   width: 100%;
@@ -11174,6 +10952,7 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
   transition: transform 0.2s;
+  padding: 0.3vh 0vh;
 }
 .myDataContainer__btn__prop:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -11302,7 +11081,7 @@ h2 {
 }
 .configContainer__config__title {
   text-align: center;
-  font-size: 45px;
+  font-size: 40px;
   color: black;
   animation: fadeIn 2s ease-in;
 }
@@ -11415,7 +11194,7 @@ h2 {
   align-items: center;
 }
 .configContainer__config__companiesList__item__btn__prop {
-  width: 50%;
+  width: 60%;
   background-color: black;
   color: #d2b569;
   border-color: black;
@@ -11483,7 +11262,7 @@ h2 {
   align-items: center;
 }
 .configContainer__config__addHairdresser__addHairdresserContainer__btn__prop {
-  width: 90%;
+  width: 70%;
   height: 35px;
   background-color: black;
   color: #d2b569;
@@ -11536,7 +11315,7 @@ h2 {
   align-items: center;
 }
 .configContainer__config__hairdressersList__item__btn__prop {
-  width: 50%;
+  width: 30%;
   background-color: black;
   color: #d2b569;
   border-color: black;
@@ -11630,7 +11409,7 @@ h2 {
   align-items: center;
 }
 .configContainer__config__addService__addServiceContainer__btn__prop {
-  width: 90%;
+  width: 65%;
   height: 35px;
   background-color: black;
   color: #d2b569;
@@ -11699,7 +11478,7 @@ h2 {
   gap: 2vh;
 }
 .configContainer__config__servicesList__item__btn__prop {
-  width: 50%;
+  width: 45%;
   background-color: black;
   color: #d2b569;
   border-color: black;
@@ -11776,7 +11555,7 @@ h2 {
   gap: 1vh;
 }
 .configContainer__config__membershipFeeList__item__btn__prop {
-  width: 50%;
+  width: 55%;
   background-color: black;
   color: #d2b569;
   border-color: black;
@@ -11867,7 +11646,7 @@ h2 {
   align-items: center;
 }
 .configContainer__config__addVarious__addVariousContainer__btn__prop {
-  width: 80%;
+  width: 70%;
   height: 35px;
   background-color: black;
   color: #d2b569;
@@ -11921,7 +11700,7 @@ h2 {
   gap: 2vh;
 }
 .configContainer__config__variousList__item__btn__prop {
-  width: 40%;
+  width: 45%;
   background-color: black;
   color: #d2b569;
   border-color: black;
@@ -11989,7 +11768,7 @@ h2 {
   align-items: center;
 }
 .configContainer__config__addPartnersBen__addPartnersBenContainer__btn__prop {
-  width: 80%;
+  width: 70%;
   height: 35px;
   background-color: black;
   color: #d2b569;

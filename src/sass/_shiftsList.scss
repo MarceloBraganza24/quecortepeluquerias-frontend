@@ -19,7 +19,7 @@
     background-color: whitesmoke;
     width: 100%;
     height: auto;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     color: black;
     border: none;
@@ -53,22 +53,23 @@
         height: auto;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+        padding: 1vh 0vh;
         &__selectHairdresser {
             width: 100%;
             height: auto;
             @include disFC();
             gap: 2vh;
             &__label {
-                font-size: 25px;
+                font-size: 20px;
                 color: white;
             }
             &__select {
                 width: 100%;
                 height: auto;
                 &__prop {
-                    width: 100%;
+                    width: 120px;
                     height: 35px;
-                    font-size: 18px;
+                    font-size: 15px;
                     text-align: center;
                     @include selects;
                 }
@@ -76,7 +77,7 @@
         }
         &__title {
             text-align: center;
-            font-size: 50px;
+            font-size: 40px;
             color: white;
             animation: fadeIn 2s ease-in;
         }
@@ -87,25 +88,25 @@
         height: auto;
         display: flex;
         border-top: 0.3vh solid white;
-        padding: 2vh 0vh;
+        padding: 3vh 0vh;
         &__labelSelect {
             width: 100%;
             height: auto;
             @include disFC();
             gap: 2vh;
             &__label {
-                font-size: 25px;
+                font-size: 20px;
                 color: white;
             }
             &__select {
                 width: 30%;
-                font-size: 25px;
+                font-size: 20px;
                 text-align: center;
                 @include selects;
             }
             &__selectDays {
                 width: 35%;
-                font-size: 25px;
+                font-size: 20px;
                 text-align: center;
                 @include selects;
             }
@@ -137,7 +138,7 @@
             height: auto;
             display: grid;
             grid-template-columns: 1fr 2fr 1fr;
-            padding-bottom: 1vh;
+            padding: 2vh 0vh;
             //gap: 10vh;
             &__cancelDaysList {
                 width: 100%;
@@ -145,7 +146,7 @@
                 @include disFC();
                 &__btn {
                     width: 50%;
-                    font-size: 20px;
+                    font-size: 18px;
                     @include btnsYellow;
                 }
             }
@@ -157,13 +158,13 @@
                 gap: 5vh;
                 &__btn {
                     width: 20%;
-                    font-size: 20px;
+                    font-size: 18px;
                     text-align: center;
                     @include btnsYellow;
                 }
                 &__prop {
                     color: white;
-                    font-size: 20px;
+                    font-size: 18px;
                 }
             }
         }

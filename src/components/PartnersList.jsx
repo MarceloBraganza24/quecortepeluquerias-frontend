@@ -440,8 +440,6 @@ const PartnersList = () => {
                                 !updatePartnerModal&&!payMembershipFeeModal?
                                 <>
                                     <div className='itemCreatePartner__select'>
-                                        {/* <input className='itemCreatePartner__input__prop' placeholder='-' maxLength={13} value={inputParnerNumberPaL} onChange={handleInputPartnerNumberPaL}/> */}
-                                        {/* <input className='itemCreatePartner__input__prop' placeholder='-' maxLength={13} value={inputParnerNumberDosPaL} onChange={handleInputPartnerNumberDosPaL}/> */}
                                         <select className='itemCreatePartner__select__prop' value={selectOptionMembershipNumber} onChange={(e) => {handleSelectOptionMembershipNumberShL(e.target.value)}}>
                                             {optionsMembershipNumber.map((option, index) => (
                                             <option key={index} value={option}>{option}</option>
@@ -476,6 +474,9 @@ const PartnersList = () => {
                                         </select>
                                     </div>
                                     <div className='itemCreatePartner__input'>
+                                        <input disabled type='text' className='itemCreatePartner__input__prop' placeholder='-' value={inputPointsPaL} onChange={handleInputPointsPaL}/>
+                                    </div>
+                                    <div className='itemCreatePartner__input'>
                                         <input disabled type='text' className='itemCreatePartner__input__prop' placeholder='-' value={inputFirstNamePaL} onChange={handleInputFirstNamePaL}/>
                                     </div>
                                     <div className='itemCreatePartner__input'>
@@ -490,8 +491,6 @@ const PartnersList = () => {
                                 </>
                             }
                         </div>
-
-
                         {
                             isLoading ?
                             <div className='myShiftsListContainer__withoutItems'>Cargando socios&nbsp;&nbsp;<Spinner/></div>
@@ -528,43 +527,7 @@ const PartnersList = () => {
                             :
                             <div className='myShiftsListContainer__withoutItems'>Aún no existen socios</div>
                         }
-
-
-                        {/* {
-                            inputFilteredPartners===''?
-                                partners.map((partner) => {
-                                    return(
-                                        <ItemPartner
-                                        id={partner._id}
-                                        first_name={partner.first_name}
-                                        last_name={partner.last_name}
-                                        partner_number={partner.partner_number}
-                                        email={partner.email} 
-                                        points={partner.points} 
-                                        resultCompleteMembershipNumber={resultCompleteMembershipNumber} 
-                                        />
-                                    )
-                                })
-                            :
-                                objetosFiltrados.map((partner) => {
-                                    return(
-                                        <ItemPartner
-                                        id={partner._id}
-                                        first_name={partner.first_name}
-                                        last_name={partner.last_name}
-                                        partner_number={partner.partner_number}
-                                        points={partner.points} 
-                                        email={partner.email}   
-                                        resultCompleteMembershipNumber={resultCompleteMembershipNumber} 
-                                        />
-                                    )
-                                })
-                        } */}
                     </div>
-                    {/* {
-                        (objetosFiltrados.length == 0) && 
-                        <div className='myShiftsListContainer__withoutItems'>Aún no existen socios</div>
-                    } */}
                 </div>
                 {
                     (objetosFiltrados.length == 0) ?
