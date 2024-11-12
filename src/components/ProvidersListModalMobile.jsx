@@ -296,19 +296,15 @@ const ProvidersListModalMobile = ({id,business_name,cuit_cuil,phone,email,handle
 
         return (
             <>
-                <div className='confirmationDeleteBtnPartnersListModalContainerMobile'>
-                    <div className='confirmationDeleteBtnPartnersListModalContainerMobile__ask'>¿Estás seguro que deseas borrar el proveedor?</div>
-                    <div className='confirmationDeleteBtnPartnersListModalContainerMobile__askMobile'>
-                        <div className='confirmationDeleteBtnPartnersListModalContainerMobile__askMobile__ask'>¿Estás seguro que deseas</div>
-                        <div className='confirmationDeleteBtnPartnersListModalContainerMobile__askMobile__ask'>borrar el proveedor?</div>
+                <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile'>
+                    <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__ask'>¿Estás seguro que deseas borrar el proveedor?</div>
+                    <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__askMobile'>
+                        <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__askMobile__ask'>¿Estás seguro que deseas</div>
+                        <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__askMobile__ask'>borrar el proveedor?</div>
                     </div>
-                    <div className='confirmationDeleteBtnPartnersListModalContainerMobile__btns'>
-                        <div className='confirmationDeleteBtnPartnersListModalContainerMobile__btns__btn'>
-                            <button onClick={handleBtnDelProvider} className='confirmationDeleteBtnPartnersListModalContainerMobile__btns__btn__prop'>Si</button>
-                        </div>
-                        <div className='confirmationDeleteBtnPartnersListModalContainerMobile__btns__btn'>
-                            <button onClick={handleBtnConfirmationDeleteBtnNo} className='confirmationDeleteBtnPartnersListModalContainerMobile__btns__btn__prop'>No</button>
-                        </div>
+                    <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__btns'>
+                        <button onClick={handleBtnDelProvider} className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__btns__btn'>Si</button>
+                        <button onClick={handleBtnConfirmationDeleteBtnNo} className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__btns__btn'>No</button>
                         {showSpinner&&<Spinner/>}
                     </div>
                 </div>
@@ -334,9 +330,9 @@ const ProvidersListModalMobile = ({id,business_name,cuit_cuil,phone,email,handle
         });
     }
 
-    const buttonDisabledStyle = {
-        color: 'white',
-        cursor: 'pointer'
+    const tagDisabled = {
+        backgroundColor: 'white',
+        color: 'black'
     };
 
   return (
@@ -408,7 +404,7 @@ const ProvidersListModalMobile = ({id,business_name,cuit_cuil,phone,email,handle
                             <div className='updateProviderModalContainerMobile__labelInput__label__prop'>Razón social:</div>
                         </div>
                         <div className='updateProviderModalContainerMobile__labelInput__input'>
-                            <input disabled className='updateProviderModalContainerMobile__labelInput__input__prop' value={!inputBusinessNameIPr?business_name:inputBusinessNameIPr}onChange={handleInputBusinessNameIPr}/>
+                            <input style={tagDisabled} disabled className='updateProviderModalContainerMobile__labelInput__input__prop' value={!inputBusinessNameIPr?business_name:inputBusinessNameIPr}onChange={handleInputBusinessNameIPr}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateProviderModalContainerMobile__labelInput'>
@@ -416,7 +412,7 @@ const ProvidersListModalMobile = ({id,business_name,cuit_cuil,phone,email,handle
                             <div className='updateProviderModalContainerMobile__labelInput__label__prop'>CUIT/CUIL:</div>
                         </div>
                         <div className='updateProviderModalContainerMobile__labelInput__input'>
-                            <input disabled className='updateProviderModalContainerMobile__labelInput__input__prop' value={!inputCuitCuilIPr?cuit_cuil:inputCuitCuilIPr}onChange={handleInputCuitCuilIPr}/>
+                            <input style={tagDisabled} disabled className='updateProviderModalContainerMobile__labelInput__input__prop' value={!inputCuitCuilIPr?cuit_cuil:inputCuitCuilIPr}onChange={handleInputCuitCuilIPr}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateProviderModalContainerMobile__labelInput'>
@@ -424,7 +420,7 @@ const ProvidersListModalMobile = ({id,business_name,cuit_cuil,phone,email,handle
                             <div className='updateProviderModalContainerMobile__labelInput__label__prop'>Teléfono:</div>
                         </div>
                         <div className='updateProviderModalContainerMobile__labelInput__input'>
-                            <input disabled className='updateProviderModalContainerMobile__labelInput__input__prop' value={!inputPhoneIPr?phone:inputPhoneIPr}onChange={handleInputPhoneIPr}/>
+                            <input style={tagDisabled} disabled className='updateProviderModalContainerMobile__labelInput__input__prop' value={!inputPhoneIPr?phone:inputPhoneIPr}onChange={handleInputPhoneIPr}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateProviderModalContainerMobile__labelInput'>
@@ -432,7 +428,7 @@ const ProvidersListModalMobile = ({id,business_name,cuit_cuil,phone,email,handle
                             <div className='updateProviderModalContainerMobile__labelInput__label__prop'>Email:</div>
                         </div>
                         <div className='updateProviderModalContainerMobile__labelInput__input'>
-                            <input disabled className='updateProviderModalContainerMobile__labelInput__input__prop' type='email' value={!inputEmailIPr?email:inputEmailIPr}onChange={handleInputEmailIPr}/>
+                            <input style={tagDisabled} disabled className='updateProviderModalContainerMobile__labelInput__input__prop' type='email' value={!inputEmailIPr?email:inputEmailIPr}onChange={handleInputEmailIPr}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateProviderModalContainerMobile__btns'>

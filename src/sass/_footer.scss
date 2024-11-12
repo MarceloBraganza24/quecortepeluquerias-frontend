@@ -103,13 +103,13 @@
             width: 100%;
             height: auto;
             @include disFC();
-            font-size: 15px;
             &__prop {
                 width: 100%;
                 height: auto;
                 @include disFC();
                 flex-direction: column;
                 color: white;
+                font-size: 15px;
                 &__spacing {
                     letter-spacing: 0.5vh;
                 }

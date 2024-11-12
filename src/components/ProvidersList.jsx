@@ -385,13 +385,13 @@ const ProvidersList = () => {
                         <div className='providersListContainer__providersList__lengthShifts'>
                             <div className='providersListContainer__providersList__lengthShifts__prop'>Cantidad de proveedores: {objetosFiltrados.length}</div>
                         </div>
-                        {
+                        {/* {
                             objetosFiltrados.length!=0&&
                             <div className='providersListContainer__providersList__headerMobile'>
                                 <div className='providersListContainer__providersList__headerMobile__label'>Razon social</div>
                                 <div className='providersListContainer__providersList__headerMobile__label'>CUIT-CUIL</div>
                             </div>
-                        }
+                        } */}
                         <div className='providersListContainer__providersList__header'>
                             <div className='providersListContainer__providersList__header__label'>Razon social</div>
                             <div className='providersListContainer__providersList__header__label'>CUIT-CUIL</div>
@@ -445,17 +445,26 @@ const ProvidersList = () => {
                             <div className='myShiftsListContainer__withoutItems'>Cargando proveedores&nbsp;&nbsp;<Spinner/></div>
                             :
                             (objetosFiltrados.length != 0) ?
-                            objetosFiltrados.map((provider) => {
-                                return(
-                                    <ItemProvider
-                                    id={provider._id}
-                                    businessName={provider.business_name}
-                                    cuitCuil={provider.cuit_cuil}
-                                    phone={provider.phone}
-                                    email={provider.email}
-                                    />
-                                )
-                            })
+                            <>
+                                <div className='providersListContainer__providersList__lengthShiftsMobile'>
+                                    <div className='providersListContainer__providersList__lengthShiftsMobile__prop'>Cantidad de proveedores: {objetosFiltrados.length}</div>
+                                </div>
+                                <div className='providersListContainer__providersList__headerMobile'>
+                                    <div className='providersListContainer__providersList__headerMobile__label'>Razon social</div>
+                                    <div className='providersListContainer__providersList__headerMobile__label'>CUIT-CUIL</div>
+                                </div>
+                                {objetosFiltrados.map((provider) => {
+                                    return(
+                                        <ItemProvider
+                                        id={provider._id}
+                                        businessName={provider.business_name}
+                                        cuitCuil={provider.cuit_cuil}
+                                        phone={provider.phone}
+                                        email={provider.email}
+                                        />
+                                    )
+                                })}
+                            </>
                             :
                             <div className='myShiftsListContainer__withoutItems'>Aún no existen proveedores</div>
                         }

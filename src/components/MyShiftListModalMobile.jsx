@@ -516,19 +516,10 @@ const MyShiftListModalMobile = ({id,hairdresser,first_name,last_name,service,ema
                     <div className='confirmationDeleteBtnMyShiftListModalContainer__askMobile'>
                         <div className='confirmationDeleteBtnMyShiftListModalContainer__askMobile__ask'>¿Estás seguro que deseas borrar el turno con fecha {formatInputDate} {schedule}?</div>
                     </div>
-                    <div className='confirmationDeleteBtnMyShiftListModalContainer__btnsContainer'>
-                        <div className='confirmationDeleteBtnMyShiftListModalContainer__btnsContainer__btns'>
-                            <div></div>
-                        </div>
-                        <div className='confirmationDeleteBtnMyShiftListModalContainer__btnsContainer__btns'>
-                            <button onClick={handleBtnDelShift} className='confirmationDeleteBtnMyShiftListModalContainer__btnsContainer__btns__prop'>Si</button>
-                        </div>
-                        <div className='confirmationDeleteBtnMyShiftListModalContainer__btnsContainer__btns'>
-                            <button onClick={handleBtnConfirmationDeleteBtnNo} className='confirmationDeleteBtnMyShiftListModalContainer__btnsContainer__btns__prop'>No</button>
-                        </div>
-                        <div className='confirmationDeleteBtnMyShiftListModalContainer__btnsContainer__btns'>
-                            {showSpinner&&<Spinner/>}
-                        </div>
+                    <div className='confirmationDeleteBtnMyShiftListModalContainer__btns'>
+                        <button onClick={handleBtnDelShift} className='confirmationDeleteBtnMyShiftListModalContainer__btns__btn'>Si</button>
+                        <button onClick={handleBtnConfirmationDeleteBtnNo} className='confirmationDeleteBtnMyShiftListModalContainer__btns__btn'>No</button>
+                        {showSpinner&&<Spinner/>}
                     </div>
                 </div>
             </>

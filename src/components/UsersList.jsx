@@ -414,12 +414,13 @@ const UsersList = () => {
                         <div className='usersListContainer__usersList__lengthShifts'>
                             <div className='usersListContainer__usersList__lengthShifts__prop'>Cantidad de usuarios: {usersSinRoot.length}</div>
                         </div>
+                        {/* 
                         <div className='usersListContainer__usersList__headerMobile'>
                             <div className='usersListContainer__usersList__headerMobile__label'>Nombre</div>
                             <div className='usersListContainer__usersList__headerMobile__label'>Apellido</div>
                             <div className='usersListContainer__usersList__headerMobile__label'>Email</div>
                             <div className='usersListContainer__usersList__headerMobile__label'>Rol</div>
-                        </div>
+                        </div> */}
                         <div className='usersListContainer__usersList__header'>
                             <div className='usersListContainer__usersList__header__label'>Nombre</div>
                             <div className='usersListContainer__usersList__header__label'>Apellido</div>
@@ -483,17 +484,28 @@ const UsersList = () => {
                             <div className='myShiftsListContainer__withoutItems'>Cargando usuarios&nbsp;&nbsp;<Spinner/></div>
                             :
                             (usersSinRoot.length != 0) ?
-                            usersSinRoot.map((user) => {
-                                return(
-                                    <ItemUser
-                                    id={user._id}
-                                    first_name={user.first_name}
-                                    last_name={user.last_name}
-                                    email={user.email}   
-                                    role={user.role}
-                                    />
-                                )
-                            })
+                            <>
+                                <div className='usersListContainer__usersList__lengthShiftsMobile'>
+                                    <div className='usersListContainer__usersList__lengthShiftsMobile__prop'>Cantidad de usuarios: {usersSinRoot.length}</div>
+                                </div>
+                                <div className='usersListContainer__usersList__headerMobile'>
+                                    <div className='usersListContainer__usersList__headerMobile__label'>Nombre</div>
+                                    <div className='usersListContainer__usersList__headerMobile__label'>Apellido</div>
+                                    <div className='usersListContainer__usersList__headerMobile__label'>Email</div>
+                                    <div className='usersListContainer__usersList__headerMobile__label'>Rol</div>
+                                </div>
+                                {usersSinRoot.map((user) => {
+                                    return(
+                                        <ItemUser
+                                        id={user._id}
+                                        first_name={user.first_name}
+                                        last_name={user.last_name}
+                                        email={user.email}   
+                                        role={user.role}
+                                        />
+                                    )
+                                })}
+                            </>
                             :
                             <div className='myShiftsListContainer__withoutItems'>Aún no existen usuarios</div>
                         }

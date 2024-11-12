@@ -168,8 +168,8 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user}) => 
     }
 
     const handleBtnCancelShiftModal = () => {
-        /* if(!inputFirstNameShL || !inputLastNameShL || !inputDateShL) {
-            toast('Debes completar todos los campos!', {
+        if (selectScheduleOptionShL == 'Horario' || selectScheduleOptionShL == '') {
+            toast('Debes seleccionar un horario!', {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -179,7 +179,7 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user}) => 
                 progress: undefined,
                 theme: "dark",
             });
-        } else  */if (isAddSchedule && (!inputAddScheduleHShLM || !inputAddScheduleMShLM)) {
+        } else if (isAddSchedule && (!inputAddScheduleHShLM || !inputAddScheduleMShLM)) {
             toast('Debes ingresar un horario!', {
                 position: "top-right",
                 autoClose: 3000,
@@ -393,6 +393,17 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user}) => 
     const handleBtnCreateShift = async() => {
         if(!inputFirstNameShL || !inputLastNameShL || !inputDateShL) {
             toast('Debes completar todos los campos!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        } else if(selectScheduleOptionShL == 'Horario' || selectScheduleOptionShL == '') {
+            toast('Debes ingresar un horario!', {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,

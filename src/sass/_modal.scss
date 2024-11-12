@@ -51,7 +51,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             padding: 1vh 0vh;
-            //border-bottom: 0.3vh solid white;
+            margin-top: 1vh;
             &__prop {
                 color: white;
                 font-size: 18px;
@@ -167,7 +167,7 @@
         @include disFC();
         flex-direction: column;
         gap: 0.5vh;
-        padding: 2vh 0vh;
+        padding: 3vh 0vh;
         &__prop {
             width: 50%;
             height: auto;
@@ -243,7 +243,7 @@
         @include disFC();
         flex-direction: column;
         gap: 0.5vh;
-        padding: 2vh 0vh;
+        padding: 3vh 0vh;
         &__prop {
             width: 50%;
             height: auto;
@@ -858,7 +858,7 @@
 }
 .confirmationDeleteBtnHairdresserModalContainer {
     background-color: black;
-    width: 35%;
+    width: 40%;
     height: auto;
     @include disFC();
     flex-direction: column;
@@ -868,12 +868,12 @@
     transform: translate(-50%, -50%);
     border: 0.5vh solid white;
     border-radius: 2vh;
-    padding: 1vh 2vh 3vh 2vh;
+    padding: 1vh 4vh 3vh 4vh;
     z-index: 2;
     gap: 1vh;
     &__ask {
         display: block;
-        font-size: 25px;
+        font-size: 22px;
         color: white;
         text-align: center;
     }
@@ -883,9 +883,6 @@
     &__btnsContainer {
         width: 40%;
         height: auto;
-        // display: grid;
-        // grid-template-columns: 1fr 1fr;
-        //@include disFC();
         display: flex;
         gap: 4vh;
         &__btns {
@@ -901,7 +898,7 @@
 }
 .confirmationDeleteBtnCompanyModalContainer {
     background-color: black;
-    width: 35%;
+    width: 40%;
     height: auto;
     @include disFC();
     flex-direction: column;
@@ -911,12 +908,12 @@
     transform: translate(-50%, -50%);
     border: 0.5vh solid white;
     border-radius: 2vh;
-    padding: 1vh 2vh 3vh 2vh;
+    padding: 1vh 4vh 3vh 4vh;
     z-index: 2;
     gap: 1vh;
     &__ask {
         display: block;
-        font-size: 25px;
+        font-size: 22px;
         color: white;
         text-align: center;
     }
@@ -944,7 +941,7 @@
 }
 .confirmationDeleteBtnVariouModalContainer {
     background-color: black;
-    width: 35%;
+    width: 40%;
     height: auto;
     @include disFC();
     flex-direction: column;
@@ -954,12 +951,12 @@
     transform: translate(-50%, -50%);
     border: 0.5vh solid white;
     border-radius: 2vh;
-    padding: 1vh 2vh 3vh 2vh;
+    padding: 1vh 4vh 3vh 4vh;
     z-index: 2;
     gap: 1vh;
     &__ask {
         display: block;
-        font-size: 25px;
+        font-size: 22px;
         color: white;
         text-align: center;
     }
@@ -969,9 +966,6 @@
     &__btnsContainer {
         width: 40%;
         height: auto;
-        // display: grid;
-        // grid-template-columns: 1fr 1fr;
-        //@include disFC();
         display: flex;
         gap: 4vh;
         &__btns {
@@ -1293,7 +1287,7 @@
             @include disFC();
             gap: 1vh;
             &__btn {
-                width: 50%;
+                width: 40%;
                 height: auto;
                 @include btns;
                 font-size: 14px;
@@ -1390,7 +1384,7 @@
 @media (max-width: 480px) {
 .myDataModalContainer {
     background-color: black;
-    width: 90%;
+    width: 80%;
     height: auto;
     @include disFC();
     flex-direction: column;
@@ -1409,7 +1403,7 @@
         &__prop {
             color: white;
             font-size: 18px;
-            padding: 1vh 1vh 3vh 0vh;
+            padding: 1vh 1vh 1vh 0vh;
         }
     }
     &__data {
@@ -1431,7 +1425,7 @@
                 color: white;
                 &__prop {
                     text-align: center;
-                    font-size: 25px;
+                    font-size: 18px;
                 }
             }
             &__input {
@@ -1459,8 +1453,7 @@
             width: 50%;
             height: auto;
             padding: 0.3vh 0vh;
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 16px;
             @include btnsYellow;
         }
     }
@@ -1542,102 +1535,6 @@
         }
     }
 }
-/* .priceModalContainer {
-    background-color: rgb(143, 177, 221);
-    width: 90%;
-    height: auto;
-    @include disFC();
-    display: none;
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 2vh 3vh 2vh;
-    z-index: 1;
-    overflow: auto;
-    &__btnCloseModal {
-        width: 237vh;
-        height: auto;
-        display: flex;
-        justify-content: end;
-        &__prop {
-            color: #04064e;
-        }
-    }
-    &__header {
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        text-align: center;
-        color: #04064e;
-        font-size: 18px;
-        padding: 0vh 0vh 1vh 1vh;
-        gap: 1vh;
-        &__label {
-            width: 30vh;
-        }
-    }
-    &__itemPrice {
-        background: none;
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        text-align: center;
-        border-top: none;
-        padding: 1vh;
-        border-radius: 2vh;
-        gap: 1vh;
-        &__input {
-            background-color: whitesmoke;
-            width: 30vh;
-            height: auto;
-            @include disFC();
-            &__prop {
-                background-color: none;
-                width: 100%;
-                height: auto;
-                text-align: center;
-                font-size: 18px;
-                background: none;
-                border: none;
-                color: black;
-                font-weight: bold;
-            }
-        }
-        &__select {
-            background-color: whitesmoke;
-            width: 25vh;
-            height: auto;
-            @include disFC();
-            border-top: 0.3vh solid white;
-            &__prop {
-                width: 95%;
-                height: 35px;
-                text-align: center;
-                font-size: 18px;
-                color: black;
-            }
-        }
-        &__btns {
-            background-color: whitesmoke;
-            width: 100%;
-            height: auto;
-            @include disFC();
-            gap: 1vh;
-            padding: 1vh 1vh;
-            &__btn {
-                width: 25vh;
-                height: auto;
-                @include btns;
-            }
-        }
-    }
-} */
 .confirmationPayMembershipFeeModalContainer {
     background-color: black;
     width: 90%;
@@ -1665,20 +1562,16 @@
         text-align: center;
 
     }
-    &__btnsContainer {
+    &__btns {
         width: 100%;
         height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 1vh;
-        &__btns {
-            width: 100%;
+        @include disFC();
+        //display: flex;
+        gap: 2vh;
+        &__btn {
+            width: 25%;
             height: auto;
-            @include disFC();
-            &__prop {
-                width: 85%;
-                @include btnsYellow;
-            }
+            @include btnsYellow;
         }
     }
 }
@@ -1699,7 +1592,7 @@
     gap: 1vh;
     &__ask {
         display: block;
-        font-size: 20px;
+        font-size: 16px;
         color: white;
         text-align: center;
     }
@@ -1725,50 +1618,6 @@
         }
     }
 }
-/* .confirmationDeletePriceModalMobileContainer {
-    background-color: rgb(143, 177, 221);
-    width: 90%;
-    height: auto;
-    @include disFC();
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 2vh 1vh 2vh;
-    z-index: 2;
-    gap: 1vh;
-    &__ask {
-        display: none;
-        font-size: 25px;
-        color: #04064e;
-    }
-    &__askMobile {
-        display: block;
-        font-size: 15px;
-        color: #04064e;
-        text-align: center;
-
-    }
-    &__btnsContainer {
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1vh;
-        &__btns {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                width: 65%;
-                @include btns;
-            }
-        }
-    }
-} */
 .confirmationDeleteBtnHairdresserModalContainer {
     background-color: black;
     width: 80%;
@@ -1830,7 +1679,7 @@
     gap: 1vh;
     &__ask {
         display: block;
-        font-size: 18px;
+        font-size: 15px;
         color: white;
         text-align: center;
     }
@@ -1902,7 +1751,7 @@
 }
 .cancelDaysModalContainer {
     background-color: black;
-    width: 95%;
+    width: 90%;
     height: 70vh;
     display: flex;
     flex-direction: column;
@@ -1943,7 +1792,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             padding: 1vh 0vh;
-            border-bottom: 0.3vh solid white;
+            //border-bottom: 0.3vh solid white;
             &__prop {
                 color: white;
                 font-size: 14px;
@@ -1951,20 +1800,20 @@
             }
         }
         &__hairdresser {
-            background-color: white;
+            background-color: #d2b569;
             width: 100%;
             color: black;
             font-size: 20px;
             font-weight: bold;
             text-align: center;
-            border-bottom: 0.3vh solid white;
-            padding: 0.5vh 0vh;
+            //border-bottom: 0.3vh solid white;
+            padding: 0vh 0vh;
         }
         &__nonDates {
             color: white;
             text-align: center;
             padding: 1vh 0vh;
-            font-size: 15px;
+            font-size: 14px;
         }
         &__itemCancelDay {
             width: 100%;
@@ -1972,7 +1821,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             padding: 1vh 0vh;
-            border-bottom: 0.3vh solid white;
+            //border-bottom: 0.3vh solid white;
             &__prop {
                 color: white;
                 font-size: 14px;
@@ -1983,8 +1832,8 @@
                 height: auto;
                 @include disFC();
                 &__prop {
-                    width: 90%;
-                    font-size: 15px;
+                    width: 80%;
+                    font-size: 14px;
                     @include btnsYellow;
                 }
             }
@@ -1993,7 +1842,7 @@
 }
 .confirmationSaveBtnSaveShiftModalContainer {
     background-color: black;
-    width: 90%;
+    width: 80%;
     height: auto;
     @include disFC();
     flex-direction: column;
@@ -2009,14 +1858,14 @@
     &__ask {
         text-align: center;
         display: none;
-        font-size: 25px;
+        font-size: 16px;
         color: white;
     }
     &__askMobile {
         display: block;
         text-align: center;
         color: white;
-        font-size: 20px;
+        font-size: 16px;
     }
     &__btnsContainer {
         width: 100%;
@@ -2064,20 +1913,16 @@
         font-size: 15px;
         color: white;
     }
-    &__btnsContainer {
+    &__btns {
         width: 100%;
         height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 1vh;
-        &__btns {
-            width: 100%;
+        @include disFC();
+        //display: flex;
+        gap: 2vh;
+        &__btn {
+            width: 25%;
             height: auto;
-            @include disFC();
-            &__prop {
-                width: 85%;
-                @include btnsYellow;
-            }
+            @include btnsYellow;
         }
     }
 }
@@ -2098,7 +1943,7 @@
     gap: 1vh;
     &__ask {
         display: block;
-        font-size: 15px;
+        font-size: 14px;
         color: white;
         text-align: center;
     }
@@ -2116,57 +1961,12 @@
             height: auto;
             @include disFC();
             &__prop {
-                width: 85%;
+                width: 100%;
                 @include btnsYellow;
             }
         }
     }
 }
-/* .confirmationDeleteItemPriceOfModalContainer {
-    background-color: rgb(143, 177, 221);
-    width: 100%;
-    height: auto;
-    @include disFC();
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 210%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 2vh 3vh 2vh;
-    z-index: 2;
-    gap: 1vh;
-    &__ask {
-        display: block;
-        font-size: 25px;
-        color: #04064e;
-        display: none;
-    }
-    &__askMobile {
-        width: 100%;
-        height: auto;
-        @include disFC();
-        flex-direction: column;
-        text-align: center;
-    }
-    &__btnsContainer {
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 1vh;
-        &__btns {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                width: 85%;
-                @include btns;
-            }
-        }
-    }
-} */
 .confirmationDeleteBtnMyPaymentsListModalContainer {
     background-color: black;
     width: 90%;
@@ -2234,17 +2034,53 @@
         font-size: 15px;
         color: white;
     }
-    &__btnsContainer {
+    &__btns {
         width: 100%;
         height: auto;
         @include disFC();
-        gap: 5vh;
-        &__btns {
-            width: 100%;
-            &__prop {
-                width: 100%;
-                @include btnsYellow;
-            }
+        //display: flex;
+        gap: 2vh;
+        &__btn {
+            width: 25%;
+            height: auto;
+            @include btnsYellow;
+        }
+    }
+}
+.confirmationDeleteBtnUpdatePartnersListModalContainerMobile {
+    background-color: black;
+    width: 90%;
+    height: auto;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 0.5vh solid white;
+    border-radius: 2vh;
+    padding: 1vh 2vh 1vh 2vh;
+    z-index: 2;
+    gap: 1vh;
+    &__ask {
+        font-size: 15px;
+        color: white;
+        display: none;
+    }
+    &__askMobile {
+        display: block;
+        text-align: center;
+        font-size: 15px;
+        color: white;
+    }
+    &__btns {
+        width: 100%;
+        height: auto;
+        @include disFC();
+        gap: 2vh;
+        &__btn {
+            width: 25%;
+            height: auto;
+            @include btnsYellow;
         }
     }
 }
@@ -2328,142 +2164,6 @@
         }
     }
 }
-/* .confirmationDeleteBtnPartnersListModalContainer {
-    background-color: rgb(143, 177, 221);
-    width: 90%;
-    height: auto;
-    flex-direction: column;
-    position: fixed;
-    left: 240%;
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 2vh 1vh 2vh;
-    z-index: 2;
-    gap: 1vh;
-    &__ask {
-        font-size: 15px;
-        color: #04064e;
-        display: none;
-    }
-    &__askMobile {
-        display: block;
-        text-align: center;
-        font-size: 15px;
-        color: #04064e;
-    }
-    &__btns {
-        width: 100%;
-        height: auto;
-        @include disFC();
-        gap: 5vh;
-        &__prop {
-            width: 30%;
-            @include btns;
-        }
-    }
-} */
-/* .confirmationDeleteBtnProvidersListModalContainer {
-    background-color: rgb(143, 177, 221);
-    width: 90%;
-    height: auto;
-    flex-direction: column;
-    position: fixed;
-    left: 266%;
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 2vh 1vh 2vh;
-    z-index: 2;
-    gap: 1vh;
-    &__ask {
-        font-size: 15px;
-        color: #04064e;
-        display: none;
-    }
-    &__askMobile {
-        display: block;
-        text-align: center;
-        font-size: 15px;
-        color: #04064e;
-    }
-    &__btns {
-        width: 100%;
-        height: auto;
-        @include disFC();
-        gap: 5vh;
-        &__prop {
-            width: 30%;
-            @include btns;
-        }
-    }
-}
-.confirmationDeleteBtnProductsListModalContainer {
-    background-color: rgb(143, 177, 221);
-    width: 90%;
-    height: auto;
-    flex-direction: column;
-    position: fixed;
-    left: 328%;
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 2vh 1vh 2vh;
-    z-index: 2;
-    gap: 1vh;
-    &__ask {
-        font-size: 15px;
-        color: #04064e;
-        display: none;
-    }
-    &__askMobile {
-        display: block;
-        text-align: center;
-        font-size: 15px;
-        color: #04064e;
-    }
-    &__btns {
-        width: 100%;
-        height: auto;
-        @include disFC();
-        gap: 5vh;
-        &__prop {
-            width: 30%;
-            @include btns;
-        }
-    }
-}
-.confirmationDeleteBtnUsersListModalContainer {
-    background-color: rgb(143, 177, 221);
-    width: 90%;
-    height: auto;
-    flex-direction: column;
-    position: fixed;
-    left: 255%;
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 2vh 1vh 2vh;
-    z-index: 2;
-    gap: 1vh;
-    &__ask {
-        font-size: 15px;
-        color: #04064e;
-        display: none;
-    }
-    &__askMobile {
-        display: block;
-        text-align: center;
-        font-size: 15px;
-        color: #04064e;
-    }
-    &__btns {
-        width: 100%;
-        height: auto;
-        @include disFC();
-        gap: 5vh;
-        &__prop {
-            width: 30%;
-            @include btns;
-        }
-    }
-} */
 .usersModalContainer {
     display: none;
 }
@@ -2837,7 +2537,7 @@
             &__select {
                 width: 80%;
                 height: 30px;
-                border: none;
+                //border: none;
                 @include selects;
                 text-align: center;
             }
@@ -3389,87 +3089,6 @@
         }
     }
 }
-/* .updatePriceModalContainerMobile {
-    background-color: rgb(143, 177, 221);
-    width: 90%;
-    height: auto;
-    @include disFC();
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 3vh 1vh;
-    z-index: 1;
-    gap: 1vh;
-    &__btnCloseModal {
-        width: 100%;
-        height: auto;
-        display: flex;
-        justify-content: end;
-        align-items: center;
-        &__prop {
-            color: #04064e;
-        }
-    }
-    &__labelInput {
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        //border-bottom: 0.3vh solid white;
-        &__label {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                width: 100%;
-                height: 35px;
-                @include disFC();
-                color: #04064e;
-                font-size: 15px;
-                text-align: center;
-            }
-        }
-        &__input {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                width: 90%;
-                height: 35px;
-                border-radius: 1vh;
-                border: 0.3vh solid #04064e;
-                color: #04064e;
-            }
-            
-        }
-        &__selectSchedule {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__select {
-                width: 80%;
-                height: 30px;
-                @include selects;
-                text-align: center;
-            }
-            
-        }
-    }
-    &__btns {
-        width: 100%;
-        height: auto;
-        @include disFC();
-        &__btn {
-            width: 70%;
-            height: auto;
-            @include btns;
-        }
-    }
-} */
 .shiftModalContainer {
     display: none;
 }

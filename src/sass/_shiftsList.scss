@@ -191,7 +191,7 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    padding: 14vh 0vh 2vh 0vh;
+    padding: 16vh 0vh 2vh 0vh;
     &__blackDiv {
         display: none;
     }
@@ -228,16 +228,18 @@
                 color: white;
             }
             &__select {
-                font-size: 20px;
+                width: 150px;
+                font-size: 18px;
                 text-align: center;
                 @include selects;
             }
         }
         &__title {
             text-align: center;
-            font-size: 35px;
+            font-size: 30px;
             color: white;
             animation: fadeIn 2s ease-in;
+            padding: 1vh 0vh;
         }
     }
     &__selects {
@@ -247,7 +249,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         border-top: 0.3vh solid white;
-        padding: 2vh 0vh;
+        padding: 3vh 0vh;
         &__labelSelect {
             width: 100%;
             height: auto;
@@ -259,12 +261,14 @@
             }
             &__select {
                 width: 60%;
+                height: 30px;
                 font-size: 15px;
                 text-align: center;
                 @include selects;
             }
             &__selectDays {
                 width: 40%;
+                height: 30px;
                 font-size: 15px;
                 text-align: center;
                 @include selects;
@@ -275,14 +279,13 @@
         width: 100%;
         height: auto;
         @include disFC();
-        padding: 2vh 0vh 2vh 0vh;
+        padding: 2vh 0vh;
         border-top: 0.3vh solid white;
-        //border-bottom: 0.3vh solid white;
         gap: 1vh;
         &__btnCancelDay {
             width: 50%;
             height: auto;
-            font-size: 18px;
+            font-size: 16px;
             @include btnsYellow;
         }
         &__btnMobile {
@@ -302,7 +305,7 @@
         &__btnCreateShift {
             width: 50%;
             height: auto;
-            font-size: 18px;
+            font-size: 16px;
             @include btnsYellow;
         }
         &__btnMobile {
@@ -329,7 +332,7 @@
             padding: 1vh 0vh 1vh 0vh;
             &__prop {
                 color: white;
-                font-size: 18px;
+                font-size: 16px;
             }
         }
         &__lengthShifts {
@@ -350,7 +353,7 @@
                 width: 100%;
                 height: auto;
                 @include disFC();
-                font-size: 17px;
+                font-size: 16px;
             }
         }
         &__header {

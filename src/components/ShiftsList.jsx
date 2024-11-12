@@ -632,8 +632,8 @@ const ShiftsList = () => {
     }
 
     const handleBtnCancelShiftModal = () => {
-        /* if(!inputFirstNameShL || !inputLastNameShL || !inputDateShL) {
-            toast('Debes completar todos los campos!', {
+        if (isAddSchedule && (!inputAddScheduleHShL || !inputAddScheduleMShL)) {
+            toast('Debes ingresar un horario!', {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -643,8 +643,8 @@ const ShiftsList = () => {
                 progress: undefined,
                 theme: "dark",
             });
-        } else  */if (isAddSchedule && (!inputAddScheduleHShL || !inputAddScheduleMShL)) {
-            toast('Debes ingresar un horario!', {
+        } else if (selectScheduleOptionShL == 'Horario' || selectScheduleOptionShL == '') {
+            toast('Debes seleccionar un horario!', {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -1109,12 +1109,12 @@ const ShiftsList = () => {
                         {isOpenCreateShiftModalLocalMobile&&<CreateShiftModalMobile setIsOpenCreateShiftModalLocalMobile={setIsOpenCreateShiftModalLocalMobile} user={user}/>}
                     </div>
 
-                    {
+                    {/* {
                         hairdressersFilteredByNotCancel.length != 0 &&
                         <div className='shiftsListContainer__shiftsList__lengthShiftsMobile'>
                             <div className='shiftsListContainer__shiftsList__lengthShiftsMobile__prop'>Cantidad de turnos: {hairdressersFilteredByNotCancel.length}</div>
                         </div>
-                    }
+                    } */}
 
                     {cancelDaysModalLocal&&<CancelDaysModal handleCancelDaysListModalLocal={handleCancelDaysListModalLocal} holidaysData={holidays} hairdressers={hairdressers}/>}
                     <div className='shiftsListContainer__shiftsList__lengthShifts'>
@@ -1141,64 +1141,11 @@ const ShiftsList = () => {
                                     <button disabled className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goNextDay}>Día siguiente</button>
                                 </>
                             }
-                            
-                        {/* {
-                            selectOptionHeaderHairdresserShL=='Ayrton'?
-                                !updateShiftModal&&!recoverShiftModal&&!cancelShiftModal&&!cancelDayModal&&!cancelDaysListModal?
-                                <>
-                                    <button className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goFormerDay}>Día anterior</button>
-                                    <div className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__prop'>Cantidad de turnos: {ayrtonObjetosFiltradosByNotCancel.length}</div>
-                                    <button className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goNextDay}>Día siguiente</button>
-                                </>
-                                :
-                                <>
-                                    <button disabled className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goFormerDay}>Día anterior</button>
-                                    <div className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__prop'>Cantidad de turnos: {ayrtonObjetosFiltradosByNotCancel.length}</div>
-                                    <button disabled className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goNextDay}>Día siguiente</button>
-                                </>
-                            : selectOptionHeaderHairdresserShL=='Mirko'?
-                                !updateShiftModal&&!recoverShiftModal&&!cancelShiftModal&&!cancelDayModal&&!cancelDaysListModal?
-                                <>
-                                    <button className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goFormerDay}>Día anterior</button>
-                                    <div className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__prop'>Cantidad de turnos: {mirkoObjetosFiltradosByNotCancel.length}</div>
-                                    <button className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goNextDay}>Día siguiente</button>
-                                </>
-                                :
-                                <>
-                                    <button disabled style={buttonDisabledStyle} className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goFormerDay}>Día anterior</button>
-                                    <div className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__prop'>Cantidad de turnos: {mirkoObjetosFiltradosByNotCancel.length}</div>
-                                    <button disabled style={buttonDisabledStyle} className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goNextDay}>Día siguiente</button>
-                                </>
-                            : selectOptionHeaderHairdresserShL=='Ale'?
-                                !updateShiftModal&&!recoverShiftModal&&!cancelShiftModal&&!cancelDayModal&&!cancelDaysListModal?
-                                <>
-                                    <button className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goFormerDay}>Día anterior</button>
-                                    <div className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__prop'>Cantidad de turnos: {aleObjetosFiltradosByNotCancel.length}</div>
-                                    <button className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goNextDay}>Día siguiente</button>
-                                </>
-                                :
-                                <>
-                                    <button disabled style={buttonDisabledStyle} className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goFormerDay}>Día anterior</button>
-                                    <div className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__prop'>Cantidad de turnos: {aleObjetosFiltradosByNotCancel.length}</div>
-                                    <button disabled style={buttonDisabledStyle} className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goNextDay}>Día siguiente</button>
-                                </>
-                            :
-                                !updateShiftModal&&!recoverShiftModal&&!cancelShiftModal&&!cancelDayModal&&!cancelDaysListModal?
-                                <>
-                                    <button className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goFormerDay}>Día anterior</button>
-                                    <button className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goNextDay}>Día siguiente</button>
-                                </>
-                                :
-                                <>
-                                    <button disabled style={buttonDisabledStyle} className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goFormerDay}>Día anterior</button>
-                                    <button disabled style={buttonDisabledStyle} className='shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn' onClick={goNextDay}>Día siguiente</button>
-                                </>
-                            } */}
                         </div>
                         {/* <button onClick={handleBtnCancelDaysModal}>Días anulados</button> */}
                     </div>
                     <div className='shiftsListContainer__shiftsList'>
-                        {
+                        {/* {
                             hairdressersFilteredByNotCancel.length != 0 &&
                             <div className='shiftsListContainer__shiftsList__headerMobile'>
                                 <div className='shiftsListContainer__shiftsList__headerMobile__label'>Fecha</div>
@@ -1206,7 +1153,7 @@ const ShiftsList = () => {
                                 <div className='shiftsListContainer__shiftsList__headerMobile__label'>Nombre</div>
                                 <div className='shiftsListContainer__shiftsList__headerMobile__label'>Apellido</div>
                             </div>
-                        }
+                        } */}
                         <div className='shiftsListContainer__shiftsList__header'>
                             <div className='shiftsListContainer__shiftsList__header__label'>Peluquero</div>
                             <div className='shiftsListContainer__shiftsList__header__label'>Fecha</div>
@@ -1344,103 +1291,38 @@ const ShiftsList = () => {
                             </>
                             :
                             (hairdressersFiltered.length != 0) ?
-                            hairdressersFiltered.map((shift) => {
-                                return(
-                                    <ItemShift
-                                    id={shift._id}
-                                    hairdresser={shift.hairdresser}
-                                    first_name={shift.first_name}
-                                    last_name={shift.last_name}
-                                    service={shift.service}
-                                    email={shift.email}
-                                    date={shift.date}
-                                    schedule={shift.schedule}
-                                    shifts={shifts}
-                                    hairdressers={hairdressers}
-                                    workDays={workDays}
-                                    services={services}
-                                    />
-                                )
-                            })
+                            <>
+                                <div className='shiftsListContainer__shiftsList__lengthShiftsMobile'>
+                                    <div className='shiftsListContainer__shiftsList__lengthShiftsMobile__prop'>Cantidad de turnos: {hairdressersFilteredByNotCancel.length}</div>
+                                </div>
+                                <div className='shiftsListContainer__shiftsList__headerMobile'>
+                                    <div className='shiftsListContainer__shiftsList__headerMobile__label'>Fecha</div>
+                                    <div className='shiftsListContainer__shiftsList__headerMobile__label'>Horario</div>
+                                    <div className='shiftsListContainer__shiftsList__headerMobile__label'>Nombre</div>
+                                    <div className='shiftsListContainer__shiftsList__headerMobile__label'>Apellido</div>
+                                </div>
+                                {hairdressersFiltered.map((shift) => {
+                                    return(
+                                        <ItemShift
+                                        id={shift._id}
+                                        hairdresser={shift.hairdresser}
+                                        first_name={shift.first_name}
+                                        last_name={shift.last_name}
+                                        service={shift.service}
+                                        email={shift.email}
+                                        date={shift.date}
+                                        schedule={shift.schedule}
+                                        shifts={shifts}
+                                        hairdressers={hairdressers}
+                                        workDays={workDays}
+                                        services={services}
+                                        />
+                                    )
+                                })}
+                            </>
                             :
                             <div className='myShiftsListContainer__withoutItems'>Aún no existen turnos</div>
                         }
-                        {/* {
-                            hairdressersFiltered.length!=0&&
-
-                            hairdressersFiltered.map((shift) => {
-                                return(
-                                    <ItemShift
-                                    id={shift._id}
-                                    hairdresser={shift.hairdresser}
-                                    first_name={shift.first_name}
-                                    last_name={shift.last_name}
-                                    service={shift.service}
-                                    email={shift.email}
-                                    date={shift.date}
-                                    schedule={shift.schedule}
-                                    shifts={shifts}
-                                    hairdressers={hairdressers}
-                                    workDays={workDays}
-                                    services={services}
-                                    />
-                                )
-                            })
-                        } */}
-                        {/* {
-                            selectOptionHeaderHairdresserShL=='Ayrton'&&hairdressersFiltered.length!=0?
-                                hairdressersFiltered.map((shift) => {
-                                    return(
-                                        <ItemShift
-                                        id={shift._id}
-                                        hairdresser={shift.hairdresser}
-                                        first_name={shift.first_name}
-                                        last_name={shift.last_name}
-                                        service={shift.service}
-                                        email={shift.email}
-                                        date={shift.date}
-                                        schedule={shift.schedule}
-                                        shifts={shifts}
-                                        />
-                                    )
-                                })
-                            : selectOptionHeaderHairdresserShL=='Mirko'&&mirkoObjetosFiltrados.length!=0?
-                                mirkoObjetosFiltrados.map((shift) => {
-                                    return(
-                                        <ItemShift
-                                        id={shift._id}
-                                        hairdresser={shift.hairdresser}
-                                        first_name={shift.first_name}
-                                        last_name={shift.last_name}
-                                        service={shift.service}
-                                        email={shift.email}
-                                        date={shift.date}
-                                        schedule={shift.schedule}
-                                        shifts={shifts}
-                                        />
-                                    )
-                                })
-                            : selectOptionHeaderHairdresserShL=='Ale'&&aleObjetosFiltrados.length!=0?
-                                aleObjetosFiltrados.map((shift) => {
-                                    return(
-                                        <ItemShift
-                                        id={shift._id}
-                                        hairdresser={shift.hairdresser}
-                                        first_name={shift.first_name}
-                                        last_name={shift.last_name}
-                                        service={shift.service}
-                                        email={shift.email}
-                                        date={shift.date}
-                                        schedule={shift.schedule}
-                                        shifts={shifts}
-                                        />
-                                    )
-                                })
-                            : (selectOptionHeaderHairdresserShL=='' || selectOptionHeaderHairdresserShL=='Peluquero') ?
-                            <div className='myShiftsListContainer__withoutItems'>Elige un peluquero</div>
-                            : (selectOptionHeaderHairdresserShL=='Ayrton' || selectOptionHeaderHairdresserShL=='Mirko' || selectOptionHeaderHairdresserShL=='Ale')&&
-                            <div className='myShiftsListContainer__withoutItems'>Aún no existen turnos</div>
-                        } */}
                     </div>
                 </div>
                 {cancelShiftModalLocal&&<CancelShiftModal hairdresser={selectOptionHairdresserShL} date={formattedDate} schedule={!isAddSchedule?(selectScheduleOptionShL?selectScheduleOptionShL:optionsScheduleSh[0]):concatAddSchedules}/>}
@@ -1448,7 +1330,6 @@ const ShiftsList = () => {
                 {
                     (hairdressersFiltered.length == 0) ?
                     <>
-                        {/* <div className='shiftsListContainer__shiftsNotExistsMobile'>- Aún no existen turnos -</div> */}
                         <div className='shiftsListContainer__blackDiv' style={{padding:'10vh 0vh'}}></div>
                         <div className='shiftsListContainer__blackDivMobile' style={{padding:'15vh 0vh'}}></div>
                     </>

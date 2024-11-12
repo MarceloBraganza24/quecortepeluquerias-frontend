@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import HMenu from './HMenu';
 
 const NavBar = () => {
-    const {myDataModal,updateShiftModal,cancelDaysListModal,cancelDayModal,recoverShiftModal,cancelShiftModal,updateMyShiftModalMobile,updateUserModalMobile,createUserModalMobile,updateProductModalMobile,createProductModalMobile,updateProviderModalMobile,createProviderModalMobile,updatePartnerModalMobile,createPartnerModalMobile,createShiftModalMobile,updateMyShiftModal,updateShiftModalMobile,updatePartnerModal,updateProviderModal,updateProductsModal,updateUsersModal,updatePricesModal,deleteTicketModal,payMembershipFeeModal} = useContext(OpenModalContext);
+    const {deleteVariouModal,updateVariousPriceModal,deletePartnerBenModal,updatePartnersBenModal,updateServiceBtnIsOpen,deleteServiceModal,saveShiftModal,deleteHairdresserModal,deleteCompanyModal,myDataModal,updateShiftModal,cancelDaysListModal,cancelDayModal,recoverShiftModal,cancelShiftModal,updateMyShiftModalMobile,updateUserModalMobile,createUserModalMobile,updateProductModalMobile,createProductModalMobile,updateProviderModalMobile,createProviderModalMobile,updatePartnerModalMobile,createPartnerModalMobile,createShiftModalMobile,updateMyShiftModal,updateShiftModalMobile,updatePartnerModal,updateProviderModal,updateProductsModal,updateUsersModal,updatePricesModal,deleteTicketModal,payMembershipFeeModal} = useContext(OpenModalContext);
     const {isLoggedIn, login, logout} = useContext(IsLoggedContext);
     const {handleBtnBuyVisible} = useContext(BtnMPContext);
     const [user, setUser] = useState('');
@@ -80,12 +80,12 @@ const NavBar = () => {
             </div>
             <div className='navBarMobileContainer__logoContainer'>
                 {
-                    !updateShiftModalMobile&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!createUserModalMobile&&!updateMyShiftModalMobile&&!updatePricesModal&&!updateProductModalMobile&&!updateUserModalMobile&&!deleteTicketModal&&!createProductModalMobile&&!updateProviderModalMobile&&!createProviderModalMobile&&!createPartnerModalMobile&&!updatePartnerModalMobile&&!createShiftModalMobile?
+                    !updateShiftModalMobile&&!deleteVariouModal&&!updateVariousPriceModal&&!deletePartnerBenModal&&!deleteServiceModal&&!updatePartnersBenModal&&!updateServiceBtnIsOpen&&!deleteHairdresserModal&&!deleteCompanyModal&&!saveShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!createUserModalMobile&&!updateMyShiftModalMobile&&!updatePricesModal&&!updateProductModalMobile&&!updateUserModalMobile&&!deleteTicketModal&&!createProductModalMobile&&!updateProviderModalMobile&&!createProviderModalMobile&&!createPartnerModalMobile&&!updatePartnerModalMobile&&!createShiftModalMobile?
                     <a className='navBarMobileContainer__logoContainer__logo' href="/home">
                         <img src="https://storage.googleapis.com/que-corte-peluquerias-img/logo-que-corte.jpeg" className='navBarMobileContainer__logoContainer__logo__prop' alt="logo-que-corte"/>
                     </a>
                     :
-                    <a className='navBarMobileContainer__logoContainer__logo' href="/home">
+                    <a className='navBarMobileContainer__logoContainer__logo'>
                         <img src="https://storage.googleapis.com/que-corte-peluquerias-img/logo-que-corte.jpeg" className='navBarMobileContainer__logoContainer__logo__prop' alt="logo-que-corte"/>
                     </a>
                 }
@@ -123,7 +123,7 @@ const NavBar = () => {
                 </div>
                 <div className='navBarContainer__phrase-btns__btns'>
                     {
-                        !updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
+                        !updateShiftModal&&!saveShiftModal&&!deleteVariouModal&&!updateVariousPriceModal&&!deletePartnerBenModal&&!deleteServiceModal&&!updateServiceBtnIsOpen&&!updatePartnersBenModal&&!deleteHairdresserModal&&!deleteCompanyModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
                         <Link to={"/home"} className='navBarContainer__phrase-btns__btns__prop'>
                             Inicio
                         </Link>
@@ -131,7 +131,7 @@ const NavBar = () => {
                         <div className='navBarContainer__phrase-btns__btns__prop'>Inicio</div>
                     }
                     {
-                        !updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
+                        !updateShiftModal&&!saveShiftModal&&!deleteVariouModal&&!updateVariousPriceModal&&!deletePartnerBenModal&&!deleteServiceModal&&!updateServiceBtnIsOpen&&!updatePartnersBenModal&&!deleteHairdresserModal&&!deleteCompanyModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
                         <Link to={"/shifts"} className='navBarContainer__phrase-btns__btns__prop'>
                             Turnos
                         </Link>
@@ -139,55 +139,21 @@ const NavBar = () => {
                         <div className='navBarContainer__phrase-btns__btns__prop'>Turnos</div>
                     }
                     {
-                        !updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
+                        !updateShiftModal&&!saveShiftModal&&!deleteVariouModal&&!updateVariousPriceModal&&!deletePartnerBenModal&&!deleteServiceModal&&!updateServiceBtnIsOpen&&!updatePartnersBenModal&&!deleteHairdresserModal&&!deleteCompanyModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
                         <Link to={"/cuts"} className='navBarContainer__phrase-btns__btns__prop'>
                             Cortes
                         </Link>
                         :
                         <div className='navBarContainer__phrase-btns__btns__prop'>Cortes</div>
                     }
-
-
-
-                    {/* {
-
-                        !updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
-                        
-                        <Link to={"/partners"} className='navBarContainer__phrase-btns__btns__prop'>
-                            Socios
-                        </Link>
-                        :
-                        <div className='navBarContainer__phrase-btns__btns__prop'>Socios</div>
-
-                    } */}
-
-                        {
-                            (user.role == 'admin')&&!updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
-                            <Link to={"/about"} className='navBarContainer__phrase-btns__btns__prop'>
-                                Sobre nosotros
-                            </Link>
-                            : user &&
-                            <Link to={"/about"} className='navBarContainer__phrase-btns__btns__prop'>
-                                Sobre nosotros
-                            </Link>
-                        }
-
-                    {/* {
-                        (user.role == 'admin')&&!updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
+                    {
+                        !updateShiftModal&&!saveShiftModal&&!deleteVariouModal&&!updateVariousPriceModal&&!deletePartnerBenModal&&!deleteServiceModal&&!updateServiceBtnIsOpen&&!updatePartnersBenModal&&!deleteHairdresserModal&&!deleteCompanyModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
                         <Link to={"/about"} className='navBarContainer__phrase-btns__btns__prop'>
                             Sobre nosotros
                         </Link>
                         :
-                        (user.role != 'admin')&&!updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
-                        <>
-                        <Link to={"/partners"} className='navBarContainer__phrase-btns__btns__prop'>
-                            Socios
-                        </Link>
-                        
-                        </>
-                        :
-                        <div className='navBarContainer__phrase-btns__btns__prop'>Socios</div>
-                    } */}
+                        <div className='navBarContainer__phrase-btns__btns__prop'>Sobre nosotros</div>
+                    }
                 </div>
             </div>
         </div>

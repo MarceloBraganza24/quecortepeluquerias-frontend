@@ -83,7 +83,7 @@
         padding: 16vh 0vh 8vh 0vh;
         &__title {
             text-align: center;
-            font-size: 40px;
+            font-size: 30px;
             color: white;
             animation: fadeIn 2s ease-in;
         }
@@ -110,7 +110,7 @@
                     color: white;
                     &__prop {
                         text-align: center;
-                        font-size: 20px;
+                        font-size: 18px;
                     }
                 }
                 &__labelData {
@@ -144,8 +144,7 @@
                 width: 70%;
                 height: auto;
                 padding: 0.3vh 0vh;
-                font-size: 18px;
-                font-weight: bold;
+                font-size: 16px;
                 @include btnsYellow;
             }
         }

@@ -419,7 +419,7 @@ const PartnersList = () => {
                         <div className='partnersListContainer__partnersList__lengthShifts__prop'>Cantidad de socios: {objetosFiltrados.length}</div>
                     </div>
                     <div className='partnersListContainer__partnersList'>
-                        {
+                        {/* {
                             objetosFiltrados.length!=0&&
                             <div className='partnersListContainer__partnersList__headerMobile'>
                                 <div className='partnersListContainer__partnersList__headerMobile__label'>N° socio</div>
@@ -427,7 +427,7 @@ const PartnersList = () => {
                                 <div className='partnersListContainer__partnersList__headerMobile__label'>Nombre</div>
                                 <div className='partnersListContainer__partnersList__headerMobile__label'>Apellido</div>
                             </div>
-                        }
+                        } */}
                         <div className='partnersListContainer__partnersList__header'>
                             <div className='partnersListContainer__partnersList__header__label'>N° socio</div>
                             <div className='partnersListContainer__partnersList__header__label'>Puntos</div>
@@ -496,20 +496,31 @@ const PartnersList = () => {
                             <div className='myShiftsListContainer__withoutItems'>Cargando socios&nbsp;&nbsp;<Spinner/></div>
                             :
                             (partners.length != 0) ?
-                            inputFilteredPartners===''?
-                                partners.map((partner) => {
-                                    return(
-                                        <ItemPartner
-                                        id={partner._id}
-                                        first_name={partner.first_name}
-                                        last_name={partner.last_name}
-                                        partner_number={partner.partner_number}
-                                        email={partner.email} 
-                                        points={partner.points} 
-                                        resultCompleteMembershipNumber={resultCompleteMembershipNumber} 
-                                        />
-                                    )
-                                })
+                                inputFilteredPartners===''?
+                                <>
+                                    <div className='partnersListContainer__partnersList__lengthShiftsMobile'>
+                                        <div className='partnersListContainer__partnersList__lengthShiftsMobile__prop'>Cantidad de socios: {objetosFiltrados.length}</div>
+                                    </div>
+                                    <div className='partnersListContainer__partnersList__headerMobile'>
+                                        <div className='partnersListContainer__partnersList__headerMobile__label'>N° socio</div>
+                                        <div className='partnersListContainer__partnersList__headerMobile__label'>Puntos</div>
+                                        <div className='partnersListContainer__partnersList__headerMobile__label'>Nombre</div>
+                                        <div className='partnersListContainer__partnersList__headerMobile__label'>Apellido</div>
+                                    </div>
+                                    {partners.map((partner) => {
+                                        return(
+                                            <ItemPartner
+                                            id={partner._id}
+                                            first_name={partner.first_name}
+                                            last_name={partner.last_name}
+                                            partner_number={partner.partner_number}
+                                            email={partner.email} 
+                                            points={partner.points} 
+                                            resultCompleteMembershipNumber={resultCompleteMembershipNumber} 
+                                            />
+                                        )
+                                    })}
+                                </>
                             :
                                 objetosFiltrados.map((partner) => {
                                     return(

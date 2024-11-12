@@ -361,19 +361,15 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
 
         return (
             <>
-                <div className='confirmationDeleteBtnPartnersListModalContainerMobile'>
-                    <div className='confirmationDeleteBtnPartnersListModalContainerMobile__ask'>¿Estás seguro que deseas borrar el socio?</div>
-                    <div className='confirmationDeleteBtnPartnersListModalContainerMobile__askMobile'>
-                        <div className='confirmationDeleteBtnPartnersListModalContainerMobile__askMobile__ask'>¿Estás seguro que deseas</div>
-                        <div className='confirmationDeleteBtnPartnersListModalContainerMobile__askMobile__ask'>borrar el socio?</div>
+                <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile'>
+                    <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__ask'>¿Estás seguro que deseas borrar el socio?</div>
+                    <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__askMobile'>
+                        <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__askMobile__ask'>¿Estás seguro que deseas</div>
+                        <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__askMobile__ask'>borrar el socio?</div>
                     </div>
-                    <div className='confirmationDeleteBtnPartnersListModalContainerMobile__btns'>
-                        <div className='confirmationDeleteBtnPartnersListModalContainerMobile__btns__btn'>
-                            <button onClick={handleBtnDelPartner} className='confirmationDeleteBtnPartnersListModalContainerMobile__btns__btn__prop'>Si</button>
-                        </div>
-                        <div className='confirmationDeleteBtnPartnersListModalContainerMobile__btns__btn'>
-                            <button onClick={handleBtnConfirmationDeleteBtnNo} className='confirmationDeleteBtnPartnersListModalContainerMobile__btns__btn__prop'>No</button>
-                        </div>
+                    <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__btns'>
+                        <button onClick={handleBtnDelPartner} className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__btns__btn'>Si</button>
+                        <button onClick={handleBtnConfirmationDeleteBtnNo} className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__btns__btn'>No</button>
                         {showSpinner&&<Spinner/>}
                     </div>
                 </div>
@@ -464,24 +460,20 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
                         <div className='confirmationPayMembershipFeeModalContainer__askMobile__ask'>pagar la cuota del socio</div>
                         <div className='confirmationPayMembershipFeeModalContainer__askMobile__ask'>{email}?</div>
                     </div>
-                    <div className='confirmationPayMembershipFeeModalContainer__btnsContainer'>
-                        <div className='confirmationPayMembershipFeeModalContainer__btnsContainer__btns'>
-                            <div></div>
-                        </div>
-                        <div className='confirmationPayMembershipFeeModalContainer__btnsContainer__btns'>
-                            <button onClick={handleConfirmBtnPayMembershipFee} className='confirmationPayMembershipFeeModalContainer__btnsContainer__btns__prop'>Si</button>
-                        </div>
-                        <div className='confirmationPayMembershipFeeModalContainer__btnsContainer__btns'>
-                            <button onClick={handleBtnConfirmationPayMembershipFeeBtnNo} className='confirmationPayMembershipFeeModalContainer__btnsContainer__btns__prop'>No</button>
-                        </div>
-                        <div className='confirmationPayMembershipFeeModalContainer__btnsContainer__btns'>
-                            {showSpinner&&<Spinner/>}
-                        </div>
+                    <div className='confirmationPayMembershipFeeModalContainer__btns'>
+                        <button onClick={handleConfirmBtnPayMembershipFee} className='confirmationPayMembershipFeeModalContainer__btns__btn'>Si</button>
+                        <button onClick={handleBtnConfirmationPayMembershipFeeBtnNo} className='confirmationPayMembershipFeeModalContainer__btns__btn'>No</button>
+                        {showSpinner&&<Spinner/>}
                     </div>
                 </div>
             </>
         )
     }
+
+    const tagDisabled = {
+        backgroundColor: 'white',
+        color: 'black'
+    };
 
   return (
     <>
@@ -571,25 +563,25 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
                     <div style={{paddingTop:'2vh'}} className='updatePartnerModalContainerMobile__labelInput'>
                         <div className='updatePartnerModalContainerMobile__labelInput__label'>Puntos:</div>
                         <div className='updatePartnerModalContainerMobile__labelInput__input'>
-                            <input disabled className='updatePartnerModalContainerMobile__labelInput__input__prop' value={!inputPointsIPa?points:inputPointsIPa}onChange={handleInputPointsIPa}/>
+                            <input style={tagDisabled} disabled className='updatePartnerModalContainerMobile__labelInput__input__prop' value={!inputPointsIPa?points:inputPointsIPa}onChange={handleInputPointsIPa}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updatePartnerModalContainerMobile__labelInput'>
                         <div className='updatePartnerModalContainerMobile__labelInput__label'>Nombre:</div>
                         <div className='updatePartnerModalContainerMobile__labelInput__input'>
-                            <input disabled className='updatePartnerModalContainerMobile__labelInput__input__prop' value={!inputFirstNameIPa?first_name:inputFirstNameIPa}onChange={handleInputFirstNameIPa}/>
+                            <input style={tagDisabled} disabled className='updatePartnerModalContainerMobile__labelInput__input__prop' value={!inputFirstNameIPa?first_name:inputFirstNameIPa}onChange={handleInputFirstNameIPa}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updatePartnerModalContainerMobile__labelInput'>
                         <div className='updatePartnerModalContainerMobile__labelInput__label'>Apellido:</div>
                         <div className='updatePartnerModalContainerMobile__labelInput__input'>
-                            <input disabled className='updatePartnerModalContainerMobile__labelInput__input__prop' value={!inputLastNameIPa?last_name:inputLastNameIPa}onChange={handleInputLastNameIPa}/>
+                            <input style={tagDisabled} disabled className='updatePartnerModalContainerMobile__labelInput__input__prop' value={!inputLastNameIPa?last_name:inputLastNameIPa}onChange={handleInputLastNameIPa}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updatePartnerModalContainerMobile__labelInput'>
                         <div className='updatePartnerModalContainerMobile__labelInput__label'>Email:</div>
                         <div className='updatePartnerModalContainerMobile__labelInput__input'>
-                            <input disabled className='updatePartnerModalContainerMobile__labelInput__input__prop' type='email' value={!inputEmailIPa?email:inputEmailIPa}onChange={handleInputEmailIPa}/>
+                            <input style={tagDisabled} disabled className='updatePartnerModalContainerMobile__labelInput__input__prop' type='email' value={!inputEmailIPa?email:inputEmailIPa}onChange={handleInputEmailIPa}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updatePartnerModalContainerMobile__btns'>

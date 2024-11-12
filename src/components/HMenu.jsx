@@ -4,7 +4,7 @@ import {OpenModalContext} from '../context/OpenModalContext';
 import {IsLoggedContext} from '../context/IsLoggedContext';
 
 const HMenu = () => {
-  const {myDataModal,updateShiftModal,cancelDayModal,cancelDaysListModal,recoverShiftModal,cancelShiftModal,updateMyShiftModal,updatePartnerModal,updateProviderModal,updateProductsModal,updateUsersModal,updatePricesModal,deleteTicketModal,menuOptionsModal,handleMenuOptionsModal,payMembershipFeeModal} = useContext(OpenModalContext);
+  const {saveShiftModal,deleteVariouModal,updateVariousPriceModal,deletePartnerBenModal,deleteServiceModal,deleteHairdresserModal,updatePartnersBenModal,updateServiceBtnIsOpen,deleteCompanyModal,myDataModal,updateShiftModal,cancelDayModal,cancelDaysListModal,recoverShiftModal,cancelShiftModal,updateMyShiftModal,updatePartnerModal,updateProviderModal,updateProductsModal,updateUsersModal,updatePricesModal,deleteTicketModal,menuOptionsModal,handleMenuOptionsModal,payMembershipFeeModal} = useContext(OpenModalContext);
   const {isLoggedIn, login, logout} = useContext(IsLoggedContext);
   const [user, setUser] = useState('');
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -62,7 +62,7 @@ const HMenu = () => {
   return (
     <>
       {
-        !updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
+        !updateShiftModal&&!saveShiftModal&&!deleteVariouModal&&!updateVariousPriceModal&&!deletePartnerBenModal&&!deleteServiceModal&&!updateServiceBtnIsOpen&&!updatePartnersBenModal&&!deleteHairdresserModal&&!deleteCompanyModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
         <>
           <div onClick={openCloseW} className='hMenu'>
             <div className='hMenu__line'></div>

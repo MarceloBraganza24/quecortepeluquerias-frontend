@@ -21,13 +21,6 @@
         text-align: justify;
         padding-bottom: 2vh;
     }
-    &__props {
-        width: 60%;
-        height: auto;
-        color: white;
-        font-size: 22px;
-        text-align: center;
-    }
     &__contactPhrase {
         width: 60%;
         height: auto;
@@ -37,13 +30,11 @@
         padding-top: 2vh;
     }
     &__table {
-        //background-color: salmon;
         width: 70%;
         height: auto;
         padding: 2vh 0vh 0vh 0vh;
         border: 0.3vh solid #d2b569;
         border-radius: 2vh;
-        //gap: 2vh;
         &__item {
             width: 100%;
             height: auto;
@@ -52,7 +43,7 @@
             padding-bottom: 2vh;
             &__prop {
                 color: white;
-                font-size: 25px;
+                font-size: 22px;
                 text-align: center;
             }
         }
@@ -85,7 +76,7 @@
         width: 60%;
         height: auto;
         color: white;
-        font-size: 22px;
+        font-size: 20px;
         text-align: center;
     }
     &__contactPhrase {
@@ -110,7 +101,7 @@
             padding-bottom: 2vh;
             &__prop {
                 color: white;
-                font-size: 25px;
+                font-size: 22px;
                 text-align: center;
             }
         }
@@ -386,13 +377,13 @@
         height: auto;
         color: white;
         text-align: center;
-        font-size: 40px;
+        font-size: 30px;
     }
     &__phrase {
         width: 85%;
         height: auto;
         color: white;
-        font-size: 20px;
+        font-size: 19px;
         text-align: justify;
         padding-bottom: 2vh;
     }

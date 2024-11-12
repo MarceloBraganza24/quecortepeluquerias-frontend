@@ -270,19 +270,15 @@ const ProductsListModalMobile = ({id,title,description,price,stock,category,hand
 
         return (
             <>
-                <div className='confirmationDeleteBtnPartnersListModalContainerMobile'>
-                    <div className='confirmationDeleteBtnPartnersListModalContainerMobile__ask'>¿Estás seguro que deseas borrar el producto?</div>
-                    <div className='confirmationDeleteBtnPartnersListModalContainerMobile__askMobile'>
-                        <div className='confirmationDeleteBtnPartnersListModalContainerMobile__askMobile__ask'>¿Estás seguro que deseas</div>
-                        <div className='confirmationDeleteBtnPartnersListModalContainerMobile__askMobile__ask'>borrar el producto?</div>
+                <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile'>
+                    <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__ask'>¿Estás seguro que deseas borrar el producto?</div>
+                    <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__askMobile'>
+                        <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__askMobile__ask'>¿Estás seguro que deseas</div>
+                        <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__askMobile__ask'>borrar el producto?</div>
                     </div>
-                    <div className='confirmationDeleteBtnPartnersListModalContainerMobile__btns'>
-                        <div className='confirmationDeleteBtnPartnersListModalContainerMobile__btns__btn'>
-                            <button onClick={handleBtnDelProduct} className='confirmationDeleteBtnPartnersListModalContainerMobile__btns__btn__prop'>Si</button>
-                        </div>
-                        <div className='confirmationDeleteBtnPartnersListModalContainerMobile__btns__btn'>
-                            <button onClick={handleBtnConfirmationDeleteBtnNo} className='confirmationDeleteBtnPartnersListModalContainerMobile__btns__btn__prop'>No</button>
-                        </div>
+                    <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__btns'>
+                        <button onClick={handleBtnDelProduct} className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__btns__btn'>Si</button>
+                        <button onClick={handleBtnConfirmationDeleteBtnNo} className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__btns__btn'>No</button>
                         {showSpinner&&<Spinner/>}
                     </div>
                 </div>
@@ -308,9 +304,9 @@ const ProductsListModalMobile = ({id,title,description,price,stock,category,hand
         });
     }
 
-    const buttonDisabledStyle = {
-        color: 'white',
-        cursor: 'pointer'
+    const tagDisabled = {
+        backgroundColor: 'white',
+        color: 'black'
     };
 
   return (
@@ -390,7 +386,7 @@ const ProductsListModalMobile = ({id,title,description,price,stock,category,hand
                             <div className='updateProductModalContainerMobile__labelInput__label__prop'>Título:</div>
                         </div>
                         <div className='updateProductModalContainerMobile__labelInput__input'>
-                            <input disabled className='updateProductModalContainerMobile__labelInput__input__prop' value={!inputTitleIProd?title:inputTitleIProd}onChange={handleInputTitleIProd}/>
+                            <input style={tagDisabled} disabled className='updateProductModalContainerMobile__labelInput__input__prop' value={!inputTitleIProd?title:inputTitleIProd}onChange={handleInputTitleIProd}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateProductModalContainerMobile__labelInput'>
@@ -398,7 +394,7 @@ const ProductsListModalMobile = ({id,title,description,price,stock,category,hand
                             <div className='updateProductModalContainerMobile__labelInput__label__prop'>Descripción:</div>
                         </div>
                         <div className='updateProductModalContainerMobile__labelInput__input'>
-                            <input disabled className='updateProductModalContainerMobile__labelInput__input__prop' value={!inputDescriptionIProd?description:inputDescriptionIProd}onChange={handleInputDescriptionIProd}/>
+                            <input style={tagDisabled} disabled className='updateProductModalContainerMobile__labelInput__input__prop' value={!inputDescriptionIProd?description:inputDescriptionIProd}onChange={handleInputDescriptionIProd}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateProductModalContainerMobile__labelInput'>
@@ -406,7 +402,7 @@ const ProductsListModalMobile = ({id,title,description,price,stock,category,hand
                             <div className='updateProductModalContainerMobile__labelInput__label__prop'>Precio:</div>
                         </div>
                         <div className='updateProductModalContainerMobile__labelInput__input'>
-                            <input disabled className='updateProductModalContainerMobile__labelInput__input__prop' value={!inputPriceIProd?price:inputPriceIProd}onChange={handleInputPriceIProd}/>
+                            <input style={tagDisabled} disabled className='updateProductModalContainerMobile__labelInput__input__prop' value={!inputPriceIProd?price:inputPriceIProd}onChange={handleInputPriceIProd}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateProductModalContainerMobile__labelInput'>
@@ -414,7 +410,7 @@ const ProductsListModalMobile = ({id,title,description,price,stock,category,hand
                             <div className='updateProductModalContainerMobile__labelInput__label__prop'>Stock:</div>
                         </div>
                         <div className='updateProductModalContainerMobile__labelInput__input'>
-                            <input disabled className='updateProductModalContainerMobile__labelInput__input__prop' type='email' value={!inputStockIProd?stock:inputStockIProd}onChange={handleInputCategoryIProd}/>
+                            <input style={tagDisabled} disabled className='updateProductModalContainerMobile__labelInput__input__prop' type='email' value={!inputStockIProd?stock:inputStockIProd}onChange={handleInputCategoryIProd}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateProductModalContainerMobile__labelInput'>
@@ -422,7 +418,7 @@ const ProductsListModalMobile = ({id,title,description,price,stock,category,hand
                             <div className='updateProductModalContainerMobile__labelInput__label__prop'>Categoría:</div>
                         </div>
                         <div className='updateProductModalContainerMobile__labelInput__input'>
-                            <input disabled className='updateProductModalContainerMobile__labelInput__input__prop' type='email' value={!inputCategoryIProd?category:inputCategoryIProd}onChange={handleInputCategoryIProd}/>
+                            <input style={tagDisabled} disabled className='updateProductModalContainerMobile__labelInput__input__prop' type='email' value={!inputCategoryIProd?category:inputCategoryIProd}onChange={handleInputCategoryIProd}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateProductModalContainerMobile__btns'>

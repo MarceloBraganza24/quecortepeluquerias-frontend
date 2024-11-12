@@ -357,14 +357,14 @@ const ProductsList = () => {
                         <div className='productsListContainer__productsList__lengthShifts'>
                             <div className='productsListContainer__productsList__lengthShifts__prop'>Cantidad de productos: {objetosFiltrados.length}</div>
                         </div>
-                        {
+                        {/* {
                             objetosFiltrados.length!=0&&
                             <div className='productsListContainer__productsList__headerMobile'>
                                 <div className='productsListContainer__productsList__headerMobile__label'>Título</div>
                                 <div className='productsListContainer__productsList__headerMobile__label'>Precio</div>
                                 <div className='productsListContainer__productsList__headerMobile__label'>Stock</div>
                             </div>
-                        }
+                        } */}
                         <div className='productsListContainer__productsList__header'>
                             <div className='productsListContainer__productsList__header__label'>Título</div>
                             <div className='productsListContainer__productsList__header__label'>Descripción</div>
@@ -424,18 +424,28 @@ const ProductsList = () => {
                             <div className='myShiftsListContainer__withoutItems'>Cargando productos&nbsp;&nbsp;<Spinner/></div>
                             :
                             (objetosFiltrados.length != 0) ?
-                            objetosFiltrados.map((product) => {
-                                return(
-                                    <ItemProduct
-                                    id={product._id}
-                                    title={product.title}
-                                    description={product.description}
-                                    price={product.price}
-                                    stock={product.stock}
-                                    category={product.category}
-                                    />
-                                )
-                            })
+                            <>
+                                <div className='productsListContainer__productsList__lengthShiftsMobile'>
+                                    <div className='productsListContainer__productsList__lengthShiftsMobile__prop'>Cantidad de productos: {objetosFiltrados.length}</div>
+                                </div>
+                                <div className='productsListContainer__productsList__headerMobile'>
+                                    <div className='productsListContainer__productsList__headerMobile__label'>Título</div>
+                                    <div className='productsListContainer__productsList__headerMobile__label'>Precio</div>
+                                    <div className='productsListContainer__productsList__headerMobile__label'>Stock</div>
+                                </div>
+                                {objetosFiltrados.map((product) => {
+                                    return(
+                                        <ItemProduct
+                                        id={product._id}
+                                        title={product.title}
+                                        description={product.description}
+                                        price={product.price}
+                                        stock={product.stock}
+                                        category={product.category}
+                                        />
+                                    )
+                                })}
+                            </>
                             :
                             <div className='myShiftsListContainer__withoutItems'>Aún no existen productos</div>
                         }

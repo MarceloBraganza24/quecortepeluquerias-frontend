@@ -94,7 +94,6 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     text-align: center;
     color: white;
-    //border-top: none;
     border-top: 0.3vh solid white;
     padding: 1vh 0vh;
     gap: 1vh;
@@ -115,8 +114,6 @@
             background: none;
             border: none;
             color: white;
-            //border-top: 0.3vh solid white;
-            //padding-top: 1.5vh;
             overflow: auto;
         }
     }
@@ -124,9 +121,6 @@
         width: 100%;
         height: auto;
         @include disFC();
-        //gap: 1vh;
-        //border-top: 0.3vh solid white;
-        //padding-top: 1.5vh;
         &__btn {
             width: 40%;
             height: auto;

@@ -468,19 +468,10 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
                         <div className='confirmationDeleteBtnShiftListModalContainer__askMobile__ask'>¿Estás seguro que deseas</div>
                         <div className='confirmationDeleteBtnShiftListModalContainer__askMobile__ask'>borrar el turno?</div>
                     </div>
-                    <div className='confirmationDeleteBtnShiftListModalContainer__btnsContainer'>
-                        <div className='confirmationDeleteBtnShiftListModalContainer__btnsContainer__btns'>
-                            <div></div>
-                        </div>
-                        <div className='confirmationDeleteBtnShiftListModalContainer__btnsContainer__btns'>
-                            <button onClick={handleBtnDelShift} className='confirmationDeleteBtnShiftListModalContainer__btnsContainer__btns__prop'>Si</button>
-                        </div>
-                        <div className='confirmationDeleteBtnShiftListModalContainer__btnsContainer__btns'>
-                            <button onClick={handleBtnConfirmationDeleteBtnNo} className='confirmationDeleteBtnShiftListModalContainer__btnsContainer__btns__prop'>No</button>
-                        </div>
-                        <div className='confirmationDeleteBtnShiftListModalContainer__btnsContainer__btns'>
-                            {showSpinner&&<Spinner/>}
-                        </div>
+                    <div className='confirmationDeleteBtnShiftListModalContainer__btns'>
+                        <button onClick={handleBtnDelShift} className='confirmationDeleteBtnShiftListModalContainer__btns__btn'>Si</button>
+                        <button onClick={handleBtnConfirmationDeleteBtnNo} className='confirmationDeleteBtnShiftListModalContainer__btns__btn'>No</button>
+                        {showSpinner&&<Spinner/>}
                     </div>
                 </div>
             </>
@@ -505,9 +496,9 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
         });
     }
 
-    const buttonDisabledStyle = {
-        color: 'white',
-        cursor: 'pointer'
+    const tagDisabled = {
+        backgroundColor: 'white',
+        color: 'black'
     };
 
     return (
@@ -621,13 +612,13 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
                     <div style={{paddingTop:'2vh'}} className='updateShiftModalContainerMobile__labelInput'>
                         <div className='updateShiftModalContainerMobile__labelInput__label'>Nombre:</div>
                         <div className='updateShiftModalContainerMobile__labelInput__input'>
-                            <input disabled className='updateShiftModalContainerMobile__labelInput__input__prop' value={!inputFirstNameISh?first_name:inputFirstNameISh}onChange={handleInputFirstNameISh}/>
+                            <input style={tagDisabled} disabled className='updateShiftModalContainerMobile__labelInput__input__prop' value={!inputFirstNameISh?first_name:inputFirstNameISh}onChange={handleInputFirstNameISh}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateShiftModalContainerMobile__labelInput'>
                         <div className='updateShiftModalContainerMobile__labelInput__label'>Apellido:</div>
                         <div className='updateShiftModalContainerMobile__labelInput__input'>
-                            <input disabled className='updateShiftModalContainerMobile__labelInput__input__prop' value={!inputLastNameISh?last_name:inputLastNameISh}onChange={handleInputLastNameISh}/>
+                            <input style={tagDisabled} disabled className='updateShiftModalContainerMobile__labelInput__input__prop' value={!inputLastNameISh?last_name:inputLastNameISh}onChange={handleInputLastNameISh}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'1vh'}} className='updateShiftModalContainerMobile__labelInput'>
@@ -672,7 +663,7 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
                     <div style={{paddingTop:'2vh'}} className='updateShiftModalContainerMobile__labelInput'>
                         <div className='updateShiftModalContainerMobile__labelInput__label'>Email:</div>
                         <div className='updateShiftModalContainerMobile__labelInput__input'>
-                            <input disabled className='updateShiftModalContainerMobile__labelInput__input__prop' type='email' value={!inputEmailISh?email:inputEmailISh}onChange={handleInputEmailISh}/>
+                            <input style={tagDisabled} disabled className='updateShiftModalContainerMobile__labelInput__input__prop' type='email' value={!inputEmailISh?email:inputEmailISh}onChange={handleInputEmailISh}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateShiftModalContainerMobile__btns'>

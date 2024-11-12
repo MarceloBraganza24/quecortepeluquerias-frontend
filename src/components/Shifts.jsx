@@ -31,7 +31,7 @@ const Shifts = () => {
     const [user, setUser] = useState('');
     const {handleBtnBuyVisible} = useContext(BtnMPContext);
     const pagarTurnoBtn = document.getElementById('pagarTurnoBtn');
-    const {menuOptionsModal,handleMenuOptionsModal} = useContext(OpenModalContext);
+    const {menuOptionsModal,handleMenuOptionsModal,saveShiftModal,handleSaveShiftModal} = useContext(OpenModalContext);
     const [admPremPreferenceId, setAdmPremPreferenceId] = useState(null);
     const [preferenceId, setPreferenceId] = useState(null);
     const { inputFirstNameSh, handleInputFirstNameSh, inputLastNameSh, handleInputLastNameSh, inputEmailSh, handleInputEmailSh, inputDateSh, handleInputDateSh, inputOptionServiceSh, handleInputOptionServiceSh, selectScheduleSh, handleSelectScheduleSh, inputPriceSh,selectOptionHairdresserSh,handleSelectOptionHairdresserSh} = useContext(InputDataShContext);
@@ -494,7 +494,7 @@ const Shifts = () => {
     };
 
     const styleDisabledBtns = {
-        backgroundColor: 'grey',
+        backgroundColor: 'white',
         border: 'none'
     }
 
@@ -531,9 +531,9 @@ const Shifts = () => {
 
         const diffInMinutes = (selected - now) / 1000 / 60;
 
-        console.log(now)
+        /* console.log(now)
         console.log(selected)
-        console.log(diffInMinutes)
+        console.log(diffInMinutes) */
 
         if(!inputFirstNameSh || !inputLastNameSh || !inputEmailSh) {
             toast('Debes completar todos los campos', {
@@ -669,6 +669,7 @@ const Shifts = () => {
             });
         } else {
             setSaveConfirmationShiftModal(true);
+            handleSaveShiftModal(true);
         }
     };
 
@@ -798,6 +799,7 @@ const Shifts = () => {
 
         const handleBtnConfirmationDeleteBtnNo = () => {
             setSaveConfirmationShiftModal(false);
+            handleSaveShiftModal(false);
         }
 
 
@@ -826,16 +828,8 @@ const Shifts = () => {
     }
 
     const inputDisabledStyle = {
-        backgroundColor: 'grey'
+        backgroundColor: 'white'
     };
-
-    /* const handleNonRegister = () => {
-        if(isBtnShiftRegisterBlocked) {
-            setIsBtnShiftRegisterBlocked(false)        
-        } else {
-            setIsBtnShiftRegisterBlocked(true)        
-        }
-    }; */
 
   return (
     <>
@@ -848,7 +842,7 @@ const Shifts = () => {
                         <h2 className='shiftsContainerIsLoggedIn__form__phrase'>Registra tu turno</h2>
                         <div className='shiftsContainerIsLoggedIn__form__credentials'>
                             {
-                                !isBtnShiftRegisterBlocked ?
+                                !isBtnShiftRegisterBlocked&&!saveShiftModal ?
                                 <>
                                     <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
                                         <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__label'>
@@ -954,6 +948,14 @@ const Shifts = () => {
                                     </div>
                                     <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
                                         <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__label'>
+                                            <h2 className='shiftsContainerIsLoggedIn__form__credentials__label-input__label__prop'>Email:</h2>
+                                        </div>
+                                        <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__input'>
+                                            <input disabled style={inputDisabledStyle} className='shiftsContainerIsLoggedIn__form__credentials__label-input__input__prop' type='email' placeholder='Email' value={inputEmailSh} onChange={handleInputEmailSh}/>
+                                        </div>
+                                    </div>
+                                    <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
+                                        <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__label'>
                                             <h2 className='shiftsContainerIsLoggedIn__form__credentials__label-input__label__prop'>Peluquero:</h2>
                                         </div>
                                         <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__input'>
@@ -974,14 +976,6 @@ const Shifts = () => {
                                                 <option key={index} value={option}>{option}</option>
                                                 ))}
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
-                                        <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__label'>
-                                            <h2 className='shiftsContainerIsLoggedIn__form__credentials__label-input__label__prop'>Email:</h2>
-                                        </div>
-                                        <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__input'>
-                                            <input disabled style={inputDisabledStyle} className='shiftsContainerIsLoggedIn__form__credentials__label-input__input__prop' type='email' placeholder='Email' value={inputEmailSh} onChange={handleInputEmailSh}/>
                                         </div>
                                     </div>
                                     <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
@@ -1036,7 +1030,7 @@ const Shifts = () => {
                                 <>
                                     <div className='shiftsContainerIsLoggedIn__form__credentials__btn'>
                                         {
-                                            !isBtnShiftRegisterBlocked ?
+                                            !isBtnShiftRegisterBlocked&&!saveShiftModal ?
                                             <button className='shiftsContainerIsLoggedIn__form__credentials__btn__prop' onClick={handleBtnSaveShift}>Registrar turno</button>
                                             :
                                             <button disabled className='shiftsContainerIsLoggedIn__form__credentials__btn__prop'>Registrar turno</button>
@@ -1079,6 +1073,14 @@ const Shifts = () => {
                             </div>
                             <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
                                 <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__label'>
+                                    <h2 className='shiftsContainerIsLoggedIn__form__credentials__label-input__label__prop'>Email:</h2>
+                                </div>
+                                <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__input'>
+                                    <input disabled style={inputDisabledStyle} className='shiftsContainerIsLoggedIn__form__credentials__label-input__input__prop' type='email' placeholder='Email' value={inputEmailSh} onChange={handleInputEmailSh}/>
+                                </div>
+                            </div>
+                            <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
+                                <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__label'>
                                     <h2 className='shiftsContainerIsLoggedIn__form__credentials__label-input__label__prop'>Peluquero:</h2>
                                 </div>
                                 <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__input'>
@@ -1099,14 +1101,6 @@ const Shifts = () => {
                                         <option key={index} value={option}>{option}</option>
                                         ))}
                                     </select>
-                                </div>
-                            </div>
-                            <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
-                                <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__label'>
-                                    <h2 className='shiftsContainerIsLoggedIn__form__credentials__label-input__label__prop'>Email:</h2>
-                                </div>
-                                <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__input'>
-                                    <input disabled style={inputDisabledStyle} className='shiftsContainerIsLoggedIn__form__credentials__label-input__input__prop' type='email' placeholder='Email' value={inputEmailSh} onChange={handleInputEmailSh}/>
                                 </div>
                             </div>
                             <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
