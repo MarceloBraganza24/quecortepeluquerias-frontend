@@ -46,6 +46,18 @@ const MyShiftListModal = ({id,hairdresser,first_name,last_name,service,email,dat
 
     let fechaActual = new Date();
 
+    const fecha15DiasDespues = new Date(fechaActual);
+    fecha15DiasDespues.setDate(fechaActual.getDate() + 15);
+
+    const dateToCompareHoliday = {
+        date: formatInputDate?formatInputDate:adjustedDate,
+        hairdresser: selectHairdresserISh
+    }
+    const existsHoliday = holidays.some(holiday =>
+        holiday.date == dateToCompareHoliday.date &&
+        holiday.hairdresser == dateToCompareHoliday.hairdresser
+    );
+
     const servicesWithOutService = services.filter(item => item.title != service)
     const optionsService = [];
     optionsService.push(service)
@@ -78,13 +90,37 @@ const MyShiftListModal = ({id,hairdresser,first_name,last_name,service,email,dat
     const schedulesHairdressersFilteredByNotCancel = shiftsFiltered.map(item => item.schedule)
 
     const optionsScheduleISh = [];
+    optionsScheduleISh.push(`${schedule}`);
     
     let filteredArray = schedulesByHairdresserDate.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
 
-    optionsScheduleISh.push(`${schedule}`);
-    filteredArray.forEach(res => {
+    const chrismasMondaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','16:40','17:00','17:30','18:00','18:20','18:40','19:00','19:20','19:40','20:00','20:30']
+    let filteredArrayMonday = chrismasMondaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
+    
+    const chrismasTuesdaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','13:00','13:20','13:40']
+    let filteredArrayTuesday = chrismasTuesdaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
+
+    //console.log(formatInputDate)
+    if(existsHoliday) {
+        optionsScheduleISh.push('Peluquero de vacaciones')
+    } else if(formatInputDate == '2024-12-23' || formatInputDate == '2024-12-30') {
+        filteredArrayMonday.forEach((item)=>{
+            optionsScheduleISh.push(item)
+        })
+    } else if(formatInputDate == '2024-12-24' || formatInputDate == '2024-12-31') {
+        filteredArrayTuesday.forEach((item)=>{
+            optionsScheduleISh.push(item)
+        })
+    } else if(filteredArray.length == 0) {
+        optionsScheduleISh.push('No hay horarios')
+    } else {
+        filteredArray.forEach(res => {
+            optionsScheduleISh.push(res)
+        })
+    }
+    /* filteredArray.forEach(res => {
         optionsScheduleISh.push(res)
-    })
+    }) */
     
     const optionsHairdresser = ['Peluquero'];
     hairdressers.forEach(res => {
@@ -256,17 +292,7 @@ const MyShiftListModal = ({id,hairdresser,first_name,last_name,service,email,dat
         handleConfirmationDelShiftsModal(true);
     };
 
-    const fecha15DiasDespues = new Date(fechaActual);
-    fecha15DiasDespues.setDate(fechaActual.getDate() + 15);
 
-    const dateToCompareHoliday = {
-        date: formatInputDate?formatInputDate:adjustedDate,
-        hairdresser: selectHairdresserISh
-    }
-    const existsHoliday = holidays.some(holiday =>
-        holiday.date == dateToCompareHoliday.date &&
-        holiday.hairdresser == dateToCompareHoliday.hairdresser
-    );
 
     function isValidUTF8(str) {
         const utf8Regex = /^[\u0000-\uD7FF\uE000-\uFFFF]*$/;
@@ -289,7 +315,7 @@ const MyShiftListModal = ({id,hairdresser,first_name,last_name,service,email,dat
             });
             setShowSpinner(false);
             document.getElementById('btnUpdateShift').style.display = 'block';
-        } else if (dateMShLFormated.getDay() == 0 || dateMShLFormated.getDay() == 1) {
+        }/*  else if (dateMShLFormated.getDay() == 0 || dateMShLFormated.getDay() == 1) {
             toast('Elige un dia entre martes y sabado!', {
                 position: "top-right",
                 autoClose: 3000,
@@ -302,7 +328,7 @@ const MyShiftListModal = ({id,hairdresser,first_name,last_name,service,email,dat
             });
             setShowSpinner(false);
             document.getElementById('btnUpdateShift').style.display = 'block';
-        } else if(existsHoliday) {
+        } */ else if(existsHoliday) {
             toast('En la fecha ingresada el peluquero se encuenta de vacaciones', {
                 position: "top-right",
                 autoClose: 2000,
@@ -674,23 +700,23 @@ const MyShiftListModal = ({id,hairdresser,first_name,last_name,service,email,dat
                     !confirmationDelShiftsModal&&!expiredDate?
                     <>
                         <div className='myShiftModalContainer__itemShift__input'>
-                            <input className='myShiftModalContainer__itemShift__input__prop' value={!inputFirstNameISh?first_name:inputFirstNameISh}onChange={handleInputFirstNameISh}/>
+                            <input disabled className='myShiftModalContainer__itemShift__input__prop' value={!inputFirstNameISh?first_name:inputFirstNameISh}onChange={handleInputFirstNameISh}/>
                         </div>
                         <div className='myShiftModalContainer__itemShift__input'>
-                            <input className='myShiftModalContainer__itemShift__input__prop' value={!inputLastNameISh?last_name:inputLastNameISh}onChange={handleInputLastNameISh}/>
+                            <input disabled className='myShiftModalContainer__itemShift__input__prop' value={!inputLastNameISh?last_name:inputLastNameISh}onChange={handleInputLastNameISh}/>
                         </div>
                         <div className='myShiftModalContainer__itemShift__input'>
                             <input disabled style={{backgroundColor:'white',color:'black'}} className='myShiftModalContainer__itemShift__input__prop' type='email' value={!inputEmailISh?email:inputEmailISh}onChange={handleInputEmailISh}/>
                         </div>
                         <div className='myShiftModalContainer__itemShift__selectService'>
-                            <select className='myShiftModalContainer__itemShift__selectService__select' value={selectHairdresserISh} onChange={(e) => {handleSelectHairdresserISh(e.target.value)}}>
+                            <select disabled className='myShiftModalContainer__itemShift__selectService__select' value={selectHairdresserISh} onChange={(e) => {handleSelectHairdresserISh(e.target.value)}}>
                                 {optionsHairdresser.map((option, index) => (
                                 <option key={index} value={option}>{option}</option>
                                 ))}
                             </select>
                         </div>
                         <div className='myShiftModalContainer__itemShift__selectService'>
-                            <select className='myShiftModalContainer__itemShift__selectService__select' value={inputServiceISh} onChange={(e) => {handleSelectServiceISh(e.target.value)}}>
+                            <select disabled className='myShiftModalContainer__itemShift__selectService__select' value={inputServiceISh} onChange={(e) => {handleSelectServiceISh(e.target.value)}}>
                                 {optionsService.map((option, index) => (
                                 <option key={index} value={option}>{option}</option>
                                 ))}
@@ -701,10 +727,11 @@ const MyShiftListModal = ({id,hairdresser,first_name,last_name,service,email,dat
                                 selected={!inputDateISh?formatInputDate:inputDateISh}
                                 onChange={handleDateChange}
                                 dateFormat="yyyy-MM-dd"
+                                disabled
                             />
                         </div>
                         <div className='myShiftModalContainer__itemShift__selectSchedule'>
-                            <select className='myShiftModalContainer__itemShift__selectSchedule__select' value={selectScheduleOptionISh} onChange={handleSelectScheduleOptionISh}>
+                            <select disabled className='myShiftModalContainer__itemShift__selectSchedule__select' value={selectScheduleOptionISh} onChange={handleSelectScheduleOptionISh}>
                                 {optionsScheduleISh.map((option, index) => (
                                 <option key={index} value={option}>{option}</option>
                                 ))}
@@ -712,7 +739,7 @@ const MyShiftListModal = ({id,hairdresser,first_name,last_name,service,email,dat
                         </div>
                         <div className='myShiftModalContainer__itemShift__btns'>
                             <button className='myShiftModalContainer__itemShift__btns__btn' onClick={handleBtnDelShift}>Borrar</button>
-                            <button id='btnUpdateShift' className='myShiftModalContainer__itemShift__btns__btn' onClick={handleBtnUpdShift}>Actualizar</button>
+                            {/* <button id='btnUpdateShift' className='myShiftModalContainer__itemShift__btns__btn' onClick={handleBtnUpdShift}>Actualizar</button> */}
                             {showSpinner&&<Spinner/>}
                         </div>
                     </>
@@ -758,7 +785,7 @@ const MyShiftListModal = ({id,hairdresser,first_name,last_name,service,email,dat
                         </div>
                         <div className='myShiftModalContainer__itemShift__btns'>
                             <button className='myShiftModalContainer__itemShift__btns__btn' onClick={handleBtnDelShift}>Borrar</button>
-                            <button disabled id='btnUpdateShift' style={buttonDisabledStyle} className='myShiftModalContainer__itemShift__btns__btn'>Actualizar</button>
+                            {/* <button disabled id='btnUpdateShift' style={buttonDisabledStyle} className='myShiftModalContainer__itemShift__btns__btn'>Actualizar</button> */}
                         </div>
                     </>
                 }

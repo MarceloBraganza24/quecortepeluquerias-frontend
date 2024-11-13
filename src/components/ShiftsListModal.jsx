@@ -541,7 +541,7 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
                     !confirmationDelShiftsModal?
                     <>
                         <div className='shiftModalContainer__itemShift__selectService'>
-                            <select className='shiftModalContainer__itemShift__selectService__select' value={selectOptionHairdresserISh} onChange={(e) => {handleSelectOptionHairdresserISh(e.target.value)}}>
+                            <select disabled className='shiftModalContainer__itemShift__selectService__select' value={selectOptionHairdresserISh} onChange={(e) => {handleSelectOptionHairdresserISh(e.target.value)}}>
                                 {optionsHairdresser.map((option, index) => (
                                 <option key={index} value={option}>{option}</option>
                                 ))}
@@ -552,44 +552,45 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
                                 selected={inputDateISh}
                                 onChange={handleDateChange}
                                 dateFormat="yyyy-MM-dd"
+                                disabled
                             />
                         </div>
                         <div className='shiftModalContainer__itemShift__selectSchedule'>
                             {
                                 !isAddScheduleISh?
-                                <select className='shiftModalContainer__itemShift__selectSchedule__select' value={selectScheduleOptionISh} onChange={handleSelectScheduleOptionISh}>
+                                <select disabled className='shiftModalContainer__itemShift__selectSchedule__select' value={selectScheduleOptionISh} onChange={handleSelectScheduleOptionISh}>
                                     {optionsScheduleISh.map((option, index) => (
                                     <option key={index} value={option}>{option}</option>
                                     ))}
                                 </select>
                                 :
                                 <>
-                                    <input maxLength={2} className='shiftModalContainer__itemShift__selectSchedule__inputAddSchedule' type="text" value={inputAddScheduleHISh} onBlur={handleOnBlurInputAddScheduleHShLM} onChange={handleInputAddScheduleHISh} />
+                                    <input disabled maxLength={2} className='shiftModalContainer__itemShift__selectSchedule__inputAddSchedule' type="text" value={inputAddScheduleHISh} onBlur={handleOnBlurInputAddScheduleHShLM} onChange={handleInputAddScheduleHISh} />
                                     :
-                                    <input maxLength={2} className='shiftModalContainer__itemShift__selectSchedule__inputAddSchedule' type="text" value={inputAddScheduleMISh} onBlur={handleOnBlurInputAddScheduleMShLM} onChange={handleInputAddScheduleMISh} />
+                                    <input disabled maxLength={2} className='shiftModalContainer__itemShift__selectSchedule__inputAddSchedule' type="text" value={inputAddScheduleMISh} onBlur={handleOnBlurInputAddScheduleMShLM} onChange={handleInputAddScheduleMISh} />
                                 </>
                             }
                             <button className='shiftModalContainer__itemShift__selectSchedule__btn' onClick={addSchedule}>+</button>
                         </div>
                         <div className='shiftModalContainer__itemShift__input'>
-                            <input className='shiftModalContainer__itemShift__input__prop' value={!inputFirstNameISh?first_name:inputFirstNameISh}onChange={handleInputFirstNameISh}/>
+                            <input disabled className='shiftModalContainer__itemShift__input__prop' value={!inputFirstNameISh?first_name:inputFirstNameISh}onChange={handleInputFirstNameISh}/>
                         </div>
                         <div className='shiftModalContainer__itemShift__input'>
-                            <input className='shiftModalContainer__itemShift__input__prop' value={!inputLastNameISh?last_name:inputLastNameISh}onChange={handleInputLastNameISh}/>
+                            <input disabled className='shiftModalContainer__itemShift__input__prop' value={!inputLastNameISh?last_name:inputLastNameISh}onChange={handleInputLastNameISh}/>
                         </div>
                         <div className='shiftModalContainer__itemShift__selectService'>
-                            <select className='shiftModalContainer__itemShift__selectService__select' value={inputServiceISh} onChange={(e) => {handleSelectServiceISh(e.target.value)}}>
+                            <select disabled className='shiftModalContainer__itemShift__selectService__select' value={inputServiceISh} onChange={(e) => {handleSelectServiceISh(e.target.value)}}>
                                 {optionsService.map((option, index) => (
                                 <option key={index} value={option}>{option}</option>
                                 ))}
                             </select>
                         </div>
                         <div className='shiftModalContainer__itemShift__input'>
-                            <input className='shiftModalContainer__itemShift__input__prop' type='email' value={!inputEmailISh?(email?email:'-'):inputEmailISh}onChange={handleInputEmailISh}/>
+                            <input disabled className='shiftModalContainer__itemShift__input__prop' type='email' value={!inputEmailISh?(email?email:'-'):inputEmailISh}onChange={handleInputEmailISh}/>
                         </div>
                         <div className='shiftModalContainer__itemShift__btns'>
                             <button className='shiftModalContainer__itemShift__btns__btn' onClick={handleBtnDelShift}>Borrar</button>
-                            <button id='btnUpdateShift' className='shiftModalContainer__itemShift__btns__btn' onClick={handleBtnUpdShift}>Actualizar</button>
+                            {/* <button id='btnUpdateShift' className='shiftModalContainer__itemShift__btns__btn' onClick={handleBtnUpdShift}>Actualizar</button> */}
                             {showSpinner&&<Spinner/>}
                         </div>
                     </>
@@ -635,7 +636,7 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
                         </div>
                         <div className='shiftModalContainer__itemShift__btns'>
                             <button onClick={handleBtnDelShift} className='shiftModalContainer__itemShift__btns__btn'>Borrar</button>
-                            <button disabled id='btnUpdateShift' style={buttonDisabledStyle} className='shiftModalContainer__itemShift__btns__btn'>Actualizar</button>
+                            {/* <button disabled id='btnUpdateShift' style={buttonDisabledStyle} className='shiftModalContainer__itemShift__btns__btn'>Actualizar</button> */}
                         </div>
                     </>
                 }

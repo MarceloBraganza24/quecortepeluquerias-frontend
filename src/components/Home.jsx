@@ -73,13 +73,19 @@ const Home = () => {
                   <img src="https://storage.googleapis.com/que-corte-peluquerias-img/peluqueros.jpeg" className='homeContainer__imgContainer__img__prop' alt="imagenPeluqueria"/>
                 </div>
                 <div className='homeContainer__imgContainer__img'>
-                  <img src="https://storage.googleapis.com/que-corte-peluquerias-img/salon.jpeg" className='homeContainer__imgContainer__img__prop' alt="imagenPeluqueria"/>
+                  <img src="https://storage.googleapis.com/que-corte-peluquerias-img/ayrtonn.jpeg" className='homeContainer__imgContainer__img__prop' alt="imagenPeluqueria"/>
                 </div>
                 <div className='homeContainer__imgContainer__img'>
-                  <img src="https://storage.googleapis.com/que-corte-peluquerias-img/chopper.jpeg" className='homeContainer__imgContainer__img__prop' alt="imagenPeluqueria"/>
+                  <img src="https://storage.googleapis.com/que-corte-peluquerias-img/grupal.jpeg" className='homeContainer__imgContainer__img__prop' alt="imagenPeluqueria"/>
                 </div>
                 <div className='homeContainer__imgContainer__img'>
-                  <img src="https://storage.googleapis.com/que-corte-peluquerias-img/qcp-foto4-index.jpg" className='homeContainer__imgContainer__img__prop' alt="imagenPeluqueria"/>
+                  <img src="https://storage.googleapis.com/que-corte-peluquerias-img/grupal2.jpeg" className='homeContainer__imgContainer__img__prop' alt="imagenPeluqueria"/>
+                </div>
+                <div className='homeContainer__imgContainer__img'>
+                  <img src="https://storage.googleapis.com/que-corte-peluquerias-img/mirko1.jpeg" className='homeContainer__imgContainer__img__prop' alt="imagenPeluqueria"/>
+                </div>
+                <div className='homeContainer__imgContainer__img'>
+                  <img src="https://storage.googleapis.com/que-corte-peluquerias-img/corteAtras1.jpeg" className='homeContainer__imgContainer__img__prop' alt="imagenPeluqueria"/>
                 </div>
               </div>
           </div>

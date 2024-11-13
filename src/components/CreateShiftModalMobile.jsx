@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import moment from 'moment-timezone'
 import {OpenModalContext} from '../context/OpenModalContext'; 
 
-const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user}) => {
+const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user,holidays}) => {
     const {handleCreateShiftModalMobile,cancelShiftModal,handleCancelShiftModal} = useContext(OpenModalContext);
     const apiUrl = import.meta.env.VITE_API_URL;
     const [inputFirstNameShL, setInputFirstNameShL] = useState('');
@@ -72,9 +72,45 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user}) => 
     const optionsScheduleSh = [];
     optionsScheduleSh.push('Horario')
 
-    filteredArray.forEach(res => {
+    const chrismasMondaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','16:40','17:00','17:30','18:00','18:20','18:40','19:00','19:20','19:40','20:00','20:30']
+    let filteredArrayMonday = chrismasMondaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
+    
+    const chrismasTuesdaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','13:00','13:20','13:40']
+    let filteredArrayTuesday = chrismasTuesdaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
+    
+
+
+    const dateToCompareHoliday = {
+        date: formattedDate,
+        hairdresser: selectOptionHairdresserShL
+    }
+    const existsHoliday = holidays.some(holiday =>
+        holiday.date == dateToCompareHoliday.date &&
+        holiday.hairdresser == dateToCompareHoliday.hairdresser
+    );
+
+
+    if(existsHoliday) {
+        optionsScheduleSh.push('Peluquero de vacaciones')
+    } else if(formattedDate == '2024-12-23' || formattedDate == '2024-12-30') {
+        filteredArrayMonday.forEach((item)=>{
+            optionsScheduleSh.push(item)
+        })
+    } else if(formattedDate == '2024-12-24' || formattedDate == '2024-12-31') {
+        filteredArrayTuesday.forEach((item)=>{
+            optionsScheduleSh.push(item)
+        })
+    } else if(filteredArray.length == 0) {
+        optionsScheduleSh.push('No hay horarios')
+    } else {
+        filteredArray.forEach(res => {
+            optionsScheduleSh.push(res)
+        })
+    }
+
+    /* filteredArray.forEach(res => {
         optionsScheduleSh.push(res)
-    })
+    }) */
 
     const [isMonted, setIsMonted] = useState(false);
 
@@ -468,7 +504,18 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user}) => 
                 progress: undefined,
                 theme: "dark",
             });
-        } else if (!isAddSchedule && (selectScheduleOptionShL == '' || selectScheduleOptionShL == 'Horario')) {
+        } else if(existsHoliday) {
+            toast('En la fecha ingresada el peluquero se encuenta de vacaciones', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        } else if (!isAddSchedule && (selectScheduleOptionShL == '' || selectScheduleOptionShL == 'Horario' || selectScheduleOptionShL == 'Peluquero de vacaciones')) {
             toast('Debes seleccionar un horario!', {
                 position: "top-right",
                 autoClose: 3000,
@@ -479,7 +526,7 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user}) => 
                 progress: undefined,
                 theme: "dark",
             });
-        } else if (inputDateShL.getDay() == 0 || inputDateShL.getDay() == 1) {
+        } /* else if (inputDateShL.getDay() == 0 || inputDateShL.getDay() == 1) {
             toast('Elige un dia entre martes y sabado!', {
                 position: "top-right",
                 autoClose: 3000,
@@ -490,7 +537,7 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user}) => 
                 progress: undefined,
                 theme: "dark",
             });
-        } /* else if(inputDateShLFormated < fechaActual) {
+        } */ /* else if(inputDateShLFormated < fechaActual) {
             toast('Debes ingresar una fecha a futuro', {
                 position: "top-right",
                 autoClose: 2000,

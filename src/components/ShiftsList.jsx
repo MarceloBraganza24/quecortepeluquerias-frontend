@@ -56,14 +56,10 @@ const ShiftsList = () => {
     
     const [showSpinner, setShowSpinner] = useState(false);
     
-    //const [selectedYearValue, setSelectedYearsValue] = useState(`${new Date().getFullYear()}`);
-    
     let currentMonth = currentDate.getMonth();
     currentMonth += 1;
-    //const [selectedMonthValue, setSelectedMonthsValue] = useState(`${currentMonth}`);
     
     const currentDay = currentDate.getDate();
-    //const [selectedDayValue, setSelectedDayValue] = useState(`${currentDay}`);
     
     function compararFechas(objeto1, objeto2) {
         var fechaHora1 = new Date(objeto1.date + " " + objeto1.schedule);
@@ -133,9 +129,45 @@ const ShiftsList = () => {
 
     let filteredArray = schedulesByHairdresserDate.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
 
-    filteredArray.forEach(res => {
+    const chrismasMondaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','16:40','17:00','17:30','18:00','18:20','18:40','19:00','19:20','19:40','20:00','20:30']
+    let filteredArrayMonday = chrismasMondaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
+    
+    const chrismasTuesdaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','13:00','13:20','13:40']
+    let filteredArrayTuesday = chrismasTuesdaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
+    
+
+
+    const dateToCompareHoliday = {
+        date: formattedDate,
+        hairdresser: selectOptionHairdresserShL
+    }
+    const existsHoliday = holidays.some(holiday =>
+        holiday.date == dateToCompareHoliday.date &&
+        holiday.hairdresser == dateToCompareHoliday.hairdresser
+    );
+
+
+    if(existsHoliday) {
+        optionsScheduleSh.push('Peluquero de vacaciones')
+    } else if(formattedDate == '2024-12-23' || formattedDate == '2024-12-30') {
+        filteredArrayMonday.forEach((item)=>{
+            optionsScheduleSh.push(item)
+        })
+    } else if(formattedDate == '2024-12-24' || formattedDate == '2024-12-31') {
+        filteredArrayTuesday.forEach((item)=>{
+            optionsScheduleSh.push(item)
+        })
+    } else if(filteredArray.length == 0) {
+        optionsScheduleSh.push('No hay horarios')
+    } else {
+        filteredArray.forEach(res => {
+            optionsScheduleSh.push(res)
+        })
+    }
+
+    /* filteredArray.forEach(res => {
         optionsScheduleSh.push(res)
-    })
+    }) */
     
     const [isMonted, setIsMonted] = useState(false);
 
@@ -443,14 +475,25 @@ const ShiftsList = () => {
                 progress: undefined,
                 theme: "dark",
             });
-        } else if (!isAddSchedule && (selectScheduleOptionShL == '' || selectScheduleOptionShL == 'Horario')) {
+        } else if(existsHoliday) {
+            toast('En la fecha ingresada el peluquero se encuenta de vacaciones', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        } else if (!isAddSchedule && (selectScheduleOptionShL == '' || selectScheduleOptionShL == 'Horario' || selectScheduleOptionShL == 'Peluquero de vacaciones')) {
             toast('Debes seleccionar un horario!', {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
-                draggable: true,
+                draggable: true,    
                 progress: undefined,
                 theme: "dark",
             });
@@ -476,7 +519,7 @@ const ShiftsList = () => {
                 progress: undefined,
                 theme: "dark",
             });
-        } else if (inputDateShL.getDay() == 0 || inputDateShL.getDay() == 1) {
+        } else if (inputDateShL.getDay() == 0 /* || inputDateShL.getDay() == 1 */) {
             toast('Elige un dia entre martes y sabado!', {
                 position: "top-right",
                 autoClose: 3000,
@@ -956,7 +999,7 @@ const ShiftsList = () => {
                             <div className='shiftsListContainer__selects__labelSelect__label'>Año:</div>
                             {       
                                 !updateShiftModal&&!recoverShiftModal&&!cancelShiftModal&&!cancelDayModal&&!cancelDaysListModal?
-                                <select value={selectYearShL} className='shiftsListContainer__selects__labelSelect__select' onChange={handleSelectYearShL}>
+                                <select value={selectYearShL} className='shiftsListContainer__selects__labelSelect__select' onChange={(e) => {handleSelectYearShL(e.target.value)}}>
                                     <option value="2024">2024</option>
                                     <option value="2025">2025</option>
                                     <option value="2026">2026</option>
@@ -966,7 +1009,7 @@ const ShiftsList = () => {
                                     <option value="2030">2030</option>
                                 </select>
                                 :
-                                <select disabled style={buttonDisabledStyle} value={selectYearShL} className='shiftsListContainer__selects__labelSelect__select' onChange={handleSelectYearShL}>
+                                <select disabled style={buttonDisabledStyle} value={selectYearShL} className='shiftsListContainer__selects__labelSelect__select' onChange={(e) => {handleSelectYearShL(e.target.value)}}>
                                     <option value="2024">2024</option>
                                     <option value="2025">2025</option>
                                     <option value="2026">2026</option>
@@ -981,7 +1024,7 @@ const ShiftsList = () => {
                             <div className='shiftsListContainer__selects__labelSelect__label'>Mes:</div>
                             {       
                                 !updateShiftModal&&!recoverShiftModal&&!cancelShiftModal&&!cancelDayModal&&!cancelDaysListModal?
-                                <select value={selectMonthShL} className='shiftsListContainer__selects__labelSelect__selectDays' onChange={handleSelectMonthShL}>
+                                <select value={selectMonthShL} className='shiftsListContainer__selects__labelSelect__selectDays' onChange={(e) => {handleSelectMonthShL(e.target.value)}}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -996,7 +1039,7 @@ const ShiftsList = () => {
                                     <option value="12">12</option>
                                 </select>
                                 :
-                                <select disabled style={buttonDisabledStyle} value={selectMonthShL} className='shiftsListContainer__selects__labelSelect__selectDays' onChange={handleSelectMonthShL}>
+                                <select disabled style={buttonDisabledStyle} value={selectMonthShL} className='shiftsListContainer__selects__labelSelect__selectDays' onChange={(e) => {handleSelectMonthShL(e.target.value)}}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -1016,7 +1059,7 @@ const ShiftsList = () => {
                             <div className='shiftsListContainer__selects__labelSelect__label'>Día:</div>
                             {       
                                 !updateShiftModal&&!recoverShiftModal&&!cancelShiftModal&&!cancelDayModal&&!cancelDaysListModal?
-                                <select className='shiftsListContainer__selects__labelSelect__selectDays' onChange={handleSelectDayShL} value={selectDayShL}>
+                                <select className='shiftsListContainer__selects__labelSelect__selectDays' value={selectDayShL} onChange={(e) => {handleSelectDayShL(e.target.value)}}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -1050,7 +1093,7 @@ const ShiftsList = () => {
                                     <option id='day31' value="31">31</option>
                                 </select>
                                 :
-                                <select disabled style={buttonDisabledStyle} className='shiftsListContainer__selects__labelSelect__selectDays' onChange={handleSelectDayShL} value={selectDayShL}>
+                                <select disabled style={buttonDisabledStyle} className='shiftsListContainer__selects__labelSelect__selectDays' onChange={(e) => {handleSelectDayShL(e.target.value)}} value={selectDayShL}>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -1106,7 +1149,7 @@ const ShiftsList = () => {
                     </div>
                     <div className='shiftsListContainer__createShiftMobile'>
                         <button onClick={handleBtnCreateShiftModalMobile} className='shiftsListContainer__createShiftMobile__btnCreateShift'>Crear turno</button>
-                        {isOpenCreateShiftModalLocalMobile&&<CreateShiftModalMobile setIsOpenCreateShiftModalLocalMobile={setIsOpenCreateShiftModalLocalMobile} user={user}/>}
+                        {isOpenCreateShiftModalLocalMobile&&<CreateShiftModalMobile setIsOpenCreateShiftModalLocalMobile={setIsOpenCreateShiftModalLocalMobile} user={user} holidays={holidays}/>}
                     </div>
 
                     {/* {
@@ -1321,6 +1364,9 @@ const ShiftsList = () => {
                                 })}
                             </>
                             :
+                            (selectOptionHeaderHairdresserShL == 'Peluquero' || selectOptionHeaderHairdresserShL == '') ?
+                            <div className='myShiftsListContainer__withoutItems'>Selecciona un peluquero en la parte superior</div>
+                            :
                             <div className='myShiftsListContainer__withoutItems'>Aún no existen turnos</div>
                         }
                     </div>
@@ -1361,9 +1407,9 @@ const ShiftsList = () => {
             </>
             :
             <>
-                <div className='warningLogin'>
+                {/* <div className='warningLogin'>
                     <p className='warningLogin__prop'>Si aún no has iniciado sesión, <Link to={"/login"} className='warningLogin__link'>has click aquí</Link></p>
-                </div>
+                </div> */}
                 <div className='blackDiv'></div> 
             </>
         }

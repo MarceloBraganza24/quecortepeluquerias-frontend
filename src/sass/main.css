@@ -1040,7 +1040,7 @@ h2 {
   color: white;
   padding: 2vh 0vh;
   animation: fadeIn 2s ease-in;
-  font-size: 40px;
+  font-size: 30px;
 }
 .shiftsContainerIsLoggedIn__form__credentials {
   width: 50%;
@@ -1070,7 +1070,7 @@ h2 {
   display: flex;
   justify-content: start;
   align-items: center;
-  font-size: 25px;
+  font-size: 22px;
   color: white;
 }
 .shiftsContainerIsLoggedIn__form__credentials__label-input__input {
@@ -8727,9 +8727,11 @@ h2 {
     border: 0.3vh solid black;
   }
   .updateShiftModalContainerMobile__labelInput__datePikerShiftsListMobile {
+    background-color: white;
     width: 90%;
     height: 35px;
     border-radius: 1vh;
+    color: black;
     border: 0.3vh solid black;
   }
   .updateShiftModalContainerMobile__btns {
@@ -10049,7 +10051,7 @@ h2 {
     width: 100%;
     text-align: center;
     color: white;
-    font-size: 16px;
+    font-size: 15px;
     padding: 2vh 0vh;
   }
 }

@@ -38,7 +38,6 @@ const Shifts = () => {
     const [shifts, setShifts] = useState([]);
     const [hairdressers, setHairdressers] = useState([]);
     const [holidays, setHolidays] = useState([]);
-    //const [prices, setPrices] = useState([]);
     const [workDays, setWorkDays] = useState([]);
     const [services, setServices] = useState([]);
     const [saveConfirmationShiftModal, setSaveConfirmationShiftModal] = useState(false);
@@ -58,17 +57,6 @@ const Shifts = () => {
     services.forEach(res => {
         optionsService.push(res.title)
     })
-    /* if(!user.isMembershipFeePaid) {
-        const noPartnersServices = services.filter(service => service.category == 'No socio')
-        noPartnersServices.forEach(res => {
-            optionsService.push(res.title)
-        })
-    } else {
-        const partnersServices = services.filter(service => service.category == 'Socio')
-        partnersServices.forEach(res => {
-            optionsService.push(res.title)
-        })
-    } */
 
     const formatedDate = format(inputDateSh, 'yyyy-MM-dd');
 
@@ -80,18 +68,10 @@ const Shifts = () => {
         holiday.date == dateToCompareHoliday.date &&
         holiday.hairdresser == dateToCompareHoliday.hairdresser
     );
-
-
     
     const formatedNewDate = moment.tz(formatedDate, 'UTC');
     const dayFormatedNewDate = formatedNewDate.day();
     
-
-    
-
-
-
-
     const workDaysByHairdresserWorkDayFiltered = workDays.filter(item => (item.hairdresser == selectOptionHairdresserSh && (item.work_day == (dayFormatedNewDate==6&&'Sabado')))
         || (item.hairdresser == selectOptionHairdresserSh && (item.work_day == (dayFormatedNewDate==1&&'Lunes'))) 
         || (item.hairdresser == selectOptionHairdresserSh && (item.work_day == (dayFormatedNewDate==2&&'Martes'))) 
@@ -118,8 +98,22 @@ const Shifts = () => {
 
     let filteredArray = schedulesByHairdresserDate.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
 
+    const chrismasMondaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','16:40','17:00','17:30','18:00','18:20','18:40','19:00','19:20','19:40','20:00','20:30']
+    let filteredArrayMonday = chrismasMondaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
+    
+    const chrismasTuesdaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','13:00','13:20','13:40']
+    let filteredArrayTuesday = chrismasTuesdaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
+
     if(existsHoliday) {
         optionsScheduleSh.push('Peluquero de vacaciones')
+    } else if(formatedDate == '2024-12-23' || formatedDate == '2024-12-30') {
+        filteredArrayMonday.forEach((item)=>{
+            optionsScheduleSh.push(item)
+        })
+    } else if(formatedDate == '2024-12-24' || formatedDate == '2024-12-31') {
+        filteredArrayTuesday.forEach((item)=>{
+            optionsScheduleSh.push(item)
+        })
     } else if(filteredArray.length == 0) {
         optionsScheduleSh.push('No hay horarios')
     } else {
@@ -612,7 +606,7 @@ const Shifts = () => {
                 progress: undefined,
                 theme: "dark",
             });
-        } else if(newFormatedDate > fecha15DiasDespues) {
+        }/*  else if(newFormatedDate > fecha15DiasDespues) {
             toast('Debes ingresar una fecha con 15 dias de anticipacion como máximo', {
                 position: "top-right",
                 autoClose: 2000,
@@ -623,7 +617,7 @@ const Shifts = () => {
                 progress: undefined,
                 theme: "dark",
             });
-        } else if(selectOptionHairdresserSh == 'Peluquero' || selectOptionHairdresserSh == '') {
+        }  */else if(selectOptionHairdresserSh == 'Peluquero' || selectOptionHairdresserSh == '') {
             toast('Debes elegir un peluquero', {
                 position: "top-right",
                 autoClose: 2000,
@@ -668,6 +662,7 @@ const Shifts = () => {
                 theme: "dark",
             });
         } else {
+            //console.log(formatedDate)
             setSaveConfirmationShiftModal(true);
             handleSaveShiftModal(true);
         }
@@ -745,6 +740,7 @@ const Shifts = () => {
                     price: inputPriceSh,
                     shift_datetime: shift_datetime
                 }
+                console.log(shiftToCreate)
                 const response = await fetch(`${apiUrl}/api/shifts/register`, {
                     method: 'POST',         
                     headers: {
