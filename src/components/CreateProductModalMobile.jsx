@@ -33,14 +33,12 @@ const CreateProductModalMobile = ({setIsOpenCreateProductModalLocalMobile}) => {
 
     const handleInputTitleProdL = (e) => {
         const texto = e.target.value;
-        //const textCleaned = cleanString(texto);
         const textToSaved = cleanText(texto);
         setInputTitleProdL(textToSaved)
     };
 
     const handleInputDescriptionProdL = (e) => {
         const inputValue = e.target.value;
-        //const textCleaned = cleanString(inputValue);
         const textToSaved = cleanText(inputValue);
         setInputDescriptionProdL(textToSaved)
     };
@@ -61,7 +59,6 @@ const CreateProductModalMobile = ({setIsOpenCreateProductModalLocalMobile}) => {
 
     const handleInputCategoryProdL = (e) => {
         const texto = e.target.value;
-        //const textCleaned = cleanString(texto);
         const textToSaved = cleanText(texto);
         setInputCategoryProdL(textToSaved)
     };

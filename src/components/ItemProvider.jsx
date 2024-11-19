@@ -50,7 +50,6 @@ const ItemProvider = ({id,businessName,cuitCuil,phone,email}) => {
                 updateProviderModalMobileLocal&&
                     <ProvidersListModalMobile
                     handleUpdateProviderModalMobileLocal={handleUpdateProviderModalMobileLocal}
-                    //updateShiftModalMobileLocal={updateShiftModalMobileLocal}
                     id={id}
                     business_name={businessName}
                     cuit_cuil={cuitCuil}

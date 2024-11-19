@@ -160,9 +160,6 @@ const Login = () => {
                 <div className='loginContainer__credentialsContainer'>
 
                     <div className='loginContainer__credentialsContainer__credentials'>
-                        {/* <div className='loginContainer__credentialsContainer__credentials__phrase'>
-                            <h1 className='loginContainer__credentialsContainer__credentials__phrase__titleUp'>MB</h1>
-                        </div> */}
                         <div className='loginContainer__credentialsContainer__credentials__phrase'>
                             <h1 className='loginContainer__credentialsContainer__credentials__phrase__titleDown'>{company?company.name:'-'}</h1>
                         </div>
@@ -197,37 +194,13 @@ const Login = () => {
 
                 <div className='loginContainer__logo'>
                     <img src="https://storage.googleapis.com/que-corte-peluquerias-img/logo-que-corte.jpeg" className='loginContainer__logo__prop' alt="logo-que-corte"/>
-                    {/* <div className='loginContainer__logo__img'>
-                        <img src="https://storage.googleapis.com/que-corte-peluquerias-img/logo-que-corte.jpeg" className='loginContainer__logo__img__prop' alt="logo-que-corte"/>
-                    </div> */}
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 <div className='loginContainer__background-img-up'>
                     <img src="https://storage.googleapis.com/que-corte-peluquerias-img/logo-que-corte.jpeg" className='loginContainer__background-img-up__prop' alt="logo-que-corte"/>
                 </div>
 
                 <div className='loginContainer__credentials'>
-                    {/* <div className='loginContainer__credentials__phrase'>
-                        <h1 className='loginContainer__credentials__phrase__titleUp'>MB</h1>
-                    </div> */}
                     <div className='loginContainer__credentials__phrase'>
                         <h1 className='loginContainer__credentials__phrase__titleDown'>{company?company.name:'-'}</h1>
                     </div>

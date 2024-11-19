@@ -5,9 +5,7 @@ import LogOut from './LogOut';
 import { toast } from "react-toastify";
 import {IsLoggedContext} from '../context/IsLoggedContext';
 import {InputDataProdContext} from '../context/InputDataProdContext';
-import HMenu from './HMenu';
 import ItemProduct from './ItemProduct';
-import { Link } from 'react-router-dom';
 import {OpenModalContext} from '../context/OpenModalContext'; 
 import Spinner from './Spinner';
 import CreateProductModalMobile from './CreateProductModalMobile';
@@ -23,6 +21,7 @@ const ProductsList = () => {
     const apiUrl = import.meta.env.VITE_API_URL;
     const [isMonted, setIsMonted] = useState(false);
     const [isOpenCreateProductModalLocalMobile, setIsOpenCreateProductModalLocalMobile] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     
     function cleanString(input) {
         let trimmed = input.trim();
@@ -87,9 +86,29 @@ const ProductsList = () => {
     useEffect(() => {
         menuOptionsModal&&handleMenuOptionsModal(false);
         async function fetchData() {
-            const response = await fetch(`${apiUrl}/api/products`)
-            const productsAll = await response.json();
-            setProducts(productsAll.data)
+
+            try {
+                const response = await fetch(`${apiUrl}/api/products`)
+                const productsAll = await response.json();
+                if(!response.ok) {
+                    toast('No se pudieron obtener los productos, contacte al administrador', {
+                        position: "top-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                } else {
+                    setProducts(productsAll.data)
+                }
+            } catch (error) {
+                console.error('Error al obtener datos:', error);
+            } finally {
+                setIsLoading(false);
+            }
         }
         fetchData();
 
@@ -332,14 +351,6 @@ const ProductsList = () => {
                         <div className='productsListContainer__productsList__lengthShifts'>
                             <div className='productsListContainer__productsList__lengthShifts__prop'>Cantidad de productos: {objetosFiltrados.length}</div>
                         </div>
-                        {
-                            objetosFiltrados.length!=0&&
-                            <div className='productsListContainer__productsList__headerMobile'>
-                                <div className='productsListContainer__productsList__headerMobile__label'>Título</div>
-                                <div className='productsListContainer__productsList__headerMobile__label'>Precio</div>
-                                <div className='productsListContainer__productsList__headerMobile__label'>Stock</div>
-                            </div>
-                        }
                         <div className='productsListContainer__productsList__header'>
                             <div className='productsListContainer__productsList__header__label'>Título</div>
                             <div className='productsListContainer__productsList__header__label'>Descripción</div>
@@ -395,24 +406,36 @@ const ProductsList = () => {
                             }
                         </div>
                         {
-                            objetosFiltrados.map((product) => {
-                                return(
-                                    <ItemProduct
-                                    id={product._id}
-                                    title={product.title}
-                                    description={product.description}
-                                    price={product.price}
-                                    stock={product.stock}
-                                    category={product.category}
-                                    />
-                                )
-                            })
-                        }
-                    </div>
-                        {
-                            (objetosFiltrados.length == 0) &&
+                            isLoading ?
+                            <div className='myShiftsListContainer__withoutItems'>Cargando productos&nbsp;&nbsp;<Spinner/></div>
+                            :
+                            (objetosFiltrados.length != 0) ?
+                            <>
+                                <div className='productsListContainer__productsList__lengthShiftsMobile'>
+                                    <div className='productsListContainer__productsList__lengthShiftsMobile__prop'>Cantidad de productos: {objetosFiltrados.length}</div>
+                                </div>
+                                <div className='productsListContainer__productsList__headerMobile'>
+                                    <div className='productsListContainer__productsList__headerMobile__label'>Título</div>
+                                    <div className='productsListContainer__productsList__headerMobile__label'>Precio</div>
+                                    <div className='productsListContainer__productsList__headerMobile__label'>Stock</div>
+                                </div>
+                                {objetosFiltrados.map((product) => {
+                                    return(
+                                        <ItemProduct
+                                        id={product._id}
+                                        title={product.title}
+                                        description={product.description}
+                                        price={product.price}
+                                        stock={product.stock}
+                                        category={product.category}
+                                        />
+                                    )
+                                })}
+                            </>
+                            :
                             <div className='myShiftsListContainer__withoutItems'>Aún no existen productos</div>
                         }
+                    </div>
                 </div>
                 {
                     (objetosFiltrados.length == 0) ?
@@ -444,10 +467,7 @@ const ProductsList = () => {
             </>
             :
             <>
-                <div className='warningLogin'>
-                    <p className='warningLogin__prop'>Si aún no has iniciado sesión, <Link to={"/login"} className='warningLogin__link'>has click aquí</Link></p>
-                </div>
-                <div className='blackDiv'></div> 
+                <div className='blackDiv'><Spinner/></div>
             </>
         }
         <Footer/>

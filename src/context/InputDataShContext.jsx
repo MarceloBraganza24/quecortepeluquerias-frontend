@@ -172,7 +172,13 @@ export const ParentComponent = ({children}) => {
         setInputOptionServiceSh(e);
         //handleInputPriceSh(e)
         e=='Elija su servicio'&&setInputPriceSh('')
-        if(!user.isMembershipFeePaid) {
+        services.forEach(res => {
+            const compared = compareStringsIgnoreCase(e, res.title)
+            if(compared) {
+                setInputPriceSh(res.value)
+            }
+        })
+        /* if(!user.isMembershipFeePaid) {
             const noPartnersServices = services.filter(service => service.category == 'No socio')
             noPartnersServices.forEach(res => {
                 const compared = compareStringsIgnoreCase(e, res.title)
@@ -188,7 +194,8 @@ export const ParentComponent = ({children}) => {
                     setInputPriceSh(res.value)
                 }
             })
-        }
+        } */
+
     };
 
     function compareStringsIgnoreCase(str1, str2) {

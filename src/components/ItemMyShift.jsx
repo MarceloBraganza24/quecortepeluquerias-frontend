@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react'
 import 'react-datepicker/dist/react-datepicker.css';
 import MyShiftListModal from './MyShiftListModal';
 import {OpenModalContext} from '../context/OpenModalContext'; 
-import ShiftsListModalMobile from './ShiftsListModalMobile';
 import MyShiftListModalMobile from './MyShiftListModalMobile';
 
 const ItemMyShift = ({id,hairdresser,first_name,last_name,service,email,date,schedule,shifts,holidaysData}) => {

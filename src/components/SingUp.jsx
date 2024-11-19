@@ -48,7 +48,6 @@ const SingUp = () => {
     const handleInputFirstName = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setFirstName(textToSaved)
         }
@@ -57,7 +56,6 @@ const SingUp = () => {
     const handleInputLastName = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setLastName(textToSaved)
         }
@@ -65,7 +63,6 @@ const SingUp = () => {
 
     const handleInputEmail = (e) => {
         const texto = e.target.value;
-        //const textCleaned = cleanString(texto);
         const textToSaved = cleanText(texto);
         setEmail(textToSaved)
     }
@@ -218,9 +215,6 @@ const SingUp = () => {
 
                 <div className='singUpContainer__credentialsContainer'>
                     <div className='singUpContainer__credentialsContainer__credentials'>
-                        {/* <div className='singUpContainer__credentialsContainer__credentials__phrase'>
-                            <h1 className='singUpContainer__credentialsContainer__credentials__phrase__titleUp'>MB</h1>
-                        </div> */}
                         <div className='singUpContainer__credentialsContainer__credentials__phrase'>
                             <h1 className='singUpContainer__credentialsContainer__credentials__phrase__titleDown'>{company?company.name:'-'}</h1>
                         </div>
@@ -262,9 +256,6 @@ const SingUp = () => {
                 </div>
 
                 <div className='singUpContainer__credentials'>
-                    {/* <div className='singUpContainer__credentials__phrase'>
-                        <p className='singUpContainer__credentials__phrase__titleUp'>MB</p>
-                    </div> */}
                     <div className='singUpContainer__credentials__phrase'>
                         <p className='singUpContainer__credentials__phrase__titleDown'>{company?company.name:'-'}</p>
                     </div>

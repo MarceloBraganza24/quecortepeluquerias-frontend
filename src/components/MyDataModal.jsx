@@ -32,7 +32,6 @@ const MyDataModal = ({id,first_name,last_name,setIsMyDataModalOpen,handleUpdateM
     const handleInputFirstNameMD = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputFirstNameMD(textToSaved)
         } 
@@ -41,7 +40,6 @@ const MyDataModal = ({id,first_name,last_name,setIsMyDataModalOpen,handleUpdateM
     const handleInputLastNameMD = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputLastNameMD(textToSaved)
         } 

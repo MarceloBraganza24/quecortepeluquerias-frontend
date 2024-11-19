@@ -42,6 +42,14 @@ h2 {
   display: none;
 }
 
+.blackDiv {
+  background-color: black;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 3vh;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -551,17 +559,6 @@ h2 {
   height: auto;
   display: grid;
   grid-template-columns: 1fr 4fr;
-  /* &__title {
-      width: 100%;
-      height: auto;
-      @include disFC();
-      &__prop {
-          text-decoration: none;
-          color: white;
-          font-size: 40px;
-          color: white;
-      }
-  } */
 }
 .navBarContainer__hMenuLogo__hMenu {
   width: 100%;
@@ -604,7 +601,7 @@ h2 {
 }
 .navBarContainer__phrase-btns__phrase-user__phrase__prop {
   color: white;
-  font-size: 18px;
+  font-size: 16px;
 }
 .navBarContainer__phrase-btns__phrase-user__user {
   grid-column: 3/-1;
@@ -616,7 +613,7 @@ h2 {
 }
 .navBarContainer__phrase-btns__phrase-user__user__prop {
   color: white;
-  font-size: 12px;
+  font-size: 10px;
 }
 .navBarContainer__phrase-btns__btns {
   width: 100%;
@@ -634,6 +631,7 @@ h2 {
   align-items: center;
   text-decoration: none;
   color: white;
+  font-size: 16px;
 }
 .navBarContainer__phrase-btns__btns__prop:hover {
   background-color: #d2b569;
@@ -732,11 +730,14 @@ h2 {
 .footerContainer__social-networks__logo-link__link {
   text-decoration: none;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 }
 .footerContainer__social-networks__logo-link__link:hover {
   color: #d2b569;
   cursor: pointer;
+}
+.footerContainer__social-networks__logo-link__logo {
+  width: 8%;
 }
 .footerContainer__title-copyrigth {
   width: 100%;
@@ -760,6 +761,7 @@ h2 {
   align-items: center;
   flex-direction: column;
   color: white;
+  font-size: 18px;
 }
 .footerContainer__title-copyrigth__title__prop__spacing {
   letter-spacing: 0.5vh;
@@ -772,7 +774,7 @@ h2 {
   align-items: center;
 }
 .footerContainer__title-copyrigth__copyrigth__prop {
-  font-size: 12px;
+  font-size: 10px;
   color: white;
   text-decoration: none;
 }
@@ -825,7 +827,6 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 15px;
   }
   .footerContainer__title-copyrigth__title__prop {
     width: 100%;
@@ -835,6 +836,7 @@ h2 {
     align-items: center;
     flex-direction: column;
     color: white;
+    font-size: 15px;
   }
   .footerContainer__title-copyrigth__title__prop__spacing {
     letter-spacing: 0.5vh;
@@ -1044,8 +1046,9 @@ h2 {
 }
 .shiftsContainerIsLoggedIn__form__phrase {
   color: white;
-  padding-bottom: 2vh;
+  padding: 2vh 0vh;
   animation: fadeIn 2s ease-in;
+  font-size: 30px;
 }
 .shiftsContainerIsLoggedIn__form__credentials {
   width: 50%;
@@ -1054,6 +1057,7 @@ h2 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding-bottom: 2vh;
 }
 .shiftsContainerIsLoggedIn__form__credentials__label-input {
   width: 100%;
@@ -1074,7 +1078,7 @@ h2 {
   display: flex;
   justify-content: start;
   align-items: center;
-  font-size: 25px;
+  font-size: 22px;
   color: white;
 }
 .shiftsContainerIsLoggedIn__form__credentials__label-input__input {
@@ -1171,7 +1175,7 @@ h2 {
 }
 
 .react-datepicker-wrapper-disabled {
-  background-color: grey;
+  background-color: white;
   width: 100%;
   height: 40px;
   display: flex;
@@ -1180,6 +1184,7 @@ h2 {
   border: 0.21vh solid black;
   border-radius: 1vh;
   z-index: 0;
+  color: black;
 }
 
 @media (max-width: 480px) {
@@ -1290,10 +1295,12 @@ h2 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 0vh;
   }
   .shiftsContainerIsLoggedIn__form__phrase {
     color: white;
     animation: fadeIn 2s ease-in;
+    font-size: 30px;
   }
   .shiftsContainerIsLoggedIn__form__credentials {
     width: 100%;
@@ -1318,7 +1325,7 @@ h2 {
     justify-content: start;
   }
   .shiftsContainerIsLoggedIn__form__credentials__label-input__label__prop {
-    font-size: 22px;
+    font-size: 20px;
     color: white;
   }
   .shiftsContainerIsLoggedIn__form__credentials__label-input__input {
@@ -1351,7 +1358,7 @@ h2 {
   }
   .shiftsContainerIsLoggedIn__form__credentials__btn__prop {
     width: 85%;
-    height: 40px;
+    height: 35px;
     font-size: 20px;
     background-color: #d2b569;
     color: black;
@@ -1448,7 +1455,7 @@ h2 {
   width: 90%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -1502,7 +1509,7 @@ h2 {
   width: 100%;
   height: 40px;
   text-align: center;
-  font-size: 20px;
+  font-size: 16px;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -1647,7 +1654,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -1661,14 +1668,14 @@ h2 {
   gap: 0.5vh;
 }
 .itemShift__inputSchedule__prop {
-  font-size: 20px;
+  font-size: 18px;
   color: white;
 }
 .itemShift__label {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   color: white;
 }
 .itemShift__btns {
@@ -1702,17 +1709,6 @@ h2 {
   .itemCreateShift {
     display: none;
   }
-  /* .no-scroll {
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      scrollbar-width: none; 
-      -ms-overflow-style: none; 
-  }
-
-  .no-scroll::-webkit-scrollbar {
-  display: none; 
-  } */
   .itemShiftMobile {
     background-color: black;
     width: 100%;
@@ -1852,13 +1848,6 @@ h2 {
     border-radius: 1vh;
   }
 }
-.blackDiv {
-  background-color: black;
-  width: 100%;
-  height: auto;
-  padding: 35vh 0vh;
-}
-
 .datePikerCreateShift {
   background-color: black;
   width: 100%;
@@ -1873,7 +1862,7 @@ h2 {
   background-color: whitesmoke;
   width: 100%;
   height: auto;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
   color: black;
   border: none;
@@ -1908,6 +1897,7 @@ h2 {
   height: auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  padding: 1vh 0vh;
 }
 .shiftsListContainer__selectHairdresser-title__selectHairdresser {
   width: 100%;
@@ -1918,7 +1908,7 @@ h2 {
   gap: 2vh;
 }
 .shiftsListContainer__selectHairdresser-title__selectHairdresser__label {
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .shiftsListContainer__selectHairdresser-title__selectHairdresser__select {
@@ -1926,9 +1916,9 @@ h2 {
   height: auto;
 }
 .shiftsListContainer__selectHairdresser-title__selectHairdresser__select__prop {
-  width: 100%;
+  width: 120px;
   height: 35px;
-  font-size: 18px;
+  font-size: 15px;
   text-align: center;
   background-color: #d2b569;
   color: black;
@@ -1944,7 +1934,7 @@ h2 {
 }
 .shiftsListContainer__selectHairdresser-title__title {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   color: white;
   animation: fadeIn 2s ease-in;
 }
@@ -1954,7 +1944,7 @@ h2 {
   height: auto;
   display: flex;
   border-top: 0.3vh solid white;
-  padding: 2vh 0vh;
+  padding: 3vh 0vh;
 }
 .shiftsListContainer__selects__labelSelect {
   width: 100%;
@@ -1965,12 +1955,12 @@ h2 {
   gap: 2vh;
 }
 .shiftsListContainer__selects__labelSelect__label {
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .shiftsListContainer__selects__labelSelect__select {
   width: 30%;
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
   background-color: #d2b569;
   color: black;
@@ -1986,7 +1976,7 @@ h2 {
 }
 .shiftsListContainer__selects__labelSelect__selectDays {
   width: 35%;
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
   background-color: #d2b569;
   color: black;
@@ -2027,7 +2017,7 @@ h2 {
   height: auto;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  padding-bottom: 1vh;
+  padding: 2vh 0vh;
 }
 .shiftsListContainer__shiftsList__lengthShifts__cancelDaysList {
   width: 100%;
@@ -2038,7 +2028,7 @@ h2 {
 }
 .shiftsListContainer__shiftsList__lengthShifts__cancelDaysList__btn {
   width: 50%;
-  font-size: 20px;
+  font-size: 16px;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -2060,7 +2050,7 @@ h2 {
 }
 .shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__btn {
   width: 20%;
-  font-size: 20px;
+  font-size: 16px;
   text-align: center;
   background-color: #d2b569;
   color: black;
@@ -2075,7 +2065,7 @@ h2 {
 }
 .shiftsListContainer__shiftsList__lengthShifts__btnsShiftsLength__prop {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 }
 .shiftsListContainer__shiftsList__headerMobile {
   display: none;
@@ -2098,7 +2088,7 @@ h2 {
     height: auto;
     display: flex;
     flex-direction: column;
-    padding: 14vh 0vh 2vh 0vh;
+    padding: 16vh 0vh 2vh 0vh;
   }
   .shiftsListContainer__blackDiv {
     display: none;
@@ -2139,7 +2129,8 @@ h2 {
     color: white;
   }
   .shiftsListContainer__selectHairdresser-titleMobile__selectHairdresser__select {
-    font-size: 20px;
+    width: 150px;
+    font-size: 18px;
     text-align: center;
     background-color: #d2b569;
     color: black;
@@ -2155,9 +2146,10 @@ h2 {
   }
   .shiftsListContainer__selectHairdresser-titleMobile__title {
     text-align: center;
-    font-size: 35px;
+    font-size: 30px;
     color: white;
     animation: fadeIn 2s ease-in;
+    padding: 1vh 0vh;
   }
   .shiftsListContainer__selects {
     background-color: black;
@@ -2166,7 +2158,7 @@ h2 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     border-top: 0.3vh solid white;
-    padding: 2vh 0vh;
+    padding: 3vh 0vh;
   }
   .shiftsListContainer__selects__labelSelect {
     width: 100%;
@@ -2182,6 +2174,7 @@ h2 {
   }
   .shiftsListContainer__selects__labelSelect__select {
     width: 60%;
+    height: 30px;
     font-size: 15px;
     text-align: center;
     background-color: #d2b569;
@@ -2198,6 +2191,7 @@ h2 {
   }
   .shiftsListContainer__selects__labelSelect__selectDays {
     width: 40%;
+    height: 30px;
     font-size: 15px;
     text-align: center;
     background-color: #d2b569;
@@ -2218,14 +2212,14 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2vh 0vh 2vh 0vh;
+    padding: 2vh 0vh;
     border-top: 0.3vh solid white;
     gap: 1vh;
   }
   .shiftsListContainer__cancelDayMobile__btnCancelDay {
     width: 50%;
     height: auto;
-    font-size: 18px;
+    font-size: 16px;
     background-color: #d2b569;
     color: black;
     border-color: black;
@@ -2265,7 +2259,7 @@ h2 {
   .shiftsListContainer__createShiftMobile__btnCreateShift {
     width: 50%;
     height: auto;
-    font-size: 18px;
+    font-size: 16px;
     background-color: #d2b569;
     color: black;
     border-color: black;
@@ -2311,7 +2305,7 @@ h2 {
   }
   .shiftsListContainer__shiftsList__lengthShiftsMobile__prop {
     color: white;
-    font-size: 18px;
+    font-size: 16px;
   }
   .shiftsListContainer__shiftsList__lengthShifts {
     display: none;
@@ -2334,7 +2328,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 17px;
+    font-size: 16px;
   }
   .shiftsListContainer__shiftsList__header {
     width: 100%;
@@ -2599,109 +2593,111 @@ h2 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 0vh 0vh 4vh 0vh;
+  padding: 2vh 0vh 5vh 0vh;
+  gap: 1vh;
+}
+.partnersContainer__title {
+  width: 60%;
+  height: auto;
+  color: white;
+  text-align: center;
+  font-size: 40px;
 }
 .partnersContainer__phrase {
+  width: 60%;
+  height: auto;
   color: white;
+  font-size: 22px;
+  text-align: justify;
   padding-bottom: 2vh;
 }
-.partnersContainer__credentials {
-  width: 40%;
+.partnersContainer__contactPhrase {
+  width: 60%;
+  height: auto;
+  color: white;
+  font-size: 22px;
+  text-align: center;
+  padding-top: 2vh;
+}
+.partnersContainer__table {
+  width: 70%;
+  height: auto;
+  padding: 2vh 0vh 0vh 0vh;
+  border: 0.3vh solid #d2b569;
+  border-radius: 2vh;
+}
+.partnersContainer__table__item {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 2vh;
+}
+.partnersContainer__table__item__prop {
+  color: white;
+  font-size: 22px;
+  text-align: center;
+}
+
+.partnersContainerMembershipFeeOk {
+  background-color: black;
+  width: 100%;
   height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 3vh;
+  padding: 2vh 0vh 5vh 0vh;
+  gap: 1vh;
 }
-.partnersContainer__credentials__label-input {
+.partnersContainerMembershipFeeOk__title {
+  width: 60%;
+  height: auto;
+  color: white;
+  text-align: center;
+  font-size: 40px;
+}
+.partnersContainerMembershipFeeOk__phrase {
+  width: 60%;
+  height: auto;
+  color: white;
+  font-size: 22px;
+  text-align: justify;
+  padding-bottom: 2vh;
+}
+.partnersContainerMembershipFeeOk__props {
+  width: 60%;
+  height: auto;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+.partnersContainerMembershipFeeOk__contactPhrase {
+  width: 60%;
+  height: auto;
+  color: white;
+  font-size: 22px;
+  text-align: center;
+  padding-top: 2vh;
+}
+.partnersContainerMembershipFeeOk__table {
+  width: 70%;
+  height: auto;
+  padding: 2vh 0vh 0vh 0vh;
+  border: 0.3vh solid #d2b569;
+  border-radius: 2vh;
+}
+.partnersContainerMembershipFeeOk__table__item {
   width: 100%;
   height: auto;
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 0vh;
-  padding: 0vh 0vh;
+  grid-template-columns: 1fr 1fr;
+  padding-bottom: 2vh;
 }
-.partnersContainer__credentials__label-input__label {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.partnersContainer__credentials__label-input__label__prop {
-  width: 100%;
-  height: auto;
+.partnersContainerMembershipFeeOk__table__item__prop {
+  color: white;
   font-size: 22px;
-  color: white;
-}
-.partnersContainer__credentials__label-input__input {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.partnersContainer__credentials__label-input__input__prop {
-  padding: 0.5vh 0vh;
-  width: 100%;
-  height: 40px;
-  border-radius: 1vh;
-  border: 0.3vh solid black;
-}
-.partnersContainer__credentials__label-input__input__prop::-moz-placeholder {
-  color: black;
-}
-.partnersContainer__credentials__label-input__input__prop::placeholder {
-  color: black;
-}
-.partnersContainer__credentials__label-input__membershipFee {
-  width: 100%;
-  height: auto;
-  display: flex;
-}
-.partnersContainer__credentials__label-input__membershipFee__prop {
-  color: white;
-  font-size: 25px;
-}
-.partnersContainer__credentials__btn {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 2vh;
-}
-.partnersContainer__credentials__btn__prop {
-  width: 70%;
-  height: 40px;
-  font-size: 20px;
-  background-color: #d2b569;
-  color: black;
-  border-color: black;
-  border-radius: 5vh;
-  box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
-  transition: transform 0.2s;
-}
-.partnersContainer__credentials__btn__prop:active {
-  transform: translateY(2px); /* Baja el botón al hacer clic */
-  box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
-}
-.partnersContainer__credentials__btn__propNonRegister {
-  width: 90%;
-  height: 40px;
-  font-size: 18px;
-  font-weight: bold;
-  background-color: #d2b569;
-  color: black;
-  border-color: black;
-  border-radius: 5vh;
-  box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
-  transition: transform 0.2s;
-}
-.partnersContainer__credentials__btn__propNonRegister:active {
-  transform: translateY(2px); /* Baja el botón al hacer clic */
-  box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
+  text-align: center;
 }
 
 .partnersContainerIsLoggedIn {
@@ -3045,86 +3041,99 @@ h2 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 12vh 0vh 4vh 0vh;
-    gap: 2vh;
+    padding: 14vh 0vh 4vh 0vh;
+  }
+  .partnersContainer__title {
+    width: 60%;
+    height: auto;
+    color: white;
+    text-align: center;
+    font-size: 30px;
   }
   .partnersContainer__phrase {
+    width: 85%;
+    height: auto;
     color: white;
+    font-size: 19px;
+    text-align: justify;
     padding-bottom: 2vh;
   }
-  .partnersContainer__credentials {
+  .partnersContainer__props {
     width: 85%;
+    height: auto;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+  }
+  .partnersContainer__contactPhrase {
+    width: 85%;
+    height: auto;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    padding-top: 2vh;
+  }
+  .partnersContainer__table {
+    width: 95%;
+    height: auto;
+    padding: 2vh 0vh 0vh 0vh;
+    border: 0.3vh solid #d2b569;
+    border-radius: 2vh;
+  }
+  .partnersContainer__table__item {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    padding-bottom: 2vh;
+  }
+  .partnersContainer__table__item__prop {
+    color: white;
+    font-size: 14px;
+    text-align: center;
+  }
+  .partnersContainerMembershipFeeOk {
+    background-color: black;
+    width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 3vh;
+    padding: 16vh 0vh 16vh 0vh;
   }
-  .partnersContainer__credentials__label-input {
+  .partnersContainerMembershipFeeOk__title {
+    width: 60%;
+    height: auto;
+    color: white;
+    text-align: center;
+    font-size: 40px;
+  }
+  .partnersContainerMembershipFeeOk__props {
+    width: 85%;
+    height: auto;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+  }
+  .partnersContainerMembershipFeeOk__table {
+    width: 95%;
+    height: auto;
+    padding: 2vh 0vh 0vh 0vh;
+    border: 0.3vh solid #d2b569;
+    border-radius: 2vh;
+  }
+  .partnersContainerMembershipFeeOk__table__item {
     width: 100%;
     height: auto;
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 0vh;
-    padding: 0vh 0vh;
+    grid-template-columns: 4fr 1fr;
+    padding-bottom: 2vh;
   }
-  .partnersContainer__credentials__label-input__label {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .partnersContainer__credentials__label-input__label__prop {
-    width: 100%;
-    height: auto;
-    font-size: 22px;
+  .partnersContainerMembershipFeeOk__table__item__prop {
     color: white;
-  }
-  .partnersContainer__credentials__label-input__input {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 1vh;
-  }
-  .partnersContainer__credentials__label-input__input__prop {
-    padding: 0.5vh 0vh;
-    width: 100%;
-  }
-  .partnersContainer__credentials__label-input__membershipFee {
-    width: 100%;
-    height: auto;
-    display: flex;
-  }
-  .partnersContainer__credentials__label-input__membershipFee__prop {
-    color: white;
-    font-size: 25px;
-  }
-  .partnersContainer__credentials__btn {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 2vh;
-  }
-  .partnersContainer__credentials__btn__prop {
-    width: 70%;
-    height: 40px;
-    font-size: 20px;
-    background-color: #d2b569;
-    color: black;
-    border-color: black;
-    border-radius: 5vh;
-    box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
-    transition: transform 0.2s;
-  }
-  .partnersContainer__credentials__btn__prop:active {
-    transform: translateY(2px); /* Baja el botón al hacer clic */
-    box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
+    font-size: 14px;
+    text-align: center;
   }
   .partnersContainerIsLoggedIn {
     background-color: black;
@@ -3481,7 +3490,7 @@ h2 {
 }
 .partnersListContainer__title {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   color: white;
   animation: fadeIn 2s ease-in;
 }
@@ -3500,10 +3509,10 @@ h2 {
   color: black;
 }
 .partnersListContainer__inputFilteredPartners__prop {
-  width: 70%;
-  height: 40px;
+  width: 50%;
+  height: 35px;
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
   border-radius: 2vh;
 }
 .partnersListContainer__createPartnerMobile {
@@ -3529,7 +3538,10 @@ h2 {
 }
 .partnersListContainer__partnersList__lengthShifts__prop {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
+}
+.partnersListContainer__partnersList__lengthShiftsMobile {
+  display: none;
 }
 .partnersListContainer__partnersList__headerMobile {
   display: none;
@@ -3541,7 +3553,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 30px;
+  font-size: 20px;
   padding: 1vh 0vh;
   gap: 1vh;
 }
@@ -3565,7 +3577,7 @@ h2 {
   }
   .partnersListContainer__title {
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     color: white;
     animation: fadeIn 2s ease-in;
   }
@@ -3584,10 +3596,10 @@ h2 {
     color: black;
   }
   .partnersListContainer__inputFilteredPartners__prop {
-    width: 85%;
-    height: 35px;
+    width: 70%;
+    height: 30px;
     text-align: center;
-    font-size: 25px;
+    font-size: 18px;
     border-radius: 2vh;
   }
   .partnersListContainer__createPartnerMobile {
@@ -3603,7 +3615,7 @@ h2 {
   .partnersListContainer__createPartnerMobile__btnCreatePartner {
     width: 50%;
     height: auto;
-    font-size: 18px;
+    font-size: 16px;
     background-color: #d2b569;
     color: black;
     border-color: black;
@@ -3628,16 +3640,19 @@ h2 {
     white-space: nowrap;
   }
   .partnersListContainer__partnersList__lengthShifts {
+    display: none;
+  }
+  .partnersListContainer__partnersList__lengthShiftsMobile {
     width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 1vh;
+    padding: 1vh 0vh;
   }
-  .partnersListContainer__partnersList__lengthShifts__prop {
+  .partnersListContainer__partnersList__lengthShiftsMobile__prop {
     color: white;
-    font-size: 15px;
+    font-size: 16px;
   }
   .partnersListContainer__partnersList__headerMobile {
     width: 100%;
@@ -3654,7 +3669,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 15px;
+    font-size: 16px;
   }
   .partnersListContainer__partnersList__header {
     width: 100%;
@@ -3681,7 +3696,7 @@ h2 {
   text-align: center;
   color: white;
   border-top: 0.3vh solid white;
-  padding: 1vh 0vh;
+  padding: 2vh 0vh;
 }
 .itemCreatePartner__input {
   width: 100%;
@@ -3694,7 +3709,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -3710,7 +3725,7 @@ h2 {
   width: 50%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -3732,9 +3747,9 @@ h2 {
   gap: 1vh;
 }
 .itemCreatePartner__btns__btn {
-  width: 90%;
+  width: 80%;
   height: auto;
-  padding: 0.5vh;
+  padding: 0vh 0.3vh;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -3776,7 +3791,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -3785,7 +3800,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
 }
 .itemPartner__btns {
   width: 100%;
@@ -3804,6 +3819,7 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
   transition: transform 0.2s;
+  font-size: 14px;
 }
 .itemPartner__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -3910,7 +3926,7 @@ h2 {
 }
 .providersListContainer__title {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   color: white;
   animation: fadeIn 2s ease-in;
 }
@@ -3929,10 +3945,10 @@ h2 {
   color: black;
 }
 .providersListContainer__inputFilteredProviders__prop {
-  width: 70%;
-  height: 40px;
+  width: 50%;
+  height: 35px;
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
   border-radius: 2vh;
 }
 .providersListContainer__createProviderMobile {
@@ -3958,7 +3974,10 @@ h2 {
 }
 .providersListContainer__providersList__lengthShifts__prop {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
+}
+.providersListContainer__providersList__lengthShiftsMobile {
+  display: none;
 }
 .providersListContainer__providersList__headerMobile {
   display: none;
@@ -3970,7 +3989,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 25px;
+  font-size: 20px;
   padding: 1vh 0vh;
 }
 
@@ -3993,7 +4012,7 @@ h2 {
   }
   .providersListContainer__title {
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     color: white;
     animation: fadeIn 2s ease-in;
   }
@@ -4012,10 +4031,10 @@ h2 {
     color: black;
   }
   .providersListContainer__inputFilteredProviders__prop {
-    width: 90%;
-    height: 35px;
+    width: 70%;
+    height: 30px;
     text-align: center;
-    font-size: 25px;
+    font-size: 18px;
     border-radius: 2vh;
   }
   .providersListContainer__createProviderMobile {
@@ -4031,7 +4050,7 @@ h2 {
   .providersListContainer__createProviderMobile__btnCreateProvider {
     width: 50%;
     height: auto;
-    font-size: 18px;
+    font-size: 16px;
     background-color: #d2b569;
     color: black;
     border-color: black;
@@ -4055,6 +4074,9 @@ h2 {
     overflow: auto;
   }
   .providersListContainer__providersList__lengthShifts {
+    display: none;
+  }
+  .providersListContainer__providersList__lengthShiftsMobile {
     width: 100%;
     height: auto;
     display: flex;
@@ -4062,9 +4084,9 @@ h2 {
     align-items: center;
     padding-top: 1vh;
   }
-  .providersListContainer__providersList__lengthShifts__prop {
+  .providersListContainer__providersList__lengthShiftsMobile__prop {
     color: white;
-    font-size: 15px;
+    font-size: 16px;
   }
   .providersListContainer__providersList__headerMobile {
     width: 100%;
@@ -4081,7 +4103,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
+    font-size: 16px;
   }
   .providersListContainer__providersList__header {
     display: none;
@@ -4095,7 +4117,7 @@ h2 {
   text-align: center;
   color: white;
   border-top: 0.3vh solid white;
-  padding: 1vh 0vh;
+  padding: 2vh 0vh;
 }
 .itemCreateProvider__input {
   width: 100%;
@@ -4108,7 +4130,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -4122,9 +4144,9 @@ h2 {
   gap: 1vh;
 }
 .itemCreateProvider__btns__btn {
-  width: 90%;
+  width: 80%;
   height: auto;
-  padding: 0.5vh;
+  padding: 0vh 0.3vh;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -4166,7 +4188,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -4188,6 +4210,7 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
   transition: transform 0.2s;
+  font-size: 14px;
 }
 .itemProvider__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -4293,7 +4316,7 @@ h2 {
 }
 .productsListContainer__title {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   color: white;
   animation: fadeIn 2s ease-in;
 }
@@ -4312,10 +4335,10 @@ h2 {
   color: black;
 }
 .productsListContainer__inputFilteredProducts__prop {
-  width: 70%;
-  height: 40px;
+  width: 50%;
+  height: 35px;
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
   border-radius: 2vh;
 }
 .productsListContainer__createProductMobile {
@@ -4341,7 +4364,10 @@ h2 {
 }
 .productsListContainer__productsList__lengthShifts__prop {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
+}
+.productsListContainer__productsList__lengthShiftsMobile {
+  display: none;
 }
 .productsListContainer__productsList__headerMobile {
   display: none;
@@ -4353,7 +4379,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 25px;
+  font-size: 20px;
   padding: 1vh 0vh;
 }
 
@@ -4376,7 +4402,7 @@ h2 {
   }
   .productsListContainer__title {
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     color: white;
     animation: fadeIn 2s ease-in;
   }
@@ -4395,10 +4421,10 @@ h2 {
     color: black;
   }
   .productsListContainer__inputFilteredProducts__prop {
-    width: 90%;
-    height: 35px;
+    width: 70%;
+    height: 30px;
     text-align: center;
-    font-size: 25px;
+    font-size: 18px;
     border-radius: 2vh;
   }
   .productsListContainer__createProductMobile {
@@ -4419,6 +4445,7 @@ h2 {
     border-radius: 5vh;
     box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
     transition: transform 0.2s;
+    font-size: 16px;
   }
   .productsListContainer__createProductMobile__btnCreateProduct:active {
     transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -4435,6 +4462,9 @@ h2 {
     overflow: auto;
   }
   .productsListContainer__productsList__lengthShifts {
+    display: none;
+  }
+  .productsListContainer__productsList__lengthShiftsMobile {
     width: 100%;
     height: auto;
     display: flex;
@@ -4442,9 +4472,9 @@ h2 {
     align-items: center;
     padding-top: 1vh;
   }
-  .productsListContainer__productsList__lengthShifts__prop {
+  .productsListContainer__productsList__lengthShiftsMobile__prop {
     color: white;
-    font-size: 15px;
+    font-size: 16px;
   }
   .productsListContainer__productsList__headerMobile {
     width: 100%;
@@ -4461,7 +4491,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 15px;
+    font-size: 16px;
   }
   .productsListContainer__productsList__header {
     display: none;
@@ -4475,7 +4505,7 @@ h2 {
   text-align: center;
   color: white;
   border-top: 0.3vh solid white;
-  padding: 1vh 0vh;
+  padding: 2vh 0vh;
 }
 .itemCreateProduct__input {
   width: 100%;
@@ -4488,7 +4518,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -4502,7 +4532,7 @@ h2 {
   gap: 1vh;
 }
 .itemCreateProduct__btns__btn {
-  width: 90%;
+  width: 80%;
   height: auto;
   background-color: #d2b569;
   color: black;
@@ -4510,6 +4540,7 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
   transition: transform 0.2s;
+  padding: 0vh 0.3vh;
 }
 .itemCreateProduct__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -4545,7 +4576,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -4554,7 +4585,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
 }
 .itemProduct__btns {
   width: 100%;
@@ -4573,6 +4604,8 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
   transition: transform 0.2s;
+  padding: 0vh 0.3vh;
+  font-size: 14px;
 }
 .itemProduct__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -4656,7 +4689,7 @@ h2 {
   text-align: center;
   color: white;
   border-top: 0.3vh solid white;
-  padding: 1vh 0vh;
+  padding: 2vh 0vh;
 }
 .itemCreateUser__input {
   width: 100%;
@@ -4685,7 +4718,7 @@ h2 {
   width: 80%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   background-color: #d2b569;
   color: black;
@@ -4710,6 +4743,7 @@ h2 {
 .itemCreateUser__btns__btn {
   width: 80%;
   height: auto;
+  padding: 0vh 0.3vh;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -4752,7 +4786,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -4774,6 +4808,7 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
   transition: transform 0.2s;
+  font-size: 14px;
 }
 .itemUser__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -4852,14 +4887,6 @@ h2 {
     display: none;
   }
 }
-/* @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-} */
 .usersListContainer {
   background-color: black;
   width: 100%;
@@ -4877,7 +4904,7 @@ h2 {
 }
 .usersListContainer__title {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   color: white;
   animation: fadeIn 2s ease-in;
 }
@@ -4896,10 +4923,10 @@ h2 {
   color: black;
 }
 .usersListContainer__inputFilteredUsers__prop {
-  width: 70%;
-  height: 40px;
+  width: 50%;
+  height: 35px;
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
   border-radius: 2vh;
 }
 .usersListContainer__createUserMobile {
@@ -4925,7 +4952,10 @@ h2 {
 }
 .usersListContainer__usersList__lengthShifts__prop {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
+}
+.usersListContainer__usersList__lengthShiftsMobile {
+  display: none;
 }
 .usersListContainer__usersList__headerMobile {
   display: none;
@@ -4937,7 +4967,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 25px;
+  font-size: 18px;
   padding: 1vh 0vh;
   gap: 1vh;
 }
@@ -4961,7 +4991,7 @@ h2 {
   }
   .usersListContainer__title {
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     color: white;
     animation: fadeIn 2s ease-in;
   }
@@ -4980,10 +5010,10 @@ h2 {
     color: black;
   }
   .usersListContainer__inputFilteredUsers__prop {
-    width: 85%;
-    height: 35px;
+    width: 70%;
+    height: 30px;
     text-align: center;
-    font-size: 25px;
+    font-size: 18px;
     border-radius: 2vh;
   }
   .usersListContainer__createUserMobile {
@@ -4998,7 +5028,7 @@ h2 {
   .usersListContainer__createUserMobile__btnCreateUser {
     width: 50%;
     height: auto;
-    font-size: 18px;
+    font-size: 16px;
     background-color: #d2b569;
     color: black;
     border-color: black;
@@ -5022,15 +5052,18 @@ h2 {
     overflow: auto;
   }
   .usersListContainer__usersList__lengthShifts {
+    display: none;
+  }
+  .usersListContainer__usersList__lengthShiftsMobile {
     width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .usersListContainer__usersList__lengthShifts__prop {
+  .usersListContainer__usersList__lengthShiftsMobile__prop {
     color: white;
-    font-size: 15px;
+    font-size: 16px;
   }
   .usersListContainer__usersList__headerMobile {
     width: 100%;
@@ -5047,7 +5080,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 15px;
+    font-size: 16px;
   }
   .usersListContainer__usersList__header {
     display: none;
@@ -5226,7 +5259,7 @@ h2 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 1vh 0vh;
-  border-bottom: 0.3vh solid white;
+  margin-top: 1vh;
 }
 .cancelDaysModalContainer__cancelDaysList__header__prop {
   color: white;
@@ -5234,14 +5267,15 @@ h2 {
   text-align: center;
 }
 .cancelDaysModalContainer__cancelDaysList__hairdresser {
-  background-color: white;
+  background-color: #d2b569;
   width: 100%;
   color: black;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
   text-align: center;
-  border-bottom: 0.3vh solid white;
-  padding: 0.5vh 0vh;
+  padding: 0.3vh 0vh;
+  border-radius: 2vh;
+  margin: 1vh 0vh;
 }
 .cancelDaysModalContainer__cancelDaysList__nonDates {
   color: white;
@@ -5254,12 +5288,11 @@ h2 {
   height: auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 1vh 0vh;
-  border-bottom: 0.3vh solid white;
+  padding-bottom: 1vh;
 }
 .cancelDaysModalContainer__cancelDaysList__itemCancelDay__prop {
   color: white;
-  font-size: 18px;
+  font-size: 15px;
   text-align: center;
 }
 .cancelDaysModalContainer__cancelDaysList__itemCancelDay__btn {
@@ -5270,8 +5303,8 @@ h2 {
   align-items: center;
 }
 .cancelDaysModalContainer__cancelDaysList__itemCancelDay__btn__prop {
-  width: 70%;
-  font-size: 15px;
+  width: 60%;
+  font-size: 14px;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -5339,7 +5372,7 @@ h2 {
 }
 .myDataModalContainer__data__label-input__label__prop {
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
 }
 .myDataModalContainer__data__label-input__input {
   width: 100%;
@@ -5363,12 +5396,11 @@ h2 {
   align-items: center;
   flex-direction: column;
   gap: 0.5vh;
-  padding: 2vh 0vh;
+  padding: 3vh 0vh;
 }
 .myDataModalContainer__btn__prop {
   width: 50%;
   height: auto;
-  padding: 0.3vh 0vh;
   font-size: 18px;
   font-weight: bold;
   background-color: #d2b569;
@@ -5462,7 +5494,7 @@ h2 {
   align-items: center;
   flex-direction: column;
   gap: 0.5vh;
-  padding: 2vh 0vh;
+  padding: 3vh 0vh;
 }
 .updateServiceModal__btn__prop {
   width: 50%;
@@ -5482,90 +5514,6 @@ h2 {
   box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
 }
 
-/* .priceModalContainer {
-    background-color: black;
-    width: 60%;
-    height: auto;
-    @include disFC();
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 2vh 3vh 2vh;
-    z-index: 1;
-    &__btnCloseModal {
-        width: 100%;
-        height: auto;
-        display: flex;
-        justify-content: end;
-        &__prop {
-            color: #04064e;
-        }
-    }
-    &__header {
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        text-align: center;
-        color: #04064e;
-        font-size: 20px;
-        padding: 1vh;
-    }
-    &__itemPrice {
-        background-color: whitesmoke;
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        text-align: center;
-        color: black;
-        border-top: 0.3vh solid white;
-        padding: 1vh;
-        border-radius: 2vh;
-        &__input {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                width: 100%;
-                height: auto;
-                text-align: center;
-                font-size: 20px;
-                background: none;
-                border: none;
-                color: black;
-                font-weight: bold;
-            }
-        }
-        &__select {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                width: 90%;
-                height: auto;
-                text-align: center;
-                font-size: 20px;
-                color: black;
-            }
-        }
-        &__btns {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            gap: 1vh;
-            &__btn {
-                width: 60%;
-                height: auto;
-                @include btns;
-            }
-        }
-    }
-} */
 .shiftModalContainer {
   background-color: black;
   width: 95%;
@@ -5599,7 +5547,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   padding: 1vh;
   gap: 1vh;
 }
@@ -5626,7 +5574,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: black;
@@ -5672,7 +5620,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   color: black;
   font-weight: bold;
 }
@@ -5703,6 +5651,8 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px black, -4px -4px 10px black;
   transition: transform 0.2s;
+  font-size: 15px;
+  padding: 0vh 1vh;
 }
 .shiftModalContainer__itemShift__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -5793,7 +5743,7 @@ h2 {
   width: 100%;
   height: 35px;
   text-align: center;
-  font-size: 15px;
+  font-size: 18px;
   color: black;
   font-weight: bold;
   padding: 0.3vh 0vh;
@@ -5836,6 +5786,8 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px black, -4px -4px 10px black;
   transition: transform 0.2s;
+  font-size: 14px;
+  padding: 0.5vh 0.3vh;
 }
 .myShiftModalContainer__itemShift__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -5879,7 +5831,7 @@ h2 {
 .usersModalContainer__header__label {
   text-align: center;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 }
 .usersModalContainer__itemUser {
   background-color: whitesmoke;
@@ -5905,7 +5857,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: black;
@@ -5923,7 +5875,7 @@ h2 {
   width: 90%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   color: black;
   font-weight: bold;
 }
@@ -6060,50 +6012,9 @@ h2 {
   box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
 }
 
-/* .confirmationDeleteItemPriceOfModalContainer {
-    background-color: rgb(143, 177, 221);
-    width: 60%;
-    height: auto;
-    @include disFC();
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 2vh 3vh 2vh;
-    z-index: 2;
-    gap: 1vh;
-    &__ask {
-        text-align: center;
-        display: block;
-        font-size: 25px;
-        color: #04064e;
-    }
-    &__askMobile {
-        display: none;
-    }
-    &__btnsContainer {
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 1vh;
-        &__btns {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                width: 85%;
-                @include btns;
-            }
-        }
-    }
-} */
 .confirmationDeleteBtnUsersListModalContainer {
   background-color: black;
-  width: 50%;
+  width: 45%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -6121,7 +6032,7 @@ h2 {
 }
 .confirmationDeleteBtnUsersListModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .confirmationDeleteBtnUsersListModalContainer__askMobile {
@@ -6142,7 +6053,7 @@ h2 {
   align-items: center;
 }
 .confirmationDeleteBtnUsersListModalContainer__btnsContainer__btns__prop {
-  width: 85%;
+  width: 75%;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -6157,7 +6068,7 @@ h2 {
 
 .confirmationDeleteBtnShiftListModalContainer {
   background-color: black;
-  width: 50%;
+  width: 40%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -6175,7 +6086,7 @@ h2 {
 }
 .confirmationDeleteBtnShiftListModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .confirmationDeleteBtnShiftListModalContainer__askMobile {
@@ -6196,7 +6107,7 @@ h2 {
   align-items: center;
 }
 .confirmationDeleteBtnShiftListModalContainer__btnsContainer__btns__prop {
-  width: 85%;
+  width: 70%;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -6265,7 +6176,7 @@ h2 {
 
 .confirmationDeleteBtnMyShiftListModalContainer {
   background-color: black;
-  width: 50%;
+  width: 40%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -6283,7 +6194,7 @@ h2 {
 }
 .confirmationDeleteBtnMyShiftListModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .confirmationDeleteBtnMyShiftListModalContainer__askMobile {
@@ -6304,7 +6215,7 @@ h2 {
   align-items: center;
 }
 .confirmationDeleteBtnMyShiftListModalContainer__btnsContainer__btns__prop {
-  width: 85%;
+  width: 75%;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -6337,7 +6248,7 @@ h2 {
 }
 .confirmationDeleteBtnCancelDaysModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
   text-align: center;
 }
@@ -6374,7 +6285,7 @@ h2 {
 
 .confirmationDeleteBtnHairdresserModalContainer {
   background-color: black;
-  width: 35%;
+  width: 40%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -6386,13 +6297,13 @@ h2 {
   transform: translate(-50%, -50%);
   border: 0.5vh solid white;
   border-radius: 2vh;
-  padding: 1vh 2vh 3vh 2vh;
+  padding: 1vh 4vh 3vh 4vh;
   z-index: 2;
   gap: 1vh;
 }
 .confirmationDeleteBtnHairdresserModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 22px;
   color: white;
   text-align: center;
 }
@@ -6428,7 +6339,7 @@ h2 {
 
 .confirmationDeleteBtnCompanyModalContainer {
   background-color: black;
-  width: 35%;
+  width: 40%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -6440,13 +6351,13 @@ h2 {
   transform: translate(-50%, -50%);
   border: 0.5vh solid white;
   border-radius: 2vh;
-  padding: 1vh 2vh 3vh 2vh;
+  padding: 1vh 4vh 3vh 4vh;
   z-index: 2;
   gap: 1vh;
 }
 .confirmationDeleteBtnCompanyModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 22px;
   color: white;
   text-align: center;
 }
@@ -6482,7 +6393,7 @@ h2 {
 
 .confirmationDeleteBtnVariouModalContainer {
   background-color: black;
-  width: 35%;
+  width: 40%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -6494,13 +6405,13 @@ h2 {
   transform: translate(-50%, -50%);
   border: 0.5vh solid white;
   border-radius: 2vh;
-  padding: 1vh 2vh 3vh 2vh;
+  padding: 1vh 4vh 3vh 4vh;
   z-index: 2;
   gap: 1vh;
 }
 .confirmationDeleteBtnVariouModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 22px;
   color: white;
   text-align: center;
 }
@@ -6536,7 +6447,7 @@ h2 {
 
 .confirmationPayMembershipFeeModalContainer {
   background-color: black;
-  width: 50%;
+  width: 40%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -6554,7 +6465,7 @@ h2 {
 }
 .confirmationPayMembershipFeeModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
   text-align: center;
 }
@@ -6579,7 +6490,7 @@ h2 {
   align-items: center;
 }
 .confirmationPayMembershipFeeModalContainer__btnsContainer__btns__prop {
-  width: 85%;
+  width: 75%;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -6612,7 +6523,7 @@ h2 {
 }
 .confirmationDeleteBtnPartnersListModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .confirmationDeleteBtnPartnersListModalContainer__askMobile {
@@ -6633,7 +6544,7 @@ h2 {
   align-items: center;
 }
 .confirmationDeleteBtnPartnersListModalContainer__btnsContainer__btns__prop {
-  width: 85%;
+  width: 75%;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -6666,7 +6577,7 @@ h2 {
 }
 .confirmationDeleteBtnProvidersListModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .confirmationDeleteBtnProvidersListModalContainer__askMobile {
@@ -6687,7 +6598,7 @@ h2 {
   align-items: center;
 }
 .confirmationDeleteBtnProvidersListModalContainer__btnsContainer__btns__prop {
-  width: 85%;
+  width: 75%;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -6702,7 +6613,7 @@ h2 {
 
 .confirmationDeleteBtnProductsListModalContainer {
   background-color: black;
-  width: 60%;
+  width: 50%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -6720,7 +6631,7 @@ h2 {
 }
 .confirmationDeleteBtnProductsListModalContainer__ask {
   display: block;
-  font-size: 25px;
+  font-size: 20px;
   color: white;
 }
 .confirmationDeleteBtnProductsListModalContainer__askMobile {
@@ -6741,7 +6652,7 @@ h2 {
   align-items: center;
 }
 .confirmationDeleteBtnProductsListModalContainer__btnsContainer__btns__prop {
-  width: 85%;
+  width: 75%;
   background-color: #d2b569;
   color: black;
   border-color: black;
@@ -6754,46 +6665,6 @@ h2 {
   box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
 }
 
-/* .confirmationDeleteItemPriceOfModalContainer {
-    background-color: rgb(143, 177, 221);
-    width: 60%;
-    height: auto;
-    @include disFC();
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 2vh 3vh 2vh;
-    z-index: 2;
-    gap: 1vh;
-    &__ask {
-        display: block;
-        font-size: 25px;
-        color: #04064e;
-    }
-    &__askMobile {
-        display: none;
-    }
-    &__btnsContainer {
-        width: 100%;
-        height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 1vh;
-        &__btns {
-            width: 100%;
-            height: auto;
-            @include disFC();
-            &__prop {
-                width: 85%;
-                @include btns;
-            }
-        }
-    }
-} */
 .partnersModalContainer {
   background-color: black;
   width: 80%;
@@ -6827,7 +6698,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   padding: 1vh;
   gap: 1vh;
 }
@@ -6855,7 +6726,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: black;
@@ -6878,6 +6749,7 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px black, -4px -4px 10px black;
   transition: transform 0.2s;
+  font-size: 14px;
 }
 .partnersModalContainer__itemPartner__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -6917,7 +6789,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   padding: 1vh;
 }
 .providersModalContainer__itemProvider {
@@ -6943,7 +6815,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: black;
@@ -6958,7 +6830,7 @@ h2 {
   gap: 1vh;
 }
 .providersModalContainer__itemProvider__btns__btn {
-  width: 60%;
+  width: 40%;
   height: auto;
   background-color: black;
   color: #d2b569;
@@ -6966,6 +6838,7 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px black, -4px -4px 10px black;
   transition: transform 0.2s;
+  font-size: 14px;
 }
 .providersModalContainer__itemProvider__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -7005,7 +6878,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   padding: 1vh;
   gap: 1vh;
 }
@@ -7033,7 +6906,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: black;
@@ -7057,6 +6930,7 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px black, -4px -4px 10px black;
   transition: transform 0.2s;
+  font-size: 16px;
 }
 .productsModalContainer__itemProduct__btns__btn:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -7067,36 +6941,6 @@ h2 {
   display: none;
 }
 
-/* .btnMPModalContainer {
-    background-color: rgb(143, 177, 221);
-    width: 50%;
-    height: auto;
-    @include disFC();
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 0.5vh solid #04064e;
-    border-radius: 2vh;
-    padding: 1vh 1vh;
-    z-index: 3;
-    overflow: auto;
-    &__btnCloseModal {
-        width: 100%;
-        height: auto;
-        display: flex;
-        justify-content: end;
-        padding-right: 2vh;
-        color: #04064e;
-    }
-    &__phrase {
-        width: 100%;
-        height: auto;
-        text-align: center;
-        color: #04064e;
-    }
-} */
 .updateShiftModalContainerMobile {
   display: none;
 }
@@ -7106,38 +6950,9 @@ h2 {
 }
 
 @media (max-width: 480px) {
-  /* .btnMPModalContainer {
-      background-color: rgb(143, 177, 221);
-      width: 90%;
-      height: auto;
-      @include disFC();
-      flex-direction: column;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border: 0.5vh solid #04064e;
-      border-radius: 2vh;
-      padding: 0vh;
-      z-index: 1;
-      &__btnCloseModal {
-          width: 100%;
-          height: auto;
-          display: flex;
-          justify-content: end;
-          padding-right: 2vh;
-          color: #04064e;
-      }
-      &__phrase {
-          width: 100%;
-          height: auto;
-          text-align: center;
-          color: #04064e;
-      }
-  } */
   .myDataModalContainer {
     background-color: black;
-    width: 90%;
+    width: 80%;
     height: auto;
     display: flex;
     justify-content: center;
@@ -7160,7 +6975,7 @@ h2 {
   .myDataModalContainer__btnCloseModal__prop {
     color: white;
     font-size: 18px;
-    padding: 1vh 1vh 3vh 0vh;
+    padding: 1vh 1vh 1vh 0vh;
   }
   .myDataModalContainer__data {
     width: 100%;
@@ -7190,7 +7005,7 @@ h2 {
   }
   .myDataModalContainer__data__label-input__label__prop {
     text-align: center;
-    font-size: 25px;
+    font-size: 18px;
   }
   .myDataModalContainer__data__label-input__input {
     width: 100%;
@@ -7220,8 +7035,7 @@ h2 {
     width: 50%;
     height: auto;
     padding: 0.3vh 0vh;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 16px;
     background-color: #d2b569;
     color: black;
     border-color: black;
@@ -7331,102 +7145,6 @@ h2 {
     transform: translateY(2px); /* Baja el botón al hacer clic */
     box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
   }
-  /* .priceModalContainer {
-      background-color: rgb(143, 177, 221);
-      width: 90%;
-      height: auto;
-      @include disFC();
-      display: none;
-      flex-direction: column;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border: 0.5vh solid #04064e;
-      border-radius: 2vh;
-      padding: 1vh 2vh 3vh 2vh;
-      z-index: 1;
-      overflow: auto;
-      &__btnCloseModal {
-          width: 237vh;
-          height: auto;
-          display: flex;
-          justify-content: end;
-          &__prop {
-              color: #04064e;
-          }
-      }
-      &__header {
-          width: 100%;
-          height: auto;
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr;
-          text-align: center;
-          color: #04064e;
-          font-size: 18px;
-          padding: 0vh 0vh 1vh 1vh;
-          gap: 1vh;
-          &__label {
-              width: 30vh;
-          }
-      }
-      &__itemPrice {
-          background: none;
-          width: 100%;
-          height: auto;
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr;
-          text-align: center;
-          border-top: none;
-          padding: 1vh;
-          border-radius: 2vh;
-          gap: 1vh;
-          &__input {
-              background-color: whitesmoke;
-              width: 30vh;
-              height: auto;
-              @include disFC();
-              &__prop {
-                  background-color: none;
-                  width: 100%;
-                  height: auto;
-                  text-align: center;
-                  font-size: 18px;
-                  background: none;
-                  border: none;
-                  color: black;
-                  font-weight: bold;
-              }
-          }
-          &__select {
-              background-color: whitesmoke;
-              width: 25vh;
-              height: auto;
-              @include disFC();
-              border-top: 0.3vh solid white;
-              &__prop {
-                  width: 95%;
-                  height: 35px;
-                  text-align: center;
-                  font-size: 18px;
-                  color: black;
-              }
-          }
-          &__btns {
-              background-color: whitesmoke;
-              width: 100%;
-              height: auto;
-              @include disFC();
-              gap: 1vh;
-              padding: 1vh 1vh;
-              &__btn {
-                  width: 25vh;
-                  height: auto;
-                  @include btns;
-              }
-          }
-      }
-  } */
   .confirmationPayMembershipFeeModalContainer {
     background-color: black;
     width: 90%;
@@ -7456,22 +7174,17 @@ h2 {
     color: white;
     text-align: center;
   }
-  .confirmationPayMembershipFeeModalContainer__btnsContainer {
-    width: 100%;
-    height: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 1vh;
-  }
-  .confirmationPayMembershipFeeModalContainer__btnsContainer__btns {
+  .confirmationPayMembershipFeeModalContainer__btns {
     width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 2vh;
   }
-  .confirmationPayMembershipFeeModalContainer__btnsContainer__btns__prop {
-    width: 85%;
+  .confirmationPayMembershipFeeModalContainer__btns__btn {
+    width: 25%;
+    height: auto;
     background-color: #d2b569;
     color: black;
     border-color: black;
@@ -7479,7 +7192,7 @@ h2 {
     box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
     transition: transform 0.2s;
   }
-  .confirmationPayMembershipFeeModalContainer__btnsContainer__btns__prop:active {
+  .confirmationPayMembershipFeeModalContainer__btns__btn:active {
     transform: translateY(2px); /* Baja el botón al hacer clic */
     box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
   }
@@ -7503,7 +7216,7 @@ h2 {
   }
   .confirmationDeleteBtnVariouModalContainer__ask {
     display: block;
-    font-size: 20px;
+    font-size: 16px;
     color: white;
     text-align: center;
   }
@@ -7536,50 +7249,6 @@ h2 {
     transform: translateY(2px); /* Baja el botón al hacer clic */
     box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
   }
-  /* .confirmationDeletePriceModalMobileContainer {
-      background-color: rgb(143, 177, 221);
-      width: 90%;
-      height: auto;
-      @include disFC();
-      flex-direction: column;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border: 0.5vh solid #04064e;
-      border-radius: 2vh;
-      padding: 1vh 2vh 1vh 2vh;
-      z-index: 2;
-      gap: 1vh;
-      &__ask {
-          display: none;
-          font-size: 25px;
-          color: #04064e;
-      }
-      &__askMobile {
-          display: block;
-          font-size: 15px;
-          color: #04064e;
-          text-align: center;
-
-      }
-      &__btnsContainer {
-          width: 100%;
-          height: auto;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1vh;
-          &__btns {
-              width: 100%;
-              height: auto;
-              @include disFC();
-              &__prop {
-                  width: 65%;
-                  @include btns;
-              }
-          }
-      }
-  } */
   .confirmationDeleteBtnHairdresserModalContainer {
     background-color: black;
     width: 80%;
@@ -7656,7 +7325,7 @@ h2 {
   }
   .confirmationDeleteBtnCompanyModalContainer__ask {
     display: block;
-    font-size: 18px;
+    font-size: 15px;
     color: white;
     text-align: center;
   }
@@ -7747,7 +7416,7 @@ h2 {
   }
   .cancelDaysModalContainer {
     background-color: black;
-    width: 95%;
+    width: 90%;
     height: 70vh;
     display: flex;
     flex-direction: column;
@@ -7794,7 +7463,6 @@ h2 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 1vh 0vh;
-    border-bottom: 0.3vh solid white;
   }
   .cancelDaysModalContainer__cancelDaysList__header__prop {
     color: white;
@@ -7802,20 +7470,19 @@ h2 {
     text-align: center;
   }
   .cancelDaysModalContainer__cancelDaysList__hairdresser {
-    background-color: white;
+    background-color: #d2b569;
     width: 100%;
     color: black;
     font-size: 20px;
     font-weight: bold;
     text-align: center;
-    border-bottom: 0.3vh solid white;
-    padding: 0.5vh 0vh;
+    padding: 0vh 0vh;
   }
   .cancelDaysModalContainer__cancelDaysList__nonDates {
     color: white;
     text-align: center;
     padding: 1vh 0vh;
-    font-size: 15px;
+    font-size: 14px;
   }
   .cancelDaysModalContainer__cancelDaysList__itemCancelDay {
     width: 100%;
@@ -7823,7 +7490,6 @@ h2 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 1vh 0vh;
-    border-bottom: 0.3vh solid white;
   }
   .cancelDaysModalContainer__cancelDaysList__itemCancelDay__prop {
     color: white;
@@ -7838,8 +7504,8 @@ h2 {
     align-items: center;
   }
   .cancelDaysModalContainer__cancelDaysList__itemCancelDay__btn__prop {
-    width: 90%;
-    font-size: 15px;
+    width: 80%;
+    font-size: 14px;
     background-color: #d2b569;
     color: black;
     border-color: black;
@@ -7853,7 +7519,7 @@ h2 {
   }
   .confirmationSaveBtnSaveShiftModalContainer {
     background-color: black;
-    width: 90%;
+    width: 80%;
     height: auto;
     display: flex;
     justify-content: center;
@@ -7872,14 +7538,14 @@ h2 {
   .confirmationSaveBtnSaveShiftModalContainer__ask {
     text-align: center;
     display: none;
-    font-size: 25px;
+    font-size: 16px;
     color: white;
   }
   .confirmationSaveBtnSaveShiftModalContainer__askMobile {
     display: block;
     text-align: center;
     color: white;
-    font-size: 20px;
+    font-size: 16px;
   }
   .confirmationSaveBtnSaveShiftModalContainer__btnsContainer {
     width: 100%;
@@ -7942,22 +7608,17 @@ h2 {
     font-size: 15px;
     color: white;
   }
-  .confirmationDeleteBtnMyShiftListModalContainer__btnsContainer {
-    width: 100%;
-    height: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 1vh;
-  }
-  .confirmationDeleteBtnMyShiftListModalContainer__btnsContainer__btns {
+  .confirmationDeleteBtnMyShiftListModalContainer__btns {
     width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 2vh;
   }
-  .confirmationDeleteBtnMyShiftListModalContainer__btnsContainer__btns__prop {
-    width: 85%;
+  .confirmationDeleteBtnMyShiftListModalContainer__btns__btn {
+    width: 25%;
+    height: auto;
     background-color: #d2b569;
     color: black;
     border-color: black;
@@ -7965,7 +7626,7 @@ h2 {
     box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
     transition: transform 0.2s;
   }
-  .confirmationDeleteBtnMyShiftListModalContainer__btnsContainer__btns__prop:active {
+  .confirmationDeleteBtnMyShiftListModalContainer__btns__btn:active {
     transform: translateY(2px); /* Baja el botón al hacer clic */
     box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
   }
@@ -7989,7 +7650,7 @@ h2 {
   }
   .confirmationDeleteBtnCancelDaysModalContainer__ask {
     display: block;
-    font-size: 15px;
+    font-size: 14px;
     color: white;
     text-align: center;
   }
@@ -8011,7 +7672,7 @@ h2 {
     align-items: center;
   }
   .confirmationDeleteBtnCancelDaysModalContainer__btnsContainer__btns__prop {
-    width: 85%;
+    width: 100%;
     background-color: #d2b569;
     color: black;
     border-color: black;
@@ -8023,51 +7684,6 @@ h2 {
     transform: translateY(2px); /* Baja el botón al hacer clic */
     box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
   }
-  /* .confirmationDeleteItemPriceOfModalContainer {
-      background-color: rgb(143, 177, 221);
-      width: 100%;
-      height: auto;
-      @include disFC();
-      flex-direction: column;
-      position: fixed;
-      top: 50%;
-      left: 210%;
-      transform: translate(-50%, -50%);
-      border: 0.5vh solid #04064e;
-      border-radius: 2vh;
-      padding: 1vh 2vh 3vh 2vh;
-      z-index: 2;
-      gap: 1vh;
-      &__ask {
-          display: block;
-          font-size: 25px;
-          color: #04064e;
-          display: none;
-      }
-      &__askMobile {
-          width: 100%;
-          height: auto;
-          @include disFC();
-          flex-direction: column;
-          text-align: center;
-      }
-      &__btnsContainer {
-          width: 100%;
-          height: auto;
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr;
-          gap: 1vh;
-          &__btns {
-              width: 100%;
-              height: auto;
-              @include disFC();
-              &__prop {
-                  width: 85%;
-                  @include btns;
-              }
-          }
-      }
-  } */
   .confirmationDeleteBtnMyPaymentsListModalContainer {
     background-color: black;
     width: 90%;
@@ -8149,19 +7765,17 @@ h2 {
     font-size: 15px;
     color: white;
   }
-  .confirmationDeleteBtnShiftListModalContainer__btnsContainer {
+  .confirmationDeleteBtnShiftListModalContainer__btns {
     width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5vh;
+    gap: 2vh;
   }
-  .confirmationDeleteBtnShiftListModalContainer__btnsContainer__btns {
-    width: 100%;
-  }
-  .confirmationDeleteBtnShiftListModalContainer__btnsContainer__btns__prop {
-    width: 100%;
+  .confirmationDeleteBtnShiftListModalContainer__btns__btn {
+    width: 25%;
+    height: auto;
     background-color: #d2b569;
     color: black;
     border-color: black;
@@ -8169,7 +7783,55 @@ h2 {
     box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
     transition: transform 0.2s;
   }
-  .confirmationDeleteBtnShiftListModalContainer__btnsContainer__btns__prop:active {
+  .confirmationDeleteBtnShiftListModalContainer__btns__btn:active {
+    transform: translateY(2px); /* Baja el botón al hacer clic */
+    box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
+  }
+  .confirmationDeleteBtnUpdatePartnersListModalContainerMobile {
+    background-color: black;
+    width: 90%;
+    height: auto;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 0.5vh solid white;
+    border-radius: 2vh;
+    padding: 1vh 2vh 1vh 2vh;
+    z-index: 2;
+    gap: 1vh;
+  }
+  .confirmationDeleteBtnUpdatePartnersListModalContainerMobile__ask {
+    font-size: 15px;
+    color: white;
+    display: none;
+  }
+  .confirmationDeleteBtnUpdatePartnersListModalContainerMobile__askMobile {
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    color: white;
+  }
+  .confirmationDeleteBtnUpdatePartnersListModalContainerMobile__btns {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vh;
+  }
+  .confirmationDeleteBtnUpdatePartnersListModalContainerMobile__btns__btn {
+    width: 25%;
+    height: auto;
+    background-color: #d2b569;
+    color: black;
+    border-color: black;
+    border-radius: 5vh;
+    box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
+    transition: transform 0.2s;
+  }
+  .confirmationDeleteBtnUpdatePartnersListModalContainerMobile__btns__btn:active {
     transform: translateY(2px); /* Baja el botón al hacer clic */
     box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
   }
@@ -8279,142 +7941,6 @@ h2 {
     transform: translateY(2px); /* Baja el botón al hacer clic */
     box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
   }
-  /* .confirmationDeleteBtnPartnersListModalContainer {
-      background-color: rgb(143, 177, 221);
-      width: 90%;
-      height: auto;
-      flex-direction: column;
-      position: fixed;
-      left: 240%;
-      border: 0.5vh solid #04064e;
-      border-radius: 2vh;
-      padding: 1vh 2vh 1vh 2vh;
-      z-index: 2;
-      gap: 1vh;
-      &__ask {
-          font-size: 15px;
-          color: #04064e;
-          display: none;
-      }
-      &__askMobile {
-          display: block;
-          text-align: center;
-          font-size: 15px;
-          color: #04064e;
-      }
-      &__btns {
-          width: 100%;
-          height: auto;
-          @include disFC();
-          gap: 5vh;
-          &__prop {
-              width: 30%;
-              @include btns;
-          }
-      }
-  } */
-  /* .confirmationDeleteBtnProvidersListModalContainer {
-      background-color: rgb(143, 177, 221);
-      width: 90%;
-      height: auto;
-      flex-direction: column;
-      position: fixed;
-      left: 266%;
-      border: 0.5vh solid #04064e;
-      border-radius: 2vh;
-      padding: 1vh 2vh 1vh 2vh;
-      z-index: 2;
-      gap: 1vh;
-      &__ask {
-          font-size: 15px;
-          color: #04064e;
-          display: none;
-      }
-      &__askMobile {
-          display: block;
-          text-align: center;
-          font-size: 15px;
-          color: #04064e;
-      }
-      &__btns {
-          width: 100%;
-          height: auto;
-          @include disFC();
-          gap: 5vh;
-          &__prop {
-              width: 30%;
-              @include btns;
-          }
-      }
-  }
-  .confirmationDeleteBtnProductsListModalContainer {
-      background-color: rgb(143, 177, 221);
-      width: 90%;
-      height: auto;
-      flex-direction: column;
-      position: fixed;
-      left: 328%;
-      border: 0.5vh solid #04064e;
-      border-radius: 2vh;
-      padding: 1vh 2vh 1vh 2vh;
-      z-index: 2;
-      gap: 1vh;
-      &__ask {
-          font-size: 15px;
-          color: #04064e;
-          display: none;
-      }
-      &__askMobile {
-          display: block;
-          text-align: center;
-          font-size: 15px;
-          color: #04064e;
-      }
-      &__btns {
-          width: 100%;
-          height: auto;
-          @include disFC();
-          gap: 5vh;
-          &__prop {
-              width: 30%;
-              @include btns;
-          }
-      }
-  }
-  .confirmationDeleteBtnUsersListModalContainer {
-      background-color: rgb(143, 177, 221);
-      width: 90%;
-      height: auto;
-      flex-direction: column;
-      position: fixed;
-      left: 255%;
-      border: 0.5vh solid #04064e;
-      border-radius: 2vh;
-      padding: 1vh 2vh 1vh 2vh;
-      z-index: 2;
-      gap: 1vh;
-      &__ask {
-          font-size: 15px;
-          color: #04064e;
-          display: none;
-      }
-      &__askMobile {
-          display: block;
-          text-align: center;
-          font-size: 15px;
-          color: #04064e;
-      }
-      &__btns {
-          width: 100%;
-          height: auto;
-          @include disFC();
-          gap: 5vh;
-          &__prop {
-              width: 30%;
-              @include btns;
-          }
-      }
-  } */
   .usersModalContainer {
     display: none;
   }
@@ -8879,7 +8405,6 @@ h2 {
   .createUserModalContainerMobile__labelInput__selectRole__select {
     width: 80%;
     height: 30px;
-    border: none;
     background-color: #d2b569;
     color: black;
     border-color: black;
@@ -9203,9 +8728,11 @@ h2 {
     border: 0.3vh solid black;
   }
   .updateShiftModalContainerMobile__labelInput__datePikerShiftsListMobile {
+    background-color: white;
     width: 90%;
     height: 35px;
     border-radius: 1vh;
+    color: black;
     border: 0.3vh solid black;
   }
   .updateShiftModalContainerMobile__btns {
@@ -9591,87 +9118,6 @@ h2 {
     transform: translateY(2px); /* Baja el botón al hacer clic */
     box-shadow: 2px 2px 5px white, -2px -2px 5px white; /* Sombra más ligera al hacer clic */
   }
-  /* .updatePriceModalContainerMobile {
-      background-color: rgb(143, 177, 221);
-      width: 90%;
-      height: auto;
-      @include disFC();
-      flex-direction: column;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border: 0.5vh solid #04064e;
-      border-radius: 2vh;
-      padding: 3vh 1vh;
-      z-index: 1;
-      gap: 1vh;
-      &__btnCloseModal {
-          width: 100%;
-          height: auto;
-          display: flex;
-          justify-content: end;
-          align-items: center;
-          &__prop {
-              color: #04064e;
-          }
-      }
-      &__labelInput {
-          width: 100%;
-          height: auto;
-          display: grid;
-          grid-template-columns: 1fr 2fr;
-          //border-bottom: 0.3vh solid white;
-          &__label {
-              width: 100%;
-              height: auto;
-              @include disFC();
-              &__prop {
-                  width: 100%;
-                  height: 35px;
-                  @include disFC();
-                  color: #04064e;
-                  font-size: 15px;
-                  text-align: center;
-              }
-          }
-          &__input {
-              width: 100%;
-              height: auto;
-              @include disFC();
-              &__prop {
-                  width: 90%;
-                  height: 35px;
-                  border-radius: 1vh;
-                  border: 0.3vh solid #04064e;
-                  color: #04064e;
-              }
-
-          }
-          &__selectSchedule {
-              width: 100%;
-              height: auto;
-              @include disFC();
-              &__select {
-                  width: 80%;
-                  height: 30px;
-                  @include selects;
-                  text-align: center;
-              }
-
-          }
-      }
-      &__btns {
-          width: 100%;
-          height: auto;
-          @include disFC();
-          &__btn {
-              width: 70%;
-              height: auto;
-              @include btns;
-          }
-      }
-  } */
   .shiftModalContainer {
     display: none;
   }
@@ -10462,7 +9908,7 @@ h2 {
 }
 .myShiftsListContainer__title {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   color: white;
   animation: fadeIn 2s ease-in;
 }
@@ -10486,7 +9932,7 @@ h2 {
 }
 .myShiftsListContainer__myShiftsList__lengthShifts__prop {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 }
 .myShiftsListContainer__myShiftsList__headerMobile {
   display: none;
@@ -10498,7 +9944,7 @@ h2 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   color: white;
-  font-size: 25px;
+  font-size: 18px;
   padding: 1vh 0vh;
   gap: 2vh;
 }
@@ -10511,9 +9957,14 @@ h2 {
 }
 .myShiftsListContainer__withoutItems {
   width: 100%;
-  text-align: center;
+  height: auto;
+  display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
+  padding: 1vh 0vh;
 }
 
 @media (max-width: 480px) {
@@ -10535,7 +9986,7 @@ h2 {
   }
   .myShiftsListContainer__title {
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     color: white;
     animation: fadeIn 2s ease-in;
   }
@@ -10558,7 +10009,7 @@ h2 {
   }
   .myShiftsListContainer__myShiftsList__lengthShifts__prop {
     color: white;
-    font-size: 20px;
+    font-size: 16px;
   }
   .myShiftsListContainer__myShiftsList__header {
     width: 100%;
@@ -10575,7 +10026,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 16px;
   }
   .myShiftsListContainer__myShiftsList__headerMobile {
     width: 100%;
@@ -10595,14 +10046,14 @@ h2 {
     justify-content: center;
     align-items: center;
     font-size: 16px;
-    font-weight: bold;
   }
   .myShiftsListContainer__withoutItems {
     background-color: black;
     width: 100%;
     text-align: center;
     color: white;
-    font-size: 20px;
+    font-size: 15px;
+    padding: 2vh 0vh;
   }
 }
 .itemMyShift {
@@ -10634,7 +10085,7 @@ h2 {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   background: none;
   border: none;
   color: white;
@@ -10648,7 +10099,7 @@ h2 {
   gap: 0.5vh;
 }
 .itemMyShift__inputSchedule__prop {
-  font-size: 20px;
+  font-size: 18px;
   color: white;
 }
 .itemMyShift__btns {
@@ -11066,13 +10517,14 @@ h2 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 8vh 0vh 20vh 0vh;
+  padding: 4vh 0vh 8vh 0vh;
 }
 .myDataContainer__title {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   color: white;
   animation: fadeIn 2s ease-in;
+  padding-bottom: 4vh;
 }
 .myDataContainer__data {
   background-color: black;
@@ -11105,7 +10557,7 @@ h2 {
 }
 .myDataContainer__data__label-input__label__prop {
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
 }
 .myDataContainer__data__label-input__labelData {
   width: 100%;
@@ -11129,7 +10581,7 @@ h2 {
 }
 .myDataContainer__data__label-input__labelNPartner__prop {
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
 }
 .myDataContainer__btn {
   width: 100%;
@@ -11148,6 +10600,7 @@ h2 {
   border-radius: 5vh;
   box-shadow: 4px 4px 10px #d2b569, -4px -4px 10px #d2b569;
   transition: transform 0.2s;
+  padding: 0.3vh 0vh;
 }
 .myDataContainer__btn__prop:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -11167,7 +10620,7 @@ h2 {
   }
   .myDataContainer__title {
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     color: white;
     animation: fadeIn 2s ease-in;
   }
@@ -11200,7 +10653,7 @@ h2 {
   }
   .myDataContainer__data__label-input__label__prop {
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
   }
   .myDataContainer__data__label-input__labelData {
     width: 100%;
@@ -11238,8 +10691,7 @@ h2 {
     width: 70%;
     height: auto;
     padding: 0.3vh 0vh;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 16px;
     background-color: #d2b569;
     color: black;
     border-color: black;
@@ -11264,7 +10716,7 @@ h2 {
 }
 .configContainer__config {
   background-color: #d2b569;
-  width: 70%;
+  width: 75%;
   height: auto;
   display: flex;
   justify-content: center;
@@ -11276,7 +10728,7 @@ h2 {
 }
 .configContainer__config__title {
   text-align: center;
-  font-size: 45px;
+  font-size: 40px;
   color: black;
   animation: fadeIn 2s ease-in;
 }
@@ -11320,6 +10772,7 @@ h2 {
   border-radius: 1vh;
   border: 0.3vh solid black;
   color: black;
+  text-align: center;
 }
 .configContainer__config__addCompany__addCompanyContainer__input__prop::-moz-placeholder {
   text-align: center;
@@ -11388,7 +10841,7 @@ h2 {
   align-items: center;
 }
 .configContainer__config__companiesList__item__btn__prop {
-  width: 50%;
+  width: 60%;
   background-color: black;
   color: #d2b569;
   border-color: black;
@@ -11440,6 +10893,7 @@ h2 {
   border-radius: 1vh;
   border: 0.3vh solid black;
   color: black;
+  text-align: center;
 }
 .configContainer__config__addHairdresser__addHairdresserContainer__input__prop::-moz-placeholder {
   text-align: center;
@@ -11455,7 +10909,7 @@ h2 {
   align-items: center;
 }
 .configContainer__config__addHairdresser__addHairdresserContainer__btn__prop {
-  width: 90%;
+  width: 70%;
   height: 35px;
   background-color: black;
   color: #d2b569;
@@ -11508,7 +10962,7 @@ h2 {
   align-items: center;
 }
 .configContainer__config__hairdressersList__item__btn__prop {
-  width: 50%;
+  width: 30%;
   background-color: black;
   color: #d2b569;
   border-color: black;
@@ -11544,7 +10998,7 @@ h2 {
   width: 80%;
   height: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   padding: 1vh 0vh;
 }
 .configContainer__config__addService__addServiceContainer__inputMobile {
@@ -11563,6 +11017,7 @@ h2 {
   border-radius: 1vh;
   border: 0.3vh solid black;
   color: black;
+  text-align: center;
 }
 .configContainer__config__addService__addServiceContainer__input__prop::-moz-placeholder {
   text-align: center;
@@ -11601,7 +11056,7 @@ h2 {
   align-items: center;
 }
 .configContainer__config__addService__addServiceContainer__btn__prop {
-  width: 90%;
+  width: 65%;
   height: 35px;
   background-color: black;
   color: #d2b569;
@@ -11670,7 +11125,7 @@ h2 {
   gap: 2vh;
 }
 .configContainer__config__servicesList__item__btn__prop {
-  width: 50%;
+  width: 45%;
   background-color: black;
   color: #d2b569;
   border-color: black;
@@ -11747,7 +11202,7 @@ h2 {
   gap: 1vh;
 }
 .configContainer__config__membershipFeeList__item__btn__prop {
-  width: 50%;
+  width: 55%;
   background-color: black;
   color: #d2b569;
   border-color: black;
@@ -11799,6 +11254,7 @@ h2 {
   border-radius: 1vh;
   border: 0.3vh solid black;
   color: black;
+  text-align: center;
 }
 .configContainer__config__addVarious__addVariousContainer__input__prop::-moz-placeholder {
   text-align: center;
@@ -11837,7 +11293,7 @@ h2 {
   align-items: center;
 }
 .configContainer__config__addVarious__addVariousContainer__btn__prop {
-  width: 80%;
+  width: 70%;
   height: 35px;
   background-color: black;
   color: #d2b569;
@@ -11891,7 +11347,7 @@ h2 {
   gap: 2vh;
 }
 .configContainer__config__variousList__item__btn__prop {
-  width: 40%;
+  width: 45%;
   background-color: black;
   color: #d2b569;
   border-color: black;
@@ -11900,6 +11356,128 @@ h2 {
   transition: transform 0.2s;
 }
 .configContainer__config__variousList__item__btn__prop:active {
+  transform: translateY(2px); /* Baja el botón al hacer clic */
+  box-shadow: 2px 2px 5px black, -2px -2px 5px black; /* Sombra más ligera al hacer clic */
+}
+.configContainer__config__partners {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: start;
+  padding-left: 2vh;
+  border-top: 0.3vh solid black;
+}
+.configContainer__config__partners__prop {
+  font-size: 25px;
+  color: black;
+}
+.configContainer__config__addPartnersBen {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vh 0vh;
+}
+.configContainer__config__addPartnersBen__addPartnersBenContainer {
+  width: 80%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1vh 0vh;
+}
+.configContainer__config__addPartnersBen__addPartnersBenContainer__input {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.configContainer__config__addPartnersBen__addPartnersBenContainer__input__prop {
+  width: 90%;
+  height: 35px;
+  border-radius: 1vh;
+  border: 0.3vh solid black;
+  color: black;
+  text-align: center;
+}
+.configContainer__config__addPartnersBen__addPartnersBenContainer__input__prop::-moz-placeholder {
+  text-align: center;
+}
+.configContainer__config__addPartnersBen__addPartnersBenContainer__input__prop::placeholder {
+  text-align: center;
+}
+.configContainer__config__addPartnersBen__addPartnersBenContainer__btn {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.configContainer__config__addPartnersBen__addPartnersBenContainer__btn__prop {
+  width: 70%;
+  height: 35px;
+  background-color: black;
+  color: #d2b569;
+  border-color: black;
+  border-radius: 5vh;
+  box-shadow: 4px 4px 10px black, -4px -4px 10px black;
+  transition: transform 0.2s;
+}
+.configContainer__config__addPartnersBen__addPartnersBenContainer__btn__prop:active {
+  transform: translateY(2px); /* Baja el botón al hacer clic */
+  box-shadow: 2px 2px 5px black, -2px -2px 5px black; /* Sombra más ligera al hacer clic */
+}
+.configContainer__config__partnersBenList {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2vh;
+  padding-bottom: 2vh;
+}
+.configContainer__config__partnersBenList__titleList {
+  font-size: 25px;
+  color: black;
+}
+.configContainer__config__partnersBenList__item {
+  width: 95%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.configContainer__config__partnersBenList__item__label {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.configContainer__config__partnersBenList__item__label__prop {
+  font-size: 18px;
+  color: black;
+}
+.configContainer__config__partnersBenList__item__btn {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2vh;
+}
+.configContainer__config__partnersBenList__item__btn__prop {
+  width: 40%;
+  background-color: black;
+  color: #d2b569;
+  border-color: black;
+  border-radius: 5vh;
+  box-shadow: 4px 4px 10px black, -4px -4px 10px black;
+  transition: transform 0.2s;
+}
+.configContainer__config__partnersBenList__item__btn__prop:active {
   transform: translateY(2px); /* Baja el botón al hacer clic */
   box-shadow: 2px 2px 5px black, -2px -2px 5px black; /* Sombra más ligera al hacer clic */
 }
@@ -12153,7 +11731,7 @@ h2 {
   }
   .configContainer__config__title {
     text-align: center;
-    font-size: 35px;
+    font-size: 30px;
     color: black;
     animation: fadeIn 2s ease-in;
   }
@@ -12166,7 +11744,7 @@ h2 {
     border-top: 0.3vh solid black;
   }
   .configContainer__config__company__prop {
-    font-size: 25px;
+    font-size: 20px;
     color: black;
   }
   .configContainer__config__addCompany {
@@ -12215,7 +11793,8 @@ h2 {
   }
   .configContainer__config__addCompany__addCompanyContainer__btn__prop {
     width: 60%;
-    height: 35px;
+    height: 30px;
+    font-size: 14px;
     background-color: black;
     color: #d2b569;
     border-color: black;
@@ -12241,6 +11820,10 @@ h2 {
     font-size: 25px;
     color: black;
   }
+  .configContainer__config__companiesList__nonCompanyName {
+    font-size: 14px;
+    color: black;
+  }
   .configContainer__config__companiesList__item {
     width: 100%;
     height: auto;
@@ -12256,7 +11839,7 @@ h2 {
     align-items: center;
   }
   .configContainer__config__companiesList__item__label__prop {
-    font-size: 18px;
+    font-size: 16px;
     color: black;
   }
   .configContainer__config__companiesList__item__btn {
@@ -12274,6 +11857,7 @@ h2 {
     border-radius: 5vh;
     box-shadow: 4px 4px 10px black, -4px -4px 10px black;
     transition: transform 0.2s;
+    font-size: 14px;
   }
   .configContainer__config__companiesList__item__btn__prop:active {
     transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -12288,7 +11872,7 @@ h2 {
     border-top: 0.3vh solid black;
   }
   .configContainer__config__hairdresser__prop {
-    font-size: 25px;
+    font-size: 20px;
     color: black;
   }
   .configContainer__config__addHairdresser {
@@ -12344,6 +11928,7 @@ h2 {
     border-radius: 5vh;
     box-shadow: 4px 4px 10px black, -4px -4px 10px black;
     transition: transform 0.2s;
+    font-size: 14px;
   }
   .configContainer__config__addHairdresser__addHairdresserContainer__btn__prop:active {
     transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -12360,7 +11945,7 @@ h2 {
     padding-bottom: 2vh;
   }
   .configContainer__config__hairdressersList__titleList {
-    font-size: 20px;
+    font-size: 18px;
     color: black;
   }
   .configContainer__config__hairdressersList__item {
@@ -12378,7 +11963,7 @@ h2 {
     align-items: center;
   }
   .configContainer__config__hairdressersList__item__label__prop {
-    font-size: 15px;
+    font-size: 16px;
     color: black;
   }
   .configContainer__config__hairdressersList__item__btn {
@@ -12396,6 +11981,7 @@ h2 {
     border-radius: 5vh;
     box-shadow: 4px 4px 10px black, -4px -4px 10px black;
     transition: transform 0.2s;
+    font-size: 14px;
   }
   .configContainer__config__hairdressersList__item__btn__prop:active {
     transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -12410,7 +11996,7 @@ h2 {
     border-top: 0.3vh solid black;
   }
   .configContainer__config__services__prop {
-    font-size: 25px;
+    font-size: 20px;
     color: black;
   }
   .configContainer__config__addService {
@@ -12425,7 +12011,7 @@ h2 {
     width: 100%;
     height: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     padding: 1vh 1vh;
     gap: 0.5vh;
   }
@@ -12489,7 +12075,7 @@ h2 {
   .configContainer__config__addService__addServiceContainer__btn__prop {
     width: 90%;
     height: 30px;
-    font-size: 15px;
+    font-size: 14px;
     background-color: black;
     color: #d2b569;
     border-color: black;
@@ -12512,7 +12098,7 @@ h2 {
     padding-bottom: 2vh;
   }
   .configContainer__config__servicesList__titleList {
-    font-size: 20px;
+    font-size: 18px;
     color: black;
   }
   .configContainer__config__servicesList__category {
@@ -12545,7 +12131,7 @@ h2 {
     align-items: center;
   }
   .configContainer__config__servicesList__item__label__prop {
-    font-size: 10px;
+    font-size: 12px;
     color: black;
   }
   .configContainer__config__servicesList__item__btn {
@@ -12580,7 +12166,7 @@ h2 {
     border-top: 0.3vh solid black;
   }
   .configContainer__config__membershipFee__prop {
-    font-size: 25px;
+    font-size: 20px;
     color: black;
   }
   .configContainer__config__membershipFeeList {
@@ -12660,6 +12246,134 @@ h2 {
     transform: translateY(2px); /* Baja el botón al hacer clic */
     box-shadow: 2px 2px 5px black, -2px -2px 5px black; /* Sombra más ligera al hacer clic */
   }
+  .configContainer__config__partners {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: start;
+    padding-left: 2vh;
+    border-top: 0.3vh solid black;
+  }
+  .configContainer__config__partners__prop {
+    font-size: 20px;
+    color: black;
+  }
+  .configContainer__config__addPartnersBen {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vh 0vh;
+  }
+  .configContainer__config__addPartnersBen__addPartnersBenContainer {
+    width: 95%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1vh 0vh;
+    gap: 1vh;
+  }
+  .configContainer__config__addPartnersBen__addPartnersBenContainer__input {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .configContainer__config__addPartnersBen__addPartnersBenContainer__input__prop {
+    width: 100%;
+    height: 35px;
+    border-radius: 1vh;
+    border: 0.3vh solid black;
+    color: black;
+    text-align: center;
+  }
+  .configContainer__config__addPartnersBen__addPartnersBenContainer__input__prop::-moz-placeholder {
+    text-align: center;
+    font-size: 12px;
+  }
+  .configContainer__config__addPartnersBen__addPartnersBenContainer__input__prop::placeholder {
+    text-align: center;
+    font-size: 12px;
+  }
+  .configContainer__config__addPartnersBen__addPartnersBenContainer__btn {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .configContainer__config__addPartnersBen__addPartnersBenContainer__btn__prop {
+    width: 80%;
+    height: 30px;
+    background-color: black;
+    color: #d2b569;
+    border-color: black;
+    border-radius: 5vh;
+    box-shadow: 4px 4px 10px black, -4px -4px 10px black;
+    transition: transform 0.2s;
+    font-size: 14px;
+  }
+  .configContainer__config__addPartnersBen__addPartnersBenContainer__btn__prop:active {
+    transform: translateY(2px); /* Baja el botón al hacer clic */
+    box-shadow: 2px 2px 5px black, -2px -2px 5px black; /* Sombra más ligera al hacer clic */
+  }
+  .configContainer__config__partnersBenList {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2vh;
+    padding-bottom: 2vh;
+  }
+  .configContainer__config__partnersBenList__titleList {
+    font-size: 18px;
+    color: black;
+  }
+  .configContainer__config__partnersBenList__item {
+    width: 95%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .configContainer__config__partnersBenList__item__label {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .configContainer__config__partnersBenList__item__label__prop {
+    font-size: 12px;
+    color: black;
+  }
+  .configContainer__config__partnersBenList__item__btn {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vh;
+  }
+  .configContainer__config__partnersBenList__item__btn__prop {
+    width: 50%;
+    background-color: black;
+    color: #d2b569;
+    border-color: black;
+    border-radius: 5vh;
+    box-shadow: 4px 4px 10px black, -4px -4px 10px black;
+    transition: transform 0.2s;
+    font-size: 12px;
+    padding: 0vh 1vh;
+  }
+  .configContainer__config__partnersBenList__item__btn__prop:active {
+    transform: translateY(2px); /* Baja el botón al hacer clic */
+    box-shadow: 2px 2px 5px black, -2px -2px 5px black; /* Sombra más ligera al hacer clic */
+  }
   .configContainer__config__various {
     width: 100%;
     height: auto;
@@ -12669,7 +12383,7 @@ h2 {
     border-top: 0.3vh solid black;
   }
   .configContainer__config__various__prop {
-    font-size: 25px;
+    font-size: 20px;
     color: black;
   }
   .configContainer__config__addVarious {
@@ -12687,17 +12401,6 @@ h2 {
     grid-template-columns: 1fr 1fr 1fr;
     padding: 1vh 0vh;
     gap: 1vh;
-    /* &__select {
-        width: 100%;
-        height: auto;
-        @include disFC();
-        &__prop {
-            width: 90%;
-            height: 35px;
-            @include selects;
-            text-align: center;
-        }
-    } */
   }
   .configContainer__config__addVarious__addVariousContainer__input {
     width: 100%;
@@ -12737,6 +12440,7 @@ h2 {
     border-radius: 5vh;
     box-shadow: 4px 4px 10px black, -4px -4px 10px black;
     transition: transform 0.2s;
+    font-size: 14px;
   }
   .configContainer__config__addVarious__addVariousContainer__btn__prop:active {
     transform: translateY(2px); /* Baja el botón al hacer clic */
@@ -12753,7 +12457,7 @@ h2 {
     padding-bottom: 2vh;
   }
   .configContainer__config__variousList__titleList {
-    font-size: 20px;
+    font-size: 18px;
     color: black;
   }
   .configContainer__config__variousList__item {
@@ -12771,7 +12475,7 @@ h2 {
     align-items: center;
   }
   .configContainer__config__variousList__item__label__prop {
-    font-size: 15px;
+    font-size: 16px;
     color: black;
   }
   .configContainer__config__variousList__item__btn {
@@ -12806,7 +12510,7 @@ h2 {
     border-top: 0.3vh solid black;
   }
   .configContainer__config__weekDays__prop {
-    font-size: 25px;
+    font-size: 20px;
     color: black;
   }
   .configContainer__config__createWeekDayMobile {
@@ -13104,6 +12808,13 @@ h2 {
   .warningLogin {
     padding-top: 1vh;
     font-size: 15px;
+  }
+  .blackDiv {
+    background-color: black;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    padding-top: 18vh;
   }
 }
 @media (min-width: 1540px) {

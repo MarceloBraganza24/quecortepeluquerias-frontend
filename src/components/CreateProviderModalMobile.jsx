@@ -32,7 +32,6 @@ const CreateProviderModalMobile = ({setIsOpenCreateProviderModalLocalMobile}) =>
 
     const handleInputBusinessNamePrL = (e) => {
         const texto = e.target.value;
-        //const textCleaned = cleanString(texto);
         const textToSaved = cleanText(texto);
         setInputBusinessNamePrL(textToSaved)
     };
@@ -53,7 +52,6 @@ const CreateProviderModalMobile = ({setIsOpenCreateProviderModalLocalMobile}) =>
 
     const handleInputEmailPrL = (e) => {
         const texto = e.target.value;
-        //const textCleaned = cleanString(texto);
         const textToSaved = cleanText(texto);
         setInputEmailPrL(textToSaved)
     };

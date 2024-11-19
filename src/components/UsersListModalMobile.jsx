@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import {OpenModalContext} from '../context/OpenModalContext';
 import { Link } from 'react-router-dom';
 import { toast } from "react-toastify";
@@ -40,7 +40,6 @@ const UsersListModalMobile = ({id,first_name,last_name,email,role,handleUpdateUs
     const handleInputFirstNameIU = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputFirstNameIU(textToSaved)
         }
@@ -54,7 +53,6 @@ const UsersListModalMobile = ({id,first_name,last_name,email,role,handleUpdateUs
     const handleInputLastNameIU = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputLastNameIU(textToSaved)
         }
@@ -67,7 +65,6 @@ const UsersListModalMobile = ({id,first_name,last_name,email,role,handleUpdateUs
 
     const handleInputEmailIU = (e) => {
         const texto = e.target.value;
-        //const textCleaned = cleanString(texto);
         const textToSaved = cleanText(texto);
         setInputEmailIU(textToSaved)
         texto==email?setInputChanges(false):setInputChanges(true);
@@ -235,19 +232,15 @@ const UsersListModalMobile = ({id,first_name,last_name,email,role,handleUpdateUs
 
         return (
             <>
-                <div className='confirmationDeleteBtnPartnersListModalContainerMobile'>
-                    <div className='confirmationDeleteBtnPartnersListModalContainerMobile__ask'>¿Estás seguro que deseas borrar el usuario?</div>
-                    <div className='confirmationDeleteBtnPartnersListModalContainerMobile__askMobile'>
-                        <div className='confirmationDeleteBtnPartnersListModalContainerMobile__askMobile__ask'>¿Estás seguro que deseas</div>
-                        <div className='confirmationDeleteBtnPartnersListModalContainerMobile__askMobile__ask'>borrar el usuario?</div>
+                <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile'>
+                    <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__ask'>¿Estás seguro que deseas borrar el usuario?</div>
+                    <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__askMobile'>
+                        <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__askMobile__ask'>¿Estás seguro que deseas</div>
+                        <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__askMobile__ask'>borrar el usuario?</div>
                     </div>
-                    <div className='confirmationDeleteBtnPartnersListModalContainerMobile__btns'>
-                        <div className='confirmationDeleteBtnPartnersListModalContainerMobile__btns__btn'>
-                            <button onClick={handleBtnDelUser} className='confirmationDeleteBtnPartnersListModalContainerMobile__btns__btn__prop'>Si</button>
-                        </div>
-                        <div className='confirmationDeleteBtnPartnersListModalContainerMobile__btns__btn'>
-                            <button onClick={handleBtnConfirmationDeleteBtnNo} className='confirmationDeleteBtnPartnersListModalContainerMobile__btns__btn__prop'>No</button>
-                        </div>
+                    <div className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__btns'>
+                        <button onClick={handleBtnDelUser} className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__btns__btn'>Si</button>
+                        <button onClick={handleBtnConfirmationDeleteBtnNo} className='confirmationDeleteBtnUpdatePartnersListModalContainerMobile__btns__btn'>No</button>
                         {showSpinner&&<Spinner/>}
                     </div>
                 </div>
@@ -273,9 +266,9 @@ const UsersListModalMobile = ({id,first_name,last_name,email,role,handleUpdateUs
         });
     }
 
-    const buttonDisabledStyle = {
-        color: 'white',
-        cursor: 'pointer'
+    const tagDisabled = {
+        backgroundColor: 'white',
+        color: 'black'
     };
 
   return (
@@ -351,7 +344,7 @@ const UsersListModalMobile = ({id,first_name,last_name,email,role,handleUpdateUs
                             <div className='updateUserModalContainerMobile__labelInput__label__prop'>Nombre:</div>
                         </div>
                         <div className='updateUserModalContainerMobile__labelInput__input'>
-                            <input disabled className='updateUserModalContainerMobile__labelInput__input__prop' value={!inputFirstNameIU?first_name:inputFirstNameIU}onChange={handleInputFirstNameIU}/>
+                            <input style={tagDisabled} disabled className='updateUserModalContainerMobile__labelInput__input__prop' value={!inputFirstNameIU?first_name:inputFirstNameIU}onChange={handleInputFirstNameIU}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateUserModalContainerMobile__labelInput'>
@@ -359,7 +352,7 @@ const UsersListModalMobile = ({id,first_name,last_name,email,role,handleUpdateUs
                             <div className='updateUserModalContainerMobile__labelInput__label__prop'>Apellido:</div>
                         </div>
                         <div className='updateUserModalContainerMobile__labelInput__input'>
-                            <input disabled className='updateUserModalContainerMobile__labelInput__input__prop' value={!inputLastNameIU?last_name:inputLastNameIU}onChange={handleInputLastNameIU}/>
+                            <input style={tagDisabled} disabled className='updateUserModalContainerMobile__labelInput__input__prop' value={!inputLastNameIU?last_name:inputLastNameIU}onChange={handleInputLastNameIU}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateUserModalContainerMobile__labelInput'>
@@ -367,15 +360,15 @@ const UsersListModalMobile = ({id,first_name,last_name,email,role,handleUpdateUs
                             <div className='updateUserModalContainerMobile__labelInput__label__prop'>Email:</div>
                         </div>
                         <div className='updateUserModalContainerMobile__labelInput__input'>
-                            <input disabled className='updateUserModalContainerMobile__labelInput__input__prop' value={!inputEmailIU?email:inputEmailIU}onChange={handleInputEmailIU}/>
+                            <input style={tagDisabled} disabled className='updateUserModalContainerMobile__labelInput__input__prop' value={!inputEmailIU?email:inputEmailIU}onChange={handleInputEmailIU}/>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateUserModalContainerMobile__labelInput'>
                         <div className='updateUserModalContainerMobile__labelInput__label'>
                             <div className='updateUserModalContainerMobile__labelInput__label__prop'>Rol:</div>
                         </div>
-                        <div className='updateUserModalContainerMobile__labelInput__input'>
-                            <select disabled className='updateShiftModalContainerMobile__labelInput__selectSchedule__select' value={selectRoleOptionIU} onChange={handleSelectRoleOptionIU}>
+                        <div className='updateUserModalContainerMobile__labelInput__selectSchedule'>
+                            <select disabled className='updateUserModalContainerMobile__labelInput__selectSchedule__select' value={selectRoleOptionIU} onChange={handleSelectRoleOptionIU}>
                                 {optionsRoleIU.map((option, index) => (
                                     <option key={index} value={option}>{option}</option>
                                 ))}

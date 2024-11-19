@@ -31,14 +31,13 @@ const Shifts = () => {
     const [user, setUser] = useState('');
     const {handleBtnBuyVisible} = useContext(BtnMPContext);
     const pagarTurnoBtn = document.getElementById('pagarTurnoBtn');
-    const {menuOptionsModal,handleMenuOptionsModal} = useContext(OpenModalContext);
+    const {menuOptionsModal,handleMenuOptionsModal,saveShiftModal,handleSaveShiftModal} = useContext(OpenModalContext);
     const [admPremPreferenceId, setAdmPremPreferenceId] = useState(null);
     const [preferenceId, setPreferenceId] = useState(null);
     const { inputFirstNameSh, handleInputFirstNameSh, inputLastNameSh, handleInputLastNameSh, inputEmailSh, handleInputEmailSh, inputDateSh, handleInputDateSh, inputOptionServiceSh, handleInputOptionServiceSh, selectScheduleSh, handleSelectScheduleSh, inputPriceSh,selectOptionHairdresserSh,handleSelectOptionHairdresserSh} = useContext(InputDataShContext);
     const [shifts, setShifts] = useState([]);
     const [hairdressers, setHairdressers] = useState([]);
     const [holidays, setHolidays] = useState([]);
-    //const [prices, setPrices] = useState([]);
     const [workDays, setWorkDays] = useState([]);
     const [services, setServices] = useState([]);
     const [saveConfirmationShiftModal, setSaveConfirmationShiftModal] = useState(false);
@@ -55,17 +54,9 @@ const Shifts = () => {
         return cleaned;
     }
     
-    if(!user.isMembershipFeePaid) {
-        const noPartnersServices = services.filter(service => service.category == 'No socio')
-        noPartnersServices.forEach(res => {
-            optionsService.push(res.title)
-        })
-    } else {
-        const partnersServices = services.filter(service => service.category == 'Socio')
-        partnersServices.forEach(res => {
-            optionsService.push(res.title)
-        })
-    }
+    services.forEach(res => {
+        optionsService.push(res.title)
+    })
 
     const formatedDate = format(inputDateSh, 'yyyy-MM-dd');
 
@@ -77,18 +68,10 @@ const Shifts = () => {
         holiday.date == dateToCompareHoliday.date &&
         holiday.hairdresser == dateToCompareHoliday.hairdresser
     );
-
-
     
     const formatedNewDate = moment.tz(formatedDate, 'UTC');
     const dayFormatedNewDate = formatedNewDate.day();
     
-
-    
-
-
-
-
     const workDaysByHairdresserWorkDayFiltered = workDays.filter(item => (item.hairdresser == selectOptionHairdresserSh && (item.work_day == (dayFormatedNewDate==6&&'Sabado')))
         || (item.hairdresser == selectOptionHairdresserSh && (item.work_day == (dayFormatedNewDate==1&&'Lunes'))) 
         || (item.hairdresser == selectOptionHairdresserSh && (item.work_day == (dayFormatedNewDate==2&&'Martes'))) 
@@ -113,16 +96,93 @@ const Shifts = () => {
 
     const optionsScheduleSh = [];
 
-    let filteredArray = schedulesByHairdresserDate.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
+    const ahora = new Date();
+    const horaActual = ahora.getHours() * 60 + ahora.getMinutes();
 
-    if(existsHoliday) {
+    let filteredArray = schedulesByHairdresserDate.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
+    const generalFilteredArray = filteredArray.filter(horario => {
+        const [horas, minutos] = horario.split(":").map(Number); // Convierte HH:MM a números
+        const minutosTotales = horas * 60 + minutos; // Convierte HH:MM a minutos totales
+        return minutosTotales > horaActual; // Compara con la hora actual
+    });
+
+    const chrismasMondaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','16:40','17:00','17:30','18:00','18:20','18:40','19:00','19:20','19:40','20:00','20:30']
+    let filteredArrayMonday = chrismasMondaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
+    const generalFilteredArrayMonday = filteredArrayMonday.filter(horario => {
+        const [horas, minutos] = horario.split(":").map(Number); // Convierte HH:MM a números
+        const minutosTotales = horas * 60 + minutos; // Convierte HH:MM a minutos totales
+        return minutosTotales > horaActual; // Compara con la hora actual
+    });
+
+    const chrismasTuesdaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','13:00','13:20','13:40']
+    let filteredArrayTuesday = chrismasTuesdaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
+    const generalFilteredArrayTuesday = filteredArrayTuesday.filter(horario => {
+        const [horas, minutos] = horario.split(":").map(Number); // Convierte HH:MM a números
+        const minutosTotales = horas * 60 + minutos; // Convierte HH:MM a minutos totales
+        return minutosTotales > horaActual; // Compara con la hora actual
+    });
+
+    const hoy = new Date();
+    const fechaSeleccionada = new Date(inputDateSh);
+
+    if(selectOptionHairdresserSh == '' || selectOptionHairdresserSh == 'Peluquero') {
+        optionsScheduleSh.push('Selecciona un peluquero')
+    } else if(existsHoliday) {
         optionsScheduleSh.push('Peluquero de vacaciones')
-    } else if(filteredArray.length == 0) {
-        optionsScheduleSh.push('No hay horarios')
+    } else if(formatedDate == '2024-12-23' || formatedDate == '2024-12-30') {
+        if(hoy.toDateString() == fechaSeleccionada.toDateString()) {
+            if(generalFilteredArrayMonday.length != 0) {
+                generalFilteredArrayMonday.forEach(res => {
+                    optionsScheduleSh.push(res)
+                })
+            } else {
+                optionsScheduleSh.push('No hay horarios')
+            }
+        } else {
+            if(filteredArrayMonday.length != 0) {
+                filteredArrayMonday.forEach(res => {
+                    optionsScheduleSh.push(res)
+                })
+            } else {
+                optionsScheduleSh.push('No hay horarios')
+            }
+        }
+    } else if(formatedDate == '2024-12-24' || formatedDate == '2024-12-31') {
+        if(hoy.toDateString() == fechaSeleccionada.toDateString()) {
+            if(generalFilteredArrayTuesday.length != 0) {
+                generalFilteredArrayTuesday.forEach(res => {
+                    optionsScheduleSh.push(res)
+                })
+            } else {
+                optionsScheduleSh.push('No hay horarios')
+            }
+        } else {
+            if(filteredArrayTuesday.length != 0) {
+                filteredArrayTuesday.forEach(res => {
+                    optionsScheduleSh.push(res)
+                })
+            } else {
+                optionsScheduleSh.push('No hay horarios')
+            }
+        }
     } else {
-        filteredArray.forEach(res => {
-            optionsScheduleSh.push(res)
-        })
+        if(hoy.toDateString() == fechaSeleccionada.toDateString()) {
+            if(generalFilteredArray.length != 0) {
+                generalFilteredArray.forEach(res => {
+                    optionsScheduleSh.push(res)
+                })
+            } else {
+                optionsScheduleSh.push('No hay horarios')
+            }
+        } else {
+            if(filteredArray.length != 0) {
+                filteredArray.forEach(res => {
+                    optionsScheduleSh.push(res)
+                })
+            } else {
+                optionsScheduleSh.push('No hay horarios')
+            }
+        }
     }
     
     const optionsHairdresser = ['Peluquero'];
@@ -491,7 +551,7 @@ const Shifts = () => {
     };
 
     const styleDisabledBtns = {
-        backgroundColor: 'grey',
+        backgroundColor: 'white',
         border: 'none'
     }
 
@@ -501,17 +561,6 @@ const Shifts = () => {
     }
 
     const handleBtnSaveShift = () => {
-
-        /* const date = new Date();
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        const hours = String(date.getHours()).padStart(2, '0');
-        const minutes = String(date.getMinutes()).padStart(2, '0');
-        const noww = `${year}-${month}-${day} ${hours}:${minutes}`; */
-        
-        
-        //console.log(selectScheduleSh?selectScheduleSh:optionsScheduleSh[0])
         const schedule = selectScheduleSh?selectScheduleSh:optionsScheduleSh[0]
         const [hours, minutes] = schedule.split(":").map(String);
 
@@ -522,15 +571,9 @@ const Shifts = () => {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const day = String(date.getDate()).padStart(2, '0');
-        // const hours = String(date.getHours()).padStart(2, '0');
-        // const minutes = String(date.getMinutes()).padStart(2, '0');
         const selected = `${year}-${month}-${day} ${hours}:${minutes}`;
 
         const diffInMinutes = (selected - now) / 1000 / 60;
-
-        console.log(now)
-        console.log(selected)
-        console.log(diffInMinutes)
 
         if(!inputFirstNameSh || !inputLastNameSh || !inputEmailSh) {
             toast('Debes completar todos los campos', {
@@ -587,7 +630,7 @@ const Shifts = () => {
                 progress: undefined,
                 theme: "dark",
             });
-        } else if(diffInMinutes < 60) {
+        }/*  else if(diffInMinutes < 60) {
             toast('Debes registrar un turno con una hora de anticipación como mínimo', {
                 position: "top-right",
                 autoClose: 2000,
@@ -598,7 +641,7 @@ const Shifts = () => {
                 progress: undefined,
                 theme: "dark",
             });
-        } else if(newFormatedDate < fechaActual) {
+        } */ else if(newFormatedDate < fechaActual) {
             toast('Debes ingresar una fecha a futuro', {
                 position: "top-right",
                 autoClose: 2000,
@@ -609,7 +652,7 @@ const Shifts = () => {
                 progress: undefined,
                 theme: "dark",
             });
-        } else if(newFormatedDate > fecha15DiasDespues) {
+        }/*  else if(newFormatedDate > fecha15DiasDespues) {
             toast('Debes ingresar una fecha con 15 dias de anticipacion como máximo', {
                 position: "top-right",
                 autoClose: 2000,
@@ -620,7 +663,7 @@ const Shifts = () => {
                 progress: undefined,
                 theme: "dark",
             });
-        } else if(selectOptionHairdresserSh == 'Peluquero' || selectOptionHairdresserSh == '') {
+        }  */else if(selectOptionHairdresserSh == 'Peluquero' || selectOptionHairdresserSh == '') {
             toast('Debes elegir un peluquero', {
                 position: "top-right",
                 autoClose: 2000,
@@ -666,6 +709,7 @@ const Shifts = () => {
             });
         } else {
             setSaveConfirmationShiftModal(true);
+            handleSaveShiftModal(true);
         }
     };
 
@@ -795,6 +839,7 @@ const Shifts = () => {
 
         const handleBtnConfirmationDeleteBtnNo = () => {
             setSaveConfirmationShiftModal(false);
+            handleSaveShiftModal(false);
         }
 
 
@@ -823,16 +868,8 @@ const Shifts = () => {
     }
 
     const inputDisabledStyle = {
-        backgroundColor: 'grey'
+        backgroundColor: 'white'
     };
-
-    /* const handleNonRegister = () => {
-        if(isBtnShiftRegisterBlocked) {
-            setIsBtnShiftRegisterBlocked(false)        
-        } else {
-            setIsBtnShiftRegisterBlocked(true)        
-        }
-    }; */
 
   return (
     <>
@@ -845,7 +882,7 @@ const Shifts = () => {
                         <h2 className='shiftsContainerIsLoggedIn__form__phrase'>Registra tu turno</h2>
                         <div className='shiftsContainerIsLoggedIn__form__credentials'>
                             {
-                                !isBtnShiftRegisterBlocked ?
+                                !isBtnShiftRegisterBlocked&&!saveShiftModal ?
                                 <>
                                     <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
                                         <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__label'>
@@ -951,6 +988,14 @@ const Shifts = () => {
                                     </div>
                                     <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
                                         <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__label'>
+                                            <h2 className='shiftsContainerIsLoggedIn__form__credentials__label-input__label__prop'>Email:</h2>
+                                        </div>
+                                        <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__input'>
+                                            <input disabled style={inputDisabledStyle} className='shiftsContainerIsLoggedIn__form__credentials__label-input__input__prop' type='email' placeholder='Email' value={inputEmailSh} onChange={handleInputEmailSh}/>
+                                        </div>
+                                    </div>
+                                    <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
+                                        <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__label'>
                                             <h2 className='shiftsContainerIsLoggedIn__form__credentials__label-input__label__prop'>Peluquero:</h2>
                                         </div>
                                         <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__input'>
@@ -971,14 +1016,6 @@ const Shifts = () => {
                                                 <option key={index} value={option}>{option}</option>
                                                 ))}
                                             </select>
-                                        </div>
-                                    </div>
-                                    <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
-                                        <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__label'>
-                                            <h2 className='shiftsContainerIsLoggedIn__form__credentials__label-input__label__prop'>Email:</h2>
-                                        </div>
-                                        <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__input'>
-                                            <input disabled style={inputDisabledStyle} className='shiftsContainerIsLoggedIn__form__credentials__label-input__input__prop' type='email' placeholder='Email' value={inputEmailSh} onChange={handleInputEmailSh}/>
                                         </div>
                                     </div>
                                     <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
@@ -1033,7 +1070,7 @@ const Shifts = () => {
                                 <>
                                     <div className='shiftsContainerIsLoggedIn__form__credentials__btn'>
                                         {
-                                            !isBtnShiftRegisterBlocked ?
+                                            !isBtnShiftRegisterBlocked&&!saveShiftModal ?
                                             <button className='shiftsContainerIsLoggedIn__form__credentials__btn__prop' onClick={handleBtnSaveShift}>Registrar turno</button>
                                             :
                                             <button disabled className='shiftsContainerIsLoggedIn__form__credentials__btn__prop'>Registrar turno</button>
@@ -1076,6 +1113,14 @@ const Shifts = () => {
                             </div>
                             <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
                                 <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__label'>
+                                    <h2 className='shiftsContainerIsLoggedIn__form__credentials__label-input__label__prop'>Email:</h2>
+                                </div>
+                                <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__input'>
+                                    <input disabled style={inputDisabledStyle} className='shiftsContainerIsLoggedIn__form__credentials__label-input__input__prop' type='email' placeholder='Email' value={inputEmailSh} onChange={handleInputEmailSh}/>
+                                </div>
+                            </div>
+                            <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
+                                <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__label'>
                                     <h2 className='shiftsContainerIsLoggedIn__form__credentials__label-input__label__prop'>Peluquero:</h2>
                                 </div>
                                 <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__input'>
@@ -1096,14 +1141,6 @@ const Shifts = () => {
                                         <option key={index} value={option}>{option}</option>
                                         ))}
                                     </select>
-                                </div>
-                            </div>
-                            <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
-                                <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__label'>
-                                    <h2 className='shiftsContainerIsLoggedIn__form__credentials__label-input__label__prop'>Email:</h2>
-                                </div>
-                                <div className='shiftsContainerIsLoggedIn__form__credentials__label-input__input'>
-                                    <input disabled style={inputDisabledStyle} className='shiftsContainerIsLoggedIn__form__credentials__label-input__input__prop' type='email' placeholder='Email' value={inputEmailSh} onChange={handleInputEmailSh}/>
                                 </div>
                             </div>
                             <div className='shiftsContainerIsLoggedIn__form__credentials__label-input'>
@@ -1223,18 +1260,6 @@ const Shifts = () => {
                                     </select>
                                 </div>
                             </div>
-                            {/* <div className='shiftsContainer__form__credentials__label-input'>
-                                <div className='shiftsContainer__form__credentials__label-input__label'>
-                                    <h2 className='shiftsContainer__form__credentials__label-input__label__prop'>Turno:</h2>
-                                </div>
-                                <div className='shiftsContainer__form__credentials__label-input__input'>
-                                    <select style={styleDisabledBtns} disabled className='shiftsContainer__form__credentials__label-input__input__prop' value={inputOptionServiceSh} onChange={(e) => {handleInputOptionServiceSh(e.target.value)}}>
-                                        {optionsService.map((option, index) => (
-                                        <option key={index} value={option}>{option}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                            </div> */}
                             <div className='shiftsContainer__form__credentials__label-input'>
                                 <div className='shiftsContainer__form__credentials__label-input__label'>
                                     <h2 className='shiftsContainer__form__credentials__label-input__label__prop'>Precio:</h2>

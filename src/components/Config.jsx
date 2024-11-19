@@ -16,22 +16,24 @@ const Config = () => {
   const [hairdressers, setHairdressers] = useState([]);
   const [services, setServices] = useState([]);
   const [prices, setPrices] = useState([]);
+  const [partnersBen, setPartnersBen] = useState([]);
   const [workDays, setWorkDays] = useState([]);
 
   const [companies, setCompanies] = useState([]);
 
   const workDaysByHairdresserWorkDay = []
-  const {menuOptionsModal,handleMenuOptionsModal} = useContext(OpenModalContext);
+  const {menuOptionsModal,handleMenuOptionsModal,deleteCompanyModal,handleDeleteCompanyModal,deleteHairdresserModal,handleDeleteHairdresserModal,handleUpdateServiceBtnIsOpen,updateServiceBtnIsOpen,handleDeleteServiceModal,deleteServiceModal,updatePartnersBenModal,handleUpdatePartnersBenModal,handleDeletePartnerBenModal,deletePartnerBenModal,handleUpdateVariousPriceModal,updateVariousPriceModal,handleDeleteVariouModal,deleteVariouModal} = useContext(OpenModalContext);
   const apiUrl = import.meta.env.VITE_API_URL;
-  const selectPartnerNonPartner = ['No socio','Socio'];
   
   const [inputSaveCompany, setInputSaveCompany] = useState('');
 
   const [inputAddHairdresser, setInputAddHairdresser] = useState('');
   const [inputTitleService, setInputTitleService] = useState('');
   const [inputValueService, setInputValueService] = useState('');
-  const [selectCategoryService, setSelectCategoryService] = useState('');
-  const [inputMembershipFee, serInputMembershipFee] = useState('');
+  const [inputMembershipFee, setInputMembershipFee] = useState('');
+
+  const [inputAddTitlePartnersBen, setInputAddTitlePartnersBen] = useState('');
+  const [inputAddValuePartnersBen, setInputAddValuePartnersBen] = useState('');
 
   const [selectHairdressersWeekDays, setSelectHairdressersWeekDays] = useState('');
   const [selectDaysWeekDays, setSelectDaysWeekDays] = useState('');
@@ -43,10 +45,12 @@ const Config = () => {
   const [inputAddTitleVariouPrice, setInputAddTitleVariouPrice] = useState('');
   const [inputAddValueVariouPrice, setInputAddValueVariouPrice] = useState('');
   
-  const [updateServiceBtnIsOpen, setUpdateServiceBtnIsOpen] = useState(false);
+  const [updateServiceBtnIsOpenLocal, setUpdateServiceBtnIsOpenLocal] = useState(false);
   const [updateInputMembershipFeeIsOpen, setUpdateInputMembershipFeeIsOpen] = useState(false);
 
-  const [updateVariousPriceModal, setUpdateVariousPriceModal] = useState(false);
+  const [updateVariousPriceModalLocal, setUpdateVariousPriceModalLocal] = useState(false);
+
+  const [updatePartnersBenModalLocal, setUpdatePartnersBenModalLocal] = useState(false);
 
   const [showWorkDaysList, setShowWorkDaysList] = useState(false);
 
@@ -59,9 +63,6 @@ const Config = () => {
     
         return totalMinutesA - totalMinutesB;
     });
-  
-  const nonPartnersService = services.filter(service => service.category == 'No socio')
-  const partnersService = services.filter(service => service.category == 'Socio')
   
   const hairdressersOptionsSelect = ['Peluquero'];
   const hairdressersName = hairdressers.map(hairdresser => hairdresser.name)
@@ -109,6 +110,12 @@ const Config = () => {
                 setPrices(pricesAll.data)
             }
             fetchPricesData();
+            async function fetchPartnersBenData() {
+                const response = await fetch(`${apiUrl}/api/partnersBen`)
+                const partnersBenAll = await response.json();
+                setPartnersBen(partnersBenAll.data)
+            }
+            fetchPartnersBenData();
             async function fetchWorkDaysData() {
                 const response = await fetch(`${apiUrl}/api/workDays`)
                 const workDaysAll = await response.json();
@@ -192,6 +199,12 @@ const Config = () => {
             setWorkDays(workDaysAll.data)
         }
         fetchWorkDaysData();
+        async function fetchPartnersBenData() {
+            const response = await fetch(`${apiUrl}/api/partnersBen`)
+            const partnersBenAll = await response.json();
+            setPartnersBen(partnersBenAll.data)
+        }
+        fetchPartnersBenData();
         async function fetchCompaniesData() {
             const response = await fetch(`${apiUrl}/api/companies`)
             const companiesAll = await response.json();
@@ -292,13 +305,23 @@ const Config = () => {
         }
     }
 
-    const handleSelectCategoryService = (e) => {
-        setSelectCategoryService(e)
-    }
-
     const handleInputMembershipFee = (e) => {
       const texto = e.target.value;
-      serInputMembershipFee(texto)
+      setInputMembershipFee(texto)
+    }
+
+    const handleInputAddTitlePartnersBen = (e) => {
+        const texto = e.target.value;
+        const textToSaved = cleanText(texto);
+        setInputAddTitlePartnersBen(textToSaved)
+    }
+
+    const handleInputAddValuePartnersBen = (e) => {
+        const texto = e.target.value;
+        const regex = /^\d+$/;
+        if (texto == '' || regex.test(texto)) {
+            setInputAddValuePartnersBen(texto)
+        }
     }
 
     const handleInputAddTitleVariouPrice = (e) => {
@@ -483,40 +506,55 @@ const Config = () => {
 
     const [idHairdresser, setIdHairdresser] = useState('');
     const [nameHairdresser, setNameHairdresser] = useState('');
-    const [deleteHairdresserModal, setDeleteHairdresserModal] = useState(false);
+    const [deleteHairdresserModalLocal, setDeleteHairdresserModalLocal] = useState(false);
     
     const [idCompany, setIdCompany] = useState('');
     const [nameCompany, setNameCompany] = useState('');
-    const [deleteCompanyModal, setDeleteCompanyModal] = useState(false);
+    const [deleteCompanyModalLocal, setDeleteCompanyModalLocal] = useState(false);
 
     const [idVariou, setIdVariou] = useState('');
     const [titleVariou, setTitleVariou] = useState('');
-    const [deleteVariouModal, setDeleteVariouModal] = useState(false);
+    const [deleteVariouModalLocal, setDeleteVariouModalLocal] = useState(false);
 
-    const [deleteServiceModal, setDeleteServiceModal] = useState(false);
+    const [idPartnerBen, setIdPartnerBen] = useState('');
+    const [titlePartnerBen, setTitlePartnerBen] = useState('');
+    const [deletePartnerBenModalLocal, setDeletePartnerBenModalLocal] = useState(false);
+
+    const [deleteServiceModalLocal, setDeleteServiceModalLocal] = useState(false);
 
     const handleOpenModalBtnDeleteHairdresser = (id,hairdresser) => {
         setIdHairdresser(id)
         setNameHairdresser(hairdresser)
-        setDeleteHairdresserModal(true)
+        setDeleteHairdresserModalLocal(true)
+        handleDeleteHairdresserModal(true)
     }
 
     const handleOpenModalBtnDeleteCompany = (id,company) => {
         setIdCompany(id)
         setNameCompany(company)
-        setDeleteCompanyModal(true)
+        setDeleteCompanyModalLocal(true)
+        handleDeleteCompanyModal(true)
     }
 
     const handleOpenModalBtnDeleteService = (id,service) => {
         setIdService(id)
         setTitleService(service)
-        setDeleteServiceModal(true)
+        setDeleteServiceModalLocal(true)
+        handleDeleteServiceModal(true)
     }
 
     const handleOpenModalBtnDeleteVariou = (id,titleVariou) => {
         setIdVariou(id)
         setTitleVariou(titleVariou)
-        setDeleteVariouModal(true)
+        setDeleteVariouModalLocal(true)
+        handleDeleteVariouModal(true)
+    }
+
+    const handleOpenModalBtnDeletePartnersBen = (id,titlePartnerBen) => {
+        setIdPartnerBen(id)
+        setTitlePartnerBen(titlePartnerBen)
+        setDeletePartnerBenModalLocal(true)
+        handleDeletePartnerBenModal(true)
     }
 
     const hanldeBtnAddService = async() => {
@@ -544,7 +582,6 @@ const Config = () => {
         const obj = {
           title: cleanString(inputTitleService),
           value: inputValueService,
-          category: selectCategoryService?selectCategoryService:selectPartnerNonPartner[0],
           service_datetime: service_datetime
         }
         const response = await fetch(`${apiUrl}/api/services/register`, {
@@ -569,10 +606,9 @@ const Config = () => {
             setTimeout(() => {
                 setInputTitleService('');
                 setInputValueService('');
-                setSelectCategoryService(selectPartnerNonPartner[0]);
             }, 2500);
         } else if(data.error === 'There is already a service with that title') {
-            toast('Ya existe un servicio con ese nombre y categoría!', {
+            toast('Ya existe un servicio con ese nombre!', {
                 position: "top-right",
                 autoClose: 1500,
                 hideProgressBar: false,
@@ -606,7 +642,8 @@ const Config = () => {
       setIdService(id)
       setTitleService(title)
       setValueService(value)
-      setUpdateServiceBtnIsOpen(true)
+      setUpdateServiceBtnIsOpenLocal(true)
+      handleUpdateServiceBtnIsOpen(true)
     }
 
     const handleBtnSaveMembershipFee = async() => {
@@ -661,40 +698,118 @@ const Config = () => {
 
     const handleEditMembershipFee = () => {
       setUpdateInputMembershipFeeIsOpen(true);
-      serInputMembershipFee(membershipFee.value)
+      setInputMembershipFee(membershipFee.value)
     }
 
     const [idVariousPrice,setIdVariousPrice] = useState('')
     const [titleVariousPrice,setTitleVariousPrice] = useState('')
     const [valueVariousPrice,setValueVariousPrice] = useState('')
 
+    const [idPartnersBen,setIdPartnersBen] = useState('')
+    const [titlePartnersBen,setTitlePartnersBen] = useState('')
+    const [valuePartnersBen,setValuePartnersBen] = useState('')
+
     const handleBtnOpenUpdateVariousPrice = (id,title,value) => {
       setIdVariousPrice(id)
       setTitleVariousPrice(title)
       setValueVariousPrice(value)
-      setUpdateVariousPriceModal(true)
+      setUpdateVariousPriceModalLocal(true)
+      handleUpdateVariousPriceModal(true)
+    }
+
+    const handleBtnOpenUpdatePartnersBen = (id,title,value) => {
+        setIdPartnersBen(id)
+        setTitlePartnersBen(title)
+        setValuePartnersBen(value)
+        setUpdatePartnersBenModalLocal(true)
+        handleUpdatePartnersBenModal(true)
+    }
+
+    const handleBtnAddPartnersBen = async() => {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const currentDate = `${year}-${month}-${day} ${hours}:${minutes}`;
+        const partnersBen_datetime = currentDate;
+
+        if(inputAddTitlePartnersBen == '' || inputAddValuePartnersBen == '') {
+        toast('Debes completar todos los campos!', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+        } else {
+            const obj = {
+                title: inputAddTitlePartnersBen,
+                value: inputAddValuePartnersBen,
+                partnersBen_datetime: partnersBen_datetime
+            }
+            const response = await fetch(`${apiUrl}/api/partnersBen/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                },
+                body: JSON.stringify(obj)
+            })
+            const data = await response.json();
+            if (response.ok) {
+                toast(`Has guardado correctamente`, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+                setTimeout(() => {
+                    setInputAddTitlePartnersBen('');
+                    setInputAddValuePartnersBen('');
+                }, 2500);
+            } else if(data.error === 'There is already a partnersBen with that title') {
+                toast('Ya existe un documento guardado con ese título!', {
+                    position: "top-right",
+                    autoClose: 1500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+            }
+        }
     }
 
     const handleBtnAddVariouPrice = async() => {
-      const date = new Date();
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const day = String(date.getDate()).padStart(2, '0');
-      const hours = String(date.getHours()).padStart(2, '0');
-      const minutes = String(date.getMinutes()).padStart(2, '0');
-      const currentDate = `${year}-${month}-${day} ${hours}:${minutes}`;
-      const price_datetime = currentDate;
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const currentDate = `${year}-${month}-${day} ${hours}:${minutes}`;
+        const price_datetime = currentDate;
 
-      if(inputAddTitleVariouPrice == '' || inputAddValueVariouPrice == '') {
+        if(inputAddTitleVariouPrice == '' || inputAddValueVariouPrice == '') {
         toast('Debes completar todos los campos!', {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
         });
         } else {
             const obj = {
@@ -739,7 +854,7 @@ const Config = () => {
             }
 
 
-          
+            
         }
     }
 
@@ -917,7 +1032,7 @@ const Config = () => {
     }
 
     
-    const DeleteCompanyModal = ({id,company,setDeleteCompanyModal}) => {
+    const DeleteCompanyModal = ({id,company,setDeleteCompanyModalLocal}) => {
 
         const handleBtnDeleteCompany = async() => {
             setShowSpinner(true)
@@ -937,13 +1052,14 @@ const Config = () => {
                 });
                 setTimeout(() => {
                     setShowSpinner(false)
-                    setDeleteCompanyModal(false)
+                    setDeleteCompanyModalLocal(false)
                 }, 2500);
             } 
         }
 
         const handleBtnNonDeleteCompany = () => {
-            setDeleteCompanyModal(false)
+            setDeleteCompanyModalLocal(false)
+            handleDeleteCompanyModal(false)
         }
 
       return (
@@ -971,7 +1087,7 @@ const Config = () => {
       )
     }
     
-    const DeleteHairdresserModal = ({id,hairdresser,setDeleteHairdresserModal}) => {
+    const DeleteHairdresserModal = ({id,hairdresser,setDeleteHairdresserModalLocal}) => {
 
         const handleBtnDeleteHairdresser = async() => {
             setShowSpinner(true)
@@ -991,21 +1107,22 @@ const Config = () => {
                 });
                 setTimeout(() => {
                     setShowSpinner(false)
-                    setDeleteHairdresserModal(false)
+                    setDeleteHairdresserModalLocal(false)
                 }, 2500);
             } 
         }
 
         const handleBtnNonDeleteHairdresser = () => {
-            setDeleteHairdresserModal(false)
+            setDeleteHairdresserModalLocal(false)
+            handleDeleteHairdresserModal(false)
         }
 
       return (
         <>
             <div className='confirmationDeleteBtnHairdresserModalContainer'>
-                <div className='confirmationDeleteBtnHairdresserModalContainer__ask'>¿Estás seguro que deseas borrar el peluquero {hairdresser}?</div>
+                <div className='confirmationDeleteBtnHairdresserModalContainer__ask'>¿Estás seguro que deseas borrar el peluquero "{hairdresser}"?</div>
                 <div className='confirmationDeleteBtnHairdresserModalContainer__askMobile'>
-                    <div className='confirmationDeleteBtnHairdresserModalContainer__askMobile__ask'>¿Estás seguro que deseas borrar el peluquero {hairdresser}?</div>
+                    <div className='confirmationDeleteBtnHairdresserModalContainer__askMobile__ask'>¿Estás seguro que deseas borrar el peluquero "{hairdresser}"?</div>
                 </div>
                 <div className='confirmationDeleteBtnHairdresserModalContainer__btnsContainer'>
                     <div className='confirmationDeleteBtnHairdresserModalContainer__btnsContainer__btns'>
@@ -1025,7 +1142,7 @@ const Config = () => {
       )
     }
 
-    const DeleteServiceModal = ({id,service,setDeleteServiceModal}) => {
+    const DeleteServiceModal = ({id,service,setDeleteServiceModalLocal}) => {
 
         const handleBtnDeleteService = async() => {
             setShowSpinner(true)
@@ -1045,13 +1162,14 @@ const Config = () => {
                 });
                 setTimeout(() => {
                     setShowSpinner(false)
-                    setDeleteServiceModal(false)
+                    setDeleteServiceModalLocal(false)
                 }, 2500);
             } 
         }
 
         const handleBtnNonDeleteService = () => {
-            setDeleteServiceModal(false)
+            setDeleteServiceModalLocal(false)
+            handleDeleteServiceModal(false)
         }
 
       return (
@@ -1079,7 +1197,7 @@ const Config = () => {
       )
     }
 
-    const DeleteVariouModal = ({id,variou,setDeleteVariouModal}) => {
+    const DeleteVariouModal = ({id,variou,setDeleteVariouModalLocal}) => {
 
         const handleBtnDeleteVariou = async() => {
             setShowSpinner(true)
@@ -1099,13 +1217,14 @@ const Config = () => {
                 });
                 setTimeout(() => {
                     setShowSpinner(false)
-                    setDeleteVariouModal(false)
+                    setDeleteVariouModalLocal(false)
                 }, 2500);
             } 
         }
 
         const handleBtnNonDeleteVariou = () => {
-            setDeleteVariouModal(false)
+            setDeleteVariouModalLocal(false)
+            handleDeleteVariouModal(false)
         }
 
       return (
@@ -1132,16 +1251,82 @@ const Config = () => {
         </>
       )
     }
+
+    const DeletePartnerBenModal = ({id,partnerBen,setDeletePartnerBenModalLocal}) => {
+
+        const handleBtnDeletePartnerBen = async() => {
+            setShowSpinner(true)
+            const response = await fetch(`${apiUrl}/api/partnersBen/${id}`, {
+                method: 'DELETE'
+            })
+            if (response.ok) {
+                toast('Has eliminado el item correctamente', {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+                setTimeout(() => {
+                    setShowSpinner(false)
+                    setDeletePartnerBenModalLocal(false)
+                }, 2500);
+            } 
+        }
+
+        const handleBtnNonDeletePartnerBen = () => {
+            setDeletePartnerBenModalLocal(false)
+            handleDeletePartnerBenModal(false)
+        }
+
+      return (
+        <>
+            <div className='confirmationDeleteBtnVariouModalContainer'>
+                <div className='confirmationDeleteBtnVariouModalContainer__ask'>¿Estás seguro que deseas borrar el item "{partnerBen}"?</div>
+                <div className='confirmationDeleteBtnVariouModalContainer__askMobile'>
+                    <div className='confirmationDeleteBtnVariouModalContainer__askMobile__ask'>¿Estás seguro que deseas borrar el item "{partnerBen}"?</div>
+                </div>
+                <div className='confirmationDeleteBtnVariouModalContainer__btnsContainer'>
+                    <div className='confirmationDeleteBtnVariouModalContainer__btnsContainer__btns'>
+                        {
+                            !showSpinner?                            
+                            <button onClick={handleBtnDeletePartnerBen} className='confirmationDeleteBtnVariouModalContainer__btnsContainer__btns__prop'>Si</button>
+                            :
+                            <Spinner/>
+                        }
+                    </div>
+                    <div className='confirmationDeleteBtnVariouModalContainer__btnsContainer__btns'>
+                        <button onClick={handleBtnNonDeletePartnerBen} className='confirmationDeleteBtnVariouModalContainer__btnsContainer__btns__prop'>No</button>
+                    </div>
+                </div>
+            </div>
+        </>
+      )
+    }
     
 
     
-    const UpdateServiceModal = ({setUpdateServiceBtnIsOpen,id,title,value}) => {
+    const UpdateServiceModal = ({setUpdateServiceBtnIsOpenLocal,id,title,value}) => {
+
+        const cleanText = (text) => {
+            const replacements = {
+              'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u',
+              'Á': 'A', 'É': 'E', 'Í': 'I', 'Ó': 'O', 'Ú': 'U',
+              'ñ': 'n', 'Ñ': 'N'
+            };
+          
+            return text.split('').map(char => replacements[char] || char).join('');
+        };
 
         const [inputTitleUpdateService,setInputTitleUpdateService] = useState('')
         const [inputValueUpdateService,setInputValueUpdateService] = useState('')
 
         const handleBtnCloseModal = () => {
-            setUpdateServiceBtnIsOpen(false)
+            setUpdateServiceBtnIsOpenLocal(false)
+            handleUpdateServiceBtnIsOpen(false)
         }
 
         useEffect(()=>{
@@ -1184,7 +1369,7 @@ const Config = () => {
                     progress: undefined,
                     theme: "dark",
                 });
-                setUpdateServiceBtnIsOpen(false)
+                setUpdateServiceBtnIsOpenLocal(false)
             } 
             const data = await response.json();
             if(data.error === 'There is already a service with that title') {
@@ -1204,12 +1389,15 @@ const Config = () => {
 
       const handleInputTitleUpdateService = (e) => {
         const texto = e.target.value;
-        setInputTitleUpdateService(texto)
+        const textToSaved = cleanText(texto);
+        setInputTitleUpdateService(textToSaved)
       }
 
       const handleInputValueUpdateService = (e) => {
         const texto = e.target.value;
-        setInputValueUpdateService(texto)
+        if (/^\d*$/.test(texto)) {
+            setInputValueUpdateService(texto)
+        } 
       }
 
 
@@ -1236,13 +1424,14 @@ const Config = () => {
       )
     }
 
-    const UpdateVariousPriceModal = ({setUpdateVariousPriceModal,id,title,value}) => {
+    const UpdateVariousPriceModal = ({setUpdateVariousPriceModalLocal,id,title,value}) => {
 
       const [inputUpdateTitleVariousPrice,setInputUpdateTitleVariousPrice] = useState('')
       const [inputUpdateValueVariousPrice,setInputUpdateValueVariousPrice] = useState('')
 
       const handleBtnCloseModal = () => {
-        setUpdateVariousPriceModal(false)
+        setUpdateVariousPriceModalLocal(false)
+        handleUpdateVariousPriceModal(false)
       }
 
       const handleBtnUpdateServiceValue = async() => {
@@ -1280,7 +1469,7 @@ const Config = () => {
                   progress: undefined,
                   theme: "dark",
               });
-              setUpdateVariousPriceModal(false)
+              setUpdateVariousPriceModalLocal(false)
           } 
           const data = await response.json();
           if(data.error === 'There is already a price with that title') {
@@ -1300,12 +1489,15 @@ const Config = () => {
 
       const handleInputTitleUpdateService = (e) => {
         const texto = e.target.value;
-        setInputUpdateTitleVariousPrice(texto)
+        const textToSaved = cleanText(texto);
+        setInputUpdateTitleVariousPrice(textToSaved)
       }
 
       const handleInputValueUpdateService = (e) => {
         const texto = e.target.value;
-        setInputUpdateValueVariousPrice(texto)
+        if (/^\d*$/.test(texto)) {
+            setInputUpdateValueVariousPrice(texto)
+        } 
       }
 
       return (
@@ -1330,6 +1522,109 @@ const Config = () => {
         
       )
     }
+
+    const UpdatePartnersBenModal = ({setUpdatePartnersBenModalLocal,id,title,value}) => {
+
+        const [inputUpdateTitlePartnersBen,setInputUpdateTitlePartnersBen] = useState('')
+        const [inputUpdateValuePartnersBen,setInputUpdateValuePartnersBen] = useState('')
+
+        const handleBtnCloseModal = () => {
+            setUpdatePartnersBenModalLocal(false)
+            handleUpdatePartnersBenModal(false)
+        }
+
+        const handleBtnUpdatePartnersBen = async() => {
+            if((inputUpdateTitlePartnersBen == '' || inputUpdateTitlePartnersBen == title) && (inputUpdateValuePartnersBen == '' || inputUpdateValuePartnersBen == value)) {
+            toast('No tienes cambios para actualizar!', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+            } else {
+            const obj = {
+                title: inputUpdateTitlePartnersBen?inputUpdateTitlePartnersBen:title,
+                value: inputUpdateValuePartnersBen?inputUpdateValuePartnersBen:value,
+            }
+            const response = await fetch(`${apiUrl}/api/partnersBen/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                },
+                body: JSON.stringify(obj)
+            })
+            if (response.ok) {
+                toast(`Has actualizado el precio de ${title} correctamente`, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+                setUpdatePartnersBenModalLocal(false)
+            } 
+            const data = await response.json();
+            if(data.error === 'There is already a partnersBen with that title') {
+                toast('Ya existe un item con ese nombre!', {
+                    position: "top-right",
+                    autoClose: 1500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+            }
+        }
+    }
+
+      const handleInputTitleUpdatePartnersBen = (e) => {
+        const texto = e.target.value;
+        const textToSaved = cleanText(texto);
+        setInputUpdateTitlePartnersBen(textToSaved)
+      }
+
+      const handleInputValueUpdatePartnersBen = (e) => {
+        const texto = e.target.value;
+        if (/^\d*$/.test(texto)) {
+            setInputUpdateValuePartnersBen(texto)
+        } 
+      }
+
+      return (
+        <div className='updateServiceModal'>
+            <div className='updateServiceModal__btnCloseModal'>
+                <div onClick={handleBtnCloseModal} className='updateServiceModal__btnCloseModal__prop'>X</div>
+            </div>
+            <div className='updateServiceModal__data'>
+                <div className='updateServiceModal__data__label-input'>
+                    <div className='updateServiceModal__data__label-input__input'>
+                        <input value={inputUpdateTitlePartnersBen?inputUpdateTitlePartnersBen:title} onChange={handleInputTitleUpdatePartnersBen} className='updateServiceModal__data__label-input__input__prop' type="text" />
+                    </div>
+                    <div className='updateServiceModal__data__label-input__input'>
+                        <input value={inputUpdateValuePartnersBen?inputUpdateValuePartnersBen:value} onChange={handleInputValueUpdatePartnersBen} className='updateServiceModal__data__label-input__input__prop' type="text" />
+                    </div>
+                </div>
+            </div>
+            <div className='updateServiceModal__btn'>
+                <button onClick={handleBtnUpdatePartnersBen} className='updateServiceModal__btn__prop'>Guardar</button>
+            </div>
+        </div>
+        
+      )
+    }
+
+    const tagDisabled = {
+        backgroundColor: 'white'
+    }
     
     
 
@@ -1351,12 +1646,26 @@ const Config = () => {
                         companies.length == 0 &&
                         <div className='configContainer__config__addCompany'>
                             <div className='configContainer__config__addCompany__addCompanyContainer'>
-                                <div className='configContainer__config__addCompany__addCompanyContainer__input'>
-                                    <input value={inputSaveCompany} onChange={handleInputSaveCompany} placeholder='nombre empresa' type="text" className='configContainer__config__addCompany__addCompanyContainer__input__prop' />
-                                </div>
-                                <div className='configContainer__config__addCompany__addCompanyContainer__btn'>
-                                    <button onClick={handleBtnSaveCompany} className='configContainer__config__addCompany__addCompanyContainer__btn__prop'>Guardar</button>
-                                </div>
+                                {
+                                    !deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
+                                    <>
+                                        <div className='configContainer__config__addCompany__addCompanyContainer__input'>
+                                            <input value={inputSaveCompany} onChange={handleInputSaveCompany} placeholder='nombre empresa' type="text" className='configContainer__config__addCompany__addCompanyContainer__input__prop' />
+                                        </div>
+                                        <div className='configContainer__config__addCompany__addCompanyContainer__btn'>
+                                            <button onClick={handleBtnSaveCompany} className='configContainer__config__addCompany__addCompanyContainer__btn__prop'>Guardar</button>
+                                        </div>
+                                    </>
+                                    :
+                                    <>
+                                        <div className='configContainer__config__addCompany__addCompanyContainer__input'>
+                                            <input disabled style={tagDisabled} value={inputSaveCompany} onChange={handleInputSaveCompany} placeholder='nombre empresa' type="text" className='configContainer__config__addCompany__addCompanyContainer__input__prop' />
+                                        </div>
+                                        <div className='configContainer__config__addCompany__addCompanyContainer__btn'>
+                                            <button disabled className='configContainer__config__addCompany__addCompanyContainer__btn__prop'>Guardar</button>
+                                        </div>
+                                    </>
+                                }
                             </div>
                         </div>
                     }
@@ -1364,7 +1673,7 @@ const Config = () => {
                     <div className='configContainer__config__companiesList'>
                         {
                             companies.length == 0 ?
-                            <div style={{color:'black'}}>Aún no has guardado ningún nombre</div>
+                            <div className='configContainer__config__companiesList__nonCompanyName'>Aún no has guardado ningún nombre</div>
                             :
 
                             companies.map((company) => {
@@ -1375,7 +1684,12 @@ const Config = () => {
                                                 <div className='configContainer__config__companiesList__item__label__prop'>{company.name}</div>
                                             </div>
                                             <div className='configContainer__config__companiesList__item__btn'>
-                                                <button onClick={()=>{handleOpenModalBtnDeleteCompany(company._id,company.name)}} className='configContainer__config__companiesList__item__btn__prop'>Borrar</button>
+                                                {
+                                                    !deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
+                                                    <button onClick={()=>{handleOpenModalBtnDeleteCompany(company._id,company.name)}} className='configContainer__config__companiesList__item__btn__prop'>Borrar</button>
+                                                    :
+                                                    <button disabled className='configContainer__config__companiesList__item__btn__prop'>Borrar</button>
+                                                }
                                             </div>
                                         </div>
                                     </>
@@ -1389,12 +1703,26 @@ const Config = () => {
                     </div>
                     <div className='configContainer__config__addHairdresser'>
                         <div className='configContainer__config__addHairdresser__addHairdresserContainer'>
-                            <div className='configContainer__config__addHairdresser__addHairdresserContainer__input'>
-                                <input value={inputAddHairdresser} onChange={handleInputAddHairdresser} placeholder='ingrese peluquero' type="text" className='configContainer__config__addHairdresser__addHairdresserContainer__input__prop' />
-                            </div>
-                            <div className='configContainer__config__addHairdresser__addHairdresserContainer__btn'>
-                                <button onClick={handleBtnAddHairdresser} className='configContainer__config__addHairdresser__addHairdresserContainer__btn__prop'>Añadir</button>
-                            </div>
+                            {
+                                !deleteCompanyModal&&!deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
+                                <>
+                                    <div className='configContainer__config__addHairdresser__addHairdresserContainer__input'>
+                                        <input value={inputAddHairdresser} onChange={handleInputAddHairdresser} placeholder='ingrese peluquero' type="text" className='configContainer__config__addHairdresser__addHairdresserContainer__input__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addHairdresser__addHairdresserContainer__btn'>
+                                        <button onClick={handleBtnAddHairdresser} className='configContainer__config__addHairdresser__addHairdresserContainer__btn__prop'>Añadir</button>
+                                    </div>
+                                </>
+                                :
+                                <>
+                                    <div className='configContainer__config__addHairdresser__addHairdresserContainer__input'>
+                                        <input disabled style={tagDisabled} value={inputAddHairdresser} onChange={handleInputAddHairdresser} placeholder='ingrese peluquero' type="text" className='configContainer__config__addHairdresser__addHairdresserContainer__input__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addHairdresser__addHairdresserContainer__btn'>
+                                        <button disabled className='configContainer__config__addHairdresser__addHairdresserContainer__btn__prop'>Añadir</button>
+                                    </div>
+                                </>
+                            }
                         </div>
                     </div>
                     <div className='configContainer__config__hairdressersList'>
@@ -1415,9 +1743,16 @@ const Config = () => {
                                             <div className='configContainer__config__hairdressersList__item__label'>
                                                 <div className='configContainer__config__hairdressersList__item__label__prop'>{hairdresser.name}</div>
                                             </div>
+                                            {
+                                            !deleteCompanyModal&&!deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
                                             <div className='configContainer__config__hairdressersList__item__btn'>
                                                 <button onClick={()=>{handleOpenModalBtnDeleteHairdresser(hairdresser._id,hairdresser.name)}} className='configContainer__config__hairdressersList__item__btn__prop'>Borrar</button>
                                             </div>
+                                            :
+                                            <div className='configContainer__config__hairdressersList__item__btn'>
+                                                <button disabled onClick={()=>{handleOpenModalBtnDeleteHairdresser(hairdresser._id,hairdresser.name)}} className='configContainer__config__hairdressersList__item__btn__prop'>Borrar</button>
+                                            </div>
+                                            }
                                         </div>
                                     </>
                                 )
@@ -1430,40 +1765,57 @@ const Config = () => {
                     </div>
                     <div className='configContainer__config__addService'>
                         <div className='configContainer__config__addService__addServiceContainer'>
-                            <div className='configContainer__config__addService__addServiceContainer__input'>
-                                <input value={inputTitleService} onChange={handleInputTitleService} placeholder='ingrese servicio' type="text" className='configContainer__config__addService__addServiceContainer__input__prop' />
-                            </div>
-                            <div className='configContainer__config__addService__addServiceContainer__input'>
-                                <input value={inputValueService} onChange={handleInputValueService} placeholder='ingrese valor' type="text" className='configContainer__config__addService__addServiceContainer__input__prop' />
-                            </div>
-                            <div className='configContainer__config__addService__addServiceContainer__inputMobile'>
-                                <input value={inputTitleService} onChange={handleInputTitleService} placeholder='servicio' type="text" className='configContainer__config__addService__addServiceContainer__inputMobile__prop' />
-                            </div>
-                            <div className='configContainer__config__addService__addServiceContainer__inputMobile'>
-                                <input value={inputValueService} onChange={handleInputValueService} placeholder='valor' type="text" className='configContainer__config__addService__addServiceContainer__inputMobile__prop' />
-                            </div>
-                            <div className='configContainer__config__addService__addServiceContainer__select'>
-                                <select className='configContainer__config__addService__addServiceContainer__select__prop'  value={selectCategoryService} onChange={(e) => {handleSelectCategoryService(e.target.value)}}>
-                                    {selectPartnerNonPartner.map((option, index) => (
-                                    <option key={index} value={option}>{option}</option>
-                                    ))}
-                                </select>
-                            </div>
-                            <div className='configContainer__config__addService__addServiceContainer__btn'>
-                                <button onClick={hanldeBtnAddService} className='configContainer__config__addService__addServiceContainer__btn__prop'>Añadir</button>
-                            </div>
+                            {
+                                !deleteCompanyModal&&!deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
+                                <>
+                                    <div className='configContainer__config__addService__addServiceContainer__input'>
+                                        <input value={inputTitleService} onChange={handleInputTitleService} placeholder='ingrese servicio' type="text" className='configContainer__config__addService__addServiceContainer__input__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addService__addServiceContainer__input'>
+                                        <input value={inputValueService} onChange={handleInputValueService} placeholder='ingrese valor' type="text" className='configContainer__config__addService__addServiceContainer__input__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addService__addServiceContainer__inputMobile'>
+                                        <input value={inputTitleService} onChange={handleInputTitleService} placeholder='servicio' type="text" className='configContainer__config__addService__addServiceContainer__inputMobile__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addService__addServiceContainer__inputMobile'>
+                                        <input value={inputValueService} onChange={handleInputValueService} placeholder='valor' type="text" className='configContainer__config__addService__addServiceContainer__inputMobile__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addService__addServiceContainer__btn'>
+                                        <button onClick={hanldeBtnAddService} className='configContainer__config__addService__addServiceContainer__btn__prop'>Añadir</button>
+                                    </div>
+                                </>
+                                :
+                                <>
+                                    <div className='configContainer__config__addService__addServiceContainer__input'>
+                                        <input disabled style={tagDisabled} value={inputTitleService} onChange={handleInputTitleService} placeholder='ingrese servicio' type="text" className='configContainer__config__addService__addServiceContainer__input__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addService__addServiceContainer__input'>
+                                        <input disabled style={tagDisabled} value={inputValueService} onChange={handleInputValueService} placeholder='ingrese valor' type="text" className='configContainer__config__addService__addServiceContainer__input__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addService__addServiceContainer__inputMobile'>
+                                        <input disabled style={tagDisabled} value={inputTitleService} onChange={handleInputTitleService} placeholder='servicio' type="text" className='configContainer__config__addService__addServiceContainer__inputMobile__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addService__addServiceContainer__inputMobile'>
+                                        <input disabled style={tagDisabled} value={inputValueService} onChange={handleInputValueService} placeholder='valor' type="text" className='configContainer__config__addService__addServiceContainer__inputMobile__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addService__addServiceContainer__btn'>
+                                        <button disabled onClick={hanldeBtnAddService} className='configContainer__config__addService__addServiceContainer__btn__prop'>Añadir</button>
+                                    </div>
+                                </>
+                            }
                         </div>
                     </div>
+
+
                     <div className='configContainer__config__servicesList'>
+
+
                         <div className='configContainer__config__servicesList__titleList'>- Lista de servicios -</div>
-                        <div className='configContainer__config__servicesList__category'>
-                          <div className='configContainer__config__servicesList__category__prop'>No socios</div>
-                        </div>
                         {
-                            nonPartnersService.length == 0 ?
+                            services.length == 0 ?
                             <div style={{color:'black'}}>Aún no existen servicios</div>
                             :
-                            nonPartnersService.map((service) => {
+                            services.map((service) => {
                                 return(
                                     <>
                                         <div className='configContainer__config__servicesList__item'>
@@ -1474,41 +1826,28 @@ const Config = () => {
                                                 <div className='configContainer__config__servicesList__item__label__prop'>$ {service.value}</div>
                                             </div>
                                             <div className='configContainer__config__servicesList__item__btn'>
-                                                <button onClick={()=>{handleBtnOpenUpdateService(service._id,service.title,service.value)}} className='configContainer__config__servicesList__item__btn__prop'>Editar</button>
-                                                <button onClick={()=>{handleOpenModalBtnDeleteService(service._id,service.title)}} className='configContainer__config__servicesList__item__btn__prop'>Borrar</button>
+                                                {
+                                                    !deleteCompanyModal&&!deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
+                                                    <>
+                                                        <button onClick={()=>{handleBtnOpenUpdateService(service._id,service.title,service.value)}} className='configContainer__config__servicesList__item__btn__prop'>Editar</button>
+                                                        <button onClick={()=>{handleOpenModalBtnDeleteService(service._id,service.title)}} className='configContainer__config__servicesList__item__btn__prop'>Borrar</button>
+                                                    </>
+                                                    :
+                                                    <>
+                                                        <button disabled className='configContainer__config__servicesList__item__btn__prop'>Editar</button>
+                                                        <button disabled className='configContainer__config__servicesList__item__btn__prop'>Borrar</button>
+                                                    </>
+                                                }
                                             </div>
                                         </div>
                                     </>
                                 )
                             })
                         }
-                        <div className='configContainer__config__servicesList__category'>
-                          <div className='configContainer__config__servicesList__category__prop'>Socios</div>
-                        </div>
-                        {
-                          partnersService.length == 0 ?
-                            <div style={{color:'black'}}>Aún no existen servicios</div>
-                          :
-                            partnersService.map((service) => {
-                                return(
-                                    <>
-                                        <div className='configContainer__config__servicesList__item'>
-                                            <div className='configContainer__config__servicesList__item__label'>
-                                                <div className='configContainer__config__servicesList__item__label__prop'>{service.title}</div>
-                                            </div>
-                                            <div className='configContainer__config__servicesList__item__label'>
-                                                <div className='configContainer__config__servicesList__item__label__prop'>$ {service.value}</div>
-                                            </div>
-                                            <div className='configContainer__config__servicesList__item__btn'>
-                                                <button onClick={()=>{handleBtnOpenUpdateService(service._id,service.title,service.value)}} className='configContainer__config__servicesList__item__btn__prop'>Editar</button>
-                                                <button onClick={()=>{handleOpenModalBtnDeleteService(service._id,service.title)}} className='configContainer__config__servicesList__item__btn__prop'>Borrar</button>
-                                            </div>
-                                        </div>
-                                    </>
-                                )
-                            })
-                        }
+                        
                     </div>
+
+
 
                     <div className='configContainer__config__membershipFee'>
                         <div className='configContainer__config__membershipFee__prop'>Cuota socio:</div>
@@ -1545,12 +1884,89 @@ const Config = () => {
                             <button onClick={()=>setUpdateInputMembershipFeeIsOpen(false)} className='configContainer__config__membershipFeeList__item__btn__prop'>Cancelar</button>
                             </>
                             :
-                            <button onClick={handleEditMembershipFee} className='configContainer__config__membershipFeeList__item__btn__prop'>Editar</button>
+                                !deleteCompanyModal&&!deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
+                                <button onClick={handleEditMembershipFee} className='configContainer__config__membershipFeeList__item__btn__prop'>Editar</button>
+                                :
+                                <button disabled className='configContainer__config__membershipFeeList__item__btn__prop'>Editar</button>
                           }
                           </>
                         }
                       </div>
 
+                    </div>
+                    <div className='configContainer__config__partners'>
+                        <div className='configContainer__config__partners__prop'>Socios:</div>
+                    </div>
+                    <div className='configContainer__config__addPartnersBen'>
+                        <div className='configContainer__config__addPartnersBen__addPartnersBenContainer'>
+                            {
+                                !deleteCompanyModal&&!deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
+                                <>
+                                    <div className='configContainer__config__addPartnersBen__addPartnersBenContainer__input'>
+                                        <input value={inputAddTitlePartnersBen} onChange={handleInputAddTitlePartnersBen} placeholder='ingrese algo' type="text" className='configContainer__config__addPartnersBen__addPartnersBenContainer__input__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addPartnersBen__addPartnersBenContainer__input'>
+                                        <input value={inputAddValuePartnersBen} onChange={handleInputAddValuePartnersBen} placeholder='ingrese puntos' type="text" className='configContainer__config__addPartnersBen__addPartnersBenContainer__input__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addPartnersBen__addPartnersBenContainer__btn'>
+                                        <button onClick={handleBtnAddPartnersBen} className='configContainer__config__addPartnersBen__addPartnersBenContainer__btn__prop'>Añadir</button>
+                                    </div>
+                                </>
+                                :
+                                <>
+                                    <div className='configContainer__config__addPartnersBen__addPartnersBenContainer__input'>
+                                        <input disabled style={tagDisabled} value={inputAddTitlePartnersBen} onChange={handleInputAddTitlePartnersBen} placeholder='ingrese algo' type="text" className='configContainer__config__addPartnersBen__addPartnersBenContainer__input__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addPartnersBen__addPartnersBenContainer__input'>
+                                        <input disabled style={tagDisabled} value={inputAddValuePartnersBen} onChange={handleInputAddValuePartnersBen} placeholder='ingrese puntos' type="text" className='configContainer__config__addPartnersBen__addPartnersBenContainer__input__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addPartnersBen__addPartnersBenContainer__btn'>
+                                        <button disabled className='configContainer__config__addPartnersBen__addPartnersBenContainer__btn__prop'>Añadir</button>
+                                    </div>
+                                </>
+                            }
+                        </div>
+                    </div>
+
+                    <div className='configContainer__config__partnersBenList'>
+                        {
+                          partnersBen.length != 0 &&
+                          <div className='configContainer__config__partnersBenList__titleList'>- Socios -</div>
+                        }
+                        {
+                            partnersBen.length == 0 ?
+                            <div style={{color:'black'}}>Aún no has guardado nada</div>
+                            :
+                            partnersBen.map((item) => {
+                            return(
+                                <>
+                                    <div className='configContainer__config__partnersBenList__item'>
+                                        <div className='configContainer__config__partnersBenList__item__label'>
+                                            <div className='configContainer__config__partnersBenList__item__label__prop'>{item.title}</div>
+                                        </div>
+                                        <div className='configContainer__config__partnersBenList__item__label'>
+                                            <div className='configContainer__config__partnersBenList__item__label__prop'>{item.value} pts.</div>
+                                        </div>
+                                        <div className='configContainer__config__partnersBenList__item__btn'>
+                                            {
+                                                !deleteCompanyModal&&!deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
+                                                <>
+                                                    <button onClick={()=>{handleBtnOpenUpdatePartnersBen(item._id,item.title,item.value)}} className='configContainer__config__partnersBenList__item__btn__prop'>Editar</button>
+                                                    <button onClick={()=>{handleOpenModalBtnDeletePartnersBen(item._id,item.title)}} className='configContainer__config__partnersBenList__item__btn__prop'>Borrar</button>
+                                                </>
+                                                :
+                                                <>
+                                                    <button disabled className='configContainer__config__partnersBenList__item__btn__prop'>Editar</button>
+                                                    <button disabled className='configContainer__config__partnersBenList__item__btn__prop'>Borrar</button>
+                                                
+                                                </>
+                                            }
+                                        </div>
+                                    </div>
+                                </>
+                                )
+                              })
+                        }
                     </div>
 
                     <div className='configContainer__config__various'>
@@ -1558,15 +1974,32 @@ const Config = () => {
                     </div>
                     <div className='configContainer__config__addVarious'>
                         <div className='configContainer__config__addVarious__addVariousContainer'>
-                            <div className='configContainer__config__addVarious__addVariousContainer__input'>
-                                <input value={inputAddTitleVariouPrice} onChange={handleInputAddTitleVariouPrice} placeholder='ingrese algo' type="text" className='configContainer__config__addVarious__addVariousContainer__input__prop' />
-                            </div>
-                            <div className='configContainer__config__addVarious__addVariousContainer__input'>
-                                <input value={inputAddValueVariouPrice} onChange={handleInputAddValueVariouPrice} placeholder='ingrese valor' type="text" className='configContainer__config__addVarious__addVariousContainer__input__prop' />
-                            </div>
-                            <div className='configContainer__config__addVarious__addVariousContainer__btn'>
-                                <button onClick={handleBtnAddVariouPrice} className='configContainer__config__addVarious__addVariousContainer__btn__prop'>Añadir</button>
-                            </div>
+                            {
+                                !deleteCompanyModal&&!deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
+                                <>
+                                    <div className='configContainer__config__addVarious__addVariousContainer__input'>
+                                        <input value={inputAddTitleVariouPrice} onChange={handleInputAddTitleVariouPrice} placeholder='ingrese algo' type="text" className='configContainer__config__addVarious__addVariousContainer__input__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addVarious__addVariousContainer__input'>
+                                        <input value={inputAddValueVariouPrice} onChange={handleInputAddValueVariouPrice} placeholder='ingrese valor' type="text" className='configContainer__config__addVarious__addVariousContainer__input__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addVarious__addVariousContainer__btn'>
+                                        <button onClick={handleBtnAddVariouPrice} className='configContainer__config__addVarious__addVariousContainer__btn__prop'>Añadir</button>
+                                    </div>
+                                </>
+                                :
+                                <>
+                                    <div className='configContainer__config__addVarious__addVariousContainer__input'>
+                                        <input disabled style={tagDisabled} value={inputAddTitleVariouPrice} onChange={handleInputAddTitleVariouPrice} placeholder='ingrese algo' type="text" className='configContainer__config__addVarious__addVariousContainer__input__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addVarious__addVariousContainer__input'>
+                                        <input disabled style={tagDisabled} value={inputAddValueVariouPrice} onChange={handleInputAddValueVariouPrice} placeholder='ingrese valor' type="text" className='configContainer__config__addVarious__addVariousContainer__input__prop' />
+                                    </div>
+                                    <div className='configContainer__config__addVarious__addVariousContainer__btn'>
+                                        <button disabled className='configContainer__config__addVarious__addVariousContainer__btn__prop'>Añadir</button>
+                                    </div>
+                                </>
+                            }
                         </div>
                     </div>
 
@@ -1590,8 +2023,18 @@ const Config = () => {
                                             <div className='configContainer__config__variousList__item__label__prop'>$ {item.value}</div>
                                         </div>
                                         <div className='configContainer__config__variousList__item__btn'>
-                                            <button onClick={()=>{handleBtnOpenUpdateVariousPrice(item._id,item.title,item.value)}} className='configContainer__config__variousList__item__btn__prop'>Editar</button>
-                                            <button onClick={()=>{handleOpenModalBtnDeleteVariou(item._id,item.title)}} className='configContainer__config__variousList__item__btn__prop'>Borrar</button>
+                                            {
+                                                !deleteCompanyModal&&!deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
+                                                <>
+                                                    <button onClick={()=>{handleBtnOpenUpdateVariousPrice(item._id,item.title,item.value)}} className='configContainer__config__variousList__item__btn__prop'>Editar</button>
+                                                    <button onClick={()=>{handleOpenModalBtnDeleteVariou(item._id,item.title)}} className='configContainer__config__variousList__item__btn__prop'>Borrar</button>
+                                                </>
+                                                :
+                                                <>
+                                                    <button disabled className='configContainer__config__variousList__item__btn__prop'>Editar</button>
+                                                    <button disabled className='configContainer__config__variousList__item__btn__prop'>Borrar</button>
+                                                </>
+                                            }
                                         </div>
                                     </div>
                                 </>
@@ -1599,34 +2042,62 @@ const Config = () => {
                               })
                         }
                     </div>
+
+
                     <div className='configContainer__config__weekDays'>
                         <div className='configContainer__config__weekDays__prop'>Días laborales:</div>
                     </div>
                     <div className='configContainer__config__createWeekDayMobile'>
 
                         <div className='configContainer__config__createWeekDayMobile__hairdresser'>
-                            <select className='configContainer__config__createWeekDayMobile__hairdresser__select'  value={selectHairdressersWeekDays} onChange={(e) => {handleSelectHairdressersWeekDays(e.target.value)}}>
-                                {hairdressersOptionsSelect.map((option, index) => (
-                                <option key={index} value={option}>{option}</option>
-                                ))}
-                            </select>
+                            {
+                                !deleteCompanyModal&&!deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
+                                    <select className='configContainer__config__createWeekDayMobile__hairdresser__select'  value={selectHairdressersWeekDays} onChange={(e) => {handleSelectHairdressersWeekDays(e.target.value)}}>
+                                        {hairdressersOptionsSelect.map((option, index) => (
+                                        <option key={index} value={option}>{option}</option>
+                                        ))}
+                                    </select>
+                                :
+                                    <select disabled className='configContainer__config__createWeekDayMobile__hairdresser__select'  value={selectHairdressersWeekDays} onChange={(e) => {handleSelectHairdressersWeekDays(e.target.value)}}>
+                                        {hairdressersOptionsSelect.map((option, index) => (
+                                        <option key={index} value={option}>{option}</option>
+                                        ))}
+                                    </select>
+                            }
                         </div>
 
                         <div className='configContainer__config__createWeekDayMobile__day'>
-                            <select className='configContainer__config__createWeekDayMobile__day__select'  value={selectDaysWeekDays} onChange={(e) => {handleSelectDaysWeekDays(e.target.value)}}>
-                                {weekDays.map((option, index) => (
-                                <option key={index} value={option}>{option}</option>
-                                ))}
-                            </select>
+                            {
+                                !deleteCompanyModal&&!deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
+                                    <select className='configContainer__config__createWeekDayMobile__day__select'  value={selectDaysWeekDays} onChange={(e) => {handleSelectDaysWeekDays(e.target.value)}}>
+                                        {weekDays.map((option, index) => (
+                                        <option key={index} value={option}>{option}</option>
+                                        ))}
+                                    </select>
+                                :
+                                    <select disabled className='configContainer__config__createWeekDayMobile__day__select'  value={selectDaysWeekDays} onChange={(e) => {handleSelectDaysWeekDays(e.target.value)}}>
+                                        {weekDays.map((option, index) => (
+                                        <option key={index} value={option}>{option}</option>
+                                        ))}
+                                    </select>
+                            }
                         </div>
 
                         <div className='configContainer__config__createWeekDayMobile__schedule'>
-
-                            <select className='configContainer__config__createWeekDayMobile__schedule__select' value={selectScheduleWeekDays} onChange={(e) => {handleSelectScheduleWeekDays(e.target.value)}}>
-                                {schedulesWeekDays.map((option, index) => (
-                                <option key={index} value={option}>{option}</option>
-                                ))}
-                            </select>
+                            {
+                                !deleteCompanyModal&&!deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
+                                    <select className='configContainer__config__createWeekDayMobile__schedule__select' value={selectScheduleWeekDays} onChange={(e) => {handleSelectScheduleWeekDays(e.target.value)}}>
+                                        {schedulesWeekDays.map((option, index) => (
+                                        <option key={index} value={option}>{option}</option>
+                                        ))}
+                                    </select>
+                                :
+                                    <select disabled className='configContainer__config__createWeekDayMobile__schedule__select' value={selectScheduleWeekDays} onChange={(e) => {handleSelectScheduleWeekDays(e.target.value)}}>
+                                        {schedulesWeekDays.map((option, index) => (
+                                        <option key={index} value={option}>{option}</option>
+                                        ))}
+                                    </select>
+                            }
 
                         </div>
 
@@ -1644,7 +2115,10 @@ const Config = () => {
                             
                             {
                                 !inputCreateWeekDayOpen?
+                                !deleteCompanyModal&&!deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
                                 <button onClick={()=>setInputCreateWeekDayOpen(true)} className='configContainer__config__createWeekDayMobile__inputsCreateWorkDayBtns__btns__add'>Añadir horario</button>
+                                :
+                                <button disabled className='configContainer__config__createWeekDayMobile__inputsCreateWorkDayBtns__btns__add'>Añadir horario</button>
                                 :
                                 <>
                                 <button onClick={handleBtnCreateWeekDay} className='configContainer__config__createWeekDayMobile__inputsCreateWorkDayBtns__btns__create'>Crear</button>
@@ -1691,7 +2165,10 @@ const Config = () => {
                             
                             {
                                 !inputCreateWeekDayOpen?
+                                !deleteCompanyModal&&!deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
                                 <button onClick={()=>setInputCreateWeekDayOpen(true)} className='configContainer__config__createWeekDay__scheduleBtn__btn__addSchedule'>Añadir</button>
+                                :
+                                <button disabled className='configContainer__config__createWeekDay__scheduleBtn__btn__addSchedule'>Añadir</button>
                                 :
                                 <>
                                 <button onClick={handleBtnCreateWeekDay} className='configContainer__config__createWeekDay__scheduleBtn__btn__goBack'>Crear</button>
@@ -1705,7 +2182,10 @@ const Config = () => {
                     <div className='configContainer__config__btnShowWorkDaysListContainer'>
                         {
                             !showWorkDaysList ?
+                            !deleteCompanyModal&&!deleteHairdresserModal&&!updateServiceBtnIsOpen&&!deleteServiceModal&&!updatePartnersBenModal&&!deletePartnerBenModal&&!updateVariousPriceModal&&!deleteVariouModal?
                             <button className='configContainer__config__btnShowWorkDaysListContainer__btn' onClick={()=>setShowWorkDaysList(true)}>Editar horarios</button>
+                            :
+                            <button disabled className='configContainer__config__btnShowWorkDaysListContainer__btn'>Editar horarios</button>
                             :
                             <button className='configContainer__config__btnShowWorkDaysListContainer__btn' onClick={()=>setShowWorkDaysList(false)}>Ocultar horarios</button>
                         }
@@ -1734,31 +2214,37 @@ const Config = () => {
                             </div>
                     }
                         {
-                          deleteCompanyModal&&<DeleteCompanyModal setDeleteCompanyModal={setDeleteCompanyModal} id={idCompany} company={nameCompany} />
+                          deleteCompanyModalLocal&&<DeleteCompanyModal setDeleteCompanyModalLocal={setDeleteCompanyModalLocal} id={idCompany} company={nameCompany} />
                         }
                         {
-                            deleteHairdresserModal&&<DeleteHairdresserModal setDeleteHairdresserModal={setDeleteHairdresserModal} id={idHairdresser} hairdresser={nameHairdresser} />
+                            deleteHairdresserModalLocal&&<DeleteHairdresserModal setDeleteHairdresserModalLocal={setDeleteHairdresserModalLocal} id={idHairdresser} hairdresser={nameHairdresser} />
                         }
                         {
-                            deleteServiceModal&&<DeleteServiceModal setDeleteServiceModal={setDeleteServiceModal} id={idService} service={titleService} />
+                            deleteServiceModalLocal&&<DeleteServiceModal setDeleteServiceModalLocal={setDeleteServiceModalLocal} id={idService} service={titleService} />
                         }
                         {
-                            deleteVariouModal&&<DeleteVariouModal setDeleteVariouModal={setDeleteVariouModal} id={idVariou} variou={titleVariou} />
+                            deleteVariouModalLocal&&<DeleteVariouModal setDeleteVariouModalLocal={setDeleteVariouModalLocal} id={idVariou} variou={titleVariou} />
                         }
                         {
-                            updateServiceBtnIsOpen&&<UpdateServiceModal setUpdateServiceBtnIsOpen={setUpdateServiceBtnIsOpen} id={idService} title={titleService} value={valueService} />
+                            deletePartnerBenModalLocal&&<DeletePartnerBenModal setDeletePartnerBenModalLocal={setDeletePartnerBenModalLocal} id={idPartnerBen} partnerBen={titlePartnerBen} />
                         }
                         {
-                          updateVariousPriceModal&&<UpdateVariousPriceModal setUpdateVariousPriceModal={setUpdateVariousPriceModal} id={idVariousPrice} title={titleVariousPrice} value={valueVariousPrice} />
+                            updateServiceBtnIsOpenLocal&&<UpdateServiceModal setUpdateServiceBtnIsOpenLocal={setUpdateServiceBtnIsOpenLocal} id={idService} title={titleService} value={valueService} />
+                        }
+                        {
+                          updateVariousPriceModalLocal&&<UpdateVariousPriceModal setUpdateVariousPriceModalLocal={setUpdateVariousPriceModalLocal} id={idVariousPrice} title={titleVariousPrice} value={valueVariousPrice} />
+                        }
+                        {
+                          updatePartnersBenModalLocal&&<UpdatePartnersBenModal setUpdatePartnersBenModalLocal={setUpdatePartnersBenModalLocal} id={idPartnersBen} title={titlePartnersBen} value={valuePartnersBen} />
                         }
                 </div>
             </div>
             <LogOut/>
           </>
-          :
-          <>
-            
-          </>
+            :
+            <>
+                <div className='blackDiv'><Spinner/></div>
+            </>
         }
         <Footer/>
     </>

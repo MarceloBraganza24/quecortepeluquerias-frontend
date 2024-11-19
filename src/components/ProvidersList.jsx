@@ -5,9 +5,7 @@ import LogOut from './LogOut';
 import { toast } from "react-toastify";
 import {IsLoggedContext} from '../context/IsLoggedContext';
 import {InputDataPrContext} from '../context/InputDataPrContext';
-import HMenu from './HMenu';
 import ItemProvider from './ItemProvider';
-import { Link } from 'react-router-dom';
 import {OpenModalContext} from '../context/OpenModalContext'; 
 import Spinner from './Spinner';
 import CreateProviderModalMobile from './CreateProviderModalMobile';
@@ -23,6 +21,7 @@ const ProvidersList = () => {
     const apiUrl = import.meta.env.VITE_API_URL;
     const [isMonted, setIsMonted] = useState(false);
     const [isOpenCreateProviderModalLocalMobile, setIsOpenCreateProviderModalLocalMobile] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     function cleanString(input) {
         let trimmed = input.trim();
@@ -86,9 +85,30 @@ const ProvidersList = () => {
     useEffect(() => {
         menuOptionsModal&&handleMenuOptionsModal(false);
         async function fetchData() {
-            const response = await fetch(`${apiUrl}/api/providers`)
-            const providersAll = await response.json();
-            setProviders(providersAll.data)
+
+            
+            try {
+                const response = await fetch(`${apiUrl}/api/providers`)
+                const providersAll = await response.json();
+                if(!response.ok) {
+                    toast('No se pudieron obtener los proveedores, contacte al administrador', {
+                        position: "top-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                } else {
+                    setProviders(providersAll.data)
+                }
+            } catch (error) {
+                console.error('Error al obtener datos:', error);
+            } finally {
+                setIsLoading(false);
+            }
         }
         fetchData();
         const getCookie = (name) => {
@@ -358,13 +378,6 @@ const ProvidersList = () => {
                         <div className='providersListContainer__providersList__lengthShifts'>
                             <div className='providersListContainer__providersList__lengthShifts__prop'>Cantidad de proveedores: {objetosFiltrados.length}</div>
                         </div>
-                        {
-                            objetosFiltrados.length!=0&&
-                            <div className='providersListContainer__providersList__headerMobile'>
-                                <div className='providersListContainer__providersList__headerMobile__label'>Razon social</div>
-                                <div className='providersListContainer__providersList__headerMobile__label'>CUIT-CUIL</div>
-                            </div>
-                        }
                         <div className='providersListContainer__providersList__header'>
                             <div className='providersListContainer__providersList__header__label'>Razon social</div>
                             <div className='providersListContainer__providersList__header__label'>CUIT-CUIL</div>
@@ -412,8 +425,21 @@ const ProvidersList = () => {
                                 </>
                             }
                         </div>
+
                         {
-                                objetosFiltrados.map((provider) => {
+                            isLoading ?
+                            <div className='myShiftsListContainer__withoutItems'>Cargando proveedores&nbsp;&nbsp;<Spinner/></div>
+                            :
+                            (objetosFiltrados.length != 0) ?
+                            <>
+                                <div className='providersListContainer__providersList__lengthShiftsMobile'>
+                                    <div className='providersListContainer__providersList__lengthShiftsMobile__prop'>Cantidad de proveedores: {objetosFiltrados.length}</div>
+                                </div>
+                                <div className='providersListContainer__providersList__headerMobile'>
+                                    <div className='providersListContainer__providersList__headerMobile__label'>Razon social</div>
+                                    <div className='providersListContainer__providersList__headerMobile__label'>CUIT-CUIL</div>
+                                </div>
+                                {objetosFiltrados.map((provider) => {
                                     return(
                                         <ItemProvider
                                         id={provider._id}
@@ -423,13 +449,12 @@ const ProvidersList = () => {
                                         email={provider.email}
                                         />
                                     )
-                                })
+                                })}
+                            </>
+                            :
+                            <div className='myShiftsListContainer__withoutItems'>Aún no existen proveedores</div>
                         }
                     </div>
-                    {
-                        (objetosFiltrados.length == 0) && 
-                        <div className='myShiftsListContainer__withoutItems'>Aún no existen proveedores</div>
-                    }
                 </div>
                 {
                     (objetosFiltrados.length == 0) ?
@@ -461,10 +486,7 @@ const ProvidersList = () => {
             </>
             :
             <>
-                <div className='warningLogin'>
-                    <p className='warningLogin__prop'>Si aún no has iniciado sesión, <Link to={"/login"} className='warningLogin__link'>has click aquí</Link></p>
-                </div>
-                <div className='blackDiv'></div> 
+                <div className='blackDiv'><Spinner/></div>
             </>
         }
         <Footer/>

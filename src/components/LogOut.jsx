@@ -7,7 +7,7 @@ import {BtnMPContext} from '../context/BtnMPContext';
 const LogOut = () => {
     const {logout} = useContext(IsLoggedContext);
     const {btnBuyVisible} = useContext(BtnMPContext);
-    const {myDataModal,updateShiftModal,cancelDayModal,cancelDaysListModal,recoverShiftModal,cancelShiftModal,updateMyShiftModal,updatePartnerModal,updateProviderModal,updateProductsModal,updateUsersModal,updatePricesModal,deleteTicketModal,payMembershipFeeModal} = useContext(OpenModalContext);
+    const {saveShiftModal,deleteVariouModal,updateVariousPriceModal,deletePartnerBenModal,deleteServiceModal,deleteHairdresserModal,updatePartnersBenModal,updateServiceBtnIsOpen,deleteCompanyModal,myDataModal,updateShiftModal,cancelDayModal,cancelDaysListModal,recoverShiftModal,cancelShiftModal,updateMyShiftModal,updatePartnerModal,updateProviderModal,updateProductsModal,updateUsersModal,updatePricesModal,deleteTicketModal,payMembershipFeeModal} = useContext(OpenModalContext);
     const apiUrl = import.meta.env.VITE_API_URL;
     
     const logOutBtn = async (event) => {
@@ -67,7 +67,7 @@ const LogOut = () => {
   return (
     <>
       {
-        !updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!btnBuyVisible&&!payMembershipFeeModal?
+        !updateShiftModal&&!saveShiftModal&&!deleteVariouModal&&!updateVariousPriceModal&&!deletePartnerBenModal&&!deleteServiceModal&&!updateServiceBtnIsOpen&&!updatePartnersBenModal&&!deleteHairdresserModal&&!deleteCompanyModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!btnBuyVisible&&!payMembershipFeeModal?
         <a onClick={logOutBtn} href="" className='logOut'>Cerrar sesión</a>
         :
         <div className='logOut'>Cerrar sesión</div>

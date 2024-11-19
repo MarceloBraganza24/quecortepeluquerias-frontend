@@ -6,9 +6,7 @@ import { toast } from "react-toastify";
 import {IsLoggedContext} from '../context/IsLoggedContext';
 import {InputDataULContext} from '../context/InputDataULContext';
 import {OpenModalContext} from '../context/OpenModalContext'; 
-import HMenu from './HMenu';
 import ItemUser from './ItemUser';
-import { Link } from 'react-router-dom';
 import Spinner from './Spinner';
 import CreateUserModalMobile from './CreateUserModalMobile';
 
@@ -23,6 +21,7 @@ const UsersList = () => {
     const {menuOptionsModal,handleMenuOptionsModal,updateUsersModal,updateUserModalMobile,createUserModalMobile,handleCreateUserModalMobile} = useContext(OpenModalContext);
     const optionsRoleUL = ["user","admin", "premium"];
     const [isMonted, setIsMonted] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const apiUrl = import.meta.env.VITE_API_URL;
     const [isOpenCreateUserModalLocalMobile, setIsOpenCreateUserModalLocalMobile] = useState(false);
 
@@ -108,21 +107,29 @@ const UsersList = () => {
     useEffect(() => {
         menuOptionsModal&&handleMenuOptionsModal(false);
         async function fetchUsersData() {
-            const response = await fetch(`${apiUrl}/api/users`)
-            const usersAll = await response.json();
-            if(!response.ok) {
-                toast('No se pudieron obtener los usuarios, contacte al administrador', {
-                    position: "top-right",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
-            } else {
-                setUsers(usersAll.data)
+
+
+            try {
+                const response = await fetch(`${apiUrl}/api/users`)
+                const usersAll = await response.json();
+                if(!response.ok) {
+                    toast('No se pudieron obtener los usuarios, contacte al administrador', {
+                        position: "top-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                } else { 
+                    setUsers(usersAll.data)
+                }
+            } catch (error) {
+                console.error('Error al obtener datos:', error);
+            } finally {
+                setIsLoading(false);
             }
         }
         fetchUsersData();
@@ -379,12 +386,6 @@ const UsersList = () => {
                         <div className='usersListContainer__usersList__lengthShifts'>
                             <div className='usersListContainer__usersList__lengthShifts__prop'>Cantidad de usuarios: {usersSinRoot.length}</div>
                         </div>
-                        <div className='usersListContainer__usersList__headerMobile'>
-                            <div className='usersListContainer__usersList__headerMobile__label'>Nombre</div>
-                            <div className='usersListContainer__usersList__headerMobile__label'>Apellido</div>
-                            <div className='usersListContainer__usersList__headerMobile__label'>Email</div>
-                            <div className='usersListContainer__usersList__headerMobile__label'>Rol</div>
-                        </div>
                         <div className='usersListContainer__usersList__header'>
                             <div className='usersListContainer__usersList__header__label'>Nombre</div>
                             <div className='usersListContainer__usersList__header__label'>Apellido</div>
@@ -444,23 +445,36 @@ const UsersList = () => {
                             }
                         </div>
                         {
-                            usersSinRoot.map((user) => {
-                                return(
-                                    <ItemUser
-                                    id={user._id}
-                                    first_name={user.first_name}
-                                    last_name={user.last_name}
-                                    email={user.email}   
-                                    role={user.role}
-                                    />
-                                )
-                            })
+                            isLoading ?
+                            <div className='myShiftsListContainer__withoutItems'>Cargando usuarios&nbsp;&nbsp;<Spinner/></div>
+                            :
+                            (usersSinRoot.length != 0) ?
+                            <>
+                                <div className='usersListContainer__usersList__lengthShiftsMobile'>
+                                    <div className='usersListContainer__usersList__lengthShiftsMobile__prop'>Cantidad de usuarios: {usersSinRoot.length}</div>
+                                </div>
+                                <div className='usersListContainer__usersList__headerMobile'>
+                                    <div className='usersListContainer__usersList__headerMobile__label'>Nombre</div>
+                                    <div className='usersListContainer__usersList__headerMobile__label'>Apellido</div>
+                                    <div className='usersListContainer__usersList__headerMobile__label'>Email</div>
+                                    <div className='usersListContainer__usersList__headerMobile__label'>Rol</div>
+                                </div>
+                                {usersSinRoot.map((user) => {
+                                    return(
+                                        <ItemUser
+                                        id={user._id}
+                                        first_name={user.first_name}
+                                        last_name={user.last_name}
+                                        email={user.email}   
+                                        role={user.role}
+                                        />
+                                    )
+                                })}
+                            </>
+                            :
+                            <div className='myShiftsListContainer__withoutItems'>Aún no existen usuarios</div>
                         }
                     </div>
-                    {
-                        (usersSinRoot.length == 0) && 
-                        <div className='myShiftsListContainer__withoutItems'>Aún no existen usuarios</div>
-                    }
                 </div>
                 {
                     (usersSinRoot.length == 0) ?
@@ -492,10 +506,7 @@ const UsersList = () => {
             </>
             :
             <>
-                <div className='warningLogin'>
-                    <p className='warningLogin__prop'>Si aún no has iniciado sesión, <Link to={"/login"} className='warningLogin__link'>has click aquí</Link></p>
-                </div>
-                <div className='blackDiv'></div> 
+                <div className='blackDiv'><Spinner/></div>
             </>
         }
         <Footer/>

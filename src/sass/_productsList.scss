@@ -14,7 +14,7 @@
     }
     &__title {
         text-align: center;
-        font-size: 50px;
+        font-size: 40px;
         color: white;
         animation: fadeIn 2s ease-in;
     }
@@ -27,10 +27,10 @@
             color: black;
         }
         &__prop {
-            width: 70%;
-            height: 40px;
+            width: 50%;
+            height: 35px;
             text-align: center;
-            font-size: 30px;
+            font-size: 25px;
             border-radius: 2vh;
         }
     }
@@ -53,8 +53,11 @@
             padding-bottom: 1vh;
             &__prop {
                 color: white;
-                font-size: 20px;
+                font-size: 18px;
             }
+        }
+        &__lengthShiftsMobile {
+            display: none;
         }
         &__headerMobile {
             display: none;
@@ -66,7 +69,7 @@
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
             text-align: center;
             color: white;
-            font-size: 25px;
+            font-size: 20px;
             padding: 1vh 0vh;
         }
     }
@@ -90,7 +93,7 @@
     }
     &__title {
         text-align: center;
-        font-size: 40px;
+        font-size: 30px;
         color: white;
         animation: fadeIn 2s ease-in;
     }
@@ -103,10 +106,10 @@
             color: black;
         }
         &__prop {
-            width: 90%;
-            height: 35px;
+            width: 70%;
+            height: 30px;
             text-align: center;
-            font-size: 25px;
+            font-size: 18px;
             border-radius: 2vh;
         }
     }
@@ -121,6 +124,7 @@
             width: 50%;
             height: auto;
             @include btnsYellow;
+            font-size: 16px;
         }
     }
     &__productsList {
@@ -134,13 +138,16 @@
         padding: 0vh 0vh 0vh 0vh;
         overflow: auto;
         &__lengthShifts {
+            display: none;
+        }
+        &__lengthShiftsMobile {
             width: 100%;
             height: auto;
             @include disFC();
             padding-top: 1vh;
             &__prop {
                 color: white;
-                font-size: 15px;
+                font-size: 16px;
             }
         }
         &__headerMobile {
@@ -155,7 +162,7 @@
             &__label {
                 width: 100%;
                 @include disFC();
-                font-size: 15px;
+                font-size: 16px;
             }
         }
         &__header {

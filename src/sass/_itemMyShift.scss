@@ -20,7 +20,7 @@
             width: 100%;
             height: auto;
             text-align: center;
-            font-size: 20px;
+            font-size: 18px;
             background: none;
             border: none;
             color: white;
@@ -32,7 +32,7 @@
         @include disFC();
         gap: 0.5vh;
         &__prop {
-            font-size: 20px;
+            font-size: 18px;
             color: white;
         }
     }

@@ -13,21 +13,6 @@ const CancelDaysModal = ({handleCancelDaysListModalLocal,holidaysData,hairdresse
     const [showSpinner, setShowSpinner] = useState(false);
     const apiUrl = import.meta.env.VITE_API_URL;
 
-    //console.log(hairdressers)
-
-    /* const ayrtonHolidays = holidaysData.filter(holiday => holiday.hairdresser == 'Ayrton')
-    ayrtonHolidays.sort((a, b) => {
-        return new Date(a.date) - new Date(b.date);
-    });
-    const mirkoHolidays = holidaysData.filter(holiday => holiday.hairdresser == 'Mirko')
-    mirkoHolidays.sort((a, b) => {
-        return new Date(a.date) - new Date(b.date);
-    });
-    const aleHolidays = holidaysData.filter(holiday => holiday.hairdresser == 'Ale')
-    aleHolidays.sort((a, b) => {
-        return new Date(a.date) - new Date(b.date);
-    }); */
-
     const closeM = () => {
         handleCancelDaysListModalLocal(false);
         handleCancelDaysListModal(false);
@@ -156,19 +141,6 @@ const CancelDaysModal = ({handleCancelDaysListModalLocal,holidaysData,hairdresse
                                             :
                                                 <div className='cancelDaysModalContainer__cancelDaysList__nonDates'>Aún no hay fechas guardadas</div>
                                         }
-
-                                        {/* <div className='cancelDaysModalContainer__cancelDaysList__itemCancelDay'>
-                                            <div className='cancelDaysModalContainer__cancelDaysList__itemCancelDay__prop'>{hairdresser.name}</div>
-                                            <div className='cancelDaysModalContainer__cancelDaysList__itemCancelDay__prop'>{hairdresser.name}</div>
-                                            <div className='cancelDaysModalContainer__cancelDaysList__itemCancelDay__btn'>
-                                                {
-                                                    !deleteCancelDaysModalLocal?
-                                                    <button onClick={()=>handleBtnDeleteCancelDay(hairdresser._id,hairdresser.name,hairdresser.name)} className='cancelDaysModalContainer__cancelDaysList__itemCancelDay__btn__prop'>Eliminar</button>
-                                                    :
-                                                    <button className='cancelDaysModalContainer__cancelDaysList__itemCancelDay__btn__prop'>Eliminar</button>
-                                                }
-                                            </div>
-                                        </div> */}
                                     </>
                                 )
                             })

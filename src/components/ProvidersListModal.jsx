@@ -75,7 +75,6 @@ const ProvidersListModal = ({id,businessName,cuitCuil,phone,email,handleUpdatePr
 
     const handleInputEmailIPr = (e) => {
         const inputValue = e.target.value;
-        //const textCleaned = cleanString(inputValue);
         const textToSaved = cleanText(inputValue);
         setInputEmailIPr(textToSaved)
         inputValue===email?setInputChanges(false):setInputChanges(true);

@@ -5,9 +5,7 @@ import LogOut from './LogOut';
 import { toast } from "react-toastify";
 import {IsLoggedContext} from '../context/IsLoggedContext';
 import {InputDataPaLContext} from '../context/InputDataPaLContext';
-import HMenu from './HMenu';
 import ItemPartner from './ItemPartner';
-import { Link } from 'react-router-dom';
 import {OpenModalContext} from '../context/OpenModalContext'; 
 import Spinner from './Spinner';
 import CreatePartnerModalMobile from './CreatePartnerModalMobile';
@@ -26,6 +24,7 @@ const PartnersList = () => {
     const optionsMembershipNumber = [];
     const optionsCompleteMembershipNumber = [];
     const [prices, setPrices] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     for (let i = 1; i <= 300; i++) {
         optionsCompleteMembershipNumber.push(i)
@@ -131,9 +130,29 @@ const PartnersList = () => {
     useEffect(() => {
         menuOptionsModal&&handleMenuOptionsModal(false);
         async function fetchData() {
-            const response = await fetch(`${apiUrl}/api/partners`)
-            const partnersAll = await response.json();
-            setPartners(partnersAll.data)
+
+            try {
+                const response = await fetch(`${apiUrl}/api/partners`)
+                const partnersAll = await response.json();
+                if(!response.ok) {
+                    toast('No se pudieron obtener los socios, contacte al administrador', {
+                        position: "top-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                } else {
+                    setPartners(partnersAll.data)
+                }
+            } catch (error) {
+                console.error('Error al obtener datos:', error);
+            } finally {
+                setIsLoading(false);
+            }
         }
         fetchData();
         async function fetchPricesData() {
@@ -185,10 +204,6 @@ const PartnersList = () => {
             setIsMonted(true);
         }, 10000)
     }, []);
-
-    /* partners.sort((a, b) => {
-        return new Date(b.partner_datetime) - new Date(a.partner_datetime);
-    }); */
 
     function filtrarPorApellido(valorIngresado) {
         const valorMinusculas = valorIngresado.toLowerCase();
@@ -394,15 +409,6 @@ const PartnersList = () => {
                         <div className='partnersListContainer__partnersList__lengthShifts__prop'>Cantidad de socios: {objetosFiltrados.length}</div>
                     </div>
                     <div className='partnersListContainer__partnersList'>
-                        {
-                            objetosFiltrados.length!=0&&
-                            <div className='partnersListContainer__partnersList__headerMobile'>
-                                <div className='partnersListContainer__partnersList__headerMobile__label'>N° socio</div>
-                                <div className='partnersListContainer__partnersList__headerMobile__label'>Puntos</div>
-                                <div className='partnersListContainer__partnersList__headerMobile__label'>Nombre</div>
-                                <div className='partnersListContainer__partnersList__headerMobile__label'>Apellido</div>
-                            </div>
-                        }
                         <div className='partnersListContainer__partnersList__header'>
                             <div className='partnersListContainer__partnersList__header__label'>N° socio</div>
                             <div className='partnersListContainer__partnersList__header__label'>Puntos</div>
@@ -415,8 +421,6 @@ const PartnersList = () => {
                                 !updatePartnerModal&&!payMembershipFeeModal?
                                 <>
                                     <div className='itemCreatePartner__select'>
-                                        {/* <input className='itemCreatePartner__input__prop' placeholder='-' maxLength={13} value={inputParnerNumberPaL} onChange={handleInputPartnerNumberPaL}/> */}
-                                        {/* <input className='itemCreatePartner__input__prop' placeholder='-' maxLength={13} value={inputParnerNumberDosPaL} onChange={handleInputPartnerNumberDosPaL}/> */}
                                         <select className='itemCreatePartner__select__prop' value={selectOptionMembershipNumber} onChange={(e) => {handleSelectOptionMembershipNumberShL(e.target.value)}}>
                                             {optionsMembershipNumber.map((option, index) => (
                                             <option key={index} value={option}>{option}</option>
@@ -437,7 +441,6 @@ const PartnersList = () => {
                                     </div>
                                     <div className='itemCreatePartner__btns'>
                                         <button id='btnCreatePartner' className='itemCreatePartner__btns__btn' onClick={handleBtnCreatePartner}>Registrar socio</button>
-                                        {/* <button id='btnCreatePartner' className='itemCreatePartner__btns__btn' onClick={nonPartnerRegister}>Registrar socio</button> */}
                                         {showSpinner&&<Spinner/>}
                                     </div>
                                 </>
@@ -449,6 +452,9 @@ const PartnersList = () => {
                                             <option key={index} value={option}>{option}</option>
                                             ))}
                                         </select>
+                                    </div>
+                                    <div className='itemCreatePartner__input'>
+                                        <input disabled type='text' className='itemCreatePartner__input__prop' placeholder='-' value={inputPointsPaL} onChange={handleInputPointsPaL}/>
                                     </div>
                                     <div className='itemCreatePartner__input'>
                                         <input disabled type='text' className='itemCreatePartner__input__prop' placeholder='-' value={inputFirstNamePaL} onChange={handleInputFirstNamePaL}/>
@@ -466,20 +472,35 @@ const PartnersList = () => {
                             }
                         </div>
                         {
-                            inputFilteredPartners===''?
-                                partners.map((partner) => {
-                                    return(
-                                        <ItemPartner
-                                        id={partner._id}
-                                        first_name={partner.first_name}
-                                        last_name={partner.last_name}
-                                        partner_number={partner.partner_number}
-                                        email={partner.email} 
-                                        points={partner.points} 
-                                        resultCompleteMembershipNumber={resultCompleteMembershipNumber} 
-                                        />
-                                    )
-                                })
+                            isLoading ?
+                            <div className='myShiftsListContainer__withoutItems'>Cargando socios&nbsp;&nbsp;<Spinner/></div>
+                            :
+                            (partners.length != 0) ?
+                                inputFilteredPartners===''?
+                                <>
+                                    <div className='partnersListContainer__partnersList__lengthShiftsMobile'>
+                                        <div className='partnersListContainer__partnersList__lengthShiftsMobile__prop'>Cantidad de socios: {objetosFiltrados.length}</div>
+                                    </div>
+                                    <div className='partnersListContainer__partnersList__headerMobile'>
+                                        <div className='partnersListContainer__partnersList__headerMobile__label'>N° socio</div>
+                                        <div className='partnersListContainer__partnersList__headerMobile__label'>Puntos</div>
+                                        <div className='partnersListContainer__partnersList__headerMobile__label'>Nombre</div>
+                                        <div className='partnersListContainer__partnersList__headerMobile__label'>Apellido</div>
+                                    </div>
+                                    {partners.map((partner) => {
+                                        return(
+                                            <ItemPartner
+                                            id={partner._id}
+                                            first_name={partner.first_name}
+                                            last_name={partner.last_name}
+                                            partner_number={partner.partner_number}
+                                            email={partner.email} 
+                                            points={partner.points} 
+                                            resultCompleteMembershipNumber={resultCompleteMembershipNumber} 
+                                            />
+                                        )
+                                    })}
+                                </>
                             :
                                 objetosFiltrados.map((partner) => {
                                     return(
@@ -494,12 +515,10 @@ const PartnersList = () => {
                                         />
                                     )
                                 })
+                            :
+                            <div className='myShiftsListContainer__withoutItems'>Aún no existen socios</div>
                         }
                     </div>
-                    {
-                        (objetosFiltrados.length == 0) && 
-                        <div className='myShiftsListContainer__withoutItems'>Aún no existen socios</div>
-                    }
                 </div>
                 {
                     (objetosFiltrados.length == 0) ?
@@ -535,10 +554,7 @@ const PartnersList = () => {
             </>
             :
             <>
-                <div className='warningLogin'>
-                    <p className='warningLogin__prop'>Si aún no has iniciado sesión, <Link to={"/login"} className='warningLogin__link'>has click aquí</Link></p>
-                </div>
-                <div className='blackDiv'></div> 
+                <div className='blackDiv'><Spinner/></div>
             </>
         }
         <Footer/>

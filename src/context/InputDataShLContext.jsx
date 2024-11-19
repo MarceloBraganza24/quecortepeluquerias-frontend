@@ -3,6 +3,10 @@ import React, { createContext, useState } from 'react';
 export const InputDataShLContext = createContext(null)
 
 export const ParentShLComponent = ({children}) => {
+  const currentDate = new Date()
+  let currentMonth = currentDate.getMonth();
+  currentMonth += 1;
+  const currentDay = currentDate.getDate();
 
   const [inputFirstNameShL, setInputFirstNameShL] = useState('');
   const [inputLastNameShL, setInputLastNameShL] = useState('');
@@ -15,6 +19,10 @@ export const ParentShLComponent = ({children}) => {
   const [selectOptionHairdresserShL, setInputOptionHairdresserShL] = useState('');
   const [selectOptionHeaderHairdresserShL, setInputOptionHeaderHairdresserShL] = useState('');
 
+  const [selectYearShL, setSelectYearShL] = useState(`${new Date().getFullYear()}`);
+  const [selectMonthShL, setSelectMonthShL] = useState(`${currentMonth}`);
+  const [selectDayShL, setSelectDayShL] = useState(`${currentDay}`);
+  
 
   //,handleOnBlurInputAddScheduleMShLM,handleOnBlurInputAddScheduleHShLM
   function regexOnlyLetters(str) {
@@ -119,6 +127,18 @@ export const ParentShLComponent = ({children}) => {
   const handleSelectOptionHeaderHairdresserShL = (e) => {
     setInputOptionHeaderHairdresserShL(e);
   };
+  
+  const handleSelectYearShL = (e) => {
+    setSelectYearShL(e);
+  };
+
+  const handleSelectMonthShL = (e) => {
+    setSelectMonthShL(e);
+  };
+
+  const handleSelectDayShL = (e) => {
+    setSelectDayShL(e);
+  };
 
   const handleOnBlurInputAddScheduleHShLM = (e) => {
       const inputValue = e.target.value;
@@ -143,7 +163,7 @@ export const ParentShLComponent = ({children}) => {
   };
 
   return (
-    <InputDataShLContext.Provider value={{ inputAddScheduleHShL,inputAddScheduleMShL,inputFirstNameShL, inputLastNameShL, inputEmailShL, inputDateShL, selectScheduleOptionShL,inputOptionServiceShL,selectOptionHairdresserShL,selectOptionHeaderHairdresserShL, handleInputFirstNameShL,handleEmptyInputFirstNameShL, handleInputLastNameShL,handleEmptyInputLastNameShL,handleEmptyInputEmailShL, handleInputEmailShL, handleInputDateShL, handleSelectScheduleOptionShL,handleInputOptionServiceShL,handleSelectOptionHairdresserShL,handleSelectOptionHeaderHairdresserShL,handleInputAddScheduleHShL,handleInputAddScheduleMShL,handleEmptyInputAddScheduleHShL,handleEmptyInputAddScheduleMShL,handleOnBlurInputAddScheduleHShLM,handleOnBlurInputAddScheduleMShLM}}>
+    <InputDataShLContext.Provider value={{ selectYearShL,selectMonthShL,selectDayShL,handleSelectYearShL,handleSelectMonthShL,handleSelectDayShL,inputAddScheduleHShL,inputAddScheduleMShL,inputFirstNameShL, inputLastNameShL, inputEmailShL, inputDateShL, selectScheduleOptionShL,inputOptionServiceShL,selectOptionHairdresserShL,selectOptionHeaderHairdresserShL, handleInputFirstNameShL,handleEmptyInputFirstNameShL, handleInputLastNameShL,handleEmptyInputLastNameShL,handleEmptyInputEmailShL, handleInputEmailShL, handleInputDateShL, handleSelectScheduleOptionShL,handleInputOptionServiceShL,handleSelectOptionHairdresserShL,handleSelectOptionHeaderHairdresserShL,handleInputAddScheduleHShL,handleInputAddScheduleMShL,handleEmptyInputAddScheduleHShL,handleEmptyInputAddScheduleMShL,handleOnBlurInputAddScheduleHShLM,handleOnBlurInputAddScheduleMShLM}}>
       {children}
     </InputDataShLContext.Provider>
   );

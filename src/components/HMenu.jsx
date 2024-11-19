@@ -4,7 +4,7 @@ import {OpenModalContext} from '../context/OpenModalContext';
 import {IsLoggedContext} from '../context/IsLoggedContext';
 
 const HMenu = () => {
-  const {myDataModal,updateShiftModal,cancelDayModal,cancelDaysListModal,recoverShiftModal,cancelShiftModal,updateMyShiftModal,updatePartnerModal,updateProviderModal,updateProductsModal,updateUsersModal,updatePricesModal,deleteTicketModal,menuOptionsModal,handleMenuOptionsModal,payMembershipFeeModal} = useContext(OpenModalContext);
+  const {saveShiftModal,deleteVariouModal,updateVariousPriceModal,deletePartnerBenModal,deleteServiceModal,deleteHairdresserModal,updatePartnersBenModal,updateServiceBtnIsOpen,deleteCompanyModal,myDataModal,updateShiftModal,cancelDayModal,cancelDaysListModal,recoverShiftModal,cancelShiftModal,updateMyShiftModal,updatePartnerModal,updateProviderModal,updateProductsModal,updateUsersModal,updatePricesModal,deleteTicketModal,menuOptionsModal,handleMenuOptionsModal,payMembershipFeeModal} = useContext(OpenModalContext);
   const {isLoggedIn, login, logout} = useContext(IsLoggedContext);
   const [user, setUser] = useState('');
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -62,7 +62,7 @@ const HMenu = () => {
   return (
     <>
       {
-        !updateShiftModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
+        !updateShiftModal&&!saveShiftModal&&!deleteVariouModal&&!updateVariousPriceModal&&!deletePartnerBenModal&&!deleteServiceModal&&!updateServiceBtnIsOpen&&!updatePartnersBenModal&&!deleteHairdresserModal&&!deleteCompanyModal&&!myDataModal&&!cancelDaysListModal&&!cancelDayModal&&!cancelShiftModal&&!recoverShiftModal&&!updateMyShiftModal&&!updatePartnerModal&&!updateProviderModal&&!updateProductsModal&&!updateUsersModal&&!updatePricesModal&&!deleteTicketModal&&!payMembershipFeeModal?
         <>
           <div onClick={openCloseW} className='hMenu'>
             <div className='hMenu__line'></div>
@@ -93,6 +93,9 @@ const MenuOptions = ({isLoggedIn,role}) => {
         {
           isLoggedIn && role==='admin'?
           <>
+            <Link to={"/partners"} className='menuOptions__item'>
+              - Socios
+            </Link>
             <Link to={"/shiftsList"} className='menuOptions__item'>
               - Lista de turnos
             </Link>
@@ -108,15 +111,9 @@ const MenuOptions = ({isLoggedIn,role}) => {
             <Link to={"/usersList"} className='menuOptions__item'>
               - Lista de usuarios
             </Link>
-            {/* <Link to={"/prices"} className='menuOptions__item'>
-              - Lista de precios
-            </Link> */}
             <Link to={"/myShifts"} className='menuOptions__item'>
             - Mis turnos
             </Link>
-            {/* <Link to={"/myPayments"} className='menuOptions__item'>
-              - Mis pagos
-            </Link> */}
             <Link to={"/myData"} className='menuOptions__item'>
               - Mis datos
             </Link>
@@ -127,24 +124,18 @@ const MenuOptions = ({isLoggedIn,role}) => {
           :
           isLoggedIn && (role==='premium' || role==='user')?
           <>
+            <Link to={"/partners"} className='menuOptions__item'>
+              - Socios
+            </Link>
             <Link to={"/myShifts"} className='menuOptions__item'>
             - Mis turnos
             </Link>
-            {/* <Link to={"/myPayments"} className='menuOptions__item'>
-              - Mis pagos
-              </Link> */}
             <Link to={"/myData"} className='menuOptions__item'>
               - Mis datos
             </Link>
-            {/* <Link to={"/about"} className='menuOptions__item'>
-              - Sobre nosotros
-            </Link> */}
           </>
           :
           <>
-            {/* <Link to={"/myPayments"} className='menuOptions__item'>
-              - Mis pagos
-            </Link> */}
             <Link to={"/myData"} className='menuOptions__item'>
               - Mis datos
             </Link>

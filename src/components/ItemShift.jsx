@@ -214,34 +214,6 @@ const ItemShift = ({id,hairdresser,first_name,last_name,service,email,date,sched
                             <button disabled style={buttonDisabledStyle} className='itemShift__btns__btn'>Editar</button>
                         </div>
             }
-            {/* {
-                !updateShiftModal?
-
-                    first_name=='-' && last_name=='-' && email=='-' ?
-                    <>
-                        <div className='itemShift__btns'>
-                            <button className='itemShift__btns__btn' onClick={handleBtnRecoverShift}>Recuperar</button>
-                        </div>
-                    </>
-                    :
-                    <div className='itemShift__btns'>
-                        <button className='itemShift__btns__btn' onClick={handleBtnUpdShift}>Editar</button>
-                    </div>
-                    :
-                    <div className='itemShift__btns'>
-                        <button disabled style={buttonDisabledStyle} className='itemShift__btns__btn'>Editar</button>
-                    </div>
-            } */}
-            {/* {
-                !updateShiftModal?
-                <div className='itemShift__btns'>
-                    <button className='itemShift__btns__btn' onClick={handleBtnUpdShift}>Editar</button>
-                </div>
-                :
-                <div className='itemShift__btns'>
-                    <button disabled style={buttonDisabledStyle} className='itemShift__btns__btn'>Editar</button>
-                </div>
-            } */}
         </div>
         {recoverShiftModalLocal&&<RecoverShiftModal date={date} schedule={schedule}/>}
         {
