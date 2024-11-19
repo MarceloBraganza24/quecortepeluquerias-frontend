@@ -24,14 +24,12 @@ const Config = () => {
   const workDaysByHairdresserWorkDay = []
   const {menuOptionsModal,handleMenuOptionsModal,deleteCompanyModal,handleDeleteCompanyModal,deleteHairdresserModal,handleDeleteHairdresserModal,handleUpdateServiceBtnIsOpen,updateServiceBtnIsOpen,handleDeleteServiceModal,deleteServiceModal,updatePartnersBenModal,handleUpdatePartnersBenModal,handleDeletePartnerBenModal,deletePartnerBenModal,handleUpdateVariousPriceModal,updateVariousPriceModal,handleDeleteVariouModal,deleteVariouModal} = useContext(OpenModalContext);
   const apiUrl = import.meta.env.VITE_API_URL;
-  //const selectPartnerNonPartner = ['No socio','Socio'];
   
   const [inputSaveCompany, setInputSaveCompany] = useState('');
 
   const [inputAddHairdresser, setInputAddHairdresser] = useState('');
   const [inputTitleService, setInputTitleService] = useState('');
   const [inputValueService, setInputValueService] = useState('');
-  //const [selectCategoryService, setSelectCategoryService] = useState('');
   const [inputMembershipFee, setInputMembershipFee] = useState('');
 
   const [inputAddTitlePartnersBen, setInputAddTitlePartnersBen] = useState('');
@@ -82,21 +80,6 @@ const Config = () => {
   );
 
   const pricesWithoutMembershipFee = prices.filter(price => price.title.toLowerCase() != 'cuota socio')
-  
-  /* const bens = [
-    {
-        title: 'Productos/Birra',
-        value: '50'
-    },
-    {
-        title: 'Barba',
-        value: '80'
-    },
-    {
-        title: 'Corte',
-        value: '100'
-    }
-  ] */
 
   workDaysByHairdresserWorkDayFiltered.forEach(item => {
     workDaysByHairdresserWorkDay.push(`${item.schedule}`)
@@ -321,10 +304,6 @@ const Config = () => {
             setInputValueService(texto);
         }
     }
-
-    /* const handleSelectCategoryService = (e) => {
-        setSelectCategoryService(e)
-    } */
 
     const handleInputMembershipFee = (e) => {
       const texto = e.target.value;
@@ -2234,9 +2213,6 @@ const Config = () => {
                             }
                             </div>
                     }
-                    {/* <div className='configContainer__config__partners'>
-                        <div className='configContainer__config__partners__prop'>Socios:</div>
-                    </div> */}
                         {
                           deleteCompanyModalLocal&&<DeleteCompanyModal setDeleteCompanyModalLocal={setDeleteCompanyModalLocal} id={idCompany} company={nameCompany} />
                         }
@@ -2265,10 +2241,10 @@ const Config = () => {
             </div>
             <LogOut/>
           </>
-          :
-          <>
-            
-          </>
+            :
+            <>
+                <div className='blackDiv'><Spinner/></div>
+            </>
         }
         <Footer/>
     </>

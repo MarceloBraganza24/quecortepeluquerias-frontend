@@ -118,7 +118,6 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
     const handleInputFirstNameISh = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputFirstNameISh(textToSaved)
         }
@@ -137,7 +136,6 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
     const handleInputLastNameISh = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputLastNameISh(textToSaved)
         }
@@ -169,7 +167,6 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
 
     const handleInputEmailISh = (e) => {
         const texto = e.target.value;
-        //const textCleaned = cleanString(texto);
         const textToSaved = cleanText(texto);
         setInputEmailISh(textToSaved)
         texto===email?setInputChanges(false):setInputChanges(true);
@@ -283,7 +280,7 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
                 progress: undefined,
                 theme: "dark",
             });
-        } else if(!existsUniqueHairdresserSchedules){
+        }/*  else if(!existsUniqueHairdresserSchedules){
             toast('El horario no esta permitido para el día de semana seleccionado del peluquero elegido', {
                 position: "top-right",
                 autoClose: 2000,
@@ -296,7 +293,7 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
             });
             setShowSpinner(false);
             document.getElementById('btnUpdateShift').style.display = 'block';
-        } else if(selectOptionHairdresserISh == 'Peluquero' || selectOptionHairdresserISh == '') {
+        } */ else if(selectOptionHairdresserISh == 'Peluquero' || selectOptionHairdresserISh == '') {
             toast('Debes elegir un peluquero', {
                 position: "top-right",
                 autoClose: 2000,
@@ -307,7 +304,7 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
                 progress: undefined,
                 theme: "dark",
             });
-        } else if (concatNewDateSchedule.getDay() == 0 || concatNewDateSchedule.getDay() == 1) {
+        }/*  else if (concatNewDateSchedule.getDay() == 0 || concatNewDateSchedule.getDay() == 1) {
             toast('Elige un dia entre martes y sabado!', {
                 position: "top-right",
                 autoClose: 3000,
@@ -318,7 +315,7 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
                 progress: undefined,
                 theme: "dark",
             });
-        } else if (!isValidUTF8(inputFirstNameISh)) {
+        } */ else if (!isValidUTF8(inputFirstNameISh)) {
             toast('El campo nombre contiene caracteres no válidos', {
                 position: "top-right",
                 autoClose: 2000,
@@ -358,10 +355,13 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
                 hairdresser: selectOptionHairdresserISh,
                 first_name: inputFirstNameISh?cleanString(inputFirstNameISh):first_name,
                 last_name: inputLastNameISh?cleanString(inputLastNameISh):last_name,
-                service: (inputServiceISh=='Servicio'||inputServiceISh=='-')?'-':inputServiceISh,
+                /* service: (inputServiceISh=='Servicio'||inputServiceISh=='-')?'-':inputServiceISh, */
+                service: inputServiceISh?inputServiceISh:service,
                 email: inputEmailISh?cleanString(inputEmailISh):email,
-                date: formatInputDate?formatInputDate:adjustedItemDate,
-                schedule: !isAddScheduleISh?(selectScheduleOptionISh?selectScheduleOptionISh:schedule):concatAddSchedules
+                /* date: formatInputDate?formatInputDate:adjustedItemDate, */
+                date: formatInputDate,
+                /* schedule: !isAddScheduleISh?(selectScheduleOptionISh?selectScheduleOptionISh:schedule):concatAddSchedules */
+                schedule: schedule
             }
             const response = await fetch(`${apiUrl}/api/shifts/${id}`, {
                 method: 'PUT',         
@@ -570,16 +570,16 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
                                     <input disabled maxLength={2} className='shiftModalContainer__itemShift__selectSchedule__inputAddSchedule' type="text" value={inputAddScheduleMISh} onBlur={handleOnBlurInputAddScheduleMShLM} onChange={handleInputAddScheduleMISh} />
                                 </>
                             }
-                            <button className='shiftModalContainer__itemShift__selectSchedule__btn' onClick={addSchedule}>+</button>
+                            <button disabled className='shiftModalContainer__itemShift__selectSchedule__btn' onClick={addSchedule}>+</button>
                         </div>
                         <div className='shiftModalContainer__itemShift__input'>
-                            <input disabled className='shiftModalContainer__itemShift__input__prop' value={!inputFirstNameISh?first_name:inputFirstNameISh}onChange={handleInputFirstNameISh}/>
+                            <input className='shiftModalContainer__itemShift__input__prop' value={!inputFirstNameISh?first_name:inputFirstNameISh}onChange={handleInputFirstNameISh}/>
                         </div>
                         <div className='shiftModalContainer__itemShift__input'>
-                            <input disabled className='shiftModalContainer__itemShift__input__prop' value={!inputLastNameISh?last_name:inputLastNameISh}onChange={handleInputLastNameISh}/>
+                            <input className='shiftModalContainer__itemShift__input__prop' value={!inputLastNameISh?last_name:inputLastNameISh}onChange={handleInputLastNameISh}/>
                         </div>
                         <div className='shiftModalContainer__itemShift__selectService'>
-                            <select disabled className='shiftModalContainer__itemShift__selectService__select' value={inputServiceISh} onChange={(e) => {handleSelectServiceISh(e.target.value)}}>
+                            <select className='shiftModalContainer__itemShift__selectService__select' value={inputServiceISh} onChange={(e) => {handleSelectServiceISh(e.target.value)}}>
                                 {optionsService.map((option, index) => (
                                 <option key={index} value={option}>{option}</option>
                                 ))}
@@ -590,7 +590,7 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
                         </div>
                         <div className='shiftModalContainer__itemShift__btns'>
                             <button className='shiftModalContainer__itemShift__btns__btn' onClick={handleBtnDelShift}>Borrar</button>
-                            {/* <button id='btnUpdateShift' className='shiftModalContainer__itemShift__btns__btn' onClick={handleBtnUpdShift}>Actualizar</button> */}
+                            <button id='btnUpdateShift' className='shiftModalContainer__itemShift__btns__btn' onClick={handleBtnUpdShift}>Actualizar</button>
                             {showSpinner&&<Spinner/>}
                         </div>
                     </>
@@ -636,7 +636,7 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
                         </div>
                         <div className='shiftModalContainer__itemShift__btns'>
                             <button onClick={handleBtnDelShift} className='shiftModalContainer__itemShift__btns__btn'>Borrar</button>
-                            {/* <button disabled id='btnUpdateShift' style={buttonDisabledStyle} className='shiftModalContainer__itemShift__btns__btn'>Actualizar</button> */}
+                            <button disabled id='btnUpdateShift' style={buttonDisabledStyle} className='shiftModalContainer__itemShift__btns__btn'>Actualizar</button>
                         </div>
                     </>
                 }

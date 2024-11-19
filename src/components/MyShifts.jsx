@@ -13,11 +13,9 @@ const MyShifts = () => {
     const {isLoggedIn, login, logout} = useContext(IsLoggedContext);
     const {menuOptionsModal,handleMenuOptionsModal} = useContext(OpenModalContext);
     const [user, setUser] = useState('');
-    //const [email, setEmail] = useState('');
     const [shifts, setShifts] = useState([]);
     const apiUrl = import.meta.env.VITE_API_URL;
     const [holidays, setHolidays] = useState([]);
-    //const [showSpinner, setShowSpinner] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     
     let shiftsByEmail = [];
@@ -131,23 +129,6 @@ const MyShifts = () => {
             } finally {
                 setIsLoading(false);
             }
-
-            /* const response = await fetch(`${apiUrl}/api/shifts`)
-            const shiftsAll = await response.json();
-            if(!response.ok) {
-                toast('No se pudieron obtener los turnos disponibles, contacte a la peluquería', {
-                    position: "top-right",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
-            } else {
-                setShifts(shiftsAll.data)
-            } */
         }
         fetchShiftsData();
         async function fetchHolidaysData() {
@@ -204,7 +185,7 @@ const MyShifts = () => {
         <>
             <NavBar/>
             {
-                isLoggedIn && (user.role==='admin' || user.role==='premium' || user.role==='user')&&
+                isLoggedIn && (user.role==='admin' || user.role==='premium' || user.role==='user')?
                 <>
                     <div className='myShiftsListContainer'>
                         <div className='myShiftsListContainer__title'>- Mis turnos -</div>
@@ -302,6 +283,8 @@ const MyShifts = () => {
                     }
                     <LogOut/>
                 </>
+                :
+                <div className='blackDiv'><Spinner/></div>
             }
             <Footer/>
         </>

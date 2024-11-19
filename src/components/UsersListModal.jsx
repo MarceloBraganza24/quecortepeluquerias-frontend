@@ -43,7 +43,6 @@ const UsersListModal = ({id,first_name,last_name,email,role,handleUpdateUsersMod
     const handleInputFirstNameIU = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputFirstNameIU(textToSaved)
         } 
@@ -57,7 +56,6 @@ const UsersListModal = ({id,first_name,last_name,email,role,handleUpdateUsersMod
     const handleInputLastNameIU = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputLastNameIU(textToSaved)
         }
@@ -70,7 +68,6 @@ const UsersListModal = ({id,first_name,last_name,email,role,handleUpdateUsersMod
 
     const handleInputEmailIU = (e) => {
         const texto = e.target.value;
-        //const textCleaned = cleanString(texto);
         const textToSaved = cleanText(texto);
         setInputEmailIU(textToSaved)
         texto===email?setInputChanges(false):setInputChanges(true);

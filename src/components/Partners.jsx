@@ -5,6 +5,7 @@ import LogOut from './LogOut';
 import {IsLoggedContext} from '../context/IsLoggedContext';
 import {BtnMPContext} from '../context/BtnMPContext';
 import {OpenModalContext} from '../context/OpenModalContext'; 
+import Spinner from './Spinner';
 
 const Partners = () => {
     const {isLoggedIn, login, logout} = useContext(IsLoggedContext);
@@ -172,7 +173,7 @@ const Partners = () => {
       <>
             <NavBar/>
             {
-                isLoggedIn && (user.role=='premium' || user.role=='user') && !user.isMembershipFeePaid?
+                isLoggedIn && (user.role=='admin' || user.role=='premium' || user.role=='user') && !user.isMembershipFeePaid?
                 <>
                     <div className='partnersContainer'>
                         <div className='partnersContainer__title'>Socios</div>
@@ -195,7 +196,7 @@ const Partners = () => {
                     <LogOut/>
                 </>
                 :
-                isLoggedIn && (user.role=='premium' || user.role=='user') && user.isMembershipFeePaid?
+                isLoggedIn && (user.role=='admin' || user.role=='premium' || user.role=='user') && user.isMembershipFeePaid?
                 <>
                     <div className='partnersContainerMembershipFeeOk'>
                         <div className='partnersContainerMembershipFeeOk__title'>Socios</div>
@@ -219,25 +220,7 @@ const Partners = () => {
                     </>
                 :
                 <>
-                    <div className='partnersContainer'>
-                        <div className='partnersContainer__title'>Socios</div>
-                        <div className='partnersContainer__phrase'>Hacete Socio y forma parte de la comunidad de Que Corte! Por cada vez que vengas a cortarte, tomar una birra o subir una historia vas a sumar puntos,  y cada 1.000 puntos vas a obtener un corte gratis!!!</div>
-                        <div className='partnersContainer__table'>
-                            {
-                                partnersBen.map((partnerBen) => {
-                                    return(
-                                        <div className='partnersContainer__table__item'>
-                                            <div className='partnersContainer__table__item__prop'>{partnerBen.title}</div>
-                                            <div className='partnersContainer__table__item__prop'>{partnerBen.value} pts.</div>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                        <div className='partnersContainer__contactPhrase'>Contáctate con la peluquería para hacerte socio!</div>
-                        <div className='partnersContainer__contactPhrase'>Cuota socio: ${membershipFee?membershipFee.value:'-'}</div>
-                    </div>
-                    <LogOut/> 
+                    <div className='blackDiv'><Spinner/></div>
                 </>
             }
         <Footer/>

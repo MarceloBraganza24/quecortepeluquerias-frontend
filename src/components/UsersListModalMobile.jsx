@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import {OpenModalContext} from '../context/OpenModalContext';
 import { Link } from 'react-router-dom';
 import { toast } from "react-toastify";
@@ -40,7 +40,6 @@ const UsersListModalMobile = ({id,first_name,last_name,email,role,handleUpdateUs
     const handleInputFirstNameIU = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputFirstNameIU(textToSaved)
         }
@@ -54,7 +53,6 @@ const UsersListModalMobile = ({id,first_name,last_name,email,role,handleUpdateUs
     const handleInputLastNameIU = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputLastNameIU(textToSaved)
         }
@@ -67,7 +65,6 @@ const UsersListModalMobile = ({id,first_name,last_name,email,role,handleUpdateUs
 
     const handleInputEmailIU = (e) => {
         const texto = e.target.value;
-        //const textCleaned = cleanString(texto);
         const textToSaved = cleanText(texto);
         setInputEmailIU(textToSaved)
         texto==email?setInputChanges(false):setInputChanges(true);

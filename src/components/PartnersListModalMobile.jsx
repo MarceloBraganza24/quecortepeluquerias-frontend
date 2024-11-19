@@ -7,7 +7,6 @@ import Spinner from './Spinner';
 const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,handleUpdatePartnerModalMobileLocal,resultCompleteMembershipNumber,points}) => {
     const [inputFirstNameIPa, setInputFirstNameIPa] = useState('');
     const [inputLastNameIPa, setInputLastNameIPa] = useState('');
-    //const [inputPartnerNumberIPa, setInputPartnerNumberIPa] = useState('');
     const [selectOptionMembershipNumber, setSelectOptionMembershipNumberShL] = useState('');
     const [inputEmailIPa, setInputEmailIPa] = useState('');
     const [inputPointsIPa, setInputPointsIPa] = useState('');
@@ -26,7 +25,6 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
     resultCompleteMembershipNumber.forEach((element) => {
         optionsMembershipNumber.push(element)
     })
-    //console.log(resultCompleteMembershipNumber)
 
     function regexOnlyLetters(str) {
         const regex = /^[a-zA-Z\s]*$/;
@@ -52,7 +50,6 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
     const handleInputFirstNameIPa = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputFirstNameIPa(textToSaved)
         }
@@ -66,7 +63,6 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
     const handleInputLastNameIPa = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputLastNameIPa(textToSaved)
         }
@@ -89,7 +85,6 @@ const PartnersListModalMobile = ({id,first_name,last_name,partner_number,email,h
 
     const handleInputEmailIPa = (e) => {
         const texto = e.target.value;
-        //const textCleaned = cleanString(texto);
         const textToSaved = cleanText(texto);
         setInputEmailIPa(textToSaved)
         texto===email?setInputChanges(false):setInputChanges(true);

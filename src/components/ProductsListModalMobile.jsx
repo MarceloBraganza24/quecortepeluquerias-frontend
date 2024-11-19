@@ -34,7 +34,6 @@ const ProductsListModalMobile = ({id,title,description,price,stock,category,hand
 
     const handleInputTitleIProd = (e) => {
         const texto = e.target.value;
-        //const textCleaned = cleanString(texto);
         const textToSaved = cleanText(texto);
         setInputTitleIProd(textToSaved)
         texto==title?setInputChanges(false):setInputChanges(true);
@@ -47,7 +46,6 @@ const ProductsListModalMobile = ({id,title,description,price,stock,category,hand
 
     const handleInputDescriptionIProd = (e) => {
         const texto = e.target.value;
-        //const textCleaned = cleanString(texto);
         const textToSaved = cleanText(texto);
         setInputDescriptionIProd(textToSaved)
         texto==description?setInputChanges(false):setInputChanges(true);
@@ -86,7 +84,6 @@ const ProductsListModalMobile = ({id,title,description,price,stock,category,hand
 
     const handleInputCategoryIProd = (e) => {
         const texto = e.target.value;
-        //const textCleaned = cleanString(texto);
         const textToSaved = cleanText(texto);
         setInputCategoryIProd(textToSaved)
         texto===category?setInputChanges(false):setInputChanges(true);

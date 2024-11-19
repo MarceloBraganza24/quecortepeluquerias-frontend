@@ -87,19 +87,6 @@ const HMenuMobile = () => {
 
 const MenuOptions = ({isLoggedIn,role}) => {
 
-  const goShiftList = () => {
-    toast('Para ver los socios, ve a lista de socios!', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-    });
-}
-
   return (
     <>
       <div id='menuOptionsMobile' className='menuOptionsMobile'>
@@ -130,15 +117,9 @@ const MenuOptions = ({isLoggedIn,role}) => {
             <Link to={"/usersList"} className='menuOptionsMobile__item'>
               - Lista de usuarios
             </Link>
-            {/* <Link to={"/prices"} className='menuOptionsMobile__item'>
-              - Lista de precios
-              </Link> */}
               <Link to={"/myShifts"} className='menuOptionsMobile__item'>
                 - Mis turnos
             </Link>
-            {/*<Link to={"/myPayments"} className='menuOptionsMobile__item'>
-                - Mis pagos
-                </Link> */}
             <Link to={"/myData"} className='menuOptionsMobile__item'>
               - Mis datos
             </Link>
@@ -164,9 +145,6 @@ const MenuOptions = ({isLoggedIn,role}) => {
             <Link to={"/myShifts"} className='menuOptionsMobile__item'>
                 - Mis turnos
             </Link>
-            {/* <Link to={"/myPayments"} className='menuOptionsMobile__item'>
-                - Mis pagos
-                </Link> */}
             <Link to={"/myData"} className='menuOptionsMobile__item'>
               - Mis datos
             </Link>

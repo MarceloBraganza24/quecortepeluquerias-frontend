@@ -53,7 +53,6 @@ const PartnersListModal = ({id,first_name,last_name,points,partner_number,email,
     const handleInputFirstNameIPa = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputFirstNameIPa(textToSaved)
         }
@@ -68,7 +67,6 @@ const PartnersListModal = ({id,first_name,last_name,points,partner_number,email,
     const handleInputLastNameIPa = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputLastNameIPa(textToSaved)
         }
@@ -82,7 +80,6 @@ const PartnersListModal = ({id,first_name,last_name,points,partner_number,email,
 
     const handleInputEmailIPa = (e) => {
         const texto = e.target.value;
-        //const textCleaned = cleanString(texto);
         const textToSaved = cleanText(texto);
         setInputEmailIPa(textToSaved)
         texto===email?setInputChanges(false):setInputChanges(true);
@@ -351,7 +348,6 @@ const PartnersListModal = ({id,first_name,last_name,points,partner_number,email,
                     !confirmationDelPartnersModal?
                     <>
                         <div className='partnersModalContainer__itemPartner__input'>
-                            {/* <input className='partnersModalContainer__itemPartner__input__prop' maxLength={13} value={!inputPartnerNumberIPa?partner_number:inputPartnerNumberIPa} onChange={handleInputPartnerNumberIPa}/> */}
                             <select className='itemCreatePartner__select__prop' value={selectOptionMembershipNumber} onChange={(e) => {handleSelectOptionMembershipNumberShL(e.target.value)}}>
                                 {optionsMembershipNumber.map((option, index) => (
                                 <option key={index} value={option}>{option}</option>

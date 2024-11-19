@@ -6,9 +6,7 @@ import { toast } from "react-toastify";
 import {IsLoggedContext} from '../context/IsLoggedContext';
 import {InputDataULContext} from '../context/InputDataULContext';
 import {OpenModalContext} from '../context/OpenModalContext'; 
-import HMenu from './HMenu';
 import ItemUser from './ItemUser';
-import { Link } from 'react-router-dom';
 import Spinner from './Spinner';
 import CreateUserModalMobile from './CreateUserModalMobile';
 
@@ -133,32 +131,6 @@ const UsersList = () => {
             } finally {
                 setIsLoading(false);
             }
-
-
-
-
-
-
-
-
-
-
-            /* const response = await fetch(`${apiUrl}/api/users`)
-            const usersAll = await response.json();
-            if(!response.ok) {
-                toast('No se pudieron obtener los usuarios, contacte al administrador', {
-                    position: "top-right",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
-            } else {
-                setUsers(usersAll.data)
-            } */
         }
         fetchUsersData();
         const getCookie = (name) => {
@@ -414,13 +386,6 @@ const UsersList = () => {
                         <div className='usersListContainer__usersList__lengthShifts'>
                             <div className='usersListContainer__usersList__lengthShifts__prop'>Cantidad de usuarios: {usersSinRoot.length}</div>
                         </div>
-                        {/* 
-                        <div className='usersListContainer__usersList__headerMobile'>
-                            <div className='usersListContainer__usersList__headerMobile__label'>Nombre</div>
-                            <div className='usersListContainer__usersList__headerMobile__label'>Apellido</div>
-                            <div className='usersListContainer__usersList__headerMobile__label'>Email</div>
-                            <div className='usersListContainer__usersList__headerMobile__label'>Rol</div>
-                        </div> */}
                         <div className='usersListContainer__usersList__header'>
                             <div className='usersListContainer__usersList__header__label'>Nombre</div>
                             <div className='usersListContainer__usersList__header__label'>Apellido</div>
@@ -541,10 +506,7 @@ const UsersList = () => {
             </>
             :
             <>
-                <div className='warningLogin'>
-                    <p className='warningLogin__prop'>Si aún no has iniciado sesión, <Link to={"/login"} className='warningLogin__link'>has click aquí</Link></p>
-                </div>
-                <div className='blackDiv'></div> 
+                <div className='blackDiv'><Spinner/></div>
             </>
         }
         <Footer/>

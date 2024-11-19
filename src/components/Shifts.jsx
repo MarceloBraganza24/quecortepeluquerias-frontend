@@ -96,30 +96,93 @@ const Shifts = () => {
 
     const optionsScheduleSh = [];
 
+    const ahora = new Date();
+    const horaActual = ahora.getHours() * 60 + ahora.getMinutes();
+
     let filteredArray = schedulesByHairdresserDate.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
+    const generalFilteredArray = filteredArray.filter(horario => {
+        const [horas, minutos] = horario.split(":").map(Number); // Convierte HH:MM a números
+        const minutosTotales = horas * 60 + minutos; // Convierte HH:MM a minutos totales
+        return minutosTotales > horaActual; // Compara con la hora actual
+    });
 
     const chrismasMondaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','16:40','17:00','17:30','18:00','18:20','18:40','19:00','19:20','19:40','20:00','20:30']
     let filteredArrayMonday = chrismasMondaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
-    
+    const generalFilteredArrayMonday = filteredArrayMonday.filter(horario => {
+        const [horas, minutos] = horario.split(":").map(Number); // Convierte HH:MM a números
+        const minutosTotales = horas * 60 + minutos; // Convierte HH:MM a minutos totales
+        return minutosTotales > horaActual; // Compara con la hora actual
+    });
+
     const chrismasTuesdaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','13:00','13:20','13:40']
     let filteredArrayTuesday = chrismasTuesdaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
+    const generalFilteredArrayTuesday = filteredArrayTuesday.filter(horario => {
+        const [horas, minutos] = horario.split(":").map(Number); // Convierte HH:MM a números
+        const minutosTotales = horas * 60 + minutos; // Convierte HH:MM a minutos totales
+        return minutosTotales > horaActual; // Compara con la hora actual
+    });
 
-    if(existsHoliday) {
+    const hoy = new Date();
+    const fechaSeleccionada = new Date(inputDateSh);
+
+    if(selectOptionHairdresserSh == '' || selectOptionHairdresserSh == 'Peluquero') {
+        optionsScheduleSh.push('Selecciona un peluquero')
+    } else if(existsHoliday) {
         optionsScheduleSh.push('Peluquero de vacaciones')
     } else if(formatedDate == '2024-12-23' || formatedDate == '2024-12-30') {
-        filteredArrayMonday.forEach((item)=>{
-            optionsScheduleSh.push(item)
-        })
+        if(hoy.toDateString() == fechaSeleccionada.toDateString()) {
+            if(generalFilteredArrayMonday.length != 0) {
+                generalFilteredArrayMonday.forEach(res => {
+                    optionsScheduleSh.push(res)
+                })
+            } else {
+                optionsScheduleSh.push('No hay horarios')
+            }
+        } else {
+            if(filteredArrayMonday.length != 0) {
+                filteredArrayMonday.forEach(res => {
+                    optionsScheduleSh.push(res)
+                })
+            } else {
+                optionsScheduleSh.push('No hay horarios')
+            }
+        }
     } else if(formatedDate == '2024-12-24' || formatedDate == '2024-12-31') {
-        filteredArrayTuesday.forEach((item)=>{
-            optionsScheduleSh.push(item)
-        })
-    } else if(filteredArray.length == 0) {
-        optionsScheduleSh.push('No hay horarios')
+        if(hoy.toDateString() == fechaSeleccionada.toDateString()) {
+            if(generalFilteredArrayTuesday.length != 0) {
+                generalFilteredArrayTuesday.forEach(res => {
+                    optionsScheduleSh.push(res)
+                })
+            } else {
+                optionsScheduleSh.push('No hay horarios')
+            }
+        } else {
+            if(filteredArrayTuesday.length != 0) {
+                filteredArrayTuesday.forEach(res => {
+                    optionsScheduleSh.push(res)
+                })
+            } else {
+                optionsScheduleSh.push('No hay horarios')
+            }
+        }
     } else {
-        filteredArray.forEach(res => {
-            optionsScheduleSh.push(res)
-        })
+        if(hoy.toDateString() == fechaSeleccionada.toDateString()) {
+            if(generalFilteredArray.length != 0) {
+                generalFilteredArray.forEach(res => {
+                    optionsScheduleSh.push(res)
+                })
+            } else {
+                optionsScheduleSh.push('No hay horarios')
+            }
+        } else {
+            if(filteredArray.length != 0) {
+                filteredArray.forEach(res => {
+                    optionsScheduleSh.push(res)
+                })
+            } else {
+                optionsScheduleSh.push('No hay horarios')
+            }
+        }
     }
     
     const optionsHairdresser = ['Peluquero'];
@@ -498,17 +561,6 @@ const Shifts = () => {
     }
 
     const handleBtnSaveShift = () => {
-
-        /* const date = new Date();
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        const hours = String(date.getHours()).padStart(2, '0');
-        const minutes = String(date.getMinutes()).padStart(2, '0');
-        const noww = `${year}-${month}-${day} ${hours}:${minutes}`; */
-        
-        
-        //console.log(selectScheduleSh?selectScheduleSh:optionsScheduleSh[0])
         const schedule = selectScheduleSh?selectScheduleSh:optionsScheduleSh[0]
         const [hours, minutes] = schedule.split(":").map(String);
 
@@ -519,15 +571,9 @@ const Shifts = () => {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const day = String(date.getDate()).padStart(2, '0');
-        // const hours = String(date.getHours()).padStart(2, '0');
-        // const minutes = String(date.getMinutes()).padStart(2, '0');
         const selected = `${year}-${month}-${day} ${hours}:${minutes}`;
 
         const diffInMinutes = (selected - now) / 1000 / 60;
-
-        /* console.log(now)
-        console.log(selected)
-        console.log(diffInMinutes) */
 
         if(!inputFirstNameSh || !inputLastNameSh || !inputEmailSh) {
             toast('Debes completar todos los campos', {
@@ -584,7 +630,7 @@ const Shifts = () => {
                 progress: undefined,
                 theme: "dark",
             });
-        } else if(diffInMinutes < 60) {
+        }/*  else if(diffInMinutes < 60) {
             toast('Debes registrar un turno con una hora de anticipación como mínimo', {
                 position: "top-right",
                 autoClose: 2000,
@@ -595,7 +641,7 @@ const Shifts = () => {
                 progress: undefined,
                 theme: "dark",
             });
-        } else if(newFormatedDate < fechaActual) {
+        } */ else if(newFormatedDate < fechaActual) {
             toast('Debes ingresar una fecha a futuro', {
                 position: "top-right",
                 autoClose: 2000,
@@ -662,7 +708,6 @@ const Shifts = () => {
                 theme: "dark",
             });
         } else {
-            //console.log(formatedDate)
             setSaveConfirmationShiftModal(true);
             handleSaveShiftModal(true);
         }
@@ -740,7 +785,6 @@ const Shifts = () => {
                     price: inputPriceSh,
                     shift_datetime: shift_datetime
                 }
-                console.log(shiftToCreate)
                 const response = await fetch(`${apiUrl}/api/shifts/register`, {
                     method: 'POST',         
                     headers: {
@@ -1216,18 +1260,6 @@ const Shifts = () => {
                                     </select>
                                 </div>
                             </div>
-                            {/* <div className='shiftsContainer__form__credentials__label-input'>
-                                <div className='shiftsContainer__form__credentials__label-input__label'>
-                                    <h2 className='shiftsContainer__form__credentials__label-input__label__prop'>Turno:</h2>
-                                </div>
-                                <div className='shiftsContainer__form__credentials__label-input__input'>
-                                    <select style={styleDisabledBtns} disabled className='shiftsContainer__form__credentials__label-input__input__prop' value={inputOptionServiceSh} onChange={(e) => {handleInputOptionServiceSh(e.target.value)}}>
-                                        {optionsService.map((option, index) => (
-                                        <option key={index} value={option}>{option}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                            </div> */}
                             <div className='shiftsContainer__form__credentials__label-input'>
                                 <div className='shiftsContainer__form__credentials__label-input__label'>
                                     <h2 className='shiftsContainer__form__credentials__label-input__label__prop'>Precio:</h2>

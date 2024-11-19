@@ -92,6 +92,8 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user,holid
 
     if(existsHoliday) {
         optionsScheduleSh.push('Peluquero de vacaciones')
+    } else if(selectOptionHairdresserShL == '' || selectOptionHairdresserShL == 'Peluquero') {
+        optionsScheduleSh.push('Selecciona un peluquero')
     } else if(formattedDate == '2024-12-23' || formattedDate == '2024-12-30') {
         filteredArrayMonday.forEach((item)=>{
             optionsScheduleSh.push(item)
@@ -515,7 +517,7 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user,holid
                 progress: undefined,
                 theme: "dark",
             });
-        } else if (!isAddSchedule && (selectScheduleOptionShL == '' || selectScheduleOptionShL == 'Horario' || selectScheduleOptionShL == 'Peluquero de vacaciones')) {
+        } else if (!isAddSchedule && (selectScheduleOptionShL == '' || selectScheduleOptionShL == 'Horario' || selectScheduleOptionShL == 'Selecciona un peluquero' || selectScheduleOptionShL == 'Peluquero de vacaciones')) {
             toast('Debes seleccionar un horario!', {
                 position: "top-right",
                 autoClose: 3000,

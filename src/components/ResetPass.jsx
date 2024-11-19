@@ -192,8 +192,6 @@ const ResetPass = () => {
         } else {
             handleResetPassModalLocal(true);
         }
-        /* handlePayMembershipFeeModalLocal(false);
-        handlePayMembershipFeeModal(false); */
     }
 
     return (

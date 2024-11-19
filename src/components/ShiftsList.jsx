@@ -5,11 +5,9 @@ import LogOut from './LogOut';
 import { toast } from "react-toastify";
 import {IsLoggedContext} from '../context/IsLoggedContext';
 import {InputDataShLContext} from '../context/InputDataShLContext';
-import HMenu from './HMenu';
 import ItemShift from './ItemShift';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Link } from 'react-router-dom';
 import {OpenModalContext} from '../context/OpenModalContext'; 
 import Spinner from './Spinner';
 import moment from 'moment-timezone'
@@ -72,7 +70,6 @@ const ShiftsList = () => {
         return shiftsOrganized.filter(objeto => objeto.date == fecha);
     }
     
-    //const dateDesired = selectedYearValue + '-' + (selectedMonthValue=='1'?'01':selectedMonthValue=='2'?'02':selectedMonthValue=='3'?'03':selectedMonthValue=='4'?'04':selectedMonthValue=='5'?'05':selectedMonthValue=='6'?'06':selectedMonthValue=='7'?'07':selectedMonthValue=='8'?'08':selectedMonthValue=='9'?'09':selectedMonthValue=='10'?'10':selectedMonthValue=='11'?'11':selectedMonthValue=='12'?'12':selectedMonthValue=='') + '-' + (selectedDayValue=='1'?'01':selectedDayValue=='2'?'02':selectedDayValue=='3'?'03':selectedDayValue=='4'?'04':selectedDayValue=='5'?'05':selectedDayValue=='6'?'06':selectedDayValue=='7'?'07':selectedDayValue=='8'?'08':selectedDayValue=='9'?'09':selectedDayValue)
     const dateDesired = selectYearShL + '-' + (selectMonthShL=='1'?'01':selectMonthShL=='2'?'02':selectMonthShL=='3'?'03':selectMonthShL=='4'?'04':selectMonthShL=='5'?'05':selectMonthShL=='6'?'06':selectMonthShL=='7'?'07':selectMonthShL=='8'?'08':selectMonthShL=='9'?'09':selectMonthShL=='10'?'10':selectMonthShL=='11'?'11':selectMonthShL=='12'?'12':selectMonthShL=='') + '-' + (selectDayShL=='1'?'01':selectDayShL=='2'?'02':selectDayShL=='3'?'03':selectDayShL=='4'?'04':selectDayShL=='5'?'05':selectDayShL=='6'?'06':selectDayShL=='7'?'07':selectDayShL=='8'?'08':selectDayShL=='9'?'09':selectDayShL)
     const objetosFiltrados = filtrarPorFecha(shiftsOrganized, dateDesired);
 
@@ -89,14 +86,12 @@ const ShiftsList = () => {
     const yearDateDesiredMenosUno = dateDesiredMenosUno.getFullYear();
 
     const goFormerDay = () => {
-        //handleSelectYearShL,handleSelectMonthShL,handleSelectDayShL
         handleSelectDayShL(`${dayDateDesiredMenosUno}`)
         handleSelectMonthShL(`${monthDateDesiredMenosUno}`)
         handleSelectYearShL(`${yearDateDesiredMenosUno}`)
     }
     
     const goNextDay = () => {
-        //handleSelectYearShL,handleSelectMonthShL,handleSelectDayShL
         handleSelectDayShL(`${dayDateDesiredMasUno}`)
         handleSelectMonthShL(`${monthDateDesiredMasUno}`)
         handleSelectYearShL(`${yearDateDesiredMasUno}`)
@@ -149,6 +144,8 @@ const ShiftsList = () => {
 
     if(existsHoliday) {
         optionsScheduleSh.push('Peluquero de vacaciones')
+    } else if(selectOptionHairdresserShL == '' || selectOptionHairdresserShL == 'Peluquero') {
+        optionsScheduleSh.push('Selecciona un peluquero')
     } else if(formattedDate == '2024-12-23' || formattedDate == '2024-12-30') {
         filteredArrayMonday.forEach((item)=>{
             optionsScheduleSh.push(item)
@@ -164,10 +161,6 @@ const ShiftsList = () => {
             optionsScheduleSh.push(res)
         })
     }
-
-    /* filteredArray.forEach(res => {
-        optionsScheduleSh.push(res)
-    }) */
     
     const [isMonted, setIsMonted] = useState(false);
 
@@ -292,28 +285,6 @@ const ShiftsList = () => {
             } finally {
                 setIsLoading(false);
             }
-
-
-
-
-
-
-            /* const response = await fetch(`${apiUrl}/api/shifts`)
-            const shiftsAll = await response.json();
-            if(!response.ok) {
-                toast('No se pudieron obtener los turnos, contacte al administrador', {
-                    position: "top-right",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
-            } else {
-                setShifts(shiftsAll.data)
-            } */
         }
         fetchData();
 
@@ -386,18 +357,6 @@ const ShiftsList = () => {
         }, 10000)
     }, []);
 
-    /* const handleSelectYears = (event) => {
-        setSelectedYearsValue(event.target.value);
-    };
-
-    const handleSelectMonths = (event) => {
-        setSelectedMonthsValue(event.target.value);
-    };
-
-    const handleSelectDay = (event) => {
-        setSelectedDayValue(event.target.value);
-    }; */
-
     const handleDateChange = date => {
         handleInputDateShL(date);
     };
@@ -408,7 +367,6 @@ const ShiftsList = () => {
     };
 
     const cleanPropsCreateShift = () => {
-        //handleSelectOptionHairdresserShL(optionsHairdresser[0]);
         handleEmptyInputFirstNameShL('')
         handleEmptyInputLastNameShL('')
         handleEmptyInputEmailShL('')
@@ -416,7 +374,6 @@ const ShiftsList = () => {
         handleEmptyInputAddScheduleMShL('')
         setIsAddSchedule(false)
         handleInputOptionServiceShL(optionsService[0]);
-        //handleInputDateShL(new Date())
         handleSelectScheduleOptionShL(optionsScheduleSh[0])
     };
     
@@ -486,7 +443,7 @@ const ShiftsList = () => {
                 progress: undefined,
                 theme: "dark",
             });
-        } else if (!isAddSchedule && (selectScheduleOptionShL == '' || selectScheduleOptionShL == 'Horario' || selectScheduleOptionShL == 'Peluquero de vacaciones')) {
+        } else if (!isAddSchedule && (selectScheduleOptionShL == '' || selectScheduleOptionShL == 'Horario' || selectScheduleOptionShL == 'Selecciona un peluquero' || selectScheduleOptionShL == 'Peluquero de vacaciones')) {
             toast('Debes seleccionar un horario!', {
                 position: "top-right",
                 autoClose: 3000,
@@ -1151,14 +1108,6 @@ const ShiftsList = () => {
                         <button onClick={handleBtnCreateShiftModalMobile} className='shiftsListContainer__createShiftMobile__btnCreateShift'>Crear turno</button>
                         {isOpenCreateShiftModalLocalMobile&&<CreateShiftModalMobile setIsOpenCreateShiftModalLocalMobile={setIsOpenCreateShiftModalLocalMobile} user={user} holidays={holidays}/>}
                     </div>
-
-                    {/* {
-                        hairdressersFilteredByNotCancel.length != 0 &&
-                        <div className='shiftsListContainer__shiftsList__lengthShiftsMobile'>
-                            <div className='shiftsListContainer__shiftsList__lengthShiftsMobile__prop'>Cantidad de turnos: {hairdressersFilteredByNotCancel.length}</div>
-                        </div>
-                    } */}
-
                     {cancelDaysModalLocal&&<CancelDaysModal handleCancelDaysListModalLocal={handleCancelDaysListModalLocal} holidaysData={holidays} hairdressers={hairdressers}/>}
                     <div className='shiftsListContainer__shiftsList__lengthShifts'>
                         <div className='shiftsListContainer__shiftsList__lengthShifts__cancelDaysList'>
@@ -1185,18 +1134,8 @@ const ShiftsList = () => {
                                 </>
                             }
                         </div>
-                        {/* <button onClick={handleBtnCancelDaysModal}>Días anulados</button> */}
                     </div>
                     <div className='shiftsListContainer__shiftsList'>
-                        {/* {
-                            hairdressersFilteredByNotCancel.length != 0 &&
-                            <div className='shiftsListContainer__shiftsList__headerMobile'>
-                                <div className='shiftsListContainer__shiftsList__headerMobile__label'>Fecha</div>
-                                <div className='shiftsListContainer__shiftsList__headerMobile__label'>Horario</div>
-                                <div className='shiftsListContainer__shiftsList__headerMobile__label'>Nombre</div>
-                                <div className='shiftsListContainer__shiftsList__headerMobile__label'>Apellido</div>
-                            </div>
-                        } */}
                         <div className='shiftsListContainer__shiftsList__header'>
                             <div className='shiftsListContainer__shiftsList__header__label'>Peluquero</div>
                             <div className='shiftsListContainer__shiftsList__header__label'>Fecha</div>
@@ -1407,10 +1346,7 @@ const ShiftsList = () => {
             </>
             :
             <>
-                {/* <div className='warningLogin'>
-                    <p className='warningLogin__prop'>Si aún no has iniciado sesión, <Link to={"/login"} className='warningLogin__link'>has click aquí</Link></p>
-                </div> */}
-                <div className='blackDiv'></div> 
+                <div className='blackDiv'><Spinner/></div>
             </>
         }
         <Footer/>

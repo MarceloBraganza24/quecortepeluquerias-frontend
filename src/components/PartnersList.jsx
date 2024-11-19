@@ -5,9 +5,7 @@ import LogOut from './LogOut';
 import { toast } from "react-toastify";
 import {IsLoggedContext} from '../context/IsLoggedContext';
 import {InputDataPaLContext} from '../context/InputDataPaLContext';
-import HMenu from './HMenu';
 import ItemPartner from './ItemPartner';
-import { Link } from 'react-router-dom';
 import {OpenModalContext} from '../context/OpenModalContext'; 
 import Spinner from './Spinner';
 import CreatePartnerModalMobile from './CreatePartnerModalMobile';
@@ -155,10 +153,6 @@ const PartnersList = () => {
             } finally {
                 setIsLoading(false);
             }
-
-            /* const response = await fetch(`${apiUrl}/api/partners`)
-            const partnersAll = await response.json();
-            setPartners(partnersAll.data) */
         }
         fetchData();
         async function fetchPricesData() {
@@ -210,10 +204,6 @@ const PartnersList = () => {
             setIsMonted(true);
         }, 10000)
     }, []);
-
-    /* partners.sort((a, b) => {
-        return new Date(b.partner_datetime) - new Date(a.partner_datetime);
-    }); */
 
     function filtrarPorApellido(valorIngresado) {
         const valorMinusculas = valorIngresado.toLowerCase();
@@ -419,15 +409,6 @@ const PartnersList = () => {
                         <div className='partnersListContainer__partnersList__lengthShifts__prop'>Cantidad de socios: {objetosFiltrados.length}</div>
                     </div>
                     <div className='partnersListContainer__partnersList'>
-                        {/* {
-                            objetosFiltrados.length!=0&&
-                            <div className='partnersListContainer__partnersList__headerMobile'>
-                                <div className='partnersListContainer__partnersList__headerMobile__label'>N° socio</div>
-                                <div className='partnersListContainer__partnersList__headerMobile__label'>Puntos</div>
-                                <div className='partnersListContainer__partnersList__headerMobile__label'>Nombre</div>
-                                <div className='partnersListContainer__partnersList__headerMobile__label'>Apellido</div>
-                            </div>
-                        } */}
                         <div className='partnersListContainer__partnersList__header'>
                             <div className='partnersListContainer__partnersList__header__label'>N° socio</div>
                             <div className='partnersListContainer__partnersList__header__label'>Puntos</div>
@@ -460,7 +441,6 @@ const PartnersList = () => {
                                     </div>
                                     <div className='itemCreatePartner__btns'>
                                         <button id='btnCreatePartner' className='itemCreatePartner__btns__btn' onClick={handleBtnCreatePartner}>Registrar socio</button>
-                                        {/* <button id='btnCreatePartner' className='itemCreatePartner__btns__btn' onClick={nonPartnerRegister}>Registrar socio</button> */}
                                         {showSpinner&&<Spinner/>}
                                     </div>
                                 </>
@@ -574,10 +554,7 @@ const PartnersList = () => {
             </>
             :
             <>
-                <div className='warningLogin'>
-                    <p className='warningLogin__prop'>Si aún no has iniciado sesión, <Link to={"/login"} className='warningLogin__link'>has click aquí</Link></p>
-                </div>
-                <div className='blackDiv'></div> 
+                <div className='blackDiv'><Spinner/></div>
             </>
         }
         <Footer/>

@@ -2,11 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import NavBar from './NavBar'
 import Footer from './Footer'
 import LogOut from './LogOut';
-import { toast } from "react-toastify";
-import { Link } from 'react-router-dom';
 import {IsLoggedContext} from '../context/IsLoggedContext';
 import {OpenModalContext} from '../context/OpenModalContext'; 
-import HMenu from './HMenu';
 import Spinner from './Spinner';
 import MyDataModal from './MyDataModal';
 
@@ -15,13 +12,10 @@ const MyData = () => {
     const [user, setUser] = useState('');
     const [isMyDataModalOpen, setIsMyDataModalOpen] = useState(false);
     const {menuOptionsModal,handleMenuOptionsModal,handleUpdateMyDataModal} = useContext(OpenModalContext);
-    //const {inputCreatePriceOf,inputCreateValuePriceOf,handleInputCreatePriceOf,handleInputCreateValuePriceOf} = useContext(PricesContext);
     const [myData, setMyData] = useState([]);
     const [partners, setPartners] = useState([]);
     const partnerByEmailUser = partners.find(partner => partner.email == user.email)
     const apiUrl = import.meta.env.VITE_API_URL;
-    const [showSpinner, setShowSpinner] = useState(false);
-
     const [isMonted, setIsMonted] = useState(false);
 
     useEffect(() => {
@@ -155,7 +149,7 @@ const MyData = () => {
       <>
             <NavBar/>
             {
-                isLoggedIn && (user.role==='admin' || user.role==='premium' || user.role==='user')&&
+                isLoggedIn && (user.role==='admin' || user.role==='premium' || user.role==='user')?
                 <>
                     <div className='myDataContainer'>
                         <div className='myDataContainer__title'>- Mis datos -</div>
@@ -228,110 +222,10 @@ const MyData = () => {
                         </div>
                     </div>
                     {isMyDataModalOpen && <MyDataModal handleUpdateMyDataModal={handleUpdateMyDataModal} id={user._id} first_name={user.first_name} last_name={user.last_name} setIsMyDataModalOpen={setIsMyDataModalOpen}/>}
-                    {/* <div className='myPaymentsContainerIsLoggedIn'>
-                        <div className='myPaymentsContainerIsLoggedIn__title'>- Mis datos -</div>
-                        {
-                            myDataByEmail.length != 0?
-                            <>
-                                <div className='myPaymentsContainerIsLoggedIn__myPaymentsList'>
-                                    <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__headerMobile'>
-                                        <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__headerMobile__label'>Tipo</div>
-                                        <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__headerMobile__label'>Pago</div>
-                                        <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__headerMobile__label'>Precio unitario</div>
-                                        <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__headerMobile__label'>Fecha de pago</div>
-                                    </div>
-                                    <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__header'>
-                                        <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__header__label'>
-                                            <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__header__label__prop'>Tipo</div>
-                                        </div>
-                                        <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__header__label'>
-                                            <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__header__label__prop'>Pago</div>
-                                        </div>
-                                        <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__header__label'>
-                                            <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__header__label__prop'>Precio unitario</div>
-                                        </div>
-                                        <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__header__label'>
-                                            <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__header__label__prop'>Nombre</div>
-                                        </div>
-                                        <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__header__label'>
-                                            <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__header__label__prop'>Apellido</div>  
-                                        </div>
-                                        <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__header__label'>
-                                            <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__header__label__prop'>Email</div>
-                                        </div>
-                                        <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__header__label'>
-                                            <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__header__label__prop'>Fecha de pago</div>
-                                        </div>
-                                        <div className='myPaymentsContainerIsLoggedIn__myPaymentsList__header__label'>
-                                        </div>
-                                    </div>
-                                    {
-                                        myDataByEmail.map((ticket) => {
-                                            return(
-                                                <ItemTicket
-                                                id={ticket._id}
-                                                title={ticket.type}
-                                                payMethod={ticket.payMethod}
-                                                unit_price={ticket.unit_price}
-                                                first_name={ticket.first_name}
-                                                last_name={ticket.last_name}
-                                                email={ticket.email}
-                                                ticket_datetime={ticket.ticket_datetime}
-                                                />
-                                            )
-                                        })
-                                    }
-                                </div>
-                            </>
-                            :
-                            <div className='myShiftsListContainer__withoutItems'>Aún no posees pagos</div>
-
-                        }
-                    </div> */}
-                    {/* {
-                        (myDataByEmail.length == 0) ?
-                        <>
-                            <div className='myPaymentsContainerIsLoggedIn__blackDiv' style={{padding:'25vh 0vh'}}></div>
-                            <div className='myPaymentsContainerIsLoggedIn__blackDivMobile' style={{padding:'28vh 0vh'}}></div>
-                        </>
-                        : (myDataByEmail.length == 1) ?
-                        <>
-                            <div className='myPaymentsContainerIsLoggedIn__blackDiv' style={{padding:'18vh 0vh'}}></div>
-                            <div className='myPaymentsContainerIsLoggedIn__blackDivMobile' style={{padding:'22vh 0vh'}}></div>
-                        </>
-                        : (myDataByEmail.length == 2) ?
-                        <>
-                            <div className='myPaymentsContainerIsLoggedIn__blackDiv' style={{padding:'15vh 0vh'}}></div>
-                            <div className='myPaymentsContainerIsLoggedIn__blackDivMobile' style={{padding:'18vh 0vh'}}></div>
-                        </>
-                        : (myDataByEmail.length == 3) ?
-                        <>
-                            <div className='myPaymentsContainerIsLoggedIn__blackDiv' style={{padding:'12vh 0vh'}}></div>
-                            <div className='myPaymentsContainerIsLoggedIn__blackDivMobile' style={{padding:'15vh 0vh'}}></div>
-                        </>
-                        : (myDataByEmail.length == 4) ?
-                        <>
-                            <div className='myPaymentsContainerIsLoggedIn__blackDiv' style={{padding:'8vh 0vh'}}></div>
-                            <div className='myPaymentsContainerIsLoggedIn__blackDivMobile' style={{padding:'12vh 0vh'}}></div>
-                        </>
-                        : (myDataByEmail.length == 5) ?
-                        <>
-                            <div className='myPaymentsContainerIsLoggedIn__blackDiv' style={{padding:'5vh 0vh'}}></div>
-                            <div className='myPaymentsContainerIsLoggedIn__blackDivMobile' style={{padding:'8vh 0vh'}}></div>
-                        </>
-                        : (myDataByEmail.length == 6) ?
-                        <>
-                            <div className='myPaymentsContainerIsLoggedIn__blackDiv' style={{padding:'2vh 0vh'}}></div>
-                            <div className='myPaymentsContainerIsLoggedIn__blackDivMobile' style={{padding:'4vh 0vh'}}></div>
-                        </>
-                        : (myDataByEmail.length == 7) &&
-                        <>
-                            <div className='myPaymentsContainerIsLoggedIn__blackDiv' style={{padding:'0vh 0vh'}}></div>
-                            <div className='myPaymentsContainerIsLoggedIn__blackDivMobile' style={{padding:'0vh 0vh'}}></div>
-                        </>
-                    } */}
                     <LogOut/>
                 </>
+                :
+                <div className='blackDiv'><Spinner/></div>
             }
         <Footer/>
     </>

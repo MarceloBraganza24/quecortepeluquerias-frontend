@@ -40,7 +40,6 @@ const CreateUserModalMobile = ({setIsOpenCreateUserModalLocalMobile}) => {
     const handleInputFirstNameUL = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputFirstNameUL(textToSaved)
         }
@@ -49,7 +48,6 @@ const CreateUserModalMobile = ({setIsOpenCreateUserModalLocalMobile}) => {
     const handleInputLastNameUL = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputLastNameUL(textToSaved)
         }
@@ -62,7 +60,6 @@ const CreateUserModalMobile = ({setIsOpenCreateUserModalLocalMobile}) => {
 
     const handleInputEmailUL = (e) => {
         const texto = e.target.value;
-        //const textCleaned = cleanString(texto);
         const textToSaved = cleanText(texto);
         setInputEmailUL(textToSaved)
     };

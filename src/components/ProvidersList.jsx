@@ -5,9 +5,7 @@ import LogOut from './LogOut';
 import { toast } from "react-toastify";
 import {IsLoggedContext} from '../context/IsLoggedContext';
 import {InputDataPrContext} from '../context/InputDataPrContext';
-import HMenu from './HMenu';
 import ItemProvider from './ItemProvider';
-import { Link } from 'react-router-dom';
 import {OpenModalContext} from '../context/OpenModalContext'; 
 import Spinner from './Spinner';
 import CreateProviderModalMobile from './CreateProviderModalMobile';
@@ -111,11 +109,6 @@ const ProvidersList = () => {
             } finally {
                 setIsLoading(false);
             }
-
-            /* const response = await fetch(`${apiUrl}/api/providers`)
-            const providersAll = await response.json();
-            setProviders(providersAll.data) */
-
         }
         fetchData();
         const getCookie = (name) => {
@@ -385,13 +378,6 @@ const ProvidersList = () => {
                         <div className='providersListContainer__providersList__lengthShifts'>
                             <div className='providersListContainer__providersList__lengthShifts__prop'>Cantidad de proveedores: {objetosFiltrados.length}</div>
                         </div>
-                        {/* {
-                            objetosFiltrados.length!=0&&
-                            <div className='providersListContainer__providersList__headerMobile'>
-                                <div className='providersListContainer__providersList__headerMobile__label'>Razon social</div>
-                                <div className='providersListContainer__providersList__headerMobile__label'>CUIT-CUIL</div>
-                            </div>
-                        } */}
                         <div className='providersListContainer__providersList__header'>
                             <div className='providersListContainer__providersList__header__label'>Razon social</div>
                             <div className='providersListContainer__providersList__header__label'>CUIT-CUIL</div>
@@ -500,10 +486,7 @@ const ProvidersList = () => {
             </>
             :
             <>
-                <div className='warningLogin'>
-                    <p className='warningLogin__prop'>Si aún no has iniciado sesión, <Link to={"/login"} className='warningLogin__link'>has click aquí</Link></p>
-                </div>
-                <div className='blackDiv'></div> 
+                <div className='blackDiv'><Spinner/></div>
             </>
         }
         <Footer/>

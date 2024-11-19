@@ -5,9 +5,7 @@ import LogOut from './LogOut';
 import { toast } from "react-toastify";
 import {IsLoggedContext} from '../context/IsLoggedContext';
 import {InputDataProdContext} from '../context/InputDataProdContext';
-import HMenu from './HMenu';
 import ItemProduct from './ItemProduct';
-import { Link } from 'react-router-dom';
 import {OpenModalContext} from '../context/OpenModalContext'; 
 import Spinner from './Spinner';
 import CreateProductModalMobile from './CreateProductModalMobile';
@@ -111,10 +109,6 @@ const ProductsList = () => {
             } finally {
                 setIsLoading(false);
             }
-
-            /* const response = await fetch(`${apiUrl}/api/products`)
-            const productsAll = await response.json();
-            setProducts(productsAll.data) */
         }
         fetchData();
 
@@ -357,14 +351,6 @@ const ProductsList = () => {
                         <div className='productsListContainer__productsList__lengthShifts'>
                             <div className='productsListContainer__productsList__lengthShifts__prop'>Cantidad de productos: {objetosFiltrados.length}</div>
                         </div>
-                        {/* {
-                            objetosFiltrados.length!=0&&
-                            <div className='productsListContainer__productsList__headerMobile'>
-                                <div className='productsListContainer__productsList__headerMobile__label'>Título</div>
-                                <div className='productsListContainer__productsList__headerMobile__label'>Precio</div>
-                                <div className='productsListContainer__productsList__headerMobile__label'>Stock</div>
-                            </div>
-                        } */}
                         <div className='productsListContainer__productsList__header'>
                             <div className='productsListContainer__productsList__header__label'>Título</div>
                             <div className='productsListContainer__productsList__header__label'>Descripción</div>
@@ -481,10 +467,7 @@ const ProductsList = () => {
             </>
             :
             <>
-                <div className='warningLogin'>
-                    <p className='warningLogin__prop'>Si aún no has iniciado sesión, <Link to={"/login"} className='warningLogin__link'>has click aquí</Link></p>
-                </div>
-                <div className='blackDiv'></div> 
+                <div className='blackDiv'><Spinner/></div>
             </>
         }
         <Footer/>

@@ -38,7 +38,6 @@ const CreatePartnerModalMobile = ({setIsOpenCreatePartnerModalLocalMobile,result
     const handleInputFirstNamePaL = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputFirstNamePaL(textToSaved)
         }
@@ -47,7 +46,6 @@ const CreatePartnerModalMobile = ({setIsOpenCreatePartnerModalLocalMobile,result
     const handleInputLastNamePaL = (e) => {
         const texto = e.target.value;
         if(regexOnlyLetters(texto)) {
-            //const textCleaned = cleanString(texto);
             const textToSaved = cleanText(texto);
             setInputLastNamePaL(textToSaved)
         }
@@ -59,7 +57,6 @@ const CreatePartnerModalMobile = ({setIsOpenCreatePartnerModalLocalMobile,result
 
     const handleInputEmailPaL = (e) => {
         const texto = e.target.value;
-        //const textCleaned = cleanString(texto);
         const textToSaved = cleanText(texto);
         setInputEmailPaL(textToSaved)
     };
