@@ -168,7 +168,7 @@ const ShiftsList = () => {
         
         const interval = setInterval(() => {
             menuOptionsModal&&handleMenuOptionsModal(false);
-            async function fetchShiftsData() {
+            /* async function fetchShiftsData() {
                 const response = await fetch(`${apiUrl}/api/shifts`)
                 const shiftsAll = await response.json();
                 if(!response.ok) {
@@ -188,7 +188,34 @@ const ShiftsList = () => {
             }
             if(shifts.length != 0) {
                 fetchShiftsData();
+            } */
+
+            async function fetchData() {
+                try {
+                    const response = await fetch(`${apiUrl}/api/shifts`)
+                    const shiftsAll = await response.json();
+                    if(!response.ok) {
+                        toast('No se pudieron obtener los turnos, contacte al administrador', {
+                            position: "top-right",
+                            autoClose: 2000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "dark",
+                        });
+                    } else {
+                        setShifts(shiftsAll.data)
+                    }
+                } catch (error) {
+                    console.error('Error al obtener datos:', error);
+                } finally {
+                    setIsLoading(false);
+                }
             }
+            fetchData();
+
             async function fetchHolidaysData() {
                 const response = await fetch(`${apiUrl}/api/holidays`)
                 const holidaysAll = await response.json();
@@ -262,7 +289,6 @@ const ShiftsList = () => {
         menuOptionsModal&&handleMenuOptionsModal(false);
 
         async function fetchData() {
-
             try {
                 const response = await fetch(`${apiUrl}/api/shifts`)
                 const shiftsAll = await response.json();
@@ -476,7 +502,7 @@ const ShiftsList = () => {
                 progress: undefined,
                 theme: "dark",
             });
-        } else if (inputDateShL.getDay() == 0 /* || inputDateShL.getDay() == 1 */) {
+        } /* else if (inputDateShL.getDay() == 0 || inputDateShL.getDay() == 1) {
             toast('Elige un dia entre martes y sabado!', {
                 position: "top-right",
                 autoClose: 3000,
@@ -487,7 +513,7 @@ const ShiftsList = () => {
                 progress: undefined,
                 theme: "dark",
             });
-        }/*  else if(inputDateShLFormated < fechaActual) {
+        } *//*  else if(inputDateShLFormated < fechaActual) {
             toast('Debes ingresar una fecha a futuro', {
                 position: "top-right",
                 autoClose: 2000,
