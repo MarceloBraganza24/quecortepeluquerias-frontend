@@ -674,6 +674,17 @@ const Shifts = () => {
                 progress: undefined,
                 theme: "dark",
             });
+        }else if(optionsScheduleSh[0] == 'No hay horarios') {
+            toast('Debes elegir un horariooo', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
         } else if (!isValidUTF8(inputFirstNameSh)) {
             toast('El campo nombre contiene caracteres no válidos', {
                 position: "top-right",

@@ -1324,6 +1324,7 @@ const ShiftsList = () => {
                                         hairdressers={hairdressers}
                                         workDays={workDays}
                                         services={services}
+                                        holidays={holidays}
                                         />
                                     )
                                 })}
