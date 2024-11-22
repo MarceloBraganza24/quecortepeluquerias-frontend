@@ -440,7 +440,7 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user,holid
                 progress: undefined,
                 theme: "dark",
             });
-        } else if(selectScheduleOptionShL == 'Horario' || selectScheduleOptionShL == '') {
+        } /* else if(selectScheduleOptionShL == 'Horario' || selectScheduleOptionShL == '') {
             toast('Debes ingresar un horario!', {
                 position: "top-right",
                 autoClose: 3000,
@@ -451,7 +451,7 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user,holid
                 progress: undefined,
                 theme: "dark",
             });
-        } else if (!isValidUTF8(inputFirstNameShL)) {
+        } */ else if (!isValidUTF8(inputFirstNameShL)) {
             toast('El campo nombre contiene caracteres no válidos', {
                 position: "top-right",
                 autoClose: 2000,

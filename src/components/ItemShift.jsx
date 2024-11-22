@@ -6,7 +6,7 @@ import ShiftsListModalMobile from './ShiftsListModalMobile';
 import Spinner from './Spinner';
 import { toast } from "react-toastify";
 
-const ItemShift = ({id,hairdresser,first_name,last_name,service,email,date,schedule,shifts,hairdressers,services,workDays}) => {
+const ItemShift = ({id,hairdresser,first_name,last_name,service,email,date,schedule,shifts,hairdressers,services,workDays,holidays}) => {
 
     const scheduleArray = schedule.split(':')
     let scheduleH = scheduleArray[0];
@@ -166,6 +166,7 @@ const ItemShift = ({id,hairdresser,first_name,last_name,service,email,date,sched
                     hairdressers={hairdressers}
                     services={services}
                     workDays={workDays}
+                    holidays={holidays}
                     />
             }
         </div>
@@ -233,6 +234,7 @@ const ItemShift = ({id,hairdresser,first_name,last_name,service,email,date,sched
                 hairdressers={hairdressers}
                 services={services}
                 workDays={workDays}
+                holidays={holidays}
                 />
         }
     </>

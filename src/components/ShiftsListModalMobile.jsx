@@ -7,7 +7,7 @@ import Spinner from './Spinner';
 import {OpenModalContext} from '../context/OpenModalContext'; 
 import moment from 'moment-timezone'
 
-const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,email,date,schedule,handleUpdateShiftModalMobileLocal,shifts,services,workDays,hairdressers}) => {
+const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,email,date,schedule,handleUpdateShiftModalMobileLocal,shifts,services,workDays,hairdressers,holidays}) => {
     const adjustedItemDate = moment.tz(date, 'America/Argentina/Buenos_Aires').startOf('day').toDate();
     
     const [confirmationDelShiftsModalMobile, handleConfirmationDelShiftsModalMobile] = useState(false);
@@ -58,18 +58,51 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
     });
 
     const existsUniqueHairdresserSchedules = schedulesByHairdresserDate.includes(selectScheduleOptionISh?selectScheduleOptionISh:schedule);
-
+    
     const shiftsFiltered = shifts.filter(shift => shift.hairdresser == selectOptionHairdresserISh && shift.date == formatInputDate);
     const schedulesHairdressersFilteredByNotCancel = shiftsFiltered.map(item => item.schedule)
-
+    
     const optionsScheduleSh = [];
+    optionsScheduleSh.push(`${schedule}`);
     
     let filteredArray = schedulesByHairdresserDate.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
+    
+    const chrismasMondaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','16:40','17:00','17:30','18:00','18:20','18:40','19:00','19:20','19:40','20:00','20:30']
+    const existsUniqueMondayHairdresserSchedules = chrismasMondaySchedules.includes(selectScheduleOptionISh?selectScheduleOptionISh:schedule);
+    let filteredArrayMonday = chrismasMondaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
+    
+    const chrismasTuesdaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','13:00','13:20','13:40']
+    const existsUniqueTuesdayHairdresserSchedules = chrismasTuesdaySchedules.includes(selectScheduleOptionISh?selectScheduleOptionISh:schedule);
+    let filteredArrayTuesday = chrismasTuesdaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
 
-    optionsScheduleSh.push(`${schedule}`);
-    filteredArray.forEach(res => {
-        optionsScheduleSh.push(res)
-    })
+    const dateToCompareHoliday = {
+        date: formatInputDate,
+        hairdresser: selectOptionHairdresserISh
+    }
+    const existsHoliday = holidays.some(holiday =>
+        holiday.date == dateToCompareHoliday.date &&
+        holiday.hairdresser == dateToCompareHoliday.hairdresser
+    );
+
+    if(existsHoliday) {
+        optionsScheduleSh.push('Peluquero de vacaciones')
+    } else if(selectOptionHairdresserISh == '' || selectOptionHairdresserISh == 'Peluquero') {
+        optionsScheduleSh.push('Selecciona un peluquero')
+    } else if(formatInputDate == '2024-12-23' || formatInputDate == '2024-12-30') {
+        filteredArrayMonday.forEach((item)=>{
+            optionsScheduleSh.push(item)
+        })
+    } else if(formatInputDate == '2024-12-24' || formatInputDate == '2024-12-31') {
+        filteredArrayTuesday.forEach((item)=>{
+            optionsScheduleSh.push(item)
+        })
+    } else if(filteredArray.length == 0) {
+        optionsScheduleSh.push('No hay horarios')
+    } else {
+        filteredArray.forEach(res => {
+            optionsScheduleSh.push(res)
+        })
+    }
 
     const optionsHairdresser = ['Peluquero'];
     hairdressers.forEach(res => {
@@ -117,9 +150,7 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
         if(inputLastNameISh!==last_name && inputLastNameISh!=='')setInputChanges(true);
         if(inputServiceISh!==service && inputServiceISh!=='')setInputChanges(true);
         if(inputEmailISh!==email && inputEmailISh!=='')setInputChanges(true);
-        if(adjustedItemDate.getTime() != adjustedNewDatee.getTime()) {
-            setInputChanges(true);
-        }
+        if(formatInputDate!=date)setInputChanges(true);
         if(selectScheduleOptionISh!==schedule && selectScheduleOptionISh!=='')setInputChanges(true);
     };
 
@@ -135,9 +166,7 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
         if(inputLastNameISh!==last_name && inputLastNameISh!=='')setInputChanges(true);
         if(inputServiceISh!==service && inputServiceISh!=='')setInputChanges(true);
         if(inputEmailISh!==email && inputEmailISh!=='')setInputChanges(true);
-        if(adjustedItemDate.getTime() != adjustedNewDatee.getTime()) {
-            setInputChanges(true);
-        }
+        if(formatInputDate!=date)setInputChanges(true);
         if(selectScheduleOptionISh!==schedule && selectScheduleOptionISh!=='')setInputChanges(true);
     };
 
@@ -153,9 +182,7 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
         if(inputFirstNameISh!==first_name && inputFirstNameISh!=='')setInputChanges(true);
         if(inputServiceISh!==service && inputServiceISh!=='')setInputChanges(true);
         if(inputEmailISh!==email && inputEmailISh!=='')setInputChanges(true);
-        if(adjustedItemDate.getTime() != adjustedNewDatee.getTime()) {
-            setInputChanges(true);
-        }
+        if(formatInputDate!=date)setInputChanges(true);
         if(selectScheduleOptionISh!==schedule && selectScheduleOptionISh!=='')setInputChanges(true);
     };
 
@@ -167,9 +194,7 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
         if(inputFirstNameISh!==first_name && inputFirstNameISh!=='')setInputChanges(true);
         if(inputLastNameISh!==last_name && inputLastNameISh!=='')setInputChanges(true);
         if(inputEmailISh!==email && inputEmailISh!=='')setInputChanges(true);
-        if(adjustedItemDate.getTime() != adjustedNewDatee.getTime()) {
-            setInputChanges(true);
-        }
+        if(formatInputDate!=date)setInputChanges(true);
         if(selectScheduleOptionISh!==schedule && selectScheduleOptionISh!=='')setInputChanges(true);
     };
 
@@ -183,9 +208,7 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
         if(inputFirstNameISh!==first_name && inputFirstNameISh!=='')setInputChanges(true);
         if(inputLastNameISh!==last_name && inputLastNameISh!=='')setInputChanges(true);
         if(inputServiceISh!==service && inputServiceISh!=='')setInputChanges(true);
-        if(adjustedItemDate.getTime() != adjustedNewDatee.getTime()) {
-            setInputChanges(true);
-        }
+        if(formatInputDate!=date)setInputChanges(true);
         if(selectScheduleOptionISh!==schedule && selectScheduleOptionISh!=='')setInputChanges(true);
     };
     
@@ -199,9 +222,7 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
         if(inputLastNameISh!==last_name && inputLastNameISh!=='')setInputChanges(true);
         if(inputServiceISh!==service && inputServiceISh!=='')setInputChanges(true);
         if(inputEmailISh!==email && inputEmailISh!=='')setInputChanges(true);
-        if(adjustedItemDate.getTime() != adjustedNewDatee.getTime()) {
-            setInputChanges(true);
-        }
+        if(formatInputDate!=date)setInputChanges(true);
     };
 
     const handleInputAddScheduleHShLM = (e) => {
@@ -266,10 +287,21 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
     }
 
     const handleBtnUpdShift = async() => {
-        if( !isAddSchedule && (inputFirstNameISh == '' || inputFirstNameISh == first_name) && (selectOptionHairdresserISh == '' || selectOptionHairdresserISh == hairdresser) && (inputLastNameISh == '' || inputLastNameISh == last_name) && (inputServiceISh == '' || inputServiceISh == service) && (inputEmailISh == '' || inputEmailISh == email) && (formatInputDate == '' || formatInputDate == date) && (selectScheduleOptionISh == '' || selectScheduleOptionISh == schedule) ) {
+        if( !isAddSchedule && (inputFirstNameISh == '' || inputFirstNameISh == first_name) && (selectOptionHairdresserISh == '' || selectOptionHairdresserISh == hairdresser) && (inputLastNameISh == '' || inputLastNameISh == last_name) && (inputServiceISh == '' || inputServiceISh == service) && (inputEmailISh == '' || inputEmailISh == email) && (formatInputDate == '' || formatInputDate == date) && (!isAddSchedule && (selectScheduleOptionISh == '' || selectScheduleOptionISh == schedule) ) ) {
             toast('No tienes cambios para actualizar', {
                 position: "top-right",
                 autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        } else if(existsHoliday) {
+            toast('En la fecha ingresada el peluquero se encuenta de vacaciones', {
+                position: "top-right",
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -288,7 +320,7 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
                 progress: undefined,
                 theme: "dark",
             });
-        } /* else if(!existsUniqueHairdresserSchedules){
+        } else if(!isAddSchedule && !existsUniqueHairdresserSchedules && formatInputDate!='2024-12-23' && formatInputDate!='2024-12-30' && formatInputDate!='2024-12-24' && formatInputDate!='2024-12-31'){
             toast('El horario no esta permitido para el día de semana seleccionado del peluquero elegido', {
                 position: "top-right",
                 autoClose: 2000,
@@ -301,7 +333,33 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
             });
             setShowSpinner(false);
             document.getElementById('btnUpdateShift').style.display = 'block';
-        } */ else if(selectOptionHairdresserISh == 'Peluquero' || selectOptionHairdresserISh == '') {
+        } else if(!isAddSchedule && !existsUniqueMondayHairdresserSchedules && (formatInputDate=='2024-12-23' || formatInputDate=='2024-12-30')){
+            toast('El horario no esta permitido para el día de semana seleccionado del peluquero elegido', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+            setShowSpinner(false);
+            document.getElementById('btnUpdateShift').style.display = 'block';
+        } else if(!isAddSchedule && !existsUniqueTuesdayHairdresserSchedules && (formatInputDate=='2024-12-24' || formatInputDate=='2024-12-31')){
+            toast('El horario no esta permitido para el día de semana seleccionado del peluquero elegido', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+            setShowSpinner(false);
+            document.getElementById('btnUpdateShift').style.display = 'block';
+        } else if(selectOptionHairdresserISh == 'Peluquero' || selectOptionHairdresserISh == '') {
             toast('Debes elegir un peluquero', {
                 position: "top-right",
                 autoClose: 2000,
@@ -354,10 +412,8 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
                 last_name: inputLastNameISh?cleanString(inputLastNameISh):last_name,
                 service: (inputServiceISh=='Servicio'||inputServiceISh=='-')?'-':inputServiceISh,
                 email: inputEmailISh?cleanString(inputEmailISh):email,
-                /* date: formatInputDate?formatInputDate:adjustedItemDate, */
-                date: formatInputDate,
-                /* schedule: !isAddSchedule?(selectScheduleOptionISh?selectScheduleOptionISh:schedule):concatAddSchedules */
-                schedule: schedule
+                date: formatInputDate?formatInputDate:adjustedItemDate,
+                schedule: !isAddSchedule?(selectScheduleOptionISh?selectScheduleOptionISh:schedule):concatAddSchedules
             }
             const response = await fetch(`${apiUrl}/api/shifts/${id}`, {
                 method: 'PUT',         
@@ -397,20 +453,7 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
                 });
                 document.getElementById('btnUpdateShift').style.display = 'block';
                 setShowSpinner(false);
-            }/*  else {
-                toast('No se ha podido modificar el turno, intente nuevamente', {
-                    position: "top-right",
-                    autoClose: 1500,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
-                document.getElementById('btnUpdateShift').style.display = 'block';
-                setShowSpinner(false);
-            } */
+            }
         }
     };
 
@@ -521,7 +564,7 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
                     <div style={{paddingTop:'2vh'}} className='updateShiftModalContainerMobile__labelInput'>
                         <div className='updateShiftModalContainerMobile__labelInput__label'>Peluquero:</div>
                         <div className='updateShiftModalContainerMobile__labelInput__selectService'>
-                            <select disabled className='updateShiftModalContainerMobile__labelInput__selectService__select' value={selectOptionHairdresserISh} onChange={(e) => {handleSelectOptionHairdresserISh(e.target.value)}}>
+                            <select className='updateShiftModalContainerMobile__labelInput__selectService__select' value={selectOptionHairdresserISh} onChange={(e) => {handleSelectOptionHairdresserISh(e.target.value)}}>
                                 {optionsHairdresser.map((option, index) => (
                                 <option key={index} value={option}>{option}</option>
                                 ))}
@@ -546,7 +589,6 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
                             selected={!inputDateISh?formatInputDate:inputDateISh}
                             onChange={handleDateChange}
                             dateFormat="yyyy-MM-dd"
-                            disabled
                         />
                     </div>
                     <div style={{paddingTop:'1vh'}} className='updateShiftModalContainerMobile__labelInput'>
@@ -554,19 +596,19 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
                         <div className='updateShiftModalContainerMobile__labelInput__selectSchedule'>
                             {
                                 !isAddSchedule?
-                                <select disabled className='updateShiftModalContainerMobile__labelInput__selectSchedule__select' value={selectScheduleOptionISh} onChange={handleSelectScheduleOptionISh}>
+                                <select className='updateShiftModalContainerMobile__labelInput__selectSchedule__select' value={selectScheduleOptionISh} onChange={handleSelectScheduleOptionISh}>
                                     {optionsScheduleSh.map((option, index) => (
                                         <option key={index} value={option}>{option}</option>
                                     ))}
                                 </select>
                                 :
                                 <>
-                                    <input disabled style={{width: '10vh'}} maxLength={2} className='itemCreateShift__selectSchedule__input' type="text" value={inputAddScheduleHShLM} onBlur={handleOnBlurInputAddScheduleHShLM} onChange={handleInputAddScheduleHShLM} />
+                                    <input style={{width: '10vh'}} maxLength={2} className='itemCreateShift__selectSchedule__input' type="text" value={inputAddScheduleHShLM} onBlur={handleOnBlurInputAddScheduleHShLM} onChange={handleInputAddScheduleHShLM} />
                                     <div style={{color: 'white'}}>:</div>
-                                    <input disabled style={{width: '10vh'}} maxLength={2} className='itemCreateShift__selectSchedule__input' type="text" value={inputAddScheduleMShLM} onBlur={handleOnBlurInputAddScheduleMShLM} onChange={handleInputAddScheduleMShLM} />
+                                    <input style={{width: '10vh'}} maxLength={2} className='itemCreateShift__selectSchedule__input' type="text" value={inputAddScheduleMShLM} onBlur={handleOnBlurInputAddScheduleMShLM} onChange={handleInputAddScheduleMShLM} />
                                 </>
                             }
-                            <button disabled className='itemCreateShift__selectSchedule__btn' style={{width: '5vh'}} onClick={addSchedule}>+</button>
+                            <button className='itemCreateShift__selectSchedule__btn' style={{width: '5vh'}} onClick={addSchedule}>+</button>
                         </div>
                     </div>
                     <div style={{paddingTop:'2vh'}} className='updateShiftModalContainerMobile__labelInput'>
