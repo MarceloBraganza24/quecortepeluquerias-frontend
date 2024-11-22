@@ -397,20 +397,7 @@ const MyShiftListModalMobile = ({id,hairdresser,first_name,last_name,service,ema
                 progress: undefined,
                 theme: "dark",
             });
-        } /* else if(!existsUniqueHairdresserSchedules){
-            toast('El horario no esta permitido para el día de semana seleccionado del peluquero elegido', {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
-            setShowSpinner(false);
-            document.getElementById('btnUpdateShift').style.display = 'block';
-        } */ else if(dateMShLFormated < fechaActual) {
+        } else if(dateMShLFormated < fechaActual) {
             toast('Debes ingresar una fecha a futuro', {
                 position: "top-right",
                 autoClose: 2000,
@@ -477,18 +464,6 @@ const MyShiftListModalMobile = ({id,hairdresser,first_name,last_name,service,ema
                 theme: "dark",
             });
         } else {
-            /* toast('Has guardado el turno', {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            }); */
-
-            
             document.getElementById('btnUpdateShift').style.display = 'none';
             setShowSpinner(true);
              const shiftToUpdate = {

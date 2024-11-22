@@ -33,7 +33,6 @@ const MyShiftListModal = ({id,hairdresser,first_name,last_name,service,email,dat
     const [selectScheduleOptionISh, setSelectScheduleOptionISh] = useState('');
     
     const formatInputDate = moment(inputDateISh).format('YYYY-MM-DD')
-    //console.log(formatInputDate)
     const concatDateSchedule = (formatInputDate) + ' ' + (selectScheduleOptionISh?selectScheduleOptionISh:schedule)
     const dateMShLFormated = new Date(concatDateSchedule);
 

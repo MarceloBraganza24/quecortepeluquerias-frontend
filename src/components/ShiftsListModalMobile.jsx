@@ -104,10 +104,6 @@ const ShiftsListModalMobile = ({id,hairdresser,first_name,last_name,service,emai
         })
     }
 
-    /* filteredArray.forEach(res => {
-        optionsScheduleSh.push(res)
-    }) */
-
     const optionsHairdresser = ['Peluquero'];
     hairdressers.forEach(res => {
         optionsHairdresser.push(res.name)

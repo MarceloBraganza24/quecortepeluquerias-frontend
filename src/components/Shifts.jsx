@@ -9,7 +9,6 @@ import {InputDataShContext} from '../context/InputDataShContext';
 import {BtnMPContext} from '../context/BtnMPContext';
 import {OpenModalContext} from '../context/OpenModalContext'; 
 import { Link } from 'react-router-dom';
-import HMenu from './HMenu';
 import moment from 'moment-timezone'
 
 import DatePicker from 'react-datepicker';
@@ -675,7 +674,7 @@ const Shifts = () => {
                 theme: "dark",
             });
         }else if(optionsScheduleSh[0] == 'No hay horarios') {
-            toast('Debes elegir un horariooo', {
+            toast('Debes elegir un horario', {
                 position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: false,

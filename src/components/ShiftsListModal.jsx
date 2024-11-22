@@ -30,8 +30,6 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
 
     const concatAddSchedules = inputAddScheduleHISh + ':' + inputAddScheduleMISh
     const formatInputDate = moment(inputDateISh).format('YYYY-MM-DD')
-    // console.log(date)
-    // console.log(formatInputDate)
 
     const concatDateSchedule = (formatInputDate) + ' ' + (!isAddScheduleISh?(selectScheduleOptionISh?selectScheduleOptionISh:schedule):concatAddSchedules)
     let concatNewDateSchedule = new Date(concatDateSchedule);
@@ -53,7 +51,6 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
     )
     
     const schedulesByHairdresserDate = workDaysByHairdresserWorkDayFiltered.map(item => item.schedule)
-    //console.log(schedulesByHairdresserDate)
     schedulesByHairdresserDate.sort((a, b) => {
         const timeA = a.split(':').map(Number);
         const timeB = b.split(':').map(Number);
@@ -110,10 +107,6 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
         })
     }
 
-    /* filteredArray.forEach(res => {
-        optionsScheduleISh.push(res)
-    }) */
-
     const optionsHairdresser = ['Peluquero'];
     hairdressers.forEach(res => {
         optionsHairdresser.push(res.name)
@@ -130,10 +123,6 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
         if(inputServiceISh!=service && inputServiceISh!='')setInputChanges(true);
         if(inputEmailISh!=email && inputEmailISh!='')setInputChanges(true);
         if(formatInputDate!=date)setInputChanges(true);
-        //formatInputDate
-        /* if(adjustedItemDate.getTime() != adjustedNewDatee.getTime()) {
-            setInputChanges(true);
-        } */
         if(selectScheduleOptionISh!==schedule && selectScheduleOptionISh!=='')setInputChanges(true);
     };
 
@@ -291,7 +280,6 @@ const ShiftsListModal = ({id,hairdresser,first_name,last_name,service,email,date
     }
 
     const handleBtnUpdShift = async() => {
-        //console.log(existsUniqueHairdresserSchedules)
         if( (inputFirstNameISh == '' || inputFirstNameISh == first_name) && (selectOptionHairdresserISh == '' || selectOptionHairdresserISh == hairdresser) && (inputLastNameISh == '' || inputLastNameISh == last_name) && (inputServiceISh == '' || inputServiceISh == service) && (inputEmailISh == '' || inputEmailISh == email) && (formatInputDate == '' || formatInputDate == date) && (!isAddScheduleISh && (selectScheduleOptionISh == '' || selectScheduleOptionISh == schedule) ) ) {
             toast('No tienes cambios para actualizar', {
                 position: "top-right",

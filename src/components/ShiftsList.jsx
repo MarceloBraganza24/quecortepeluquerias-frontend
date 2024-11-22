@@ -168,28 +168,6 @@ const ShiftsList = () => {
         
         const interval = setInterval(() => {
             menuOptionsModal&&handleMenuOptionsModal(false);
-            /* async function fetchShiftsData() {
-                const response = await fetch(`${apiUrl}/api/shifts`)
-                const shiftsAll = await response.json();
-                if(!response.ok) {
-                    toast('No se pudieron obtener los turnos disponibles, contacte a la peluquería', {
-                        position: "top-right",
-                        autoClose: 2000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "dark",
-                    });
-                } else {
-                    setShifts(shiftsAll.data)
-                }
-            }
-            if(shifts.length != 0) {
-                fetchShiftsData();
-            } */
-
             async function fetchData() {
                 try {
                     const response = await fetch(`${apiUrl}/api/shifts`)
@@ -215,7 +193,6 @@ const ShiftsList = () => {
                 }
             }
             fetchData();
-
             async function fetchHolidaysData() {
                 const response = await fetch(`${apiUrl}/api/holidays`)
                 const holidaysAll = await response.json();
@@ -287,7 +264,6 @@ const ShiftsList = () => {
 
     useEffect(() => {
         menuOptionsModal&&handleMenuOptionsModal(false);
-
         async function fetchData() {
             try {
                 const response = await fetch(`${apiUrl}/api/shifts`)
@@ -313,7 +289,6 @@ const ShiftsList = () => {
             }
         }
         fetchData();
-
         async function fetchHolidaysData() {
             const response = await fetch(`${apiUrl}/api/holidays`)
             const holidaysAll = await response.json();
