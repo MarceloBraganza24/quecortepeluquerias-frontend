@@ -44,6 +44,7 @@ const Shifts = () => {
     const [isMonted, setIsMonted] = useState(false);
     const [showSpinner, setShowSpinner] = useState(false);
     const [isBtnShiftRegisterBlocked, setIsBtnShiftRegisterBlocked] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const optionsService = ['Elija su servicio'];
 
@@ -129,59 +130,109 @@ const Shifts = () => {
     } else if(existsHoliday) {
         optionsScheduleSh.push('Peluquero de vacaciones')
     } else if(formatedDate == '2024-12-23' || formatedDate == '2024-12-30') {
+
         if(hoy.toDateString() == fechaSeleccionada.toDateString()) {
+
             if(generalFilteredArrayMonday.length != 0) {
-                generalFilteredArrayMonday.forEach(res => {
-                    optionsScheduleSh.push(res)
-                })
+
+                if(isLoading) {
+                    optionsScheduleSh.push('Cargando horarios ...')
+                } else {
+                    generalFilteredArrayMonday.forEach(res => {
+                        optionsScheduleSh.push(res)
+                    })
+                }
+
             } else {
                 optionsScheduleSh.push('No hay horarios')
             }
+
         } else {
+
             if(filteredArrayMonday.length != 0) {
-                filteredArrayMonday.forEach(res => {
-                    optionsScheduleSh.push(res)
-                })
+
+                if(isLoading) {
+                    optionsScheduleSh.push('Cargando horarios ...')
+                } else {
+                    filteredArrayMonday.forEach(res => {
+                        optionsScheduleSh.push(res)
+                    })
+                }
+
             } else {
                 optionsScheduleSh.push('No hay horarios')
             }
+
         }
+
     } else if(formatedDate == '2024-12-24' || formatedDate == '2024-12-31') {
+
         if(hoy.toDateString() == fechaSeleccionada.toDateString()) {
+
             if(generalFilteredArrayTuesday.length != 0) {
-                generalFilteredArrayTuesday.forEach(res => {
-                    optionsScheduleSh.push(res)
-                })
+
+                if(isLoading) {
+                    optionsScheduleSh.push('Cargando horarios ...')
+                } else {
+                    generalFilteredArrayTuesday.forEach(res => {
+                        optionsScheduleSh.push(res)
+                    })
+                }
+
             } else {
                 optionsScheduleSh.push('No hay horarios')
             }
         } else {
+
             if(filteredArrayTuesday.length != 0) {
-                filteredArrayTuesday.forEach(res => {
-                    optionsScheduleSh.push(res)
-                })
+
+                if(isLoading) {
+                    optionsScheduleSh.push('Cargando horarios ...')
+                } else {
+                    filteredArrayTuesday.forEach(res => {
+                        optionsScheduleSh.push(res)
+                    })
+                }
+
             } else {
                 optionsScheduleSh.push('No hay horarios')
             }
+
         }
+
     } else {
+
         if(hoy.toDateString() == fechaSeleccionada.toDateString()) {
+
             if(generalFilteredArray.length != 0) {
-                generalFilteredArray.forEach(res => {
-                    optionsScheduleSh.push(res)
-                })
+
+                if(isLoading) {
+                    optionsScheduleSh.push('Cargando horarios ...')
+                } else {
+                    generalFilteredArray.forEach(res => {
+                        optionsScheduleSh.push(res)
+                    })
+                }
+
             } else {
                 optionsScheduleSh.push('No hay horarios')
             }
         } else {
             if(filteredArray.length != 0) {
-                filteredArray.forEach(res => {
-                    optionsScheduleSh.push(res)
-                })
+
+                if(isLoading) {
+                    optionsScheduleSh.push('Cargando horarios ...')
+                } else {
+                    filteredArray.forEach(res => {
+                        optionsScheduleSh.push(res)
+                    })
+                }
+
             } else {
                 optionsScheduleSh.push('No hay horarios')
             }
         }
+
     }
     
     const optionsHairdresser = ['Peluquero'];
@@ -193,27 +244,30 @@ const Shifts = () => {
         const interval = setInterval(() => {
             menuOptionsModal&&handleMenuOptionsModal(false);
             async function fetchShiftsData() {
-                const response = await fetch(`${apiUrl}/api/shifts`)
-                const shiftsAll = await response.json();
-                if(!response.ok) {
-                    toast('No se pudieron obtener los turnos disponibles, contacte a la peluquería', {
-                        position: "top-right",
-                        autoClose: 2000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "dark",
-                    });
-                    setIsBtnShiftRegisterBlocked(true);
-                } else {
-                    setShifts(shiftsAll.data)
+                try {
+                    const response = await fetch(`${apiUrl}/api/shifts`)
+                    const shiftsAll = await response.json();
+                    if(!response.ok) {
+                        toast('No se pudieron obtener los turnos, contacte al administrador', {
+                            position: "top-right",
+                            autoClose: 2000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "dark",
+                        });
+                    } else {
+                        setShifts(shiftsAll.data)
+                    }
+                } catch (error) {
+                    console.error('Error al obtener datos:', error);
+                } finally {
+                    setIsLoading(false);
                 }
             }
-            if(shifts.length != 0) {
-                fetchShiftsData();
-            }
+            fetchShiftsData();
             async function fetchHolidaysData() {
                 const response = await fetch(`${apiUrl}/api/holidays`)
                 const holidaysAll = await response.json();
@@ -291,23 +345,29 @@ const Shifts = () => {
     useEffect(() => {
         
         menuOptionsModal&&handleMenuOptionsModal(false);
+
         async function fetchShiftsData() {
-            const response = await fetch(`${apiUrl}/api/shifts`)
-            const shiftsAll = await response.json();
-            if(!response.ok) {
-                toast('No se pudieron obtener los turnos disponibles, contacte a la peluquería', {
-                    position: "top-right",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
-                setIsBtnShiftRegisterBlocked(true);
-            } else {
-                setShifts(shiftsAll.data)
+            try {
+                const response = await fetch(`${apiUrl}/api/shifts`)
+                const shiftsAll = await response.json();
+                if(!response.ok) {
+                    toast('No se pudieron obtener los turnos, contacte al administrador', {
+                        position: "top-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                } else {
+                    setShifts(shiftsAll.data)
+                }
+            } catch (error) {
+                console.error('Error al obtener datos:', error);
+            } finally {
+                setIsLoading(false);
             }
         }
         fetchShiftsData();

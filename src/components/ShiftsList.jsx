@@ -50,7 +50,7 @@ const ShiftsList = () => {
     })
     
     const optionsScheduleSh = [];
-    optionsScheduleSh.push('Horario')
+    //optionsScheduleSh.push('Horario')
     
     const [showSpinner, setShowSpinner] = useState(false);
     
@@ -144,19 +144,40 @@ const ShiftsList = () => {
     } else if(selectOptionHairdresserShL == '' || selectOptionHairdresserShL == 'Peluquero') {
         optionsScheduleSh.push('Selecciona un peluquero')
     } else if(formattedDate == '2024-12-23' || formattedDate == '2024-12-30') {
-        filteredArrayMonday.forEach((item)=>{
-            optionsScheduleSh.push(item)
-        })
+
+        if(isLoading) {
+            optionsScheduleSh.push('Cargando horarios ...')
+        } else {
+            optionsScheduleSh.push('Horario')
+            filteredArrayMonday.forEach((item)=>{
+                optionsScheduleSh.push(item)
+            })
+        }
+
     } else if(formattedDate == '2024-12-24' || formattedDate == '2024-12-31') {
-        filteredArrayTuesday.forEach((item)=>{
-            optionsScheduleSh.push(item)
-        })
+
+        if(isLoading) {
+            optionsScheduleSh.push('Cargando horarios ...')
+        } else {
+            optionsScheduleSh.push('Horario')
+            filteredArrayTuesday.forEach((item)=>{
+                optionsScheduleSh.push(item)
+            })
+        }
+
     } else if(filteredArray.length == 0) {
         optionsScheduleSh.push('No hay horarios')
     } else {
-        filteredArray.forEach(res => {
-            optionsScheduleSh.push(res)
-        })
+
+        if(isLoading) {
+            optionsScheduleSh.push('Cargando horarios ...')
+        } else {
+            optionsScheduleSh.push('Horario')
+            filteredArray.forEach(res => {
+                optionsScheduleSh.push(res)
+            })
+        }
+
     }
     
     const [isMonted, setIsMonted] = useState(false);

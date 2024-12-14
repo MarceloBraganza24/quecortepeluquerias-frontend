@@ -28,6 +28,7 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user,holid
     const [workDays, setWorkDays] = useState([]);
     const [hairdressers, setHairdressers] = useState([]);
     const [services, setServices] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     let formattedDate;
     inputDateShL&&(formattedDate = format(inputDateShL, 'yyyy-MM-dd'));
@@ -70,7 +71,7 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user,holid
     let filteredArray = schedulesByHairdresserDate.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
 
     const optionsScheduleSh = [];
-    optionsScheduleSh.push('Horario')
+    //optionsScheduleSh.push('Horario')
 
     const chrismasMondaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','13:50','14:20','14:40','15:00','15:20','15:40','16:00','16:20']
     let filteredArrayMonday = chrismasMondaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
@@ -92,19 +93,40 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user,holid
     } else if(selectOptionHairdresserShL == '' || selectOptionHairdresserShL == 'Peluquero') {
         optionsScheduleSh.push('Selecciona un peluquero')
     } else if(formattedDate == '2024-12-23' || formattedDate == '2024-12-30') {
-        filteredArrayMonday.forEach((item)=>{
-            optionsScheduleSh.push(item)
-        })
+
+        if(isLoading) {
+            optionsScheduleSh.push('Cargando horarios ...')
+        } else {
+            optionsScheduleSh.push('Horario')
+            filteredArrayMonday.forEach((item)=>{
+                optionsScheduleSh.push(item)
+            })
+        }
+
     } else if(formattedDate == '2024-12-24' || formattedDate == '2024-12-31') {
-        filteredArrayTuesday.forEach((item)=>{
-            optionsScheduleSh.push(item)
-        })
+
+        if(isLoading) {
+            optionsScheduleSh.push('Cargando horarios ...')
+        } else {
+            optionsScheduleSh.push('Horario')
+            filteredArrayTuesday.forEach((item)=>{
+                optionsScheduleSh.push(item)
+            })
+        }
+
     } else if(filteredArray.length == 0) {
         optionsScheduleSh.push('No hay horarios')
     } else {
-        filteredArray.forEach(res => {
-            optionsScheduleSh.push(res)
-        })
+
+        if(isLoading) {
+            optionsScheduleSh.push('Cargando horarios ...')
+        } else {
+            optionsScheduleSh.push('Horario')
+            filteredArray.forEach(res => {
+                optionsScheduleSh.push(res)
+            })
+        }
+
     }
 
     const [isMonted, setIsMonted] = useState(false);
@@ -112,9 +134,28 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user,holid
     useEffect(() => {
         const interval = setInterval(() => {
             async function fetchShiftsData() {
-                const response = await fetch(`${apiUrl}/api/shifts`)
-                const shiftsAll = await response.json();
-                setShifts(shiftsAll.data)
+                try {
+                    const response = await fetch(`${apiUrl}/api/shifts`)
+                    const shiftsAll = await response.json();
+                    if(!response.ok) {
+                        toast('No se pudieron obtener los turnos, contacte al administrador', {
+                            position: "top-right",
+                            autoClose: 2000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "dark",
+                        });
+                    } else {
+                        setShifts(shiftsAll.data)
+                    }
+                } catch (error) {
+                    console.error('Error al obtener datos:', error);
+                } finally {
+                    setIsLoading(false);
+                }
             }
             fetchShiftsData();
             async function fetchHairdressersData() {
@@ -140,12 +181,40 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user,holid
     }, [isMonted]);
 
     useEffect(() => {
+
         async function fetchShiftsData() {
+            try {
+                const response = await fetch(`${apiUrl}/api/shifts`)
+                const shiftsAll = await response.json();
+                if(!response.ok) {
+                    toast('No se pudieron obtener los turnos, contacte al administrador', {
+                        position: "top-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                } else {
+                    setShifts(shiftsAll.data)
+                }
+            } catch (error) {
+                console.error('Error al obtener datos:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        }
+        fetchShiftsData();
+
+
+        /* async function fetchShiftsData() {
             const response = await fetch(`${apiUrl}/api/shifts`)
             const shiftsAll = await response.json();
             setShifts(shiftsAll.data)
         }
-        fetchShiftsData();
+        fetchShiftsData(); */
         async function fetchHairdressersData() {
             const response = await fetch(`${apiUrl}/api/hairdressers`)
             const hairdressersAll = await response.json();
