@@ -72,13 +72,11 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user,holid
     const optionsScheduleSh = [];
     optionsScheduleSh.push('Horario')
 
-    const chrismasMondaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','16:40','17:00','17:30','18:00','18:20','18:40','19:00','19:20','19:40','20:00','20:30']
+    const chrismasMondaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','13:50','14:20','14:40','15:00','15:20','15:40','16:00','16:20']
     let filteredArrayMonday = chrismasMondaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
     
     const chrismasTuesdaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','13:00','13:20','13:40']
     let filteredArrayTuesday = chrismasTuesdaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
-    
-
 
     const dateToCompareHoliday = {
         date: formattedDate,
@@ -88,7 +86,6 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user,holid
         holiday.date == dateToCompareHoliday.date &&
         holiday.hairdresser == dateToCompareHoliday.hairdresser
     );
-
 
     if(existsHoliday) {
         optionsScheduleSh.push('Peluquero de vacaciones')
@@ -109,10 +106,6 @@ const CreateShiftModalMobile = ({setIsOpenCreateShiftModalLocalMobile,user,holid
             optionsScheduleSh.push(res)
         })
     }
-
-    /* filteredArray.forEach(res => {
-        optionsScheduleSh.push(res)
-    }) */
 
     const [isMonted, setIsMonted] = useState(false);
 
