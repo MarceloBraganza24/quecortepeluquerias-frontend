@@ -11,8 +11,8 @@ const UsersListModal = ({id,first_name,last_name,email,role,handleUpdateUsersMod
     const [inputRoleIU, setInputRoleIU] = useState('');
     const optionsRoleIU = []
     role=="admin"?optionsRoleIU.push(`${role}`,'premium','user'):
-    role=="premium"?optionsRoleIU.push(`${role}`,'admin','user'):
-    role=="user"&&optionsRoleIU.push(`${role}`,'admin','premium')
+    role=="premium"?optionsRoleIU.push(`${role}`,'user'):
+    role=="user"&&optionsRoleIU.push(`${role}`,'premium')
     const apiUrl = import.meta.env.VITE_API_URL;
     const [confirmationDelUsersModal, handleConfirmationDelUsersModal] = useState(false);
     const {handleUpdateUserModal} = useContext(OpenModalContext);

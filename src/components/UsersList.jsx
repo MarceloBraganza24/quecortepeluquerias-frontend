@@ -19,7 +19,7 @@ const UsersList = () => {
     const [inputRoleUL, setInputRoleUL] = useState('');
     const [users, setUsers] = useState([]);
     const {menuOptionsModal,handleMenuOptionsModal,updateUsersModal,updateUserModalMobile,createUserModalMobile,handleCreateUserModalMobile} = useContext(OpenModalContext);
-    const optionsRoleUL = ["user","admin", "premium"];
+    const optionsRoleUL = ["user", "premium"];
     const [isMonted, setIsMonted] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const apiUrl = import.meta.env.VITE_API_URL;
