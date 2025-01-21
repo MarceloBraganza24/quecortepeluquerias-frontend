@@ -50,7 +50,7 @@ const ShiftsList = () => {
     })
     
     const optionsScheduleSh = [];
-    optionsScheduleSh.push('Horario')
+    //optionsScheduleSh.push('Horario')
     
     const [showSpinner, setShowSpinner] = useState(false);
     
@@ -124,14 +124,12 @@ const ShiftsList = () => {
 
     let filteredArray = schedulesByHairdresserDate.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
 
-    const chrismasMondaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','16:40','17:00','17:30','18:00','18:20','18:40','19:00','19:20','19:40','20:00','20:30']
+    const chrismasMondaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','13:50','14:20','14:40','15:00','15:20','15:40','16:00','16:20']
     let filteredArrayMonday = chrismasMondaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
     
     const chrismasTuesdaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','13:00','13:20','13:40']
     let filteredArrayTuesday = chrismasTuesdaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
     
-
-
     const dateToCompareHoliday = {
         date: formattedDate,
         hairdresser: selectOptionHairdresserShL
@@ -141,25 +139,45 @@ const ShiftsList = () => {
         holiday.hairdresser == dateToCompareHoliday.hairdresser
     );
 
-
     if(existsHoliday) {
         optionsScheduleSh.push('Peluquero de vacaciones')
     } else if(selectOptionHairdresserShL == '' || selectOptionHairdresserShL == 'Peluquero') {
         optionsScheduleSh.push('Selecciona un peluquero')
     } else if(formattedDate == '2024-12-23' || formattedDate == '2024-12-30') {
-        filteredArrayMonday.forEach((item)=>{
-            optionsScheduleSh.push(item)
-        })
+
+        if(isLoading) {
+            optionsScheduleSh.push('Cargando horarios ...')
+        } else {
+            optionsScheduleSh.push('Horario')
+            filteredArrayMonday.forEach((item)=>{
+                optionsScheduleSh.push(item)
+            })
+        }
+
     } else if(formattedDate == '2024-12-24' || formattedDate == '2024-12-31') {
-        filteredArrayTuesday.forEach((item)=>{
-            optionsScheduleSh.push(item)
-        })
+
+        if(isLoading) {
+            optionsScheduleSh.push('Cargando horarios ...')
+        } else {
+            optionsScheduleSh.push('Horario')
+            filteredArrayTuesday.forEach((item)=>{
+                optionsScheduleSh.push(item)
+            })
+        }
+
     } else if(filteredArray.length == 0) {
         optionsScheduleSh.push('No hay horarios')
     } else {
-        filteredArray.forEach(res => {
-            optionsScheduleSh.push(res)
-        })
+
+        if(isLoading) {
+            optionsScheduleSh.push('Cargando horarios ...')
+        } else {
+            optionsScheduleSh.push('Horario')
+            filteredArray.forEach(res => {
+                optionsScheduleSh.push(res)
+            })
+        }
+
     }
     
     const [isMonted, setIsMonted] = useState(false);

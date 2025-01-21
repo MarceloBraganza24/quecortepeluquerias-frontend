@@ -14,7 +14,7 @@ const CreateUserModalMobile = ({setIsOpenCreateUserModalLocalMobile}) => {
     const [inputEmailUL, setInputEmailUL] = useState('');
     const [inputPasswordUL, setInputPasswordUL] = useState('');
     const [showSpinner, setShowSpinner] = useState(false);
-    const optionsRoleIU = ["user","admin", "premium"];
+    const optionsRoleIU = ["user", "premium"];
 
     function regexOnlyLetters(str) {
         const regex = /^[a-zA-Z\s]*$/;

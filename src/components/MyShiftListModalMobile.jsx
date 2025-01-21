@@ -7,7 +7,7 @@ import Spinner from './Spinner';
 import {OpenModalContext} from '../context/OpenModalContext'; 
 import moment from 'moment-timezone'
 
-const MyShiftListModalMobile = ({id,hairdresser,first_name,last_name,service,email,date,schedule,handleUpdateMyShiftModalMobileLocal,shifts,holidaysData}) => {
+const MyShiftListModalMobile = ({id,hairdresser,first_name,last_name,service,email,date,schedule,handleUpdateMyShiftModalMobileLocal,shifts,holidaysData,isLoading}) => {
     const adjustedDate = moment.tz(date, 'America/Argentina/Buenos_Aires').startOf('day').toDate();
     const formatAdjustedDate = moment(adjustedDate).format('YYYY-MM-DD')
     const adjustedNewDatee = new Date(adjustedDate);
@@ -241,7 +241,7 @@ const MyShiftListModalMobile = ({id,hairdresser,first_name,last_name,service,ema
         return minutosTotales > horaActual; // Compara con la hora actual
     });
 
-    const chrismasMondaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','16:40','17:00','17:30','18:00','18:20','18:40','19:00','19:20','19:40','20:00','20:30']
+    const chrismasMondaySchedules = ['09:00','09:20','09:40','10:00','10:20','10:40','11:00','11:30','12:00','12:20','12:40','13:50','14:20','14:40','15:00','15:20','15:40','16:00','16:20']
     const existsUniqueMondayHairdresserSchedules = chrismasMondaySchedules.includes(selectScheduleOptionISh?selectScheduleOptionISh:schedule);
     let filteredArrayMonday = chrismasMondaySchedules.filter(time => !schedulesHairdressersFilteredByNotCancel.includes(time));
     const generalFilteredArrayMonday = filteredArrayMonday.filter(horario => {
@@ -269,17 +269,25 @@ const MyShiftListModalMobile = ({id,hairdresser,first_name,last_name,service,ema
     } else if(formatInputDate == '2024-12-23' || formatInputDate == '2024-12-30') {
         if(hoy.toDateString() == fechaSeleccionada.toDateString()) {
             if(generalFilteredArrayMonday.length != 0) {
-                generalFilteredArrayMonday.forEach(res => {
-                    optionsScheduleISh.push(res)
-                })
+                if(isLoading) {
+                    optionsScheduleISh.push('Cargando horarios ...')
+                } else {
+                    generalFilteredArrayMonday.forEach(res => {
+                        optionsScheduleISh.push(res)
+                    })
+                }
             } else {
                 optionsScheduleISh.push('No hay horarios')
             }
         } else {
             if(filteredArrayMonday.length != 0) {
-                filteredArrayMonday.forEach(res => {
-                    optionsScheduleISh.push(res)
-                })
+                if(isLoading) {
+                    optionsScheduleISh.push('Cargando horarios ...')
+                } else {
+                    filteredArrayMonday.forEach(res => {
+                        optionsScheduleISh.push(res)
+                    })
+                }
             } else {
                 optionsScheduleISh.push('No hay horarios')
             }
@@ -287,17 +295,25 @@ const MyShiftListModalMobile = ({id,hairdresser,first_name,last_name,service,ema
     } else if(formatInputDate == '2024-12-24' || formatInputDate == '2024-12-31') {
         if(hoy.toDateString() == fechaSeleccionada.toDateString()) {
             if(generalFilteredArrayTuesday.length != 0) {
-                generalFilteredArrayTuesday.forEach(res => {
-                    optionsScheduleISh.push(res)
-                })
+                if(isLoading) {
+                    optionsScheduleISh.push('Cargando horarios ...')
+                } else {
+                    generalFilteredArrayTuesday.forEach(res => {
+                        optionsScheduleISh.push(res)
+                    })
+                }
             } else {
                 optionsScheduleISh.push('No hay horarios')
             }
         } else {
             if(filteredArrayTuesday.length != 0) {
-                filteredArrayTuesday.forEach(res => {
-                    optionsScheduleISh.push(res)
-                })
+                if(isLoading) {
+                    optionsScheduleISh.push('Cargando horarios ...')
+                } else {
+                    filteredArrayTuesday.forEach(res => {
+                        optionsScheduleISh.push(res)
+                    })
+                }
             } else {
                 optionsScheduleISh.push('No hay horarios')
             }
@@ -305,17 +321,25 @@ const MyShiftListModalMobile = ({id,hairdresser,first_name,last_name,service,ema
     } else {
         if(hoy.toDateString() == fechaSeleccionada.toDateString()) {
             if(generalFilteredArray.length != 0) {
-                generalFilteredArray.forEach(res => {
-                    optionsScheduleISh.push(res)
-                })
+                if(isLoading) {
+                    optionsScheduleISh.push('Cargando horarios ...')
+                } else {
+                    generalFilteredArray.forEach(res => {
+                        optionsScheduleISh.push(res)
+                    })
+                }
             } else {
                 optionsScheduleISh.push('No hay horarios')
             }
         } else {
             if(filteredArray.length != 0) {
-                filteredArray.forEach(res => {
-                    optionsScheduleISh.push(res)
-                })
+                if(isLoading) {
+                    optionsScheduleISh.push('Cargando horarios ...')
+                } else {
+                    filteredArray.forEach(res => {
+                        optionsScheduleISh.push(res)
+                    })
+                }
             } else {
                 optionsScheduleISh.push('No hay horarios')
             }

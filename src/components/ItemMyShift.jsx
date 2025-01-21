@@ -4,7 +4,7 @@ import MyShiftListModal from './MyShiftListModal';
 import {OpenModalContext} from '../context/OpenModalContext'; 
 import MyShiftListModalMobile from './MyShiftListModalMobile';
 
-const ItemMyShift = ({id,hairdresser,first_name,last_name,service,email,date,schedule,shifts,holidaysData}) => {
+const ItemMyShift = ({id,hairdresser,first_name,last_name,service,email,date,schedule,shifts,holidaysData,isLoading}) => {
     
     const scheduleArray = schedule.split(':')
     let scheduleH = scheduleArray[0];
@@ -69,6 +69,7 @@ const ItemMyShift = ({id,hairdresser,first_name,last_name,service,email,date,sch
                     schedule={schedule}
                     shifts={shifts}
                     holidaysData={holidaysData}
+                    isLoading={isLoading}
                     />
                 }
         </div>
@@ -121,6 +122,7 @@ const ItemMyShift = ({id,hairdresser,first_name,last_name,service,email,date,sch
                 schedule={schedule}
                 shifts={shifts}
                 holidaysData={holidaysData}
+                isLoading={isLoading}
                 />
         }
     </>

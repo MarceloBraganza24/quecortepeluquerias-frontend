@@ -227,8 +227,9 @@ const MyShifts = () => {
                                                         email={shift.email}   
                                                         date={shift.date}
                                                         schedule={shift.schedule}
-                                                    shifts={shifts}
-                                                    holidaysData={holidays}
+                                                        shifts={shifts}
+                                                        holidaysData={holidays}
+                                                        isLoading={isLoading}
                                                     />
                                                 )
                                             })

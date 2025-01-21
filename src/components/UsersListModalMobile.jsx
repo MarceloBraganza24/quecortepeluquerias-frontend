@@ -14,7 +14,7 @@ const UsersListModalMobile = ({id,first_name,last_name,email,role,handleUpdateUs
     const [inputChanges, setInputChanges] = useState(false);
     const [showSpinner, setShowSpinner] = useState(false);
     const apiUrl = import.meta.env.VITE_API_URL;
-    const optionsRoleIU = ["user","admin", "premium"];
+    const optionsRoleIU = ["user", "premium"];
 
     function regexOnlyLetters(str) {
         const regex = /^[a-zA-Z\s]*$/;
